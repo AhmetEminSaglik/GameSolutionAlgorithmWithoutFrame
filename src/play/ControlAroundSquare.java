@@ -10,7 +10,6 @@ public class ControlAroundSquare {
 
     Compass compass = new DirectionCompass();
     CheckSquare checkSquare = new CheckSquare();
-
     ArrayList<Location> locationList = new LocationsList().getList();
 
     public int getNumberOfHowManySquaresAreAvailable(GameModel gameModel) {
@@ -19,7 +18,6 @@ public class ControlAroundSquare {
 
         for (int i = 0; i < locationList.size(); i++) {
             if (isLocationAvailable(gameModel, locationList.get(i).getId())) {
-                //        System.out.println("UYGUN >>>> " + locationList.get(i).getClass().getSimpleName());
 
                 availableDirectionCounter++;
             }
@@ -28,16 +26,18 @@ public class ControlAroundSquare {
     }
 
     public boolean isThereAnyAvailableSquare(GameModel gameModel) {
-        System.out.println("MUSAIT YON SAYISI " + getNumberOfHowManySquaresAreAvailable(gameModel));
+
         if (getNumberOfHowManySquaresAreAvailable(gameModel) > 0) {
+
             return true;
         }
         return false;
     }
 
     boolean isLocationAvailable(GameModel gameModel, int directionIndex) {
+
         checkSquare.setCompass(compass);
-        //  System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>> GameOver dan geldik compass : " + compass.getClass().getSimpleName());
+
         return checkSquare.isSquareAvailableToMoveOnIt(gameModel, directionIndex);
     }
 

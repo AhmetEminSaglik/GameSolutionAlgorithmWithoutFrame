@@ -42,7 +42,7 @@ public abstract class Location implements IDirectionCompassValues {
      * @param directionIndex = is used to get index and index changes according
      * to Compass (Compass is abstract)
      */
-    public static Location getLocation(Compass compass, int directionIndex) {
+    public static Location getLocationFromCompass(Compass compass, int directionIndex) {
         return new SwitchDirection(compass).choseDirection(directionIndex);
     }
 

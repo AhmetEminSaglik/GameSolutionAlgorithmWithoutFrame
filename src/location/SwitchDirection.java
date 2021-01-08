@@ -2,8 +2,8 @@ package location;
 
 import compass.Compass;
 import compass.DirectionCompass;
+import compass.KeyboardCompass;
 import errormessage.ClassicErrorMessage;
-import errormessage.FatalErrorMessage;
 import java.util.ArrayList;
 import location.direction.South;
 import location.direction.East;
@@ -23,7 +23,6 @@ public class SwitchDirection {
     }
 
     public Location choseDirection(int value) {
-        //  System.out.println("Compass : " + compass.getClass().getSimpleName());
         if (compass.getNorth() == value) {
             return new North();
         }
@@ -49,8 +48,9 @@ public class SwitchDirection {
             return new NorthWest();
         }
         ArrayList<Integer> list = getLocationList();
-
-        new ClassicErrorMessage().showMessage(" compas  : " + compass.getClass().getSimpleName() + "  DEGER SECILEMEDI " + value);
+        if (compass instanceof KeyboardCompass) {
+            new ClassicErrorMessage().showMessage(" compas  : " + compass.getClass().getSimpleName() + " -> Unknow Option  : " + value);
+        }
         for (Integer location : list) {
             System.out.println(location);
         }

@@ -1,7 +1,6 @@
 package play.step;
 
 import Game.GameModel;
-import errormessage.ClassicErrorMessage;
 import location.Location;
 
 public class AfterForwardStep extends AfterStep {
@@ -15,21 +14,28 @@ public class AfterForwardStep extends AfterStep {
         updatePlayerStepValue();
         updatePlayerLocation(getLocation());
         updateVisitedArea();
+
+    }
+
+    @Override
+    public void updateBeforeStep() {
         updateVisitedDirection(getLocation());
     }
 
     void increasePlayerStepValue() {
-        getPlayer().increaseStep();
+        //getPlayer().increaseStep();
+        getUpdateValuesInGameModel().changePlayerStepValue();
     }
 
-    void makeTrueVisitedArea() {
-        getGameModel().getVisitedAreas()[getPlayer().getLocationX()][getPlayer().getLocationY()] = true;
-        System.out.println("makeTrueVisitedArea()  kontrol edilmeli " + getClass().getSimpleName());
+    void changeValueVisitedArea() {
+        getUpdateValuesInGameModel().changeValueVisitedArea(); //    getGameModel().getVisitedAreas()[getPlayer().getLocationX()][getPlayer().getLocationY()] = true;
+        //  System.out.println("makeTrueVisitedArea()  kontrol edilmeli " + getClass().getSimpleName());
         //     System.out.println("ZIYARET EDILEN (True oldu, tekrar buraya gelemicek) KONUM X : " + getPlayer().getLocationX() + " Y : " + getPlayer().getLocationY());
     }
 
     void changePlayerLocation(Location location) {
-        getMovePlayer().changePlayerLocation(location);
+
+        getUpdateValuesInGameModel().changePlayerLocation(location);
     }
 
     @Override
@@ -39,22 +45,23 @@ public class AfterForwardStep extends AfterStep {
 
     @Override
     public void updateVisitedArea() {
-        makeTrueVisitedArea();
+        changeValueVisitedArea();
     }
 
-    public void makeTrueVisitedDirection(Location location) {
-        if (getPlayer().getStep() > 1) {
+    public void changeVisitedDirection(Location location) {
+        getUpdateValuesInGameModel().changeVisitedDirection(location);
+        /* if (getPlayer().getStep() > 1) {
 
             getGameModel().getVisitedDirections()[getPlayer().getStep() - 1][location.getId()] = true; // 1. adimda [0][id] 10 adimda [9][id] olacak
         } else {
             new ClassicErrorMessage().showMessage("visited Direction is false >>> player step : " + getPlayer().getStep());
-        }
+        }*/
 
     }
 
     @Override
     public void updateVisitedDirection(Location location) {
-        makeTrueVisitedDirection(location);
+        changeVisitedDirection(location);
     }
 
     @Override

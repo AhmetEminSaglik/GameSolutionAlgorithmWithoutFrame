@@ -1,6 +1,8 @@
 package play.step;
 
 import Game.GameModel;
+import Game.UpdateForMovedForward;
+import Game.UpdateValuesInGameModel;
 import Game.player.Player;
 import location.Location;
 import move.MovePlayer;
@@ -11,7 +13,8 @@ public abstract class AfterStep implements IStep {
     private Player player;
     private Location location;
     private MovePlayer movePlayer;
-    private FillGameSquares fillGameSquares;
+    private FillGameSquare fillGameSquare;
+    private UpdateValuesInGameModel updateValuesInGameModel;
 
     public AfterStep(GameModel gameModel) {
         this.gameModel = gameModel;
@@ -19,7 +22,8 @@ public abstract class AfterStep implements IStep {
         this.player = gameModel.getPlayer();
 
         movePlayer = new MovePlayer(gameModel);
-        fillGameSquares = new FillGameSquares(gameModel);
+        fillGameSquare = new FillGameSquare(gameModel);
+        updateValuesInGameModel = new UpdateForMovedForward(gameModel);
 
     }
 
@@ -63,12 +67,20 @@ public abstract class AfterStep implements IStep {
         this.movePlayer = movePlayer;
     }
 
-    public FillGameSquares getFillGameSquares() {
-        return fillGameSquares;
+    public FillGameSquare getFillGameSquare() {
+        return fillGameSquare;
     }
 
-    public void setFillGameSquares(FillGameSquares fillGameSquares) {
-        this.fillGameSquares = fillGameSquares;
+    public void setFillGameSquare(FillGameSquare fillGameSquares) {
+        this.fillGameSquare = fillGameSquares;
+    }
+
+    public UpdateValuesInGameModel getUpdateValuesInGameModel() {
+        return updateValuesInGameModel;
+    }
+
+    public void setUpdateValuesInGameModel(UpdateValuesInGameModel updateValuesInGameModel) {
+        this.updateValuesInGameModel = updateValuesInGameModel;
     }
 
 }

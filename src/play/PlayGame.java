@@ -3,11 +3,9 @@ package play;
 import Game.GameModel;
 import Game.player.Player;
 import compass.Compass;
-import compass.DirectionCompass;
 import compass.KeyboardCompass;
 import location.SwitchDirection;
 import java.util.Scanner;
-import location.direction.South;
 
 import printarray.PrintArray;
 import validation.Validation;
@@ -78,7 +76,6 @@ public class PlayGame {
         validation.setCompass(compass);
         CheckSquare checkSquare = new CheckSquare();
         checkSquare.setCompass(compass);
-
         if (validation.isInputValidForArray(gameModel, choose)
                 && checkSquare.isSquareAvailableToMoveOnIt(gameModel, choose)) {
             return true;

@@ -11,6 +11,8 @@ public interface IStep {
     void updateVisitedDirection(Location location);
 
     void updatePlayerLocation(Location location);
-    
+
     void updateAfterStep();
+
+    void updateBeforeStep();
 }

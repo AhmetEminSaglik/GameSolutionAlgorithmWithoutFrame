@@ -18,6 +18,20 @@ public class PrintArray<T> {
         }
     }
 
+    public void printMultipleArrayBoolean(boolean array[][]) {
+        System.out.println("Visited area yazdirma sureci baslatilacak");
+        for (int i = array.length - 1; i >= 0; i--) {//
+            for (int j = 0; j < array[i].length; j++) {
+
+                if (array[j][i] == true) {
+                    System.out.println("[" + j + " ][" + i + "]" + array[j][i]);
+                }
+            }
+
+        }
+        System.out.println("Visited area yazdirma surebi bitti");
+    }
+
     public void NullCheckPoint(T array[][]) {
 
         for (int i = 0; i < array.length; i++) {

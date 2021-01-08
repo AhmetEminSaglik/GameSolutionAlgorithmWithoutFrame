@@ -15,11 +15,6 @@ public class LocationsList {
 
     ArrayList<Location> list = new ArrayList<>();
 
-    public LocationsList() {
-        System.out.println("HENUZ DAHA KULLANMADIM : " + getClass().getSimpleName());
-
-    }
-
     void fillList() {
         list.add(new North());
         list.add(new NorthEast());

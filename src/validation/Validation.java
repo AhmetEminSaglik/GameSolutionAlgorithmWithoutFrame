@@ -4,14 +4,12 @@ import Game.GameModel;
 import Game.player.Player;
 import compass.Compass;
 import location.Location;
-import location.SwitchDirection;
 import errormessage.ClassicErrorMessage;
-import errormessage.FatalErrorMessage;
 
 public class Validation {
 
     private Compass compass;
-    private SwitchDirection switchDirection;
+    //   private SwitchDirection switchDirection;
 
     public static boolean validateSquareNumbers(int number) {
 
@@ -59,15 +57,9 @@ public class Validation {
 
         Location location;
         Player player = gameModel.getPlayer();
-        //  System.out.println("BBBB");
         try {
-            /*  System.out.println("Compass : " + compass);
-            System.out.println("COMPASS /// " + compass.getClass().getSimpleName());*/
-
-            //  switchDirection = new SwitchDirection(compass);
-            //System.out.println("ONEMLIII  " + compass.getClass().getSimpleName());
-            switchDirection = new SwitchDirection(compass);
-            location = Location.getLocation(compass, input);// switchDirection.choseDirection(input);
+            // ??? HATA CIKARSA BUNU AKTIFLESTIR  switchDirection = new SwitchDirection(compass); 
+            location = Location.getLocationFromCompass(compass, input);// switchDirection.choseDirection(input);
 
             if (calculateValidOrNot(gameModel.getGameSquares().length, player.getLocationX(), location.getX())
                     && calculateValidOrNot(gameModel.getGameSquares().length, player.getLocationY(), location.getY())) {
@@ -75,7 +67,7 @@ public class Validation {
             }
         } catch (Exception ex) {
 
-            new ClassicErrorMessage().showMessage(ex.getMessage());
+            new ClassicErrorMessage().showMessage("Error : " + ex.getMessage());
         }
 
         // new ClassicErrorMessage().showMessage("entered a number which may cause to  go out ouf borders. Please enter valid value : " +input);

@@ -1,10 +1,11 @@
 package play;
 
-import play.step.FillGameSquares;
+import play.step.FillGameSquare;
 import Game.GameModel;
 import Game.player.Player;
 import location.Location;
 import play.step.AfterForwardStep;
+import printarray.PrintArray;
 
 public class UpdateGameModel extends GameModel {
 
@@ -12,20 +13,21 @@ public class UpdateGameModel extends GameModel {
     GameModel gameModel;
     Player player;
 
-    FillGameSquares fillGameSquares;
+    FillGameSquare fillGameSquare;
 
     public UpdateGameModel(GameModel gameModel) {
         this.gameModel = gameModel;
         player = gameModel.getPlayer();
 
-        fillGameSquares = new FillGameSquares(gameModel);
+        fillGameSquare = new FillGameSquare(gameModel);
         afterForwardStep = new AfterForwardStep(gameModel);
     }
 
     public void moveForward(Location location) {
         afterForwardStep.setLocation(location);
+        afterForwardStep.updateBeforeStep();
         afterForwardStep.updateAfterStep();
-        fillGameSquares.printStepInGameSquare();
+        fillGameSquare.printStepInGameSquare();
     }
 
     public void moveBack() {

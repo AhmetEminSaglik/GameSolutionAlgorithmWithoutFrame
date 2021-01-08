@@ -47,7 +47,7 @@ public class Player {
         return "Player{" + "locationX=" + locationX + ", locationY=" + locationY + ", step=" + step + '}';
     }
 
-    public void print() {
+    public void printPlayer() {
         System.out.println("******************");
         System.out.println(toString());
     }

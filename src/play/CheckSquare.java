@@ -11,11 +11,10 @@ public class CheckSquare {
     Compass compass;
 
     public boolean isSquareAvailableToMoveOnIt(GameModel gameModel, int directionIndex) {
-
         if (isArraySuitableForIndexs(gameModel, directionIndex)) {
             //Compass compass = new DirectionCompass();
 
-            Location location = Location.getLocation(compass, directionIndex); // switchDirection.choseDirection(input);
+            Location location = Location.getLocationFromCompass(compass, directionIndex); // switchDirection.choseDirection(input);
 
             if (gameModel.getVisitedAreas()[gameModel.getPlayer().getLocationX() + location.getX()][gameModel.getPlayer().getLocationY() + location.getY()] == false) {
                 return true;
@@ -30,8 +29,8 @@ public class CheckSquare {
     }
 
     boolean isArraySuitableForIndexs(GameModel gameModel, int choose) {
-        validation.setCompass(compass); // ==>>> HATA BURADAN KAYNAKLANIYOR
 
+        validation.setCompass(compass); // ==>>> HATA BURADAN KAYNAKLANIYOR
         return validation.isInputValidForArray(gameModel, choose);
     }
 
