@@ -1,11 +1,12 @@
-package play;
+package play.gameover;
 
 import Game.GameModel;
+import play.CheckAroundSquare;
 
 public class GameOver {
 
     public boolean isGameOver(GameModel gameModel) {
-        if (new ControlAroundSquare().isThereAnyAvailableSquare(gameModel)) {
+        if (new CheckAroundSquare().isThereAnyAvailableSquare(gameModel)) {
             return false;
         }
         return true;

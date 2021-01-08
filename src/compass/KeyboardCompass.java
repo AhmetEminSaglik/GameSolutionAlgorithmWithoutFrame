@@ -1,11 +1,11 @@
 package compass;
 
 public class KeyboardCompass extends Compass {
-
+    
     public KeyboardCompass() {
         fillValues();
     }
-
+    
     @Override
     void fillValues() {
         setNorth(8);
@@ -16,6 +16,7 @@ public class KeyboardCompass extends Compass {
         setSouthWest(1);
         setWest(4);
         setNorthWest(7);
+        setLastLocation(5);
     }
 
     /*  int NORTH_Move_Int = 8;

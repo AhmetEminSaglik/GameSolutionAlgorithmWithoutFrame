@@ -11,6 +11,8 @@ public abstract class Compass {
     int west;
     int northWest;
 
+    int lastLocation;
+
     public int getNorth() {
         return north;
     }
@@ -73,6 +75,17 @@ public abstract class Compass {
 
     public void setNorthWest(int value) {
         northWest = value;
+    }
+
+    public int getLastLocation() {
+        return lastLocation;
+    }
+
+    /**
+     * @param lastLocation = to move before before Location
+     */
+    public void setLastLocation(int lastLocation) {
+        this.lastLocation = lastLocation;
     }
 
     abstract void fillValues();

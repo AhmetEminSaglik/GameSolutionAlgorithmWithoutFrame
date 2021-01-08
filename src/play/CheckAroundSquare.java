@@ -6,7 +6,7 @@ import compass.DirectionCompass;
 import java.util.ArrayList;
 import location.Location;
 
-public class ControlAroundSquare {
+public class CheckAroundSquare {
 
     Compass compass = new DirectionCompass();
     CheckSquare checkSquare = new CheckSquare();

@@ -7,6 +7,7 @@ import errormessage.ClassicErrorMessage;
 import java.util.ArrayList;
 import location.direction.South;
 import location.direction.East;
+import location.direction.LastLocation;
 import location.direction.North;
 import location.direction.West;
 import location.direction.NorthEast;
@@ -47,13 +48,17 @@ public class SwitchDirection {
         if (compass.getNorthWest() == value) {
             return new NorthWest();
         }
+        if (compass.getLastLocation() == value) {
+            return new LastLocation();
+        }
+
         ArrayList<Integer> list = getLocationList();
-        if (compass instanceof KeyboardCompass) {
-            new ClassicErrorMessage().showMessage(" compas  : " + compass.getClass().getSimpleName() + " -> Unknow Option  : " + value);
-        }
-        for (Integer location : list) {
+        new ClassicErrorMessage().showMessage(" compass  : " + compass.getClass().getSimpleName() + " -> Unknow Option  : " + value);
+        /*if (compass instanceof KeyboardCompass) {
+        }*/
+      /*  for (Integer location : list) {
             System.out.println(location);
-        }
+        }*/
         /*  switch (value) {
             case NORTH_Move_Int:
             case compass.getNORTH():

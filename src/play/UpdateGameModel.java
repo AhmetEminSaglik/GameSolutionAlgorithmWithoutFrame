@@ -5,7 +5,6 @@ import Game.GameModel;
 import Game.player.Player;
 import location.Location;
 import play.step.AfterForwardStep;
-import printarray.PrintArray;
 
 public class UpdateGameModel extends GameModel {
 
