@@ -6,7 +6,7 @@ public class SouthEast extends Location {
 
     @Override
     public int getId() {
-        return SOUTH_EAST;
+        return directionCompassValue.SOUTH_EAST;
     }
 
     @Override

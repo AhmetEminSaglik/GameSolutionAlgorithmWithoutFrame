@@ -38,7 +38,7 @@ public class Player {
         step++;
     }
 
-    public void dicreaseStep() {
+    public void decreaseStep() {
         step--;
     }
 

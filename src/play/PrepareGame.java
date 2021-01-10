@@ -1,9 +1,9 @@
 package play;
 
+import Game.updategamemodel.UpdateGameModel;
 import Game.GameModel;
 import compass.Compass;
 import compass.KeyboardCompass;
-import java.util.Scanner;
 import location.SwitchDirection;
 
 public class PrepareGame {

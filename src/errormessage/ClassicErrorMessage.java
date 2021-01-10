@@ -2,12 +2,12 @@ package errormessage;
 
 import java.awt.Toolkit;
 
-public class ClassicErrorMessage extends BaseErrorMessage {
+class ClassicErrorMessage extends BaseErrorMessage {
 
     @Override
     public void showMessage(String error) {
         Toolkit.getDefaultToolkit().beep();
-        System.out.println(error);
+        System.out.println("  CLASIC ERROR --- > "+error);
     }
 
 }

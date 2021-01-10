@@ -18,7 +18,7 @@ public class Solution {
     public void runTheSolution(GameModel gameModel) {
         //  WaysToGo waysToGo = new WaysToGo();
 
-        PrintArray<String> p = new PrintArray<>();
+      //  PrintArray<String> p = new PrintArray<>();
 
         MovableDirections movableDirections = new MovableDirections(gameModel);
         System.out.println(movableDirections.getWayCounter());

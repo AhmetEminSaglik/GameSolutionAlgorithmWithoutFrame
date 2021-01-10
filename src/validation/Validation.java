@@ -3,8 +3,8 @@ package validation;
 import Game.GameModel;
 import Game.player.Player;
 import compass.Compass;
+import errormessage.ErrorMessage;
 import location.Location;
-import errormessage.ClassicErrorMessage;
 
 public class Validation {
 
@@ -67,7 +67,7 @@ public class Validation {
             }
         } catch (Exception ex) {
 
-            new ClassicErrorMessage().showMessage("Error : " + ex.getMessage());
+            ErrorMessage.appearClassicError("Error : " + ex.getMessage());
         }
 
         // new ClassicErrorMessage().showMessage("entered a number which may cause to  go out ouf borders. Please enter valid value : " +input);

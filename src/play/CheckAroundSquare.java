@@ -26,10 +26,16 @@ public class CheckAroundSquare {
     }
 
     public boolean isThereAnyAvailableSquare(GameModel gameModel) {
-
-        if (getNumberOfHowManySquaresAreAvailable(gameModel) > 0) {
+        /*if (getNumberOfHowManySquaresAreAvailable(gameModel) > 0) {
 
             return true;
+        }*/
+        for (int i = 0; i < locationList.size(); i++) {
+
+            if (isLocationAvailable(gameModel, locationList.get(i).getId())) {
+                // System.out.println("Musait yon : " + locationList.get(i).getClass().getSimpleName());
+                return true;
+            }
         }
         return false;
     }

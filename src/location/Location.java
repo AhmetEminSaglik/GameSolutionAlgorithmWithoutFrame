@@ -1,9 +1,11 @@
 package location;
 
 import compass.Compass;
-import location.direction.IDirectionCompassValues;
+import location.direction.DirectionCompassValues;
 
-public abstract class Location implements IDirectionCompassValues {
+public abstract class Location {
+
+    public DirectionCompassValues directionCompassValue = new DirectionCompassValues();
 
     private int id;
     private int x = 0, y = 0;
@@ -32,9 +34,16 @@ public abstract class Location implements IDirectionCompassValues {
 
     @Override
     public String toString() {
-        return "Location{" + "id=" + id + ", x=" + getX() + ", y=" + getY() + '}';
+        return getClass().getSimpleName() + "{id=" + getId() + ", x=" + getX() + ", y=" + getY() + "}"; //To change body of generated methods, choose Tools | Templates.
     }
 
+    public static Location getLocationFromCompass(Compass compass, int directionIndex) {
+        return new SwitchDirection(compass).choseDirection(directionIndex);
+    }
+
+    public void printLocation() {
+        System.out.println(toString());
+    }
     /**
      * return Location of
      *
@@ -42,8 +51,4 @@ public abstract class Location implements IDirectionCompassValues {
      * @param directionIndex = is used to get index and index changes according
      * to Compass (Compass is abstract)
      */
-    public static Location getLocationFromCompass(Compass compass, int directionIndex) {
-        return new SwitchDirection(compass).choseDirection(directionIndex);
-    }
-
 }

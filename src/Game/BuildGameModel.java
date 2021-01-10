@@ -20,8 +20,8 @@ public class BuildGameModel {
     public GameModel fillGameModel() throws InterruptedException {
         GameModel gameModel = new GameModel();
 
-        gameModel.setGameSquares(convertIntegersToStringMultiplesArray(verticalSquare, horizontalSquare));
-        gameModel = prepareNullValues(gameModel);
+        gameModel.setGameSquares(createMultipleArrayFromIntegers(verticalSquare, horizontalSquare));
+        //gameModel = prepareNullValues(gameModel);
         gameModel = creatVisitArea(gameModel);
         gameModel = setVisitedDirectionsArray(gameModel);
 
@@ -41,22 +41,24 @@ public class BuildGameModel {
         return gameModel;
     }
 
-    public String[][] convertIntegersToStringMultiplesArray(int verticalSquare, int horizontalSquare) {
-
-        return new String[verticalSquare][horizontalSquare];
+    public int[][] createMultipleArrayFromIntegers(int verticalSquare, int horizontalSquare) {
+        return new int[verticalSquare][horizontalSquare];
     }
 
-    public GameModel prepareNullValues(GameModel gameModel) {
+    /* public String[][] convertIntegersToStringMultiplesArray(int verticalSquare, int horizontalSquare) {
+
+        return new String[verticalSquare][horizontalSquare];
+    }*/
+ /*   public GameModel prepareNullValues(GameModel gameModel) {
         for (int i = 0; i < gameModel.getGameSquares().length; i++) {
-            prepareNullArray(gameModel.getGameSquares()[i]);
+            //prepareNullArray(gameModel.getGameSquares()[i]);
 
         }
         return gameModel;
-    }
-
+    }*/
     public String[] prepareNullArray(String[] array) {
         for (int i = 0; i < array.length; i++) {
-            array[i] = "|   |";
+            array[i] = "   ";
         }
 
         return array;

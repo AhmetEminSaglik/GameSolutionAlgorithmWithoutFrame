@@ -6,12 +6,14 @@ public class East extends Location {
 
     @Override
     public int getId() {
-        return EAST;
+        return directionCompassValue.EAST;
     }
 
     @Override
     public int getX() {
         return 3;
     }
+
+    
 
 }

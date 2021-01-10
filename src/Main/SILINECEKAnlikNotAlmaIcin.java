@@ -1,14 +1,13 @@
 package Main;
 
-import errormessage.FatalErrorMessage;
+import errormessage.ErrorMessage;
 
 public class SILINECEKAnlikNotAlmaIcin {
 
     String text = " Game over classi calisirken keyboardCompass ile IDirectionCompasValue degerleri cakistigi icin sorun aliyorum";
 
     public SILINECEKAnlikNotAlmaIcin() {
-
-        new FatalErrorMessage().showMessage(text);
+        ErrorMessage.appearFatalError(text);
     }
 
 }

@@ -7,17 +7,15 @@ public class GameModel {
     private Player player = new Player();
 
     private boolean ThereIsADeadEndLocation = false;
-    private String gameSquares[][];  // alan olusturacak
+    private int gameSquares[][];  // alan olusturacak
     private boolean visitedAreas[][]; // 10 10 da bakilacak
     private boolean visitedDirections[][];
 
-    private int totalStep = 1;
-
-    public String[][] getGameSquares() {
+    public int[][] getGameSquares() {
         return gameSquares;
     }
 
-    public void setGameSquares(String[][] gameSquares) {
+    public void setGameSquares(int[][] gameSquares) {
         this.gameSquares = gameSquares;
     }
 
@@ -51,19 +49,6 @@ public class GameModel {
 
     public void setThereIsADeadEndLocation(boolean ThereIsADeadEndLocation) {
         this.ThereIsADeadEndLocation = ThereIsADeadEndLocation;
-    }
-
-    public int getTotalStep() {
-        return totalStep;
-    }
-
-    public void setTotalStep(int totalStep) {
-        this.totalStep = totalStep;
-    }
-
-    public void increaseTotalStep() {
-        totalStep++;
-
     }
 
 }

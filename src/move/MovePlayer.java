@@ -23,6 +23,8 @@ public class MovePlayer {
 
     public void changePlayerLocation(Location location) {
         // player.increaseStep();
+        //  System.out.print("changePlayerLocation  ---> ");
+        //location.printLocation();
         xChangeLocation(location.getX());
         yChangeLocation(location.getY());
     }

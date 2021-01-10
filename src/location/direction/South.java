@@ -6,7 +6,7 @@ public class South extends Location {
 
     @Override
     public int getId() {
-        return SOUTH;
+        return directionCompassValue.SOUTH;
     }
 
     @Override
