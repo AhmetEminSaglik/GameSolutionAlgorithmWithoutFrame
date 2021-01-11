@@ -1,4 +1,4 @@
-package WILL_REMOVE;
+/* package WILL_REMOVE;
 
 import Game.GameModel;
 import printarray.PrintArray;
@@ -24,9 +24,10 @@ public class Solution {
         System.out.println(movableDirections.getWayCounter());
 
 
-        /*
+        / *
         Etrafina baksin kac yol var 
-        3 tane rahat ilerleyebilecegi yol var .  siradan ilerlesin.   */
+        3 tane rahat ilerleyebilecegi yol var .  siradan ilerlesin.   * /
     }
 
 }
+*/

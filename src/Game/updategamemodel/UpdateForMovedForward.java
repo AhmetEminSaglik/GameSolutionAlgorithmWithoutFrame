@@ -5,20 +5,19 @@ import location.Location;
 
 public class UpdateForMovedForward extends UpdateValuesInGameModel {
 
-    public UpdateForMovedForward(GameModel gameModel ) {
+    public UpdateForMovedForward(GameModel gameModel) {
         super(gameModel);
     }
 
     @Override
-    public void changePlayerStepValue() {
+    public void updatePlayerStepValue() {
         gameModel.getPlayer().increaseStep();
     }
 
-    @Override
+    /* @Override
     public void changePlayerLocation(Location location) {
         movePlayer.changePlayerLocation(location);
-    }
-
+    }*/
     @Override
     boolean isMovedForward() {
         return true;

@@ -8,8 +8,7 @@ import play.gameover.GameOver;
 import Game.GameModel;
 import Game.player.Player;
 import compass.KeyboardCompass;
-import errormessage.ErrorMessage;
-
+import location.Location;
 import printarray.PrintArray;
 import validation.Validation;
 
@@ -26,46 +25,23 @@ public class PlayGame {
         player = gameModel.getPlayer();
     }
 
-    /*
-    
-    location change class    -->      OK
-    FillGamesquared   class -->         OK
-    changeVisitedArea class
-    chnageVisitedThisArea class
-      
-     */
     public void playGame() {
 
         prepareGame = new PrepareGame(gameModel);
         Move moveForwardOrBack;
-        //  CreateLocationOfLastStep createLocationOfLastStep = new CreateLocationOfLastStep(gameModel);
 
         printGamelastStuation(gameModel);
-        while (!new GameOver().isGameOver(gameModel)) { // !new GameOver().isGameOver(gameModel)
+
+        while (!new GameOver().isGameOver(gameModel)) {
 
             int choose = prepareGame.scanInput.getInput();
-            //   moveForwardOrBack = getMoveBackOrForward(choose);
 
-           
-            if (choose == 5) {
-                if (gameModel.getPlayer().getStep() > 1) {
-                    //createLocationOfLastStep.setGameModel(gameModel);
-                    prepareGame.updateGameModel.moveBack(new CreateLocationOfLastStep(gameModel).createLastStepLocation()); //new CreateLocationOfLastStep(gameModel).createLastStepLocation()
-                } else {
-                    ErrorMessage.appearClassicError("Step must be bigger than 1 ");
-                }
-            } else if (isItAvailableToMove(gameModel, choose)) {
+            moveForwardOrBack = getMoveBackOrForward(choose);
 
-                //moveForwardOrBack.isItAvailableToMove(gameModel, choose);
-                prepareGame.switchDirection.updateCompass(prepareGame.compass);
-                // moveForwardOrBack.move(prepareGame.switchDirection.choseDirection(choose));
-                prepareGame.updateGameModel.moveForward(prepareGame.switchDirection.choseDirection(choose));
-
+            if (moveForwardOrBack.isItAvailableToMove(gameModel, choose)) {
+                moveForwardOrBack.move(getLocationValueAccordingToEnteredValue(choose));
             }
             printGamelastStuation(gameModel);
-            /*
-            new PrintArray().printMultipleArrayBoolean(gameModel.getVisitedAreas());
-            new PrintArray().printMultipleArrayBoolean(gameModel.getVisitedDirections());*/
 
         }
     }
@@ -97,5 +73,12 @@ public class PlayGame {
             System.out.println("OLMADI index : " + index + "   / new KeyboardCompass().getLastLocation()" + new KeyboardCompass().getLastLocation());
         }
         return new MoveForward(gameModel);
+    }
+
+    Location getLocationValueAccordingToEnteredValue(int choose) {
+        if (choose == new KeyboardCompass().getLastLocation()) {
+            return new CreateLocationOfLastStep(gameModel).createLastStepLocation();
+        }
+        return prepareGame.switchDirection.choseDirection(choose);
     }
 }

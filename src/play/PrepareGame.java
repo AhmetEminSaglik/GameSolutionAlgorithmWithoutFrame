@@ -1,10 +1,11 @@
 package play;
 
-import Game.updategamemodel.UpdateGameModel;
 import Game.GameModel;
 import compass.Compass;
 import compass.KeyboardCompass;
 import location.SwitchDirection;
+import move.MoveForward;
+import printarray.PrintArray;
 
 public class PrepareGame {
 
@@ -14,7 +15,7 @@ public class PrepareGame {
     SwitchDirection switchDirection;
     PlayGame playGame;
 
-    UpdateGameModel updateGameModel;
+    //UpdateGameModel updateGameModel;
     SelectFirstSqaureToStart selectFirstSqaureToStart;
     ScanInput scanInput = new ScanInput();
 
@@ -28,7 +29,7 @@ public class PrepareGame {
     void fillNullReferans(GameModel gameModel) {
         this.gameModel = gameModel;
 
-        updateGameModel = new UpdateGameModel(gameModel);
+        //  updateGameModel = new UpdateGameModel(gameModel);
         selectFirstSqaureToStart = new SelectFirstSqaureToStart(gameModel);
         compass = new KeyboardCompass();
     }
@@ -38,8 +39,9 @@ public class PrepareGame {
         //updateGameModel.moveForward(selectFirstSqaureToStart);
         switchDirection = new SwitchDirection(compass);
         selectFirstSqaureToStart.selectSquareStart(0, 0);
-        updateGameModel.moveForward(selectFirstSqaureToStart);
-
+        //  updateGameModel.moveForward(selectFirstSqaureToStart);
+        new MoveForward(gameModel).move(selectFirstSqaureToStart);
+       
     }
 
 

@@ -1,6 +1,6 @@
 package errormessage;
 
-public class InterruptProcess {
+class InterruptProcess {
 
     public static void killProcess(String error) {
         try {

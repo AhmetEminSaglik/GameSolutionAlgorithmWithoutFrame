@@ -6,7 +6,6 @@
 package Game.updategamemodel;
 
 import Game.GameModel;
-import location.Location;
 
 /**
  *
@@ -19,15 +18,8 @@ public class UpdateForMovedBack extends UpdateValuesInGameModel {
     }
 
     @Override
-    public void changePlayerStepValue() {
+    public void updatePlayerStepValue() {
         gameModel.getPlayer().decreaseStep();
-    }
-
-    @Override
-    public void changePlayerLocation(Location location) {
-
-        movePlayer.changePlayerLocation(location);
-
     }
 
     @Override
@@ -35,7 +27,4 @@ public class UpdateForMovedBack extends UpdateValuesInGameModel {
         return false;
     }
 
-    public void createLocationToMoveBack() {
-
-    }
 }

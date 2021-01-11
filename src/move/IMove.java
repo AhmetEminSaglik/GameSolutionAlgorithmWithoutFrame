@@ -1,8 +1,8 @@
-package play.step;
+package move;
 
 import location.Location;
 
-public interface IStep {
+public interface IMove {
 
     void updatePlayerStepValue();
 
@@ -15,4 +15,5 @@ public interface IStep {
     void updateAfterStep();
 
     void updateBeforeStep();
+
 }

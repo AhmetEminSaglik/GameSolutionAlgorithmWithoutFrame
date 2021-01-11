@@ -1,4 +1,4 @@
-package WILL_REMOVE;
+/*package WILL_REMOVE;
 
 import Game.BuildGameModel;
 import Game.GameModel;
@@ -26,12 +26,12 @@ public class MovableDirections {
         System.out.println(canGoSouthWest(gameModel.getPlayer().getLocationX(), gameModel.getPlayer().getLocationY(), gameModel.getVisitedAreas()));
         System.out.println(canGoWest(gameModel.getPlayer().getLocationX(), gameModel.getPlayer().getLocationY(), gameModel.getVisitedAreas()));
         System.out.println(canGoNorthWest(gameModel.getPlayer().getLocationX(), gameModel.getPlayer().getLocationY(), gameModel.getVisitedAreas()));
-         */
+         * /
     }
 
     public void copyGameModel(GameModel gameModel) {
         /*  FillGameModelArrays fillGameModelArrays = new FillGameModelArrays(copyOfGameModel);
-        fillGameModelArrays.fillVisitedAreas();*/
+        fillGameModelArrays.fillVisitedAreas();* /
 
         try {
             BuildGameModel buildGameModel = new BuildGameModel(gameModel.getGameSquares().length,
@@ -57,7 +57,7 @@ public class MovableDirections {
  /*                                                                        1. [] //bizim 1. adimimiz oluyor adim sayisi
                                                                            2. [] //bizim 2. dizimiz oluyor kuzey guney vs yon sayisi
     mesela 11. adimdayiz 12. adim icin kontrol calismalari yapiyoruz.   [11][0] 
-     */
+     * /
     public void calculateTheWays(GameModel gameModel) {
 // yeni bir game Model olusturup degerleri kopya, ardindan
         resetWayCounter();
@@ -168,7 +168,7 @@ public class MovableDirections {
      * getWayCounter() shows us the calculated total way numbers
      *
      * @param wayCounter = show us the calculated total way numbers
-     */
+     * /
     public int getWayCounter() {
         return wayCounter;
     }
@@ -184,4 +184,4 @@ public class MovableDirections {
     void decreaseWayCounter() {
         wayCounter++;
     }
-}
+}*/
