@@ -1,7 +1,7 @@
 package validation;
 
 import validation.Validation;
-import Game.GameModel;
+import game.gamerepo.GameModel;
 import errormessage.ErrorMessage;
 
 public class SquareValidationGame {
@@ -12,7 +12,7 @@ public class SquareValidationGame {
 
     public SquareValidationGame(int verticalSquares, int horizontalSquares) {
 
-        if (Validation.validateSquareNumbers(verticalSquares) && Validation.validateSquareNumbers(horizontalSquares)) {
+        if (new Validation().validateSquareNumbers(verticalSquares) && new Validation().validateSquareNumbers(horizontalSquares)) {
             this.verticalSquares = verticalSquares;
             this.horizontalSquares = horizontalSquares;
 

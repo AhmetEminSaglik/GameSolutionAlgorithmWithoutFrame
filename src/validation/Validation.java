@@ -1,17 +1,17 @@
 package validation;
 
-import Game.GameModel;
-import Game.player.Player;
+import game.gamerepo.GameModel;
+import game.gamerepo.player.Player;
 import compass.Compass;
 import errormessage.ErrorMessage;
-import location.Location;
+import game.location.Location;
 
 public class Validation {
 
     private Compass compass;
     //   private SwitchDirection switchDirection;
 
-    public static boolean validateSquareNumbers(int number) {
+    public boolean validateSquareNumbers(int number) {
 
         final int minimum = 4;
 

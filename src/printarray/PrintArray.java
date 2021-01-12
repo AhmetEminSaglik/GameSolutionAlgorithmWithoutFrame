@@ -41,12 +41,12 @@ public class PrintArray {
     String printDesign(int value) {
         if (value > 0) {
             if (value / 100 > 0) {
-                return "|" + ConvertVariable.intToString(value) + "|";
+                return "|" + new ConvertVariable().intToString(value) + "|";
             } else if (value / 10 > 0) {
-                return "|" + ConvertVariable.intToString(value) + " |";
+                return "|" + new ConvertVariable().intToString(value) + " |";
             } else {
 
-                return "| " + ConvertVariable.intToString(value) + " |";
+                return "| " + new ConvertVariable().intToString(value) + " |";
 
             }
         }
