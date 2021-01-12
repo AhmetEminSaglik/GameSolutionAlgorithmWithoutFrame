@@ -1,7 +1,7 @@
 package game.gameover;
 
 import game.gamerepo.GameModel;
-import game.play.CheckAroundSquare;
+import check.CheckAroundSquare;
 
 public class GameOver {
 

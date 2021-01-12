@@ -1,10 +1,11 @@
-package game.play;
+package check;
 
 import game.gamerepo.GameModel;
 import compass.Compass;
 import compass.DirectionCompass;
 import java.util.ArrayList;
 import game.location.Location;
+import game.location.LocationsList;
 
 public class CheckAroundSquare {
 

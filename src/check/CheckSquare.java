@@ -1,4 +1,4 @@
-package game.play;
+package check;
 
 import game.gamerepo.GameModel;
 import compass.Compass;

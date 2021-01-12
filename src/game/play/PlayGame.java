@@ -1,5 +1,6 @@
 package game.play;
 
+import check.CheckSquare;
 import game.gamerepo.CreateLocationOfLastStep;
 import game.move.MoveBack;
 import game.move.MoveForward;

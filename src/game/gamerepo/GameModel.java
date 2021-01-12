@@ -10,6 +10,7 @@ public class GameModel {
     private int gameSquares[][];  // alan olusturacak
     private boolean visitedAreas[][]; // 10 10 da bakilacak
 //    private boolean visitedDirections[][];
+    
 
     public int[][] getGameSquares() {
         return gameSquares;

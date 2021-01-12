@@ -1,5 +1,6 @@
 package game.play;
 
+import scaninput.ScanInput;
 import game.gamerepo.GameModel;
 import compass.Compass;
 import compass.KeyboardCompass;

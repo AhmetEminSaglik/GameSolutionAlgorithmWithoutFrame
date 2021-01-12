@@ -6,7 +6,6 @@ import game.gamerepo.updategamemodel.UpdateValuesInGameModel;
 import compass.Compass;
 import compass.KeyboardCompass;
 import game.location.Location;
-import game.play.ICalculateMove;
 import validation.Validation;
 
 public abstract class Move implements IMove, ICalculateMove {

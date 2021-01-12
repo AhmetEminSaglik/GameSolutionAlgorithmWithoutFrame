@@ -3,7 +3,7 @@ package game.move;
 import game.gamerepo.GameModel;
 import game.gamerepo.updategamemodel.UpdateForMovedForward;
 import game.location.Location;
-import game.play.CheckSquare;
+import check.CheckSquare;
 
 public class MoveForward extends Move {
 

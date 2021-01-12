@@ -1,4 +1,4 @@
-package game.play;
+package scaninput;
 
 import java.util.Scanner;
 

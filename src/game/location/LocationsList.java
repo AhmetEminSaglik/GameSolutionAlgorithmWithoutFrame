@@ -1,4 +1,4 @@
-package game.play;
+package game.location;
 
 import game.location.direction.East;
 import game.location.Location;

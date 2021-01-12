@@ -1,4 +1,4 @@
-package game.play;
+package game.move;
 
 import game.gamerepo.GameModel;
 
