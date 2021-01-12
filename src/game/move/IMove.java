@@ -8,8 +8,7 @@ public interface IMove {
 
     void updateVisitedArea();
 
-    void updateVisitedDirection(Location location);
-
+//    void updateVisitedDirection(Location location);
     void updatePlayerLocation(Location location);
 
     void updateAfterStep();

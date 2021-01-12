@@ -1,7 +1,6 @@
 package game.gamerepo.updategamemodel;
 
 import game.gamerepo.GameModel;
-import game.location.Location;
 
 public class UpdateForMovedForward extends UpdateValuesInGameModel {
 
@@ -23,10 +22,10 @@ public class UpdateForMovedForward extends UpdateValuesInGameModel {
         return true;
     }
 
-    @Override
-    public void changeVisitedDirection(Location location) {
-        super.changeVisitedDirection(location); //To change body of generated methods, choose Tools | Templates.
-
-    }
+//    @Override
+//    public void changeVisitedDirection(Location location) {
+//        super.changeVisitedDirection(location); //To change body of generated methods, choose Tools | Templates.
+//
+//    }
 
 }

@@ -13,7 +13,8 @@ public class SealVisitedAreas implements ISeal {
         this.player = gameModel.getPlayer();
     }
 
-    public void updateSealOfCurrentLocation(boolean seal) {
+    @Override
+    public void updateSeal(boolean seal) {
         gameModel.getVisitedAreas()[player.getLocationX()][player.getLocationY()] = seal;
     }
 

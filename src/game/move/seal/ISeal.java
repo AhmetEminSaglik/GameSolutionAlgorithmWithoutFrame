@@ -2,5 +2,5 @@ package game.move.seal;
 
 public interface ISeal {
 
-    void updateSealOfCurrentLocation(boolean seal);
+    void updateSeal(boolean seal);
 }

@@ -25,13 +25,13 @@ public class MoveBack extends Move {
 
     @Override
     public void updateVisitedArea() {
-        updateValuesInGameModel.changeValueVisitedArea();
+        updateValuesInGameModel.updateValueVisitedArea();
     }
-
-    @Override
-    public void updateVisitedDirection(Location location) {
-        updateValuesInGameModel.changeVisitedDirection(location);
-    }
+//
+//    @Override
+//    public void updateVisitedDirection(Location location) {
+//        updateValuesInGameModel.changeVisitedDirection(location);
+//    }
 
     @Override
     public void updatePlayerLocation(Location location) {
@@ -46,10 +46,13 @@ public class MoveBack extends Move {
 
     }
 
+    /**
+     * Moveback icin bu fonk dolu
+     */
     @Override
     public void updateBeforeStep() {
         System.out.println(getClass().getSimpleName() + " -->  before > update visited direction");
-        updateVisitedDirection(getLocation());
+//        updateVisitedDirection(getLocation());
         updateVisitedArea();
     }
 

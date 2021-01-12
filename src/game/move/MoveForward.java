@@ -41,11 +41,10 @@ public class MoveForward extends Move {
         changeValueVisitedArea();
     }
 
-    @Override
-    public void updateVisitedDirection(Location location) {
-        changeVisitedDirection(location);
-    }
-
+//    @Override
+//    public void updateVisitedDirection(Location location) {
+//        changeVisitedDirection(location);
+//    }
     @Override
     public void updatePlayerLocation(Location location) {
         changePlayerLocation(location);
@@ -60,9 +59,12 @@ public class MoveForward extends Move {
 
     }
 
+    /**
+     * moveForward icin bu fonk ici boss
+     */
     @Override
     public void updateBeforeStep() {
-        updateVisitedDirection(getLocation());
+//        updateVisitedDirection(getLocation());
     }
 
     void increasePlayerStepValue() {
@@ -71,19 +73,18 @@ public class MoveForward extends Move {
     }
 
     void changeValueVisitedArea() {
-        updateValuesInGameModel.changeValueVisitedArea();
+        updateValuesInGameModel.updateValueVisitedArea();
     }
 
-    public void changeVisitedDirection(Location location) {
-        updateValuesInGameModel.changeVisitedDirection(location);
-        /* if (getPlayer().getStep() > 1) {
-
-            getGameModel().getVisitedDirections()[getPlayer().getStep() - 1][location.getId()] = true; // 1. adimda [0][id] 10 adimda [9][id] olacak
-        } else {
-            new ClassicErrorMessage().showMessage("visited Direction is false >>> player step : " + getPlayer().getStep());
-        }*/
-    }
-
+//    public void changeVisitedDirection(Location location) {
+//        updateValuesInGameModel.changeVisitedDirection(location);
+//        /* if (getPlayer().getStep() > 1) {
+//
+//            getGameModel().getVisitedDirections()[getPlayer().getStep() - 1][location.getId()] = true; // 1. adimda [0][id] 10 adimda [9][id] olacak
+//        } else {
+//            new ClassicErrorMessage().showMessage("visited Direction is false >>> player step : " + getPlayer().getStep());
+//        }*/
+//    }
     void changePlayerLocation(Location location) {
         updateValuesInGameModel.changePlayerLocation(location);
     }
