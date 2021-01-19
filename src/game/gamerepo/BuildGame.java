@@ -1,34 +1,40 @@
 package game.gamerepo;
 
+import game.Game;
 import game.gamerepo.player.Player;
 import validation.SquareValidationGame;
 
-public class BuildGameModel {
+public class BuildGame {
 
     private int horizontalSquare;
     private int verticalSquare;
-    private GameModel gameModel;
+    private Game game;
 
-    public BuildGameModel(Player player, int verticalSquare, int horizontalSquare) throws InterruptedException {
+    public BuildGame(Model model, Player player, int verticalSquare, int horizontalSquare) throws InterruptedException {
         new SquareValidationGame(verticalSquare, horizontalSquare);
         this.horizontalSquare = horizontalSquare;
         this.verticalSquare = verticalSquare;
-        gameModel = fillGameModel(player);
+        game = fillGame(model, player);
 
     }
 
-    public GameModel fillGameModel(Player player) throws InterruptedException {
-        GameModel gameModel = new GameModel(player);
+    Game fillGame(Model model, Player player) throws InterruptedException {
+//        Model gameModel = new Model(player);
+        game = new Game(model, player);
 
-        gameModel.setGameSquares(createMultipleArrayFromIntegers(verticalSquare, horizontalSquare));
+        System.out.println("game " + game);
+
+        game.setModel(new Model());
+
+        game.getModel().setGameSquares(createMultipleArrayFromIntegers(verticalSquare, horizontalSquare));
         //gameModel = prepareNullValues(gameModel);
-        gameModel = creatVisitArea(gameModel);
+        game = creatVisitArea(game);
 //        gameModel = setVisitedDirectionsArray(gameModel);
 
-        return gameModel;
+        return game;
     }
 
-//    public GameModel setVisitedDirectionsArray(GameModel gameModel) {
+//    public Model setVisitedDirectionsArray(Model gameModel) {
 //        boolean visitedDirection[][] = new boolean[verticalSquare * horizontalSquare][8];
 //        gameModel.setVisitedDirections(visitedDirection);
 //
@@ -52,31 +58,30 @@ public class BuildGameModel {
         return array;
     }
 
-    public GameModel creatVisitArea(GameModel gameModel) {
+    public Game creatVisitArea(Game game) {
         boolean visitedAreas[][] = new boolean[verticalSquare][horizontalSquare];
-        gameModel.setVisitedAreas(visitedAreas);
-        clearVisitedAreas(gameModel);
-        return gameModel;
+        game.getModel().setVisitedAreas(visitedAreas);
+        clearVisitedAreas(game);
+        return game;
     }
 
-    public GameModel clearVisitedAreas(GameModel gameModel) {
+    public Game clearVisitedAreas(Game game) {
 
-        for (int i = 0; i < gameModel.getPlayer().getLocationX(); i++) {
+        for (int i = 0; i < game.getPlayer().getLocationX(); i++) {
 
-            for (int j = 0; j < gameModel.getPlayer().getLocationY(); j++) {
-                gameModel.getVisitedAreas()[i][j] = false;
+            for (int j = 0; j < game.getPlayer().getLocationY(); j++) {
+                game.getModel().getVisitedAreas()[i][j] = false;
             }
         }
-        return gameModel;
+        return game;
     }
 
-    public GameModel getGameModel() {
-
-        return gameModel;
+    public Game getGame() {
+        return game;
     }
 
-    public void setGameModel(GameModel gameModel) {
-        this.gameModel = gameModel;
+    public void setGame(Game game) {
+        this.game = game;
     }
 
 }

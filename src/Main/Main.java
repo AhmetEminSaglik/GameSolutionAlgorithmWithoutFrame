@@ -1,10 +1,10 @@
 package Main;
 
-import game.gamerepo.BuildGameModel;
-import game.gamerepo.GameModel;
+import game.Game;
+import game.gamerepo.BuildGame;
+import game.gamerepo.Model;
 import game.gamerepo.player.person.Person;
 import game.gamerepo.player.Player;
-import game.gamerepo.player.robot.Robot;
 import game.play.PlayGame;
 
 public class Main {
@@ -17,12 +17,16 @@ public class Main {
 //                + "\n Cozum algoritmasi yazilacak ";
 //        ErrorMessage.appearFatalError(text);
         Player person = new Person();
-        Player robot = new Robot();
-        BuildGameModel buildGameModel = new BuildGameModel(person, 10, 10);
+        // BaseSolution firstSolution = new FirstSolution();
+        // Player robot = new Robot(firstSolution);
+        Model model = new Model();
 
-        GameModel gameModel = buildGameModel.getGameModel();
-        // PrintArray<String> printArray = new PrintArray<>();
-        PlayGame playGame = new PlayGame(gameModel);
+        BuildGame buildGameModel = new BuildGame(model, person, 10, 10);
+
+        Game game = buildGameModel.getGame();
+
+// PrintArray<String> printArray = new PrintArray<>();
+        PlayGame playGame = new PlayGame(game);
         playGame.playGame();
 
     }

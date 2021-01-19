@@ -1,21 +1,21 @@
 package game.move.seal;
 
-import game.gamerepo.GameModel;
+import game.Game;
 import game.gamerepo.player.Player;
 
 public class SealVisitedAreas implements ISeal {
 
-    GameModel gameModel;
+    Game game;
     Player player;
 
-    public SealVisitedAreas(GameModel gameModel) {
-        this.gameModel = gameModel;
-        this.player = gameModel.getPlayer();
+    public SealVisitedAreas(Game game) {
+        this.game = game;
+        this.player = game.getPlayer();
     }
 
     @Override
     public void updateSeal(boolean seal) {
-        gameModel.getVisitedAreas()[player.getLocationX()][player.getLocationY()] = seal;
+        game.getModel().getVisitedAreas()[player.getLocationX()][player.getLocationY()] = seal;
     }
 
 }

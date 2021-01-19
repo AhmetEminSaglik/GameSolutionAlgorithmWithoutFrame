@@ -1,6 +1,6 @@
-package robot;
+package game.gamerepo.player.robot;
 
-import game.gamerepo.GameModel;
+import game.gamerepo.Model;
 import game.location.Location;
 import game.location.LocationsList;
 import java.util.ArrayList;
@@ -11,10 +11,10 @@ public class RobotMemory {
     private boolean endPointDetermined = false;
     private ArrayList<Location> availableDirectionList = new ArrayList<>();
     private ArrayList<Integer> oneWayDirectionList = new ArrayList<>();
+    ???
+    Model gameModel;
 
-    GameModel gameModel;
-
-    public RobotMemory(GameModel gameModel) {
+    public RobotMemory(Model gameModel) {
         visitedDirections = new boolean[getTotalNumberOfSquares()][new LocationsList().getList().size()];
         this.gameModel = gameModel;
         System.out.println("Kontrol Amacli  :\n"
@@ -34,13 +34,13 @@ public class RobotMemory {
         this.visitedDirections = visitedDirections;
     }
 
-    public GameModel getGameModel() {
+    public Model getGameModel() {
 
         return gameModel;
 
     }
 
-    public void setGameModel(GameModel gameModel) {
+    public void setGameModel(Model gameModel) {
         this.gameModel = gameModel;
     }
 

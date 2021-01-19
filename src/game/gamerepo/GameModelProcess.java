@@ -1,18 +1,21 @@
 package game.gamerepo;
 
+import game.Game;
+
 public class GameModelProcess {
 
-    GameModel gameModel;
+    Game  game;
     private int x, y;
 
-    public GameModelProcess(GameModel gameModel) {
-        this.gameModel = gameModel;
+    public GameModelProcess(Game game) {
+        this.game = game;
     }
 
+    
     public void calculateIndexOfGivenStepInGameSquareArrays(int step) {
-        for (int i = 0; i < gameModel.getGameSquares().length; i++) {
-            for (int j = 0; j < gameModel.getGameSquares()[i].length; j++) {
-                if (gameModel.getGameSquares()[i][j] == step) {
+        for (int i = 0; i < game.getModel().getGameSquares().length; i++) {
+            for (int j = 0; j < game.getModel().getGameSquares()[i].length; j++) {
+                if (game.getModel().getGameSquares()[i][j] == step) {
                     x = i;
                     y = j;
                    // System.out.println("Geri adim icin hesaplanan location : " + x + ", " + y);
@@ -30,10 +33,10 @@ public class GameModelProcess {
     }
 
     public void deleteMaxStep(int step) {
-        for (int i = 0; i < gameModel.getGameSquares().length; i++) {
-            for (int j = 0; j < gameModel.getGameSquares()[i].length; j++) {
-                if (gameModel.getGameSquares()[i][j] == step) {
-                    gameModel.getGameSquares()[i][j] = 0;
+        for (int i = 0; i < game.getModel().getGameSquares().length; i++) {
+            for (int j = 0; j < game.getModel().getGameSquares()[i].length; j++) {
+                if (game.getModel().getGameSquares()[i][j] == step) {
+                    game.getModel().getGameSquares()[i][j] = 0;
                     return;
                 }
             }
@@ -42,10 +45,10 @@ public class GameModelProcess {
 
     public int findMaxStep() {
         int maxValue = 0;
-        for (int i = 0; i < gameModel.getGameSquares().length; i++) {
-            for (int j = 0; j < gameModel.getGameSquares()[i].length; j++) {
-                if (maxValue < gameModel.getGameSquares()[i][j]) {
-                    maxValue = gameModel.getGameSquares()[i][j];
+        for (int i = 0; i < game.getModel().getGameSquares().length; i++) {
+            for (int j = 0; j < game.getModel().getGameSquares()[i].length; j++) {
+                if (maxValue < game.getModel().getGameSquares()[i][j]) {
+                    maxValue = game.getModel().getGameSquares()[i][j];
                 }
             }
         }

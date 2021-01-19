@@ -5,7 +5,7 @@
  */
 package game.gamerepo.updategamemodel;
 
-import game.gamerepo.GameModel;
+import game.Game;
 
 /**
  *
@@ -13,13 +13,13 @@ import game.gamerepo.GameModel;
  */
 public class UpdateForMovedBack extends UpdateValuesInGameModel {
 
-    public UpdateForMovedBack(GameModel gameModel) {
-        super(gameModel);
+    public UpdateForMovedBack(Game game) {
+        super(game);
     }
 
     @Override
     public void updatePlayerStepValue() {
-        gameModel.getPlayer().decreaseStep();
+        game.getPlayer().decreaseStep();
     }
 
     @Override

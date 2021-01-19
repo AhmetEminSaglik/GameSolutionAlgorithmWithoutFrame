@@ -1,16 +1,17 @@
 package game.gamerepo.updategamemodel;
 
-import game.gamerepo.GameModel;
+import game.Game;
+import game.gamerepo.Model;
 
 public class UpdateForMovedForward extends UpdateValuesInGameModel {
 
-    public UpdateForMovedForward(GameModel gameModel) {
-        super(gameModel);
+    public UpdateForMovedForward(Game game) {
+        super(game);
     }
 
     @Override
     public void updatePlayerStepValue() {
-        gameModel.getPlayer().increaseStep();
+        game.getPlayer().increaseStep();
     }
 
     /* @Override
@@ -27,5 +28,4 @@ public class UpdateForMovedForward extends UpdateValuesInGameModel {
 //        super.changeVisitedDirection(location); //To change body of generated methods, choose Tools | Templates.
 //
 //    }
-
 }

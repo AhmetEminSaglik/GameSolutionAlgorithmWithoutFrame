@@ -1,14 +1,14 @@
 package game.play;
 
-import game.gamerepo.GameModel;
 import compass.Compass;
 import compass.KeyboardCompass;
+import game.Game;
 import game.location.SwitchDirection;
 import game.move.MoveForward;
 
 public class PrepareGame {
 
-    GameModel gameModel;
+    Game game;
 
     Compass compass;
     SwitchDirection switchDirection;
@@ -17,18 +17,18 @@ public class PrepareGame {
     //ScanInput scanInput = new ScanInput();
 //    IBaseInput baseInput;
 
-    public PrepareGame(GameModel gameModel) {
+    public PrepareGame(Game game) {
 
-        fillNullReferans(gameModel);
+        fillNullReferans(game);
         prepareToPlay();
 
     }
 
-    void fillNullReferans(GameModel gameModel) {
-        this.gameModel = gameModel;
+    void fillNullReferans(Game game) {
+        this.game = game;
 
         //  updateGameModel = new UpdateGameModel(gameModel);
-        selectFirstSqaureToStart = new SelectFirstSqaureToStart(gameModel);
+        selectFirstSqaureToStart = new SelectFirstSqaureToStart(game);
         compass = new KeyboardCompass();
     }
 
@@ -38,7 +38,7 @@ public class PrepareGame {
         switchDirection = new SwitchDirection(compass);
         selectFirstSqaureToStart.selectSquareStart(0, 0);
         //  updateGameModel.moveForward(selectFirstSqaureToStart);
-        new MoveForward(gameModel).move(selectFirstSqaureToStart);
+        new MoveForward(game).move(selectFirstSqaureToStart);
 
     }
 
@@ -58,7 +58,7 @@ public class PrepareGame {
                 //   System.out.println(player.toString());
             }
         }
-          void printGamelastStuation(GameModel gameModel) {
+          void printGamelastStuation(Model gameModel) {
         new PrintArray<String>().printMultipleArray(gameModel.getGameSquares());
 
     }

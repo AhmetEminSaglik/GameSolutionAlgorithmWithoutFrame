@@ -1,9 +1,9 @@
 package validation;
 
-import game.gamerepo.GameModel;
 import game.gamerepo.player.Player;
 import compass.Compass;
 import errormessage.ErrorMessage;
+import game.Game;
 import game.location.Location;
 
 public class Validation {
@@ -51,19 +51,19 @@ public class Validation {
     }
 
     /**
-     * 
+     *
      * @param input = Keyboards input direction value
      */
-    public boolean isInputValidForArray(GameModel gameModel, int input) {
+    public boolean isInputValidForArray(Game game, int input) {
 
         Location location;
-        Player player = gameModel.getPlayer();
+        Player player = game.getPlayer();
         try {
             // ??? HATA CIKARSA BUNU AKTIFLESTIR  switchDirection = new SwitchDirection(compass); 
             location = Location.getLocationFromCompass(compass, input);// switchDirection.choseDirection(input);
 
-            if (calculateValidOrNot(gameModel.getGameSquares().length, player.getLocationX(), location.getX())
-                    && calculateValidOrNot(gameModel.getGameSquares().length, player.getLocationY(), location.getY())) {
+            if (calculateValidOrNot(game.getModel().getGameSquares().length, player.getLocationX(), location.getX())
+                    && calculateValidOrNot(game.getModel().getGameSquares().length, player.getLocationY(), location.getY())) {
                 return true;
             }
         } catch (Exception ex) {

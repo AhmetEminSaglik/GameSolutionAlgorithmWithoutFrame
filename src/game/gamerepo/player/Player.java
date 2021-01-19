@@ -1,16 +1,12 @@
 package game.gamerepo.player;
 
-import game.play.input.IBaseInput;
+import game.Game;
 
-public abstract class Player implements IPlayer {
+public abstract class Player {// implements IPlayer 
 
     private int locationX = 0;
     private int locationY = 0;
     private int step = 0;
-    private IBaseInput input;
-
-    public void func() {
-    }
 
     public int getLocationX() {
         return locationX;
@@ -58,6 +54,6 @@ public abstract class Player implements IPlayer {
         System.out.println(toString());
     }
 
-    public abstract int getInput();
+    public abstract int getInput(Game game);
 
 }

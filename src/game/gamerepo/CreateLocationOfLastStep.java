@@ -1,20 +1,21 @@
 package game.gamerepo;
 
+import game.Game;
 import game.location.CreateLocation;
 import game.location.Location;
 
 public class CreateLocationOfLastStep {
 
-    GameModel gameModel;
+    Game game;
 
-    public CreateLocationOfLastStep(GameModel gameModel) {
-        this.gameModel = gameModel;
+    public CreateLocationOfLastStep(Game game) {
+        this.game = game;
     }
 
     public Location createLastStepLocation() {
-        GameModelProcess gameModelProcess = new GameModelProcess(gameModel);
-        gameModelProcess.calculateIndexOfGivenStepInGameSquareArrays(gameModel.getPlayer().getStep() - 1);
-       // System.out.println("ARANAN STEP >>>> " + (gameModel.getPlayer().getStep() - 1));
+        GameModelProcess gameModelProcess = new GameModelProcess(game);
+        gameModelProcess.calculateIndexOfGivenStepInGameSquareArrays(game.getPlayer().getStep() - 1);
+        // System.out.println("ARANAN STEP >>>> " + (gameModel.getPlayer().getStep() - 1));
         CreateLocation createLocation = new CreateLocation();
         /*    System.out.println("/////////////////////////");
         System.out.println("player X : " + gameModel.getPlayer().getLocationX() + "  islem X : " + (-gameModelProcess.getX()));
@@ -22,8 +23,8 @@ public class CreateLocationOfLastStep {
         System.out.println(" Sonuc X : " + getOppositeValue(gameModel.getPlayer().getLocationX(), gameModelProcess.getX())); //(gameModel.getPlayer().getLocationX() - gameModelProcess.getX())
         System.out.println(" Sonuc Y : " + getOppositeValue(gameModel.getPlayer().getLocationY(), gameModelProcess.getY()));
         System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\ ");
-         */ createLocation.setX(getOppositeValue(gameModel.getPlayer().getLocationX(), gameModelProcess.getX()));
-        createLocation.setY(getOppositeValue(gameModel.getPlayer().getLocationY(), gameModelProcess.getY()));
+         */ createLocation.setX(getOppositeValue(game.getPlayer().getLocationX(), gameModelProcess.getX()));
+        createLocation.setY(getOppositeValue(game.getPlayer().getLocationY(), gameModelProcess.getY()));
         return createLocation;
 
     }
@@ -33,12 +34,12 @@ public class CreateLocationOfLastStep {
 
     }
 
-    public GameModel getGameModel() {
-        return gameModel;
+    public Game getGame() {
+        return game;
     }
 
-    public void setGameModel(GameModel gameModel) {
-        this.gameModel = gameModel;
+    public void setGame(Game game) {
+        this.game = game;
     }
 
 }

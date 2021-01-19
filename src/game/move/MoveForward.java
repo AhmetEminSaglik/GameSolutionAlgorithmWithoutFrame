@@ -1,36 +1,31 @@
 package game.move;
 
-import game.gamerepo.GameModel;
+import game.Game;
 import game.gamerepo.updategamemodel.UpdateForMovedForward;
 import game.location.Location;
-import check.CheckSquare;
 
 public class MoveForward extends Move {
 
+    public MoveForward(Game game) {
+        super(game);
+        updateValuesInGameModel = new UpdateForMovedForward(game);
+
+    }
+
     // UpdateGameModel updateGameModel;
-    public MoveForward(GameModel gameModel) {
-        super(gameModel);
-        //updateGameModel = new UpdateGameModel(gameModel);
-        updateValuesInGameModel = new UpdateForMovedForward(gameModel);
-
-    }
-
-    @Override
-    public boolean isItAvailableToMove(GameModel gameModel, int choose) {
-
-        validation.setCompass(compass);
-
-        CheckSquare checkSquare = new CheckSquare();
-        checkSquare.setCompass(compass);
-
-        if (validation.isInputValidForArray(gameModel, choose)
-                && checkSquare.isSquareAvailableToMoveOnIt(gameModel, choose)
-                && gameModel.getPlayer().isMovableThatDirection(new Location().getLocationValueAccordingToEnteredValue(gameModel, choose))) {
-            return true;
-        }
-        return false;
-    }
-
+//    @Override
+//    public boolean isItAvailableToMove(Model gameModel, int choose) {
+//
+//        validation.setCompass(compass);
+//
+//        CheckSquare checkSquare = new CheckSquare();
+//        checkSquare.setCompass(compass);
+////validation.isInputValidForArray(gameModel, choose)&& --> bunu simdilik kaldirdik cunku SquareAvaible'de de kontrol ediyor bunu
+//        if (checkSquare.isSquareAvailableToMoveOnIt(gameModel, choose)) { //&& gameModel.getPlayer().isMovableThatDirection(new Location().getLocationValueAccordingToEnteredValue(gameModel, choose)
+//            return true;
+//        }
+//        return false;
+//    }
     @Override
     public void updatePlayerStepValue() {
         increasePlayerStepValue();

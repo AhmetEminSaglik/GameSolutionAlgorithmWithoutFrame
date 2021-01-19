@@ -1,6 +1,6 @@
 package game.gamerepo.updategamemodel;
 
-import game.gamerepo.GameModel;
+import game.Game;
 import game.gamerepo.player.Player;
 import game.location.Location;
 import game.move.MovePlayer;
@@ -8,14 +8,15 @@ import game.move.seal.SealVisitedAreas;
 
 public abstract class UpdateValuesInGameModel {
 
-    GameModel gameModel;
+    Game game;
     Player player;
     MovePlayer movePlayer;
 
-    public UpdateValuesInGameModel(GameModel gameModel) {
-        this.gameModel = gameModel;
-        player = gameModel.getPlayer();
-        movePlayer = new MovePlayer(gameModel);
+    public UpdateValuesInGameModel(Game game) {
+        this.game = game;
+
+        player = game.getPlayer();
+        movePlayer = new MovePlayer(game);
     }
 
     public abstract void updatePlayerStepValue();
@@ -30,7 +31,7 @@ public abstract class UpdateValuesInGameModel {
     abstract boolean isMovedForward();
 
     public final void updateValueVisitedArea() {
-        new SealVisitedAreas(gameModel).updateSeal(isMovedForward());
+        new SealVisitedAreas(game).updateSeal(isMovedForward());
 
     }
 
@@ -64,11 +65,12 @@ public abstract class UpdateValuesInGameModel {
     0 -->      10. index
     [10][0] 
      */
-    public GameModel getGameModel() {
-        return gameModel;
+    public Game getGame() {
+        return game;
     }
 
-    public void setGameModel(GameModel gameModel) {
-        this.gameModel = gameModel;
+    public void setGame(Game game) {
+        this.game = game;
     }
+
 }

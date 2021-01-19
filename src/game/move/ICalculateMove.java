@@ -1,9 +1,9 @@
 package game.move;
 
-import game.gamerepo.GameModel;
+import game.gamerepo.Model;
 
 public interface ICalculateMove {
 
-    public boolean isItAvailableToMove(GameModel gameModel, int choose);
+    public boolean isItAvailableToMove(Model gameModel, int choose);
 
 }

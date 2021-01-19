@@ -13,17 +13,17 @@ public class SafeScannerInput {
 
     public int getInput() {
 
-        while (true) {
-            try {
-                input = getIntegerValue(scanner.nextLine());
-                return input;
-            } catch (InputMismatchException ex) {
+//        while (true) {
+        try {
+            input = getIntegerValue(scanner.nextLine());
+            return input;
+        } catch (InputMismatchException ex) {
 
-                ErrorMessage.appearClassicError(ex.getMessage());
+            ErrorMessage.appearClassicError(ex.getMessage());
 
-            }
-            return getInput();
         }
+        return getInput();
+//        }
     }
 
     int getIntegerValue(String text) {

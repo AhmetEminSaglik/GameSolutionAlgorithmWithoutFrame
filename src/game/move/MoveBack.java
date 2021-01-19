@@ -1,23 +1,22 @@
 package game.move;
 
-import game.gamerepo.GameModel;
+import game.Game;
 import game.gamerepo.GameModelProcess;
 import game.gamerepo.updategamemodel.UpdateForMovedBack;
 import game.location.Location;
 
 public class MoveBack extends Move {
 
-    public MoveBack(GameModel gameModel) {
-        super(gameModel);
-        updateValuesInGameModel = new UpdateForMovedBack(gameModel);
+    public MoveBack(Game game) {
+        super(game);
+        updateValuesInGameModel = new UpdateForMovedBack(game);
 
     }
 
-    @Override
-    public boolean isItAvailableToMove(GameModel gameModel, int choose) {
-        return (gameModel.getPlayer().getStep() > 1) ? true : false;
-    }
-
+//    @Override
+//    public boolean isItAvailableToMove(Model gameModel, int choose) {
+//        return (gameModel.getPlayer().getStep() > 1) ? true : false;
+//    }
     @Override
     public void updatePlayerStepValue() {
         decreasePlayerStepValue();
@@ -62,9 +61,9 @@ public class MoveBack extends Move {
     }
 
     void removeMaxStepBeforeGoingLastStep() {
-        System.out.println("Tablodaki max deger  >> : " + new GameModelProcess(gameModel).findMaxStep());
+        System.out.println("Tablodaki max deger  >> : " + new GameModelProcess(game).findMaxStep());
 
-        new GameModelProcess(gameModel).deleteMaxStep(gameModel.getPlayer().getStep());
-        System.out.println("Tablodaki max deger  >> : " + new GameModelProcess(gameModel).findMaxStep());
+        new GameModelProcess(game).deleteMaxStep(game.getPlayer().getStep());
+        System.out.println("Tablodaki max deger  >> : " + new GameModelProcess(game).findMaxStep());
     }
 }

@@ -1,8 +1,9 @@
 package check;
 
-import game.gamerepo.GameModel;
+import game.gamerepo.Model;
 import compass.Compass;
 import compass.DirectionCompass;
+import game.Game;
 import java.util.ArrayList;
 import game.location.Location;
 import game.location.LocationsList;
@@ -13,12 +14,12 @@ public class CheckAroundSquare {
     CheckSquare checkSquare = new CheckSquare();
     ArrayList<Location> locationList = new LocationsList().getList();
 
-    public int getNumberOfHowManySquaresAreAvailable(GameModel gameModel) {
+    public int getNumberOfHowManySquaresAreAvailable(Game game) {
 
         int availableDirectionCounter = 0;
 
         for (int i = 0; i < locationList.size(); i++) {
-            if (isLocationAvailable(gameModel, locationList.get(i).getId())) {
+            if (isLocationAvailable(game, locationList.get(i).getId())) {
 
                 availableDirectionCounter++;
             }
@@ -26,13 +27,13 @@ public class CheckAroundSquare {
         return availableDirectionCounter;
     }
 
-    public boolean isThereAnyAvailableSquare(GameModel gameModel) {
+    public boolean isThereAnyAvailableSquare(Game game) {
 
         checkSquare.setCompass(compass); // bu normalde isLocationAvailable() fonksiyonunun ilk satiriydi
 
         for (int i = 0; i < locationList.size(); i++) {
 
-            if (isLocationAvailable(gameModel, locationList.get(i).getId())) {
+            if (isLocationAvailable(game, locationList.get(i).getId())) {
                 // System.out.println("Musait yon : " + locationList.get(i).getClass().getSimpleName());
                 return true;
             }
@@ -40,9 +41,9 @@ public class CheckAroundSquare {
         return false;
     }
 
-    boolean isLocationAvailable(GameModel gameModel, int directionIndex) {
+    boolean isLocationAvailable(Game game, int directionIndex) {
 
-        return checkSquare.isSquareAvailableToMoveOnIt(gameModel, directionIndex);
+        return checkSquare.isSquareAvailableToMoveOnIt(game, directionIndex);
     }
 
 }

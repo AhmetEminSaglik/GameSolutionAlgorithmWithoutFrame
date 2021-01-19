@@ -1,20 +1,20 @@
 package game.gamerepo;
 
-import game.gamerepo.GameModel;
+import game.Game;
 import game.gamerepo.player.Player;
 
 public class FillGameSquare {
 
-    GameModel gameModel;
+    Game game;
     Player player;
 
-    public FillGameSquare(GameModel gameModel) {
-        this.gameModel = gameModel;
-        player = gameModel.getPlayer();
+    public FillGameSquare(Game game) {
+        this.game = game;
+        player = game.getPlayer();
     }
 
     public void printStepInGameSquare() {
-        gameModel.getGameSquares()[player.getLocationX()][player.getLocationY()] = player.getStep();
+        game.getModel().getGameSquares()[player.getLocationX()][player.getLocationY()] = player.getStep();
         //ConvertVariable.intToString(player.getStep());
     }
 

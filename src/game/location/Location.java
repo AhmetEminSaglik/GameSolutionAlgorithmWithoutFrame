@@ -2,8 +2,8 @@ package game.location;
 
 import compass.Compass;
 import compass.KeyboardCompass;
+import game.Game;
 import game.gamerepo.CreateLocationOfLastStep;
-import game.gamerepo.GameModel;
 import game.location.direction.DirectionCompassValues;
 
 public class Location {
@@ -57,9 +57,9 @@ public class Location {
      * @param directionIndex = is used to get index and index changes according
      * to Compass (Compass is abstract)
      */
-    public Location getLocationValueAccordingToEnteredValue(GameModel gameModel, int choose) {
+    public Location getLocationValueAccordingToEnteredValue(Game game, int choose) {
         if (choose == new KeyboardCompass().getLastLocation()) {
-            return new CreateLocationOfLastStep(gameModel).createLastStepLocation();
+            return new CreateLocationOfLastStep(game).createLastStepLocation();
         }
         return new SwitchDirection(new KeyboardCompass()).choseDirection(choose);
     }

@@ -1,14 +1,13 @@
 package validation;
 
-import validation.Validation;
-import game.gamerepo.GameModel;
 import errormessage.ErrorMessage;
+import game.Game;
 
 public class SquareValidationGame {
 
     int horizontalSquares;
     int verticalSquares;
-    GameModel gameModel;
+    Game game;
 
     public SquareValidationGame(int verticalSquares, int horizontalSquares) {
 

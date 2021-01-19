@@ -1,20 +1,20 @@
 package game.play;
 
-import game.gamerepo.GameModel;
+import game.Game;
 import game.location.Location;
 import java.util.Random;
 
 public class SelectFirstSqaureToStart extends Location {
 
-    private GameModel gameModel;
+    private Game game;
 
-    public SelectFirstSqaureToStart(GameModel gameModel) {
-        this.gameModel = gameModel;
+    public SelectFirstSqaureToStart(Game game) {
+        this.game = game;
     }
 
     public void randomStart() {
-        fillCordinates(new Random().nextInt(gameModel.getGameSquares().length),
-                new Random().nextInt(gameModel.getGameSquares()[0].length));
+        fillCordinates(new Random().nextInt(game.getModel().getGameSquares().length),
+                new Random().nextInt(game.getModel().getGameSquares()[0].length));
 
     }
 
