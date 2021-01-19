@@ -27,10 +27,9 @@ public class CheckAroundSquare {
     }
 
     public boolean isThereAnyAvailableSquare(GameModel gameModel) {
-        /*if (getNumberOfHowManySquaresAreAvailable(gameModel) > 0) {
 
-            return true;
-        }*/
+        checkSquare.setCompass(compass); // bu normalde isLocationAvailable() fonksiyonunun ilk satiriydi
+
         for (int i = 0; i < locationList.size(); i++) {
 
             if (isLocationAvailable(gameModel, locationList.get(i).getId())) {
@@ -42,8 +41,6 @@ public class CheckAroundSquare {
     }
 
     boolean isLocationAvailable(GameModel gameModel, int directionIndex) {
-
-        checkSquare.setCompass(compass);
 
         return checkSquare.isSquareAvailableToMoveOnIt(gameModel, directionIndex);
     }

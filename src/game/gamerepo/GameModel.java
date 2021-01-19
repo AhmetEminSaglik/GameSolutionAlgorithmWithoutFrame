@@ -4,13 +4,16 @@ import game.gamerepo.player.Player;
 
 public class GameModel {
 
-    private Player player = new Player();
+    private Player player; //= new Player();
 
     private boolean ThereIsADeadEndLocation = false;
     private int gameSquares[][];  // alan olusturacak
     private boolean visitedAreas[][]; // 10 10 da bakilacak
 //    private boolean visitedDirections[][];
-    
+
+    public GameModel(Player player) {
+        this.player = player;
+    }
 
     public int[][] getGameSquares() {
         return gameSquares;

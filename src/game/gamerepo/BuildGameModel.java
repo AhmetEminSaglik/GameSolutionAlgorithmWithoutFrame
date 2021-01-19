@@ -1,5 +1,6 @@
 package game.gamerepo;
 
+import game.gamerepo.player.Player;
 import validation.SquareValidationGame;
 
 public class BuildGameModel {
@@ -8,16 +9,16 @@ public class BuildGameModel {
     private int verticalSquare;
     private GameModel gameModel;
 
-    public BuildGameModel(int verticalSquare, int horizontalSquare) throws InterruptedException {
+    public BuildGameModel(Player player, int verticalSquare, int horizontalSquare) throws InterruptedException {
         new SquareValidationGame(verticalSquare, horizontalSquare);
         this.horizontalSquare = horizontalSquare;
         this.verticalSquare = verticalSquare;
-        gameModel = fillGameModel();
+        gameModel = fillGameModel(player);
 
     }
 
-    public GameModel fillGameModel() throws InterruptedException {
-        GameModel gameModel = new GameModel();
+    public GameModel fillGameModel(Player player) throws InterruptedException {
+        GameModel gameModel = new GameModel(player);
 
         gameModel.setGameSquares(createMultipleArrayFromIntegers(verticalSquare, horizontalSquare));
         //gameModel = prepareNullValues(gameModel);

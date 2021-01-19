@@ -1,16 +1,21 @@
 package game.location;
 
 import compass.Compass;
+import compass.KeyboardCompass;
+import game.gamerepo.CreateLocationOfLastStep;
+import game.gamerepo.GameModel;
 import game.location.direction.DirectionCompassValues;
 
-public abstract class Location {
+public class Location {
 
     public DirectionCompassValues directionCompassValue = new DirectionCompassValues();
 
     private int id;
     private int x = 0, y = 0;
 
-    public abstract int getId();
+    public int getId() {
+        return id;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -44,6 +49,7 @@ public abstract class Location {
     public void printLocation() {
         System.out.println(toString());
     }
+
     /**
      * return Location of
      *
@@ -51,4 +57,10 @@ public abstract class Location {
      * @param directionIndex = is used to get index and index changes according
      * to Compass (Compass is abstract)
      */
+    public Location getLocationValueAccordingToEnteredValue(GameModel gameModel, int choose) {
+        if (choose == new KeyboardCompass().getLastLocation()) {
+            return new CreateLocationOfLastStep(gameModel).createLastStepLocation();
+        }
+        return new SwitchDirection(new KeyboardCompass()).choseDirection(choose);
+    }
 }

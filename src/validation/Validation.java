@@ -51,6 +51,7 @@ public class Validation {
     }
 
     /**
+     * 
      * @param input = Keyboards input direction value
      */
     public boolean isInputValidForArray(GameModel gameModel, int input) {

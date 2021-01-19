@@ -35,12 +35,12 @@ public class PlayGame {
 
         while (!new GameOver().isGameOver(gameModel)) {
 
-            int choose = prepareGame.scanInput.getInput();
+            int choose = player.getInput();// Player a at kisi icin input alma, robot icin kosullara gore yonlendirme yaz
 
             moveForwardOrBack = getMoveBackOrForward(choose);
 
             if (moveForwardOrBack.isItAvailableToMove(gameModel, choose)) {
-                moveForwardOrBack.move(getLocationValueAccordingToEnteredValue(choose));
+                moveForwardOrBack.move(new Location().getLocationValueAccordingToEnteredValue(gameModel, choose));
             }
             printGamelastStuation(gameModel);
 
@@ -70,16 +70,17 @@ public class PlayGame {
     Move getMoveBackOrForward(int index) {
         if (index == new KeyboardCompass().getLastLocation()) {
             return new MoveBack(gameModel);
-        } else {
-            System.out.println("OLMADI index : " + index + "   / new KeyboardCompass().getLastLocation()" + new KeyboardCompass().getLastLocation());
         }
+        /*else {
+            System.out.println("OLMADI index : " + index + "   / new KeyboardCompass().getLastLocation()" + new KeyboardCompass().getLastLocation());
+        }*/
         return new MoveForward(gameModel);
     }
 
-    Location getLocationValueAccordingToEnteredValue(int choose) {
-        if (choose == new KeyboardCompass().getLastLocation()) {
-            return new CreateLocationOfLastStep(gameModel).createLastStepLocation();
-        }
-        return prepareGame.switchDirection.choseDirection(choose);
-    }
+//    Location getLocationValueAccordingToEnteredValue(int choose) {
+//        if (choose == new KeyboardCompass().getLastLocation()) {
+//            return new CreateLocationOfLastStep(gameModel).createLastStepLocation();
+//        }
+//        return prepareGame.switchDirection.choseDirection(choose);
+//    }
 }

@@ -7,9 +7,7 @@ import check.CheckSquare;
 
 public class MoveForward extends Move {
 
-    GameModel gameModel;
     // UpdateGameModel updateGameModel;
-
     public MoveForward(GameModel gameModel) {
         super(gameModel);
         //updateGameModel = new UpdateGameModel(gameModel);
@@ -19,13 +17,15 @@ public class MoveForward extends Move {
 
     @Override
     public boolean isItAvailableToMove(GameModel gameModel, int choose) {
+
         validation.setCompass(compass);
 
         CheckSquare checkSquare = new CheckSquare();
         checkSquare.setCompass(compass);
 
         if (validation.isInputValidForArray(gameModel, choose)
-                && checkSquare.isSquareAvailableToMoveOnIt(gameModel, choose)) {
+                && checkSquare.isSquareAvailableToMoveOnIt(gameModel, choose)
+                && gameModel.getPlayer().isMovableThatDirection(new Location().getLocationValueAccordingToEnteredValue(gameModel, choose))) {
             return true;
         }
         return false;
