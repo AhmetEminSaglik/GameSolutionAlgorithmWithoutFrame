@@ -1,4 +1,4 @@
-package game.play.input;
+package game.play.input.person;
 
 import errormessage.ErrorMessage;
 import java.util.InputMismatchException;
@@ -19,7 +19,7 @@ public class SafeScannerInput {
             return input;
         } catch (InputMismatchException ex) {
 
-            ErrorMessage.appearClassicError(ex.getMessage());
+            ErrorMessage.appearClassicError(getClass(), ex.getMessage());
 
         }
         return getInput();

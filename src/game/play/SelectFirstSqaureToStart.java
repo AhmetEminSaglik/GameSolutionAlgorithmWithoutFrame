@@ -1,10 +1,10 @@
 package game.play;
 
 import game.Game;
-import game.location.Location;
+import game.location.DirectionLocation;
 import java.util.Random;
 
-public class SelectFirstSqaureToStart extends Location {
+public class SelectFirstSqaureToStart extends DirectionLocation {
 
     private Game game;
 

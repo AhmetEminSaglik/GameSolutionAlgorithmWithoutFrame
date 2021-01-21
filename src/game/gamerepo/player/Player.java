@@ -1,31 +1,31 @@
 package game.gamerepo.player;
 
+import compass.Compass;
 import game.Game;
+import game.location.Location;
+import game.rule.BaseGameRule;
 
 public abstract class Player {// implements IPlayer 
 
-    private int locationX = 0;
-    private int locationY = 0;
+    public BaseGameRule gameRule;
+    Location location = new Location();
+
     private int step = 0;
 
-    public int getLocationX() {
-        return locationX;
+    public Compass compass;
+
+    public abstract BaseGameRule getGameRule();
+
+    public void setGameRules(BaseGameRule gameRule) {
+        this.gameRule = gameRule;
     }
 
-    public void setLocationX(int locationX) {
-        this.locationX = locationX;
+    public Location getLocation() {
+        return location;
     }
 
-    public int getLocationY() {
-        return locationY;
-    }
-
-    public void setLocationY(int locationY) {
-        this.locationY = locationY;
-    }
-
-    public void printToString() {
-        System.out.println(toString());
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public int getStep() {
@@ -46,7 +46,11 @@ public abstract class Player {// implements IPlayer
 
     @Override
     public String toString() {
-        return "Player{" + "locationX=" + locationX + ", locationY=" + locationY + ", step=" + step + '}';
+        return "Player{" + "location=" + location.toString() + ", step=" + step + ", compass=" + compass + '}';
+    }
+
+    public void printToString() {
+        System.out.println(toString());
     }
 
     public void printPlayer() {
@@ -56,4 +60,11 @@ public abstract class Player {// implements IPlayer
 
     public abstract int getInput(Game game);
 
+    public abstract Compass getCompass();
+
+    public void getInfo() {
+        System.out.println("Robotun konumu : X,Y : " + location.getX() + " " + location.getY());
+        System.out.println("Robot adim sayisi : " + getStep());
+    }
+//    public abstract Location getLocationValueAccordingToInputValue(Game game, int choose);
 }

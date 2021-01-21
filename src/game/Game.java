@@ -13,6 +13,9 @@ public class Game {
         this.player = player;
     }
 
+    public Game() {
+    }
+
     public Model getModel() {
         return model;
     }

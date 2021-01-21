@@ -1,7 +1,7 @@
 package game.location;
 
 import game.location.direction.East;
-import game.location.Location;
+import game.location.direction.LastLocation;
 import game.location.direction.North;
 import game.location.direction.NorthEast;
 import game.location.direction.NorthWest;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class LocationsList {
 
-    ArrayList<Location> list = new ArrayList<>();
+    ArrayList<DirectionLocation> list = new ArrayList<>();
 
     void fillList() {
         list.add(new North());
@@ -24,9 +24,11 @@ public class LocationsList {
         list.add(new SouthWest());
         list.add(new West());
         list.add(new NorthWest());
+        list.add(new LastLocation());
+
     }
 
-    public ArrayList<Location> getList() {
+    public ArrayList<DirectionLocation> getList() {
         if (list.size() == 0) {
             fillList();
         }

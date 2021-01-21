@@ -8,6 +8,7 @@ public class MoveForward extends Move {
 
     public MoveForward(Game game) {
         super(game);
+
         updateValuesInGameModel = new UpdateForMovedForward(game);
 
     }

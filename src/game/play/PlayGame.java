@@ -1,14 +1,15 @@
 package game.play;
 
-import compass.KeyboardCompass;
 import game.Game;
-import game.gameover.GameOver;
+import game.gamerepo.CreateLocationOfLastStep;
 import game.gamerepo.player.Player;
+import game.location.DirectionLocation;
 import game.location.Location;
 import game.move.Move;
 import game.move.MoveBack;
 import game.move.MoveForward;
 import printarray.PrintArray;
+import sleep.Sleep;
 import validation.Validation;
 
 public class PlayGame {
@@ -31,18 +32,20 @@ public class PlayGame {
 
         printGamelastStuation(game);
 
-        while (!new GameOver().isGameOver(game)) {
+        while (!player.getGameRule().isGameOver(game)) { //!new GameOver().isGameOver(game)
 
             int choose = player.getInput(game);// Player a at kisi icin input alma, robot icin kosullara gore yonlendirme yaz
 
             moveForwardOrBack = getMoveBackOrForward(choose);
 
 //            if (moveForwardOrBack.isItAvailableToMove(gameModel, choose)) {
-            moveForwardOrBack = getMoveBackOrForward(choose);
-            moveForwardOrBack.move(new Location().getLocationValueAccordingToEnteredValue(game, choose));
+            moveForwardOrBack.move(
+                    new DirectionLocation().
+                            getLocationValueAccordingToEnteredValue(game, choose));
 //            }
+            game.getPlayer().getInfo();
             printGamelastStuation(game);
-
+            new Sleep().sleep(300);
         }
     }
 
@@ -67,7 +70,8 @@ public class PlayGame {
 //    }
 
     Move getMoveBackOrForward(int index) {
-        if (index == new KeyboardCompass().getLastLocation()) {
+        if (index == player.getCompass().getLastLocation()) {
+            System.out.println("index : " + index);
             return new MoveBack(game);
         }
         /*else {
@@ -76,10 +80,10 @@ public class PlayGame {
         return new MoveForward(game);
     }
 
-//    Location getLocationValueAccordingToEnteredValue(int choose) {
-//        if (choose == new KeyboardCompass().getLastLocation()) {
-//            return new CreateLocationOfLastStep(gameModel).createLastStepLocation();
-//        }
-//        return prepareGame.switchDirection.choseDirection(choose);
-//    }
+    Location getLocationValueAccordingToEnteredValue(int choose) {
+        if (choose == game.getPlayer().getCompass().getLastLocation()) {
+            return new CreateLocationOfLastStep(game).createLastStepLocation();
+        }
+        return prepareGame.switchDirection.choseDirection(choose);
+    }
 }

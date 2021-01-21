@@ -22,7 +22,7 @@ public class MoveBack extends Move {
         decreasePlayerStepValue();
     }
 
-    @Override
+     @Override
     public void updateVisitedArea() {
         updateValuesInGameModel.updateValueVisitedArea();
     }

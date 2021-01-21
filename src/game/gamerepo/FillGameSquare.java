@@ -14,7 +14,7 @@ public class FillGameSquare {
     }
 
     public void printStepInGameSquare() {
-        game.getModel().getGameSquares()[player.getLocationX()][player.getLocationY()] = player.getStep();
+        game.getModel().getGameSquares()[player.getLocation().getX()][player.getLocation().getY()] = player.getStep();
         //ConvertVariable.intToString(player.getStep());
     }
 

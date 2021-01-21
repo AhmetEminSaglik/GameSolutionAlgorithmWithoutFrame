@@ -18,7 +18,7 @@ public class SquareValidationGame {
         } else {
 
             String message = "For both squares must be bigger than 4";
-            new ErrorMessage().appearFatalError(message);
+            new ErrorMessage().appearFatalError(getClass(), message);
 
         }
 

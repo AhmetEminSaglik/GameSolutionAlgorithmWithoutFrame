@@ -1,15 +1,15 @@
 package game.location.direction;
 
-import game.location.Location;
+import game.location.DirectionLocation;
 
-public class LastLocation extends Location {
+public class LastLocation extends DirectionLocation {
 
     /**
      * Return directly value which is given 5.
      */
     @Override
     public int getId() {
-        return 5;
+        return directionCompassValue.LAST_LOCATION;
     }
 
 }

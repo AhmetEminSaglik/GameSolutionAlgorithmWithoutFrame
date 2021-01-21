@@ -1,12 +1,12 @@
 package game.gamerepo.updategamemodel;
 
 import game.Game;
-import game.gamerepo.Model;
 
 public class UpdateForMovedForward extends UpdateValuesInGameModel {
 
     public UpdateForMovedForward(Game game) {
         super(game);
+        System.out.println("game :|||||||  " + game);
     }
 
     @Override
@@ -28,4 +28,9 @@ public class UpdateForMovedForward extends UpdateValuesInGameModel {
 //        super.changeVisitedDirection(location); //To change body of generated methods, choose Tools | Templates.
 //
 //    }
+//    @Override
+//    public void updateVisitedDirection() {
+//
+//    }
+
 }

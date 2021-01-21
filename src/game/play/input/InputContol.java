@@ -1,9 +1,9 @@
-package game.play.input;
-
-public abstract class InputContol {
-
-    int input;
-
-    abstract int getSafeInput();
-
-}
+//package game.play.input;
+//
+//public abstract class InputContol {
+//
+//    int input;
+//
+//    abstract int getSafeInput();
+//
+//}

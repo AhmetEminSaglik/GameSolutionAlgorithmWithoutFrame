@@ -35,6 +35,8 @@ public abstract class UpdateValuesInGameModel {
 
     }
 
+//    public abstract void updateVisitedDirection();
+
     final boolean isSuitableForConditionsToChangeVisitedDirection() {
 
         return (player.getStep() > 1) ? true : false;

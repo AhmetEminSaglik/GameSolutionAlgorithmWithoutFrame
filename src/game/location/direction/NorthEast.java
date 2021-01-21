@@ -1,8 +1,8 @@
 package game.location.direction;
 
-import game.location.Location;
+import game.location.DirectionLocation;
 
-public class NorthEast extends Location {
+public class NorthEast extends DirectionLocation {
 
     @Override
     public int getId() {

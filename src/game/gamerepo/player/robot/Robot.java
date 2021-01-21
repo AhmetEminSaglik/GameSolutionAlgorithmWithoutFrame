@@ -1,48 +1,39 @@
 package game.gamerepo.player.robot;
 
+import compass.Compass;
+import compass.DirectionCompass;
 import errormessage.ErrorMessage;
-import game.gamerepo.Model;
+import game.Game;
+import game.gameover.RobotGameOver;
 import game.gamerepo.player.Player;
 import game.gamerepo.player.robot.solution.BaseSolution;
+import game.play.input.robot.RobotInput;
+import game.rule.BaseGameRule;
 
 public class Robot extends Player {
 
-    ??? 
     private RobotMemory robotMemory;
-    s private Model gameModel;
+    private Game game;
     private BaseSolution solution;
 
-    public Robot(BaseSolution solution) {
+    public Robot(Game game, BaseSolution solution) {
+        this.game = game;
         this.solution = solution;
+
     }
-//
-////    @Override
-//    public boolean isMovableThatDirection(Location location) { //boolean visitedDirections[][]
-//        return canRobotMoveThatDirection(location);
-//    }
-//
-//    boolean canRobotMoveThatDirection(Location location) { //boolean visitedDirections[][]
-//
-//        /*
-//        Burada daha once gidilmis directionlardan item almaliyiz.
-//        
-//         */
-////        SIMDILIK TRUE DONDURECEM
-////        System.out.println(getClass() + " --> location dan id alinca sorun olmayacagini dusunuyorum gelen");
-////        location.printLocation();
-////        CheckDirection checkDirection = new CheckDirection();
-////
-////        return checkDirection.isDirectionAvailableToMoveOnIt(this, location.getId());
-//        return true;
-//    }
+
+    @Override
+    public Compass getCompass() {
+        return new DirectionCompass();
+    }
 
     public RobotMemory getRobotMemory() {
 
         if (robotMemory == null) {
-            if (gameModel == null) {
-                new ErrorMessage().appearFatalError("Robot -> GAMEMODEL = NULL");
+            if (game == null) {
+                new ErrorMessage().appearFatalError(getClass(), "Robot -> GAME = NULL");
             } else {
-                robotMemory = new RobotMemory(gameModel);
+                robotMemory = new RobotMemory(game);
             }
         }
         return robotMemory;
@@ -52,15 +43,33 @@ public class Robot extends Player {
         this.robotMemory = robotMemory;
     }
 
-//    @Override
-//    public int getInput() {
-//        return new RobotInput(gameModel).getInput();
-//    }
     @Override
-    public int getInput(Model gameModel) {
-        getRobotMemory();
-        System.exit(0);
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getInput(Game game) {
+        return new RobotInput(solution, game).getInput(getRobotMemory());
+    }
+
+    public BaseSolution getSolution() {
+        return solution;
+    }
+
+    public void setSolution(BaseSolution solution) {
+        this.solution = solution;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    @Override
+    public BaseGameRule getGameRule() {
+        if (gameRule == null) {
+            gameRule = new BaseGameRule(new RobotGameOver(game));
+        }
+        return gameRule;
     }
 
 }

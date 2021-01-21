@@ -14,11 +14,11 @@ public class MovePlayer {
     }
 
     void xChangeLocation(int x) {
-        player.setLocationX(player.getLocationX() + x);
+        player.getLocation().setX(player.getLocation().getX() + x);
     }
 
     void yChangeLocation(int y) {
-        player.setLocationY(player.getLocationY() + y);
+        player.getLocation().setY(player.getLocation().getY() + y);
     }
 
     public void changePlayerLocation(Location location) {

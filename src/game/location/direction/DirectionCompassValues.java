@@ -10,5 +10,6 @@ public class DirectionCompassValues {
     public final int SOUTH_WEST = 5;
     public final int WEST = 6;
     public final int NORTH_WEST = 7;
+    public final int LAST_LOCATION = 8;
 
 }

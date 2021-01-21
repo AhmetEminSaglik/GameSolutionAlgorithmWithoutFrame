@@ -1,6 +1,7 @@
 package check;
 
 import game.Game;
+import game.location.DirectionLocation;
 import game.location.Location;
 
 public class CheckSquare extends BaseCheck {
@@ -9,9 +10,10 @@ public class CheckSquare extends BaseCheck {
         if (isIndexsSuitableForArray(game, directionIndex)) {
             //Compass compass = new DirectionCompass();
 
-            Location location = Location.getLocationFromCompass(getCompass(), directionIndex); // switchDirection.choseDirection(input);
+            Location location = DirectionLocation.getLocationFromCompass(getCompass(), directionIndex); // switchDirection.choseDirection(input);
 
-            if (game.getModel().getVisitedAreas()[game.getPlayer().getLocationX() + location.getX()][game.getPlayer().getLocationY() + location.getY()] == false) {
+            if (game.getModel().getVisitedAreas()[game.getPlayer().getLocation().getX()
+                    + location.getX()][game.getPlayer().getLocation().getY() + location.getY()] == false) {
                 return true;
             }
         }

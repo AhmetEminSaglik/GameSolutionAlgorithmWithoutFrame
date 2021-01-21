@@ -1,13 +1,14 @@
-package game.play.input;
+package game.play.input.person;
 
 import check.CheckSquare;
 import compass.Compass;
 import compass.KeyboardCompass;
 import game.Game;
-import game.gamerepo.Model;
+import game.play.input.BaseControlInput;
+import game.play.input.person.SafeScannerInput;
 import validation.Validation;
 
-public class PersonInput extends BaseControlInput {
+public class PersonInput extends BaseControlInput implements IPlayerInput {
 
     CheckSquare checkSquare = new CheckSquare();
     Compass compass = new KeyboardCompass();
@@ -33,7 +34,10 @@ public class PersonInput extends BaseControlInput {
 
     @Override
     public boolean isInputSuitableToMoveForward(Game game, int choose) {
+        return checkInputForForward(game, choose);
+    }
 
+    boolean checkInputForForward(Game game, int choose) {
         Validation validation = new Validation();
         Compass compass = new KeyboardCompass();
 
@@ -50,7 +54,11 @@ public class PersonInput extends BaseControlInput {
     }
 
     @Override
-    boolean isInputSuitableToMoveBack(Game game, int choose) {
+    public boolean isInputSuitableToMoveBack(Game game, int choose) {
+        return checkInputForBack(game, choose);
+    }
+
+    boolean checkInputForBack(Game game, int choose) {
         if (choose == new KeyboardCompass().getLastLocation() && game.getPlayer().getStep() > 1) {
             System.out.println("geldi");
             return true;
@@ -58,7 +66,7 @@ public class PersonInput extends BaseControlInput {
         return false;
     }
 
-    boolean isMoveableDirectionInput(int choose) {
+    public boolean isMoveableDirectionInput(int choose) {
         if (isInputSuitableToMoveForward(game, choose) || isInputSuitableToMoveBack(game, choose)) {
             return true;
         }

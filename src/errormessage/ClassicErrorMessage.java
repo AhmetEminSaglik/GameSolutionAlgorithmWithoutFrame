@@ -7,7 +7,7 @@ class ClassicErrorMessage extends BaseErrorMessage {
     @Override
     public void showMessage(String error) {
         Toolkit.getDefaultToolkit().beep();
-        System.out.println("  CLASIC ERROR --- > "+error);
+        System.out.println(" >>>  CLASIC ERROR --- > " + error);
     }
 
 }

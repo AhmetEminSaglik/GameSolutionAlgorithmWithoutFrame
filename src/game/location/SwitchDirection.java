@@ -24,6 +24,8 @@ public class SwitchDirection {
 
     public Location choseDirection(int value) {
         if (compass.getNorth() == value) {
+//            System.out.println("pusula : "+compass.getClass().getSimpleName());
+//            System.out.println("gelen north degeri " + value);
             return new North();
         }
         if (compass.getNorthEast() == value) {
@@ -52,7 +54,7 @@ public class SwitchDirection {
         }
 
         ArrayList<Integer> list = getLocationList();
-        ErrorMessage.appearClassicError(" compass  : " + compass.getClass().getSimpleName() + " -> Unknow Option  : " + value);
+        ErrorMessage.appearClassicError(getClass(), " compass  : " + compass.getClass().getSimpleName() + " -> Unknow Option  : " + value);
         /*if (compass instanceof KeyboardCompass) {
         }*/
  /*  for (Integer location : list) {

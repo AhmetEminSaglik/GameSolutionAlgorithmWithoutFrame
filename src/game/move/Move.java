@@ -1,7 +1,6 @@
 package game.move;
 
 import game.gamerepo.FillGameSquare;
-import game.gamerepo.Model;
 import game.gamerepo.updategamemodel.UpdateValuesInGameModel;
 import compass.Compass;
 import compass.KeyboardCompass;
@@ -37,6 +36,11 @@ public abstract class Move implements IMove { // ICalculateMove
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    @Override
+    public String toString() {
+        return "Move{" + "game=" + game + ", compass=" + compass + ", validation=" + validation + ", updateValuesInGameModel=" + updateValuesInGameModel + ", fillGameSquare=" + fillGameSquare + ", location=" + location + '}';
     }
 
 }

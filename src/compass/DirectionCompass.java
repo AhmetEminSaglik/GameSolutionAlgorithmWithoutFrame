@@ -16,6 +16,7 @@ public class DirectionCompass extends Compass {
         setSouthWest(5);
         setWest(6);
         setNorthWest(7);
+        setLastLocation(8);
     }
 
 }

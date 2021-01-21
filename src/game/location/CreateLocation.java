@@ -1,6 +1,6 @@
 package game.location;
 
-public class CreateLocation extends Location {
+public class CreateLocation extends DirectionLocation {
 
     @Override
     public int getId() {

@@ -23,8 +23,8 @@ public class CreateLocationOfLastStep {
         System.out.println(" Sonuc X : " + getOppositeValue(gameModel.getPlayer().getLocationX(), gameModelProcess.getX())); //(gameModel.getPlayer().getLocationX() - gameModelProcess.getX())
         System.out.println(" Sonuc Y : " + getOppositeValue(gameModel.getPlayer().getLocationY(), gameModelProcess.getY()));
         System.out.println("\\\\\\\\\\\\\\\\\\\\\\\\ ");
-         */ createLocation.setX(getOppositeValue(game.getPlayer().getLocationX(), gameModelProcess.getX()));
-        createLocation.setY(getOppositeValue(game.getPlayer().getLocationY(), gameModelProcess.getY()));
+         */ createLocation.setX(getOppositeValue(game.getPlayer().getLocation().getX(), gameModelProcess.getX()));
+        createLocation.setY(getOppositeValue(game.getPlayer().getLocation().getY(), gameModelProcess.getY()));
         return createLocation;
 
     }

@@ -1,7 +1,6 @@
 package game.gamerepo;
 
 import game.Game;
-import game.gamerepo.player.Player;
 import validation.SquareValidationGame;
 
 public class BuildGame {
@@ -10,17 +9,19 @@ public class BuildGame {
     private int verticalSquare;
     private Game game;
 
-    public BuildGame(Model model, Player player, int verticalSquare, int horizontalSquare) throws InterruptedException {
+    public BuildGame(int verticalSquare, int horizontalSquare) throws InterruptedException { //Model model, Player player,
         new SquareValidationGame(verticalSquare, horizontalSquare);
         this.horizontalSquare = horizontalSquare;
         this.verticalSquare = verticalSquare;
-        game = fillGame(model, player);
+        game = new Game();
 
     }
 
-    Game fillGame(Model model, Player player) throws InterruptedException {
+    public Game fillGame() throws InterruptedException {//Model model, Player player
 //        Model gameModel = new Model(player);
-        game = new Game(model, player);
+        //Game(model, player);
+        //game.setModel(model);
+        // game.setPlayer(player);
 
         System.out.println("game " + game);
 
@@ -28,12 +29,14 @@ public class BuildGame {
 
         game.getModel().setGameSquares(createMultipleArrayFromIntegers(verticalSquare, horizontalSquare));
         //gameModel = prepareNullValues(gameModel);
-        game = creatVisitArea(game);
-//        gameModel = setVisitedDirectionsArray(gameModel);
 
+//        gameModel = setVisitedDirectionsArray(gameModel);
         return game;
     }
 
+    public Game clearAreas() {
+        return game = creatVisitArea(game);
+    }
 //    public Model setVisitedDirectionsArray(Model gameModel) {
 //        boolean visitedDirection[][] = new boolean[verticalSquare * horizontalSquare][8];
 //        gameModel.setVisitedDirections(visitedDirection);
@@ -46,6 +49,7 @@ public class BuildGame {
 //        }
 //        return gameModel;
 //    }
+
     public int[][] createMultipleArrayFromIntegers(int verticalSquare, int horizontalSquare) {
         return new int[verticalSquare][horizontalSquare];
     }
@@ -58,18 +62,17 @@ public class BuildGame {
         return array;
     }
 
-    public Game creatVisitArea(Game game) {
+    Game creatVisitArea(Game game) {
         boolean visitedAreas[][] = new boolean[verticalSquare][horizontalSquare];
         game.getModel().setVisitedAreas(visitedAreas);
         clearVisitedAreas(game);
         return game;
     }
 
-    public Game clearVisitedAreas(Game game) {
+    Game clearVisitedAreas(Game game) { 
+        for (int i = 0; i < game.getPlayer().getLocation().getX(); i++) {
 
-        for (int i = 0; i < game.getPlayer().getLocationX(); i++) {
-
-            for (int j = 0; j < game.getPlayer().getLocationY(); j++) {
+            for (int j = 0; j < game.getPlayer().getLocation().getY(); j++) {
                 game.getModel().getVisitedAreas()[i][j] = false;
             }
         }

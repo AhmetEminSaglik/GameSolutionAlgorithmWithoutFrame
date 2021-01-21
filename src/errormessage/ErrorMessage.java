@@ -2,12 +2,12 @@ package errormessage;
 
 public class ErrorMessage {
 
-    public static void appearFatalError(String message) {
-        new FatalErrorMessage().showMessage(message);
+    public static void appearFatalError(Class className, String message) {
+        new FatalErrorMessage().showMessage("Class where is the error occured : << " + className.getSimpleName() + " >>  Error Message : " + message);
 
     }
 
-    public static void appearClassicError(String message) {
-        new ClassicErrorMessage().showMessage(message);
+    public static void appearClassicError(Class className, String message) {
+        new ClassicErrorMessage().showMessage("Class where is the error occured : << " + className.getSimpleName() + " >>  Error Message : " + message);
     }
 }

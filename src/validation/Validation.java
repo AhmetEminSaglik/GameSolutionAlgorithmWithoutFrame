@@ -4,6 +4,7 @@ import game.gamerepo.player.Player;
 import compass.Compass;
 import errormessage.ErrorMessage;
 import game.Game;
+import game.location.DirectionLocation;
 import game.location.Location;
 
 public class Validation {
@@ -60,15 +61,15 @@ public class Validation {
         Player player = game.getPlayer();
         try {
             // ??? HATA CIKARSA BUNU AKTIFLESTIR  switchDirection = new SwitchDirection(compass); 
-            location = Location.getLocationFromCompass(compass, input);// switchDirection.choseDirection(input);
+            location = DirectionLocation.getLocationFromCompass(compass, input);// switchDirection.choseDirection(input);
 
-            if (calculateValidOrNot(game.getModel().getGameSquares().length, player.getLocationX(), location.getX())
-                    && calculateValidOrNot(game.getModel().getGameSquares().length, player.getLocationY(), location.getY())) {
+            if (calculateValidOrNot(game.getModel().getGameSquares().length, player.getLocation().getX(), location.getX())
+                    && calculateValidOrNot(game.getModel().getGameSquares().length, player.getLocation().getY(), location.getY())) {
                 return true;
             }
         } catch (Exception ex) {
 
-            ErrorMessage.appearClassicError("Error : " + ex.getMessage());
+            ErrorMessage.appearClassicError(getClass(), ex.getMessage());
         }
 
         // new ClassicErrorMessage().showMessage("entered a number which may cause to  go out ouf borders. Please enter valid value : " +input);

@@ -1,6 +1,6 @@
 package game.gamerepo.player.robot;
 
-import game.gamerepo.Model;
+import game.Game;
 import game.location.Location;
 import game.location.LocationsList;
 import java.util.ArrayList;
@@ -11,19 +11,21 @@ public class RobotMemory {
     private boolean endPointDetermined = false;
     private ArrayList<Location> availableDirectionList = new ArrayList<>();
     private ArrayList<Integer> oneWayDirectionList = new ArrayList<>();
-    ???
-    Model gameModel;
 
-    public RobotMemory(Model gameModel) {
+    Game game;
+
+    public RobotMemory(Game game) {
+        this.game = game;
         visitedDirections = new boolean[getTotalNumberOfSquares()][new LocationsList().getList().size()];
-        this.gameModel = gameModel;
-        System.out.println("Kontrol Amacli  :\n"
-                + "Total Number Of Squares : " + getTotalNumberOfSquares()
-                + "LocationList size : " + new LocationsList().getList().size());
+//        this.game = gameModel;
+//        System.out.println("Kontrol Amacli  :\n"
+//                + "Total Number Of Squares : " + getTotalNumberOfSquares()
+//                + "LocationList size : " + new LocationsList().getList().size());
+
     }
 
     int getTotalNumberOfSquares() {
-        return gameModel.getGameSquares().length * gameModel.getGameSquares().length;
+        return game.getModel().getGameSquares().length * game.getModel().getGameSquares().length;
     }
 
     public boolean[][] getVisitedDirections() {
@@ -34,14 +36,12 @@ public class RobotMemory {
         this.visitedDirections = visitedDirections;
     }
 
-    public Model getGameModel() {
-
-        return gameModel;
-
+    public Game getGame() {
+        return game;
     }
 
-    public void setGameModel(Model gameModel) {
-        this.gameModel = gameModel;
+    public void setGame(Game game) {
+        this.game = game;
     }
 
     public boolean isEndPointDetermined() {

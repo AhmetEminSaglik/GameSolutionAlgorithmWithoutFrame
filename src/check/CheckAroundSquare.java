@@ -1,18 +1,17 @@
 package check;
 
-import game.gamerepo.Model;
 import compass.Compass;
 import compass.DirectionCompass;
 import game.Game;
+import game.location.DirectionLocation;
 import java.util.ArrayList;
-import game.location.Location;
 import game.location.LocationsList;
 
 public class CheckAroundSquare {
 
     Compass compass = new DirectionCompass();
     CheckSquare checkSquare = new CheckSquare();
-    ArrayList<Location> locationList = new LocationsList().getList();
+    ArrayList<DirectionLocation> locationList = new LocationsList().getList();
 
     public int getNumberOfHowManySquaresAreAvailable(Game game) {
 
