@@ -17,38 +17,18 @@ public class BuildGame {
 
     }
 
-    public Game fillGame() throws InterruptedException {//Model model, Player player
-//        Model gameModel = new Model(player);
-        //Game(model, player);
-        //game.setModel(model);
-        // game.setPlayer(player);
-
-        System.out.println("game " + game);
+    public Game fillGame() throws InterruptedException {
 
         game.setModel(new Model());
 
         game.getModel().setGameSquares(createMultipleArrayFromIntegers(verticalSquare, horizontalSquare));
-        //gameModel = prepareNullValues(gameModel);
 
-//        gameModel = setVisitedDirectionsArray(gameModel);
         return game;
     }
 
     public Game clearAreas() {
         return game = creatVisitArea(game);
     }
-//    public Model setVisitedDirectionsArray(Model gameModel) {
-//        boolean visitedDirection[][] = new boolean[verticalSquare * horizontalSquare][8];
-//        gameModel.setVisitedDirections(visitedDirection);
-//
-//        for (int i = 0; i < gameModel.getVisitedDirections().length; i++) {
-//            for (int j = 0; j < 8; j++) {
-//                gameModel.getVisitedDirections()[i][j] = false;
-//
-//            }
-//        }
-//        return gameModel;
-//    }
 
     public int[][] createMultipleArrayFromIntegers(int verticalSquare, int horizontalSquare) {
         return new int[verticalSquare][horizontalSquare];
@@ -69,7 +49,7 @@ public class BuildGame {
         return game;
     }
 
-    Game clearVisitedAreas(Game game) { 
+    Game clearVisitedAreas(Game game) {
         for (int i = 0; i < game.getPlayer().getLocation().getX(); i++) {
 
             for (int j = 0; j < game.getPlayer().getLocation().getY(); j++) {

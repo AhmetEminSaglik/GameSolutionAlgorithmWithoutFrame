@@ -15,13 +15,9 @@ public class RobotMemory {
     Game game;
 
     public RobotMemory(Game game) {
+
         this.game = game;
         visitedDirections = new boolean[getTotalNumberOfSquares()][new LocationsList().getList().size()];
-//        this.game = gameModel;
-//        System.out.println("Kontrol Amacli  :\n"
-//                + "Total Number Of Squares : " + getTotalNumberOfSquares()
-//                + "LocationList size : " + new LocationsList().getList().size());
-
     }
 
     int getTotalNumberOfSquares() {

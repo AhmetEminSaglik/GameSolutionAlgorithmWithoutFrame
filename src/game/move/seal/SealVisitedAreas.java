@@ -14,8 +14,9 @@ public class SealVisitedAreas implements ISeal {
     }
 
     @Override
-    public void updateSeal(boolean seal) {
-        game.getModel().getVisitedAreas()[player.getLocation().getX()][player.getLocation().getY()] = seal;
+    public void updateSeal(boolean area[][], boolean seal) {
+//        game.getModel().getVisitedAreas()[player.getLocation().getX()][player.getLocation().getY()] = seal;
+        area[game.getPlayer().getLocation().getX()][game.getPlayer().getLocation().getY()] = seal;
     }
 
 }

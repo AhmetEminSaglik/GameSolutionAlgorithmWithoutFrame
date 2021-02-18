@@ -2,6 +2,7 @@ package game.play.input.person;
 
 import errormessage.ErrorMessage;
 import java.util.InputMismatchException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class SafeScannerInput {

@@ -2,6 +2,7 @@ package game.gamerepo.updategamemodel;
 
 import game.Game;
 import game.gamerepo.player.Player;
+import game.location.DirectionLocation;
 import game.location.Location;
 import game.move.MovePlayer;
 import game.move.seal.SealVisitedAreas;
@@ -31,11 +32,13 @@ public abstract class UpdateValuesInGameModel {
     abstract boolean isMovedForward();
 
     public final void updateValueVisitedArea() {
-        new SealVisitedAreas(game).updateSeal(isMovedForward());
+        new SealVisitedAreas(game).updateSeal(game.getModel().getVisitedAreas(), isMovedForward());
 
     }
 
-//    public abstract void updateVisitedDirection();
+    public final void updateValueVisitedDirection(DirectionLocation location) {
+        player.updateVisitedDirection(isMovedForward(), location);
+    }
 
     final boolean isSuitableForConditionsToChangeVisitedDirection() {
 
@@ -43,30 +46,6 @@ public abstract class UpdateValuesInGameModel {
 
     }
 
-//    public void changeVisitedDirection(Location location) {
-//
-//        new errormessage.ErrorMessage().appearClassicError(getClass().getSimpleName() + " ---> changeVisitedDirection()  ==> HATA OLABILIR TEST EDILMELI");
-//        if (player.getStep() > 1) {
-//            if (isMovedForward() == true) {
-//                gameModel.getVisitedDirections()[calculateTheIndexOfFirtsArrayOfVisitedDirection()][location.getId()] = isMovedForward();
-//            } else {
-//                ArrayList<Location> list = new LocationsList().getList();
-//
-//                for (int i = 0; i < list.size(); i++) {
-//                    gameModel.getVisitedDirections()[player.getStep() - 1][list.get(i).getId()] = isMovedForward();
-//                }
-//            }
-//        }
-//    }
-    public int calculateTheIndexOfFirtsArrayOfVisitedDirection() {
-        return player.getStep() - 1;
-    }
-
-    /*
-    10. adimdan 11. adima gidecem 
-    0 -->      10. index
-    [10][0] 
-     */
     public Game getGame() {
         return game;
     }

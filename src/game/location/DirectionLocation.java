@@ -20,16 +20,18 @@ public class DirectionLocation extends Location {
     }
 
     public static Location getLocationFromCompass(Compass compass, int directionIndex) {
+       // System.out.println("" + compass.toString()+" / "+compass);
+//        System.out.println("directionIndex " + directionIndex+ " compass :"+ compass);
         return new SwitchDirection(compass).choseDirection(directionIndex);
     }
 
-    public Location getLocationValueAccordingToEnteredValue(Game game, int choose) {
+    public DirectionLocation getLocationValueAccordingToEnteredValue(Game game, int choose) {
         if (choose == game.getPlayer().getCompass().getLastLocation()) {
-            System.out.println("IF DEEEEE ");
+//            System.out.println("IF DEEEEE ");
             return new CreateLocationOfLastStep(game).createLastStepLocation();
         }
 
-        System.out.println("ELSE DEE E");
+//        System.out.println("ELSE DEE E");
         return new SwitchDirection(game.getPlayer().getCompass()).choseDirection(choose);
 
     }

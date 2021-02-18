@@ -19,13 +19,15 @@ public class SwitchDirection {
     Compass compass;
 
     public SwitchDirection(Compass compass) {
+//        System.out.println(" 1 11  compass : " + compass);
+//        ErrorMessage.appearFatalError(getClass(), "\nBURADA  COMPASS GONDERILIYOR ANCAK 2. DEFA BU CLASSIN FONKSIYONU KULLANILDIGINDA \n"
+//                + " NULL OLARAK DONUYOR COMPASS");
         this.compass = compass;
     }
 
-    public Location choseDirection(int value) {
+    public DirectionLocation choseDirection(int value) {
+
         if (compass.getNorth() == value) {
-//            System.out.println("pusula : "+compass.getClass().getSimpleName());
-//            System.out.println("gelen north degeri " + value);
             return new North();
         }
         if (compass.getNorthEast() == value) {
@@ -55,40 +57,6 @@ public class SwitchDirection {
 
         ArrayList<Integer> list = getLocationList();
         ErrorMessage.appearClassicError(getClass(), " compass  : " + compass.getClass().getSimpleName() + " -> Unknow Option  : " + value);
-        /*if (compass instanceof KeyboardCompass) {
-        }*/
- /*  for (Integer location : list) {
-            System.out.println(location);
-        }*/
- /*  switch (value) {
-            case NORTH_Move_Int:
-            case compass.getNORTH():
-                return new North();
-
-            case NORTH_EAST_Move_Int:
-                return new NorthEast();
-
-            case EAST_Move_Int:
-                return new East();
-
-            case SOUTH_EAST_Move_Int:
-                return new SouthEast();
-
-            case SOUTH_Move_Int:
-                return new South();
-
-            case SOUTH_WEST_Move_Int:
-                return new SouthWest();
-
-            case WEST_Move_Int:
-                return new West();
-
-            case NORTH_WEST_Move_Int:
-                return new NorthWest();
-            default:
-                new ClassicErrorMessage().showMessage("Unknown option...   returned  null");
-
-        }*/
 
         return null;
     }

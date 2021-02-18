@@ -22,7 +22,6 @@ public class Game {
 
     public void setModel(Model model) {
 
-        System.out.println("Model :" + model);
         this.model = model;
     }
 

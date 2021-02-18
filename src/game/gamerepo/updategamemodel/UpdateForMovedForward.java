@@ -6,12 +6,13 @@ public class UpdateForMovedForward extends UpdateValuesInGameModel {
 
     public UpdateForMovedForward(Game game) {
         super(game);
-        System.out.println("game :|||||||  " + game);
+        //System.out.println("game :|||||||  " + game);
     }
 
     @Override
     public void updatePlayerStepValue() {
         game.getPlayer().increaseStep();
+
     }
 
     /* @Override
@@ -32,5 +33,4 @@ public class UpdateForMovedForward extends UpdateValuesInGameModel {
 //    public void updateVisitedDirection() {
 //
 //    }
-
 }

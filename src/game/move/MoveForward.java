@@ -2,13 +2,13 @@ package game.move;
 
 import game.Game;
 import game.gamerepo.updategamemodel.UpdateForMovedForward;
+import game.location.DirectionLocation;
 import game.location.Location;
 
 public class MoveForward extends Move {
 
     public MoveForward(Game game) {
         super(game);
-
         updateValuesInGameModel = new UpdateForMovedForward(game);
 
     }
@@ -21,7 +21,7 @@ public class MoveForward extends Move {
 //
 //        CheckSquare checkSquare = new CheckSquare();
 //        checkSquare.setCompass(compass);
-////validation.isInputValidForArray(gameModel, choose)&& --> bunu simdilik kaldirdik cunku SquareAvaible'de de kontrol ediyor bunu
+////validation.isInputValidForArray(gameModel, choose)&& -->  bunu simdilik kaldirdik cunku SquareAvaible'de de kontrol ediyor bunu
 //        if (checkSquare.isSquareAvailableToMoveOnIt(gameModel, choose)) { //&& gameModel.getPlayer().isMovableThatDirection(new Location().getLocationValueAccordingToEnteredValue(gameModel, choose)
 //            return true;
 //        }
@@ -59,8 +59,10 @@ public class MoveForward extends Move {
      * moveForward icin bu fonk ici boss
      */
     @Override
-    public void updateBeforeStep() {
+    public void updateBeforeStep(DirectionLocation location) {
 //        updateVisitedDirection(getLocation());
+
+        updateValuesInGameModel.updateValueVisitedDirection(location);
     }
 
     void increasePlayerStepValue() {
@@ -84,4 +86,5 @@ public class MoveForward extends Move {
     void changePlayerLocation(Location location) {
         updateValuesInGameModel.changePlayerLocation(location);
     }
+
 }

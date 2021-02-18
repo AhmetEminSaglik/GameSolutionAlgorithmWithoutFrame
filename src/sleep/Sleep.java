@@ -8,7 +8,7 @@ public class Sleep {
 
     public void sleep() {
         try {
-            Thread.sleep(5000);
+            Thread.sleep(1000);
         } catch (InterruptedException ex) {
             Logger.getLogger(FirstSolution.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -59,16 +59,23 @@ public class Validation {
 
         Location location;
         Player player = game.getPlayer();
+        compass = game.getPlayer().getCompass();
+        location = DirectionLocation.getLocationFromCompass(compass, input);
         try {
-            // ??? HATA CIKARSA BUNU AKTIFLESTIR  switchDirection = new SwitchDirection(compass); 
-            location = DirectionLocation.getLocationFromCompass(compass, input);// switchDirection.choseDirection(input);
 
+            // ??? HATA CIKARSA BUNU AKTIFLESTIR  switchDirection = new SwitchDirection(compass); 
+            // switchDirection.choseDirection(input);
             if (calculateValidOrNot(game.getModel().getGameSquares().length, player.getLocation().getX(), location.getX())
                     && calculateValidOrNot(game.getModel().getGameSquares().length, player.getLocation().getY(), location.getY())) {
+
                 return true;
             }
         } catch (Exception ex) {
+            System.out.println("HATAAAAAAAAAAAAAAAAAAAAAAAAAAAA : ::::: " + ex.getMessage());
 
+            System.out.println("player.getLocation().getX() : " + player.getLocation().getX() + " location.getX() : " + location.getX());
+
+            System.out.println("player.getLocation().getY() : " + player.getLocation().getY() + " location.getY() : " + location.getY());
             ErrorMessage.appearClassicError(getClass(), ex.getMessage());
         }
 

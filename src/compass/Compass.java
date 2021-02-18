@@ -90,4 +90,9 @@ public abstract class Compass {
 
     abstract void fillValues();
 
+    @Override
+    public String toString() {
+        return "Compass : " + getClass().getSimpleName();
+    }
+
 }

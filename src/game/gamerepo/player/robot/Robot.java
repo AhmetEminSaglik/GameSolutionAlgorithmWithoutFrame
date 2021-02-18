@@ -7,8 +7,11 @@ import game.Game;
 import game.gameover.RobotGameOver;
 import game.gamerepo.player.Player;
 import game.gamerepo.player.robot.solution.BaseSolution;
+import game.location.DirectionLocation;
+import game.location.LocationsList;
 import game.play.input.robot.RobotInput;
 import game.rule.BaseGameRule;
+import java.util.ArrayList;
 
 public class Robot extends Player {
 
@@ -70,6 +73,29 @@ public class Robot extends Player {
             gameRule = new BaseGameRule(new RobotGameOver(game));
         }
         return gameRule;
+    }
+
+    @Override
+    public void updateVisitedDirection(boolean movedFordward, DirectionLocation location) {
+        System.out.println("location.getId() -> " + location.getId());
+        if (getStep() > 1) {
+            if (movedFordward == true) {
+                System.out.println("Forward Step " + getStep());
+
+                getRobotMemory()
+                        .getVisitedDirections()[getStep()][location.getId()] = true;
+            } else {
+                ArrayList<DirectionLocation> locationsList = new LocationsList().getList();
+
+                System.out.println("Back Step" + getStep());
+
+                for (int i = 0; i < locationsList.size() - 1; i++) {
+                    getRobotMemory().getVisitedDirections()[getStep()][locationsList.get(i).getId()] = false;
+
+                }
+            }
+        }
+
     }
 
 }

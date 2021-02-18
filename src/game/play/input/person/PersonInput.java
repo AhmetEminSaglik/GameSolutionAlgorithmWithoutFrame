@@ -19,6 +19,7 @@ public class PersonInput extends BaseControlInput implements IPlayerInput {
         super(game);
     }
 
+    
     @Override
     public int getInput() {
         while (true) {

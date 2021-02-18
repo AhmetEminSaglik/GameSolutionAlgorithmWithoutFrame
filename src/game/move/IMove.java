@@ -1,5 +1,6 @@
 package game.move;
 
+import game.location.DirectionLocation;
 import game.location.Location;
 
 public interface IMove {
@@ -13,6 +14,6 @@ public interface IMove {
 
     void updateAfterStep();
 
-    void updateBeforeStep();
+    void updateBeforeStep(DirectionLocation location);
 
 }

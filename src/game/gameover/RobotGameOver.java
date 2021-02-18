@@ -1,6 +1,5 @@
 package game.gameover;
 
-import errormessage.ErrorMessage;
 import game.Game;
 import game.gamerepo.player.robot.RobotMemory;
 
@@ -17,15 +16,22 @@ public class RobotGameOver implements IGameOver {
     @Override
     public boolean isGameOver(Game game) {
 
-        if (robotMemory.getVisitedDirections()[0][0] == false
-                || robotMemory.getVisitedDirections()[0][1] == false
-                || robotMemory.getVisitedDirections()[0][2] == false) {
-            return false;
+        if (isWholeSquaresVisited() == true) {
+            return true;
         }
-        ErrorMessage.appearClassicError(getClass(), " GECICI OLARAK  YAZILDI DEGISTIRILMESI GEREKIYOR ");
-        ErrorMessage.appearClassicError(getClass(), " GECICI OLARAK  YAZILDI DEGISTIRILMESI GEREKIYOR ");
-        ErrorMessage.appearClassicError(getClass(), " GECICI OLARAK  YAZILDI DEGISTIRILMESI GEREKIYOR ");
 
+        return false;
+    }
+
+    boolean isWholeSquaresVisited() {
+        for (int i = 0; i < game.getModel().getVisitedAreas().length; i++) {
+            for (int j = 0; j < game.getModel().getVisitedAreas()[i].length; j++) {
+                if (game.getModel().getVisitedAreas()[i][j] == false) {
+                    return false;
+
+                }
+            }
+        }
         return true;
     }
 

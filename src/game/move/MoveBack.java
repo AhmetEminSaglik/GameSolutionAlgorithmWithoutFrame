@@ -3,11 +3,12 @@ package game.move;
 import game.Game;
 import game.gamerepo.GameModelProcess;
 import game.gamerepo.updategamemodel.UpdateForMovedBack;
+import game.location.DirectionLocation;
 import game.location.Location;
 
 public class MoveBack extends Move {
 
-    public MoveBack(Game game) {
+    public MoveBack(Game game) { //, DirectionLocation proceedLocation
         super(game);
         updateValuesInGameModel = new UpdateForMovedBack(game);
 
@@ -22,7 +23,7 @@ public class MoveBack extends Move {
         decreasePlayerStepValue();
     }
 
-     @Override
+    @Override
     public void updateVisitedArea() {
         updateValuesInGameModel.updateValueVisitedArea();
     }
@@ -39,6 +40,7 @@ public class MoveBack extends Move {
 
     @Override
     public void updateAfterStep() {
+
         removeMaxStepBeforeGoingLastStep();
         updatePlayerStepValue();
         updatePlayerLocation(getLocation());
@@ -49,10 +51,11 @@ public class MoveBack extends Move {
      * Moveback icin bu fonk dolu
      */
     @Override
-    public void updateBeforeStep() {
+    public void updateBeforeStep(DirectionLocation location) {
         System.out.println(getClass().getSimpleName() + " -->  before > update visited direction");
 //        updateVisitedDirection(getLocation());
         updateVisitedArea();
+        updateValuesInGameModel.updateValueVisitedDirection(location);
     }
 
     void decreasePlayerStepValue() {
@@ -61,9 +64,12 @@ public class MoveBack extends Move {
     }
 
     void removeMaxStepBeforeGoingLastStep() {
-        System.out.println("Tablodaki max deger  >> : " + new GameModelProcess(game).findMaxStep());
+        int maxValueInTable = new GameModelProcess(game).findMaxStep();
 
+        //System.out.println("Max Value in Table  : >> : " + new GameModelProcess(game).findMaxStep() + " >> will be deleted ");
         new GameModelProcess(game).deleteMaxStep(game.getPlayer().getStep());
-        System.out.println("Tablodaki max deger  >> : " + new GameModelProcess(game).findMaxStep());
+        System.out.println("Max Value in Table  << "+maxValueInTable+" >> value is deleted. ");
+        // System.out.println(" New Max Value in Table  : >> : " + new GameModelProcess(game).findMaxStep());
+        //System.out.println("Tablodaki max deger  >> : " + new GameModelProcess(game).findMaxStep());
     }
 }

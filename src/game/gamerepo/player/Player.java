@@ -2,10 +2,11 @@ package game.gamerepo.player;
 
 import compass.Compass;
 import game.Game;
+import game.location.DirectionLocation;
 import game.location.Location;
 import game.rule.BaseGameRule;
 
-public abstract class Player {// implements IPlayer 
+public abstract class Player implements ISpecialFunctionForAKindOfPlayer {// implements IPlayer 
 
     public BaseGameRule gameRule;
     Location location = new Location();
@@ -66,5 +67,14 @@ public abstract class Player {// implements IPlayer
         System.out.println("Robotun konumu : X,Y : " + location.getX() + " " + location.getY());
         System.out.println("Robot adim sayisi : " + getStep());
     }
-//    public abstract Location getLocationValueAccordingToInputValue(Game game, int choose);
+
+    /**
+     * This method is created for Robot visited direction
+     *
+     */
+    @Override
+    public void updateVisitedDirection(boolean movedFordward, DirectionLocation location) {
+
+    }
+
 }

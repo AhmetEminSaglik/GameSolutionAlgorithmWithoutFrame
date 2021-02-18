@@ -38,6 +38,7 @@ public class PrepareGame {
         switchDirection = new SwitchDirection(compass);
         selectFirstSqaureToStart.selectSquareStart(0, 0);
         //  updateGameModel.moveForward(selectFirstSqaureToStart);
+        
         new MoveForward(game).move(selectFirstSqaureToStart);
 
     }

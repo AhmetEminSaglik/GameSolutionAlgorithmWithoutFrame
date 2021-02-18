@@ -5,6 +5,7 @@ import game.gamerepo.updategamemodel.UpdateValuesInGameModel;
 import compass.Compass;
 import compass.KeyboardCompass;
 import game.Game;
+import game.location.DirectionLocation;
 import game.location.Location;
 import validation.Validation;
 
@@ -15,17 +16,19 @@ public abstract class Move implements IMove { // ICalculateMove
     Validation validation = new Validation();
     UpdateValuesInGameModel updateValuesInGameModel;
     FillGameSquare fillGameSquare;
+
+    DirectionLocation proceedLocation;
     private Location location;
 
-    public Move(Game game) {
+    public Move(Game game) {//, DirectionLocation proceedLocation
         this.game = game;
         fillGameSquare = new FillGameSquare(game);
     }
 
-    public final void move(Location location) {
+    public final void move(DirectionLocation location) {
         System.out.println("Chose Location : " + location.toString());
         setLocation(location);
-        updateBeforeStep();
+        updateBeforeStep(location);
         updateAfterStep();
         fillGameSquare.printStepInGameSquare();
     }

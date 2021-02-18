@@ -18,7 +18,7 @@ public class RobotInput extends BaseControlInput implements IRobotInput {
     @Override
     public int getInput(RobotMemory robotMemory) {
 
-        return solution.getInputLocationId(game);
+        return solution.getLocationInput(game, robotMemory);
     }
 
 //    @Override
