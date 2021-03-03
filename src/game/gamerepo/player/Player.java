@@ -6,7 +6,7 @@ import game.location.DirectionLocation;
 import game.location.Location;
 import game.rule.BaseGameRule;
 
-public abstract class Player implements ISpecialFunctionForAKindOfPlayer {// implements IPlayer 
+public abstract class Player implements ISpecialFunctionForAKindOfPlayer {
 
     public BaseGameRule gameRule;
     Location location = new Location();
@@ -64,8 +64,8 @@ public abstract class Player implements ISpecialFunctionForAKindOfPlayer {// imp
     public abstract Compass getCompass();
 
     public void getInfo() {
-        System.out.println("Robotun konumu : X,Y : " + location.getX() + " " + location.getY());
-        System.out.println("Robot adim sayisi : " + getStep());
+        System.out.println("Robot's Location : X,Y : " + location.getX() + " " + location.getY());
+        System.out.println("Robot's step : " + getStep());
     }
 
     /**

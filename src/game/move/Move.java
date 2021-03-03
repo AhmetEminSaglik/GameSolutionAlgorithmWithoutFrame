@@ -12,7 +12,7 @@ import validation.Validation;
 public abstract class Move implements IMove { // ICalculateMove 
 
     Game game;
-    Compass compass = new KeyboardCompass();
+    Compass compass; //= new KeyboardCompass();
     Validation validation = new Validation();
     UpdateValuesInGameModel updateValuesInGameModel;
     FillGameSquare fillGameSquare;
@@ -22,15 +22,18 @@ public abstract class Move implements IMove { // ICalculateMove
 
     public Move(Game game) {//, DirectionLocation proceedLocation
         this.game = game;
+        compass=game.getPlayer().getCompass();
         fillGameSquare = new FillGameSquare(game);
     }
 
     public final void move(DirectionLocation location) {
-        System.out.println("Chose Location : " + location.toString());
+
+        // System.out.println("Chose Location : " + location.toString());
         setLocation(location);
         updateBeforeStep(location);
         updateAfterStep();
         fillGameSquare.printStepInGameSquare();
+
     }
 
     public Location getLocation() {

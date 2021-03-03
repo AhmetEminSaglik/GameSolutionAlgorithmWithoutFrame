@@ -1,5 +1,6 @@
 package game.play.input.robot;
 
+import errormessage.ErrorMessage;
 import game.Game;
 import game.gamerepo.player.robot.RobotMemory;
 import game.gamerepo.player.robot.solution.BaseSolution;
@@ -17,7 +18,7 @@ public class RobotInput extends BaseControlInput implements IRobotInput {
 
     @Override
     public int getInput(RobotMemory robotMemory) {
-
+ 
         return solution.getLocationInput(game, robotMemory);
     }
 
@@ -29,7 +30,8 @@ public class RobotInput extends BaseControlInput implements IRobotInput {
 //    }
     @Override
     public boolean isInputSuitableToMoveForward(Game game, int choose) {
-
+        ErrorMessage.appearFatalError(getClass(), "BURAYA GELDIIII /  burasi kullanilmiyor");
+        return false;
     }
 
     @Override

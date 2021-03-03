@@ -1,13 +1,13 @@
 package game.location;
 
 import compass.Compass;
+import compass.DirectionCompass;
 import game.Game;
 import game.gamerepo.CreateLocationOfLastStep;
-import game.location.direction.DirectionCompassValues;
 
 public class DirectionLocation extends Location {
 
-    public DirectionCompassValues directionCompassValue = new DirectionCompassValues();
+    private Compass compass = new DirectionCompass();//= new KeyboardCompass();
 
     private int id;
 
@@ -20,8 +20,8 @@ public class DirectionLocation extends Location {
     }
 
     public static Location getLocationFromCompass(Compass compass, int directionIndex) {
-       // System.out.println("" + compass.toString()+" / "+compass);
-//        System.out.println("directionIndex " + directionIndex+ " compass :"+ compass);
+        // System.out.println("" + compass.toString()+" / "+compass);
+        //System.out.println(">>>|||  directionIndex " + directionIndex + " compass :" + compass);
         return new SwitchDirection(compass).choseDirection(directionIndex);
     }
 
@@ -34,6 +34,18 @@ public class DirectionLocation extends Location {
 //        System.out.println("ELSE DEE E");
         return new SwitchDirection(game.getPlayer().getCompass()).choseDirection(choose);
 
+    }
+
+    /**
+     * Eger burada pusulayi oyuncu pusulasina gore ayarlayabilirsem her sey cok
+     * guzel olacak
+     */
+    public Compass getCompass() {
+        return compass;
+    }
+
+    public void setCompass(Compass compass) {
+        this.compass = compass;
     }
 
 }

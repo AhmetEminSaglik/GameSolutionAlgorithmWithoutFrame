@@ -3,10 +3,14 @@ package game.location.direction;
 import game.location.DirectionLocation;
 
 public class NorthEast extends DirectionLocation {
+//
+//    public NorthEast(Compass compass) {
+//        super(compass);
+//    }
 
     @Override
     public int getId() {
-        return directionCompassValue.NORTH_EAST;
+        return getCompass().getNorthEast();
     }
 
     @Override

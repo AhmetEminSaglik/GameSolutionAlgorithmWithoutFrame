@@ -2,7 +2,6 @@ package game.play.input.person;
 
 import errormessage.ErrorMessage;
 import java.util.InputMismatchException;
-import java.util.Random;
 import java.util.Scanner;
 
 public class SafeScannerInput {
@@ -16,6 +15,9 @@ public class SafeScannerInput {
 
 //        while (true) {
         try {
+            System.out.println("Please enter direction number : ");
+//            new Sleep().sleep(3000);
+
             input = getIntegerValue(scanner.nextLine());
             return input;
         } catch (InputMismatchException ex) {

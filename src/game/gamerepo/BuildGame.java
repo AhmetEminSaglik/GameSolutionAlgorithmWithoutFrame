@@ -5,6 +5,8 @@ import validation.SquareValidationGame;
 
 public class BuildGame {
 
+    // Yatay ve dikey kenar uzunluklari (Simdilik gereksiz bir ayrinti, 
+    // kare olarak oynaniliyor ama sonradan dikdortgene cevirmek istersem diye bu sekilde yazdim)
     private int horizontalSquare;
     private int verticalSquare;
     private Game game;
@@ -32,14 +34,6 @@ public class BuildGame {
 
     public int[][] createMultipleArrayFromIntegers(int verticalSquare, int horizontalSquare) {
         return new int[verticalSquare][horizontalSquare];
-    }
-
-    public String[] prepareNullArray(String[] array) {
-        for (int i = 0; i < array.length; i++) {
-            array[i] = "   ";
-        }
-
-        return array;
     }
 
     Game creatVisitArea(Game game) {

@@ -26,6 +26,7 @@ public class SwitchDirection {
     }
 
     public DirectionLocation choseDirection(int value) {
+        //System.out.println("int value :: "+value);
 
         if (compass.getNorth() == value) {
             return new North();

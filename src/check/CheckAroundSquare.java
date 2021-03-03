@@ -27,15 +27,19 @@ public class CheckAroundSquare {
     }
 
     public boolean isThereAnyAvailableSquare(Game game) {
-
+        compass = game.getPlayer().getCompass();
         checkSquare.setCompass(compass); // bu normalde isLocationAvailable() fonksiyonunun ilk satiriydi
+ 
+//        locationList = getLocationList(game.getPlayer());
 
+//        new Sleep().sleep(3000);
+      //  System.out.println("locationList.size() " + locationList.size());
         for (int i = 0; i < locationList.size(); i++) {
-
+//            System.out.println("forrr L:LLLLL " + locationList.get(i).getId());
             if (isLocationAvailable(game, locationList.get(i).getId())) {
-                // System.out.println("Musait yon : " + locationList.get(i).getClass().getSimpleName());
+                //System.out.println(" Available direction : " + locationList.get(i).getClass().getSimpleName());
                 return true;
-            }
+            }  
         }
         return false;
     }
@@ -45,4 +49,21 @@ public class CheckAroundSquare {
         return checkSquare.isSquareAvailableToMoveOnIt(game, directionIndex);
     }
 
+//    public ArrayList<DirectionLocation> getLocationList(Player player) {
+//        if (locationList == null) {
+//            locationList = new LocationsList(player.getCompass()).getList();
+//        }
+//        return locationList;
+//    }
+//
+//    public ArrayList<DirectionLocation> getLocationList() {
+//        if (locationList == null) {
+//            ErrorMessage.appearFatalError(getClass(), "Daha once tanimlanmamis yon lokasyonundan yon almaya calisiyorsunuz");
+//        }
+//        return locationList;
+//    }
+//
+//    public void setLocationList(ArrayList<DirectionLocation> locationList) {
+//        this.locationList = locationList;
+//    }
 }

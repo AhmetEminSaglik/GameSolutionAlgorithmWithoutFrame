@@ -9,7 +9,6 @@ import game.move.Move;
 import game.move.MoveBack;
 import game.move.MoveForward;
 import printarray.PrintArray;
-import sleep.Sleep;
 import validation.Validation;
 
 public class PlayGame {
@@ -34,15 +33,15 @@ public class PlayGame {
 
         while (!player.getGameRule().isGameOver(game)) {
 
-            int choose = player.getInput(game);// Player a at kisi icin input alma, robot icin kosullara gore yonlendirme yaz
+            int choose = player.getInput(game);
 
             moveForwardOrBack = getMoveBackOrForward(choose);
-
             moveForwardOrBack.move(
                     new DirectionLocation().
                             getLocationValueAccordingToEnteredValue(game, choose));
             printGamelastStuation(game);
         }
+
     }
 
     void printGamelastStuation(Game game) {
@@ -53,12 +52,12 @@ public class PlayGame {
 
     Move getMoveBackOrForward(int index) {
         if (index == player.getCompass().getLastLocation()) {
-            System.out.println("index : " + index);
+            //   System.out.println("index : " + index);
 
-            System.out.println("GERI GIDECEK ");
+            System.out.println("MOVE BACK ");
             return new MoveBack(game);
         }
-        System.out.println("ILERI GIDECEK ");
+        System.out.println("MOVE FORWARD ");
 
         return new MoveForward(game);
     }

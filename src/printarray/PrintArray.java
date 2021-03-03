@@ -6,7 +6,7 @@ public class PrintArray {
 
     public void printArray(String array[]) {
         for (int i = 0; i < array.length; i++) {
-            System.out.println("d");
+       
             System.out.print(array[i]);
         }
     }
@@ -24,8 +24,8 @@ public class PrintArray {
     }
 
     public void printMultipleArrayBoolean(boolean array[][]) {
-        System.out.println("Visited area yazdirma sureci baslatilacak");
-        System.out.println(" Max  i ve j " + array.length + " , " + array[0].length);
+  //      System.out.println("Visited area yazdirma sureci baslatilacak");
+      //  System.out.println(" Max  i ve j " + array.length + " , " + array[0].length);
         for (int i = array.length - 1; i >= 0; i--) {//
             for (int j = 0; j < array[i].length; j++) {
                 if (array[i][j] == true) {
@@ -35,7 +35,7 @@ public class PrintArray {
             }
 
         }
-        System.out.println("Visited area yazdirma surebi bitti");
+ //       System.out.println("Visited area yazdirma surebi bitti");
     }
 
     String printDesign(int value) {

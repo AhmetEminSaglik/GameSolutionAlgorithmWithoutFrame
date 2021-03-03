@@ -60,7 +60,14 @@ public class Validation {
         Location location;
         Player player = game.getPlayer();
         compass = game.getPlayer().getCompass();
-        location = DirectionLocation.getLocationFromCompass(compass, input);
+        //System.out.println("COMPASZ|ZZZZZZZZZZZZ  " + compass);
+        location = new DirectionLocation().getLocationFromCompass(compass, input);
+        /* kuzeyden baslayip saat yonunde kontrol edecegi icin  yon pusulasini gonderiyoruz
+        Kullanici pusulasi  kullanici girisli pusulada kullanildigi icin burada dizi indexinde kullanamiyoruz
+        O yuzden bu sekilde gonderdik
+            
+         */
+       // System.out.println(" location.getX() : " + location.getX());
         try {
 
             // ??? HATA CIKARSA BUNU AKTIFLESTIR  switchDirection = new SwitchDirection(compass); 
@@ -71,11 +78,12 @@ public class Validation {
                 return true;
             }
         } catch (Exception ex) {
-            System.out.println("HATAAAAAAAAAAAAAAAAAAAAAAAAAAAA : ::::: " + ex.getMessage());
+            /*System.out.println("HATAAAAAAAAAAAAAAAAAAAAAAAAAAAA : ::::: " + ex.getMessage());
 
-            System.out.println("player.getLocation().getX() : " + player.getLocation().getX() + " location.getX() : " + location.getX());
-
+            System.out.println("player.getLocation().getX() : " + player.getLocation().getX());
+            System.out.println(" location.getX() : " + location.getX());
             System.out.println("player.getLocation().getY() : " + player.getLocation().getY() + " location.getY() : " + location.getY());
+            */
             ErrorMessage.appearClassicError(getClass(), ex.getMessage());
         }
 

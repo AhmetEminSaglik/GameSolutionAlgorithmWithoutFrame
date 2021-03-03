@@ -7,9 +7,6 @@ import game.location.Location;
 
 public class CheckDirection extends BaseCheck {
 
-    /**
-     * This is for robot
-     */
     public boolean isDirectionAvailableToMoveOnIt(Robot robot, int directionIndex) {
         setCompass(new DirectionCompass());
 
@@ -18,8 +15,5 @@ public class CheckDirection extends BaseCheck {
             return true;
         }
         return false;
-//        if () {
-//
-//        }
     }
 }

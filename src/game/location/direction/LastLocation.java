@@ -4,12 +4,16 @@ import game.location.DirectionLocation;
 
 public class LastLocation extends DirectionLocation {
 
+//    public LastLocation(Compass compass) {
+//        super(compass);
+//    }
+
     /**
      * Return directly value which is given 5.
      */
     @Override
     public int getId() {
-        return directionCompassValue.LAST_LOCATION;
+        return getCompass().getLastLocation();
     }
 
 }

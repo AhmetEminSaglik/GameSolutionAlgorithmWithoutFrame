@@ -29,40 +29,14 @@ public class PrepareGame {
 
         //  updateGameModel = new UpdateGameModel(gameModel);
         selectFirstSqaureToStart = new SelectFirstSqaureToStart(game);
-        compass = new KeyboardCompass();
+        compass = game.getPlayer().getCompass();
     }
 
     void prepareToPlay() {
-        //updateGameModel.moveForward(selectFirstSqaureToStart);
-        //updateGameModel.moveForward(selectFirstSqaureToStart);
         switchDirection = new SwitchDirection(compass);
         selectFirstSqaureToStart.selectSquareStart(0, 0);
-        //  updateGameModel.moveForward(selectFirstSqaureToStart);
-        
         new MoveForward(game).move(selectFirstSqaureToStart);
 
     }
 
-
-    /*   public void start() {
-
-       while (!new GameOver().isGameOver(gameModel)) {
-            printGamelastStuation(gameModel);
-
-            int choose = scanner.nextInt();
-
-            if (playGame.isItAvailableToMove(gameModel, choose)) {
-
-                switchDirection.updateCompass(compass);
-                updateGameModel.moveForward(switchDirection.choseDirection(choose));
-
-                //   System.out.println(player.toString());
-            }
-        }
-          void printGamelastStuation(Model gameModel) {
-        new PrintArray<String>().printMultipleArray(gameModel.getGameSquares());
-
-    }
-         
-    }*/
 }

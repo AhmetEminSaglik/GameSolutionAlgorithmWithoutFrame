@@ -5,7 +5,6 @@ import compass.Compass;
 import compass.KeyboardCompass;
 import game.Game;
 import game.play.input.BaseControlInput;
-import game.play.input.person.SafeScannerInput;
 import validation.Validation;
 
 public class PersonInput extends BaseControlInput implements IPlayerInput {
@@ -28,7 +27,7 @@ public class PersonInput extends BaseControlInput implements IPlayerInput {
             if (isMoveableDirectionInput(choose)) {
                 return choose;
             } else {
-                System.out.println("You cant go that direction, please choose another direction");// + new Location().getLocationFromCompass(compass, choose).toString()
+                System.out.println("You can not  go that direction, please choose another direction");// + new Location().getLocationFromCompass(compass, choose).toString()
             }
         }
     }
@@ -61,7 +60,7 @@ public class PersonInput extends BaseControlInput implements IPlayerInput {
 
     boolean checkInputForBack(Game game, int choose) {
         if (choose == new KeyboardCompass().getLastLocation() && game.getPlayer().getStep() > 1) {
-            System.out.println("geldi");
+            //System.out.println("geldi");
             return true;
         }
         return false;
