@@ -2,20 +2,22 @@ package Main;
 
 import game.Game;
 import game.gamerepo.BuildGame;
-import game.gamerepo.player.person.Person;
 import game.gamerepo.player.Player;
+import game.gamerepo.player.person.Person;
 import game.gamerepo.player.robot.Robot;
 import game.gamerepo.player.robot.solution.BaseSolution;
 import game.gamerepo.player.robot.solution.FirstSolution;
 import game.play.PlayGame;
+
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
-        BuildGame buildGameModel = new BuildGame(5, 5);
-        Game game = buildGameModel.fillGame();
+        int squareEdge=5;
+        BuildGame buildGameModel = new BuildGame(squareEdge, squareEdge);
+        Game game = buildGameModel.createGame();
 
         Player person = new Person();
 

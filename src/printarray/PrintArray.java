@@ -1,5 +1,6 @@
 package printarray;
 
+import sleep.Sleep;
 import utility.ConvertVariable;
 
 public class PrintArray {
@@ -26,15 +27,19 @@ public class PrintArray {
     public void printMultipleArrayBoolean(boolean array[][]) {
   //      System.out.println("Visited area yazdirma sureci baslatilacak");
       //  System.out.println(" Max  i ve j " + array.length + " , " + array[0].length);
-        for (int i = array.length - 1; i >= 0; i--) {//
+        for (int i = array.length - 1; i >= 0; i--) {
+
             for (int j = 0; j < array[i].length; j++) {
                 if (array[i][j] == true) {
-                    System.out.print("[" + j + " ][" + i + "]  : ");
+
+                    System.out.print("[" + i + " ][" + j + "]  : ");
                     System.out.println(array[i][j]);
+                    new Sleep().sleep(1_000);
                 }
             }
 
         }
+
  //       System.out.println("Visited area yazdirma surebi bitti");
     }
 

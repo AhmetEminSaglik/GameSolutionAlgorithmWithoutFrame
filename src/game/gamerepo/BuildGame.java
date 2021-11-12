@@ -19,7 +19,7 @@ public class BuildGame {
 
     }
 
-    public Game fillGame() throws InterruptedException {
+    public Game createGame() throws InterruptedException {
 
         game.setModel(new Model());
 
