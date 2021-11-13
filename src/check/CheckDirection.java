@@ -11,7 +11,7 @@ public class CheckDirection extends BaseCheck {
         setCompass(new DirectionCompass());
 
         Location location = DirectionLocation.getLocationFromCompass(getCompass(), directionIndex);
-        if (robot.getRobotMemory().getVisitedDirections()[robot.getStep()][directionIndex] == false) { // eger false ise bu yonde gidilmemistir demektir
+        if (robot./*getRobotMemory().*/getVisitedDirections()[robot.getStep()][directionIndex] == false) { // eger false ise bu yonde gidilmemistir demektir
             return true;
         }
         return false;

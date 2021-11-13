@@ -19,7 +19,7 @@ public class Main {
         BuildGame buildGameModel = new BuildGame(squareEdge, squareEdge);
         Game game = buildGameModel.createGame();
 
-        Player person = new Person();
+        Player person = new Person(game);
 
         BaseSolution firstSolution = new FirstSolution();
 // 3 farkli cozum algortimasi var aklimda suan sadece en basitini yazdim. Buda FirstSolution() Oluyor

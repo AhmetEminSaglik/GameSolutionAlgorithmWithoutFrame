@@ -5,7 +5,8 @@ import game.gamerepo.player.Player;
 import game.location.DirectionLocation;
 import game.location.Location;
 import game.move.MovePlayer;
-import game.move.seal.SealVisitedAreas;
+import game.move.seal.SealationOfLocation;
+import game.move.seal.Signature;
 
 public abstract class UpdateValuesInGameModel {
 
@@ -29,16 +30,18 @@ public abstract class UpdateValuesInGameModel {
     /**
      * if player moved forward then return true else return false;
      */
-    abstract boolean isMovedForward();
+    abstract Signature ifMovedForwardThenSealTheLocation();
 
     public final void updateValueVisitedArea() {
-        new SealVisitedAreas(game).updateSeal(game.getModel().getVisitedAreas(), isMovedForward());
+        new SealationOfLocation(game).updateLocationCondition(game.getModel().getVisitedAreas(), ifMovedForwardThenSealTheLocation());
 
     }
+//    public abstract  void updateVisitedDirection();
 
-    public final void updateValueVisitedDirection(DirectionLocation location) {
-        player.updateVisitedDirection(isMovedForward(), location);
-    }
+      public abstract void updateValueVisitedDirection(DirectionLocation directionLocation);
+//    public final void updateValueVisitedDirection(DirectionLocation location) {
+//        player.updateVisitedDirection(ifMovedForwardThenSealTheLocation().isSealed(), location);
+
 
     final boolean isSuitableForConditionsToChangeVisitedDirection() {
 

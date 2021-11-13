@@ -12,19 +12,26 @@ public class MoveForward extends Move {
         updateValuesInGameModel = new UpdateForMovedForward(game);
 
     }
- 
-//    }
+
+    //    }
     @Override
     public void updatePlayerStepValue() {
         increasePlayerStepValue();
     }
 
     @Override
-    public void updateVisitedArea() {
-        changeValueVisitedArea();
+    public void updateVisitedDirection(DirectionLocation location) {
+//        game.getPlayer().updateVisitedDirection();
+        updateValuesInGameModel.updateValueVisitedDirection(location);
     }
 
-//    @Override
+   /* @Override
+    public void updateVisitedArea() {
+        updateValuesInGameModel.updateValueVisitedArea();
+//        changeValueVisitedArea();
+    }*/
+
+    //    @Override
 //    public void updateVisitedDirection(Location location) {
 //        changeVisitedDirection(location);
 //    }
@@ -36,8 +43,8 @@ public class MoveForward extends Move {
 
     @Override
     public void updateAfterStep() {
-        updatePlayerStepValue();
-        updatePlayerLocation(getLocation());
+//        updatePlayerStepValue();
+        updatePlayerLocation(getDirectionLocation());
         updateVisitedArea();
 
     }
@@ -46,10 +53,12 @@ public class MoveForward extends Move {
      * moveForward icin bu fonk ici boss
      */
     @Override
-    public void updateBeforeStep(DirectionLocation location) {
+    public void updateBeforeStep(DirectionLocation directionLocation) {
+        updateVisitedDirection(directionLocation);
 //        updateVisitedDirection(getLocation());
+//        updateVisitedArea();
 
-        updateValuesInGameModel.updateValueVisitedDirection(location);
+//        updateValuesInGameModel.updateValueVisitedDirection(location);
     }
 
     void increasePlayerStepValue() {
@@ -57,10 +66,10 @@ public class MoveForward extends Move {
         updateValuesInGameModel.updatePlayerStepValue();
     }
 
-    void changeValueVisitedArea() {
+  /*  void changeValueVisitedArea() {
         updateValuesInGameModel.updateValueVisitedArea();
-    }
- 
+    }*/
+
     void changePlayerLocation(Location location) {
         updateValuesInGameModel.changePlayerLocation(location);
     }

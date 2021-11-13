@@ -2,6 +2,7 @@ package game.gamerepo.player.robot.solution;
 
 import errormessage.ErrorMessage;
 import game.Game;
+import game.gamerepo.player.robot.Robot;
 import game.gamerepo.player.robot.RobotMemory;
 import game.location.DirectionLocation;
 import game.location.LocationsList;
@@ -16,7 +17,7 @@ public class FirstSolution extends BaseSolution {
         // printSealedArea(robotMemory);
         //System.out.println(" IF KONTROLU game.getPlayer().getStep() : " + game.getPlayer().getStep());
 //        new Sleep().sleep(3000);
-        for (int i = 0; i < locationsList.size()-1; i++) {
+        for (int i = 0; i < locationsList.size() - 1; i++) {
 
             if (isThereAnySquareToMoveInIt(game, locationsList.get(i), robotMemory)) {
                 return locationsList.get(i).getId();
@@ -45,11 +46,11 @@ public class FirstSolution extends BaseSolution {
 
     }
 
-    void printSealedArea(RobotMemory robotMemory) {
-        for (int i = 0; i < robotMemory.getVisitedDirections().length; i++) {
-            for (int j = 0; j < robotMemory.getVisitedDirections()[0].length; j++) {
-                if (robotMemory.getVisitedDirections()[i][j] == true) {
-                    System.out.println("getVisitedDirections()[" + i + "][" + j + "] : " + robotMemory.getVisitedDirections()[i][j]);
+    void printSealedArea(Robot robot) {
+        for (int i = 0; i </* robotMemory.*/robot.getVisitedDirections().length; i++) {
+            for (int j = 0; j < /*robotMemory.*/robot.getVisitedDirections()[0].length; j++) {
+                if (/*robotMemory.*/robot.getVisitedDirections()[i][j] == true) {
+                    System.out.println("getVisitedDirections()[" + i + "][" + j + "] : " + robot.getVisitedDirections()[i][j]);
                 }
             }
         }

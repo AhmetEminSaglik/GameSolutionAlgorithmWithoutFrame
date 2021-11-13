@@ -1,0 +1,3 @@
+ileri Adim Atma :
+    1-) adim atmadan once yapilanlar
+            a-) visitedDirectionGuncelleme

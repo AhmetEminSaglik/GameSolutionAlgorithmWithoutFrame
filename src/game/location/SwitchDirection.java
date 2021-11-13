@@ -56,7 +56,7 @@ public class SwitchDirection {
             return new LastLocation();
         }
 
-        ArrayList<Integer> list = getLocationList();
+//        ArrayList<Integer> list = getLocationList();
         ErrorMessage.appearClassicError(getClass(), " compass  : " + compass.getClass().getSimpleName() + " -> Unknow Option  : " + value);
 
         return null;
@@ -67,7 +67,7 @@ public class SwitchDirection {
 
     }
 
-    ArrayList<Integer> getLocationList() {
+    /*ArrayList<Integer> getLocationList() {
         ArrayList<Integer> list = new ArrayList<Integer>();
 
         list.add(new DirectionCompass().getNorth());
@@ -79,5 +79,5 @@ public class SwitchDirection {
         list.add(new DirectionCompass().getWest());
         list.add(new DirectionCompass().getNorthWest());
         return list;
-    }
+    }*/
 }

@@ -48,7 +48,7 @@ public class CopyModel {
                     System.out.println("============================================================");
                     System.out.println("INDEX : "+index);
                     System.out.println("size : "+valueList.size());
-                    new Sleep().sleep(10_000);
+//                    new Sleep().sleep(10_000);
 
                     return;
                 }

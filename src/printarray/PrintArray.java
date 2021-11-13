@@ -34,7 +34,7 @@ public class PrintArray {
 
                     System.out.print("[" + i + " ][" + j + "]  : ");
                     System.out.println(array[i][j]);
-                    new Sleep().sleep(1_000);
+//                    new Sleep().sleep(1_000);
                 }
             }
 

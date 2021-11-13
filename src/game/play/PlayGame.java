@@ -10,11 +10,8 @@ import game.move.Move;
 import game.move.MoveBack;
 import game.move.MoveForward;
 import printarray.PrintArray;
-import sleep.Sleep;
 import validation.Validation;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class PlayGame {
 
@@ -44,7 +41,8 @@ public class PlayGame {
             if (player.getStep() == Math.pow(game.getModel().getGameSquares().length, 2)) {
                 gameFinishTime++;
                 printGamelastStuation(game);
-
+                System.out.println("OYUN BITIRILDI : " + gameFinishTime);
+                copyModel.sendModelToCompareAndAddToList(game.getModel());
                /* Model model = new Model();
                 for (int i = 0; i < game.getModel().getGameSquares().length; i++) {
                     for (int j = 0; j < game.getModel().getGameSquares().length; j++) {
@@ -53,11 +51,8 @@ public class PlayGame {
 
                     }
                 }*/
-
-
 //                addModel(model);
-                System.out.println("OYUN BITIRILDI : " + gameFinishTime);
-                copyModel.sendModelToCompareAndAddToList(game.getModel());
+
 //                new Sleep().sleep(100);
 
             }

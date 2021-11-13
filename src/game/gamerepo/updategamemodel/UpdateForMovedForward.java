@@ -1,6 +1,8 @@
 package game.gamerepo.updategamemodel;
 
 import game.Game;
+import game.location.DirectionLocation;
+import game.move.seal.Signature;
 
 public class UpdateForMovedForward extends UpdateValuesInGameModel {
 
@@ -15,14 +17,30 @@ public class UpdateForMovedForward extends UpdateValuesInGameModel {
 
     }
 
+    @Override
+    Signature ifMovedForwardThenSealTheLocation() {
+        return Signature.SEAL;
+    }
+
+    @Override
+    public void updateValueVisitedDirection(DirectionLocation directionLocation) {
+        player.updateVisitedDirection(ifMovedForwardThenSealTheLocation().isSealed(), directionLocation);
+    }
+
+
+    /*@Override
+    public void updateVisitedDirection(DirectionLocation location) {
+        game.getPlayer().updateVisitedDirection(ifMovedForwardThenSealTheLocation().isSealed(),location );
+    }*/
+
     /* @Override
     public void changePlayerLocation(Location location) {
         movePlayer.changePlayerLocation(location);
     }*/
-    @Override
+    /*@Override
     boolean isMovedForward() {
         return true;
-    }
+    }*/
 
 //    @Override
 //    public void changeVisitedDirection(Location location) {

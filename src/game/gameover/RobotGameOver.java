@@ -1,6 +1,7 @@
 package game.gameover;
 
 import game.Game;
+import game.gamerepo.player.robot.Robot;
 import game.gamerepo.player.robot.RobotMemory;
 import printarray.PrintArray;
 import sleep.Sleep;
@@ -18,7 +19,7 @@ public class RobotGameOver implements IGameOver {
     @Override
     public boolean isGameOver(Game game) {
 
-        if (isWholeSquaresVisited() == true
+        if (isWholeSquaresVisited(game) == true
                 && isAllWaysToBackDone(game) == true) {
             System.out.println(" OYUN BITMISTIRRR");
             return true;
@@ -39,7 +40,7 @@ public class RobotGameOver implements IGameOver {
         return false;
     }
 
-    boolean isWholeSquaresVisited() {
+    boolean isWholeSquaresVisited(Game game) {
         /*new PrintArray().printMultipleArrayBoolean(robotMemory.getVisitedDirections());
         new Sleep().sleep(1_000);*/
         for (int i = 0; i < game.getModel().getVisitedAreas().length; i++) {

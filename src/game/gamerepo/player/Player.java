@@ -4,9 +4,19 @@ import compass.Compass;
 import game.Game;
 import game.location.DirectionLocation;
 import game.location.Location;
+import game.location.LocationsList;
 import game.rule.BaseGameRule;
 
 public abstract class Player implements ISpecialFunctionForAKindOfPlayer {
+
+    Game game;
+    private boolean visitedDirections[][];
+
+    public Player(Game game) {
+        this.game = game;
+        visitedDirections = new boolean[(int) Math.pow(game.getModel().getGameSquares().length, 2)][new LocationsList().getList().size()];
+    }
+
 
     public BaseGameRule gameRule;
     Location location = new Location();
@@ -70,11 +80,18 @@ public abstract class Player implements ISpecialFunctionForAKindOfPlayer {
 
     /**
      * This method is created for Robot visited direction
-     *
      */
     @Override
     public void updateVisitedDirection(boolean movedFordward, DirectionLocation location) {
-
+//        System.out.println("gelen degerler : movedFordward : "+movedFordward+ " // "+location.getId());
+//        getVisitedDirections()[getStep()][location.getId()] = movedFordward;
     }
 
+    public Game getGame() {
+        return game;
+    }
+
+    public boolean[][] getVisitedDirections() {
+        return visitedDirections;
+    }
 }

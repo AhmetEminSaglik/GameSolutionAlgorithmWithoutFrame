@@ -9,11 +9,14 @@ public interface IMove {
 
     void updateVisitedArea();
 
-//    void updateVisitedDirection(Location location);
+    void updateVisitedDirection(DirectionLocation location);
+
+    //    void updateVisitedDirection(Location location);
     void updatePlayerLocation(Location location);
+
+    void updateBeforeStep(DirectionLocation location);
 
     void updateAfterStep();
 
-    void updateBeforeStep(DirectionLocation location);
 
 }

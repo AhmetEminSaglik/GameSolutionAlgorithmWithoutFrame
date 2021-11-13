@@ -3,10 +3,8 @@ package game.move;
 import game.gamerepo.FillGameSquare;
 import game.gamerepo.updategamemodel.UpdateValuesInGameModel;
 import compass.Compass;
-import compass.KeyboardCompass;
 import game.Game;
 import game.location.DirectionLocation;
-import game.location.Location;
 import validation.Validation;
 
 public abstract class Move implements IMove { // ICalculateMove 
@@ -17,36 +15,43 @@ public abstract class Move implements IMove { // ICalculateMove
     UpdateValuesInGameModel updateValuesInGameModel;
     FillGameSquare fillGameSquare;
 
-    DirectionLocation proceedLocation;
-    private Location location;
+    DirectionLocation directionLocation;
+//    private Location location;
 
     public Move(Game game) {//, DirectionLocation proceedLocation
         this.game = game;
-        compass=game.getPlayer().getCompass();
+        compass = game.getPlayer().getCompass();
         fillGameSquare = new FillGameSquare(game);
     }
 
-    public final void move(DirectionLocation location) {
+    public final void move(DirectionLocation directionLocation) {
 
         // System.out.println("Chose Location : " + location.toString());
-        setLocation(location);
-        updateBeforeStep(location);
+        setLocation(directionLocation);
+        updateBeforeStep(directionLocation);
+        updatePlayerStepValue();
         updateAfterStep();
         fillGameSquare.printStepInGameSquare();
 
     }
 
-    public Location getLocation() {
-        return location;
+    @Override
+    public void updateVisitedArea() {
+        updateValuesInGameModel.updateValueVisitedArea();
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
+    public DirectionLocation getDirectionLocation() {
+        return directionLocation;
+    }
+
+    public void setLocation(DirectionLocation directionLocation) {
+        this.directionLocation = directionLocation;
     }
 
     @Override
     public String toString() {
-        return "Move{" + "game=" + game + ", compass=" + compass + ", validation=" + validation + ", updateValuesInGameModel=" + updateValuesInGameModel + ", fillGameSquare=" + fillGameSquare + ", location=" + location + '}';
+        return "Move{" + "game=" + game + ", compass=" + compass + ", validation=" + validation + ", updateValuesInGameModel=" + updateValuesInGameModel + ", fillGameSquare=" + fillGameSquare + ", directionLocation=" + directionLocation + '}';
     }
+
 
 }

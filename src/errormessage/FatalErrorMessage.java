@@ -1,6 +1,6 @@
 package errormessage;
 
-class FatalErrorMessage extends BaseErrorMessage {
+  class FatalErrorMessage extends BaseErrorMessage {
 
     @Override
     public void showMessage(String error) {

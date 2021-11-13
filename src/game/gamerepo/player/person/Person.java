@@ -5,10 +5,15 @@ import compass.KeyboardCompass;
 import game.Game;
 import game.gameover.PersonGameOver;
 import game.gamerepo.player.Player;
+import game.location.DirectionLocation;
 import game.play.input.person.PersonInput;
 import game.rule.BaseGameRule;
 
 public class Person extends Player {
+
+    public Person(Game game) {
+        super(game);
+    }
 
     @Override
     public Compass getCompass() {
@@ -28,5 +33,6 @@ public class Person extends Player {
         }
         return gameRule;
     }
+
 
 }
