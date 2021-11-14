@@ -82,27 +82,27 @@ public class Robot extends Player {
 //        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 //        new Sleep().sleep(3000);
         if (movedFordward == true) {
-            System.out.println("Forward Step " + getStep());
+//            System.out.println("Forward Step " + getStep());
 
             /*getRobotMemory()
                     .*/
-            getVisitedDirections()[getStep()][location.getId()] = true;
-            System.out.println(" MOVEFORWARRDD  STEPPPP " + getStep() + " /./" +/* getRobotMemory()
-                    .*/getVisitedDirections()[getStep()][location.getId()]);
+            getVisitedDirections()[getStep()-1][location.getId()] = true;
+//            System.out.println(" MOVEFORWARRDD  STEPPPP " + getStep() + " /./" +/* getRobotMemory()
+//                    .*/getVisitedDirections()[getStep()][location.getId()]);
         } else {
             ArrayList<DirectionLocation> locationsList = new LocationsList().getList();
 
-            System.out.println("Back Step : " + getStep());
+//            System.out.println("Back Step : " + getStep());
 
             if (getStep() < Math.pow(getGame().getModel().getGameSquares().length, 2)) {
 
-                System.out.println(" X : " + getGame().getPlayer().getLocation().getX() + " Y : " + getGame().getPlayer().getLocation().getY());
+//                System.out.println(" X : " + getGame().getPlayer().getLocation().getX() + " Y : " + getGame().getPlayer().getLocation().getY());
 
 //                    new PrintArray().printMultipleArrayBoolean(getRobotMemory().getVisitedDirections());
 //                    System.out.println("-----");
-                System.out.println("GUNCEL ADIM SAYISIIIIIIIIIIIIIIII : " + getStep());
+//                System.out.println("GUNCEL ADIM SAYISIIIIIIIIIIIIIIII : " + getStep());
                 for (int i = 0; i < locationsList.size() - 1; i++) {
-                    System.out.println(" getRobotMemory().getVisitedDirections()[" + getStep() + "][locationsList.get(" + i + ").getId()] " +/* getRobotMemory().*/getVisitedDirections()[getStep()][locationsList.get(i).getId()]);
+//                    System.out.println(" getRobotMemory().getVisitedDirections()[" + getStep() + "][locationsList.get(" + i + ").getId()] " +/* getRobotMemory().*/getVisitedDirections()[getStep()][locationsList.get(i).getId()]);
                     /*getRobotMemory().*/
                     getVisitedDirections()[getStep()][locationsList.get(i).getId()] = false;
 
@@ -116,7 +116,7 @@ public class Robot extends Player {
             }
         }
         }
-        System.out.println("Islem yapildi robot tarafindan");
+//        System.out.println("Islem yapildi robot tarafindan");
 //        new Sleep().sleep(5000);
     }
 

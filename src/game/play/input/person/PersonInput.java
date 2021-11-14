@@ -46,7 +46,7 @@ public class PersonInput extends BaseControlInput implements IPlayerInput {
         checkSquare.setCompass(compass);
 
         if (validation.isInputValidForArray(game, choose)
-                && checkSquare.isSquareAvailableToMoveOnIt(game, choose)) {
+                && checkSquare.isSquareFreeFromVisitedArea(game, choose)) {
             return true;
 
         }
@@ -76,7 +76,7 @@ public class PersonInput extends BaseControlInput implements IPlayerInput {
 //    public int getSafeInput(Model gameModel) {
 //        while (true) {
 //            int input = scannerInput.getInput();
-//            if (checkSquare.isSquareAvailableToMoveOnIt(gameModel, input)) {
+//            if (checkSquare.isSquareFreeFromVisitedArea(gameModel, input)) {
 //
 //                return input;
 //            }

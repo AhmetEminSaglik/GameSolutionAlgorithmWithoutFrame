@@ -4,6 +4,6 @@ import game.Game;
 
 public interface IGameOver {
 
-    public abstract boolean isGameOver(Game game);
+    boolean isGameOver(Game game);
 
 }

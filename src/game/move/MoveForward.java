@@ -42,24 +42,27 @@ public class MoveForward extends Move {
     }
 
     @Override
+    public void updateBeforeStep(DirectionLocation directionLocation) {
+
+//        updateVisitedDirection(getLocation());
+//        updateVisitedArea();
+
+//        updateValuesInGameModel.updateValueVisitedDirection(location);
+    }
+
+    @Override
     public void updateAfterStep() {
 //        updatePlayerStepValue();
         updatePlayerLocation(getDirectionLocation());
         updateVisitedArea();
+        updateVisitedDirection(directionLocation);
 
     }
 
     /**
      * moveForward icin bu fonk ici boss
      */
-    @Override
-    public void updateBeforeStep(DirectionLocation directionLocation) {
-        updateVisitedDirection(directionLocation);
-//        updateVisitedDirection(getLocation());
-//        updateVisitedArea();
 
-//        updateValuesInGameModel.updateValueVisitedDirection(location);
-    }
 
     void increasePlayerStepValue() {
         //getPlayer().increaseStep();

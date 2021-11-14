@@ -34,7 +34,7 @@ public class Main {
 
         }
 
-        buildGameModel.clearAreas();
+        buildGameModel.createVisitedArea();
 
         // PrintArray<String> printArray = new PrintArray<>();
         PlayGame playGame = new PlayGame(game);

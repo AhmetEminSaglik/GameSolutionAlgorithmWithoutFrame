@@ -28,29 +28,34 @@ public class BuildGame {
         return game;
     }
 
-    public Game clearAreas() {
-        return game = creatVisitArea(game);
+    public Game createVisitedArea() {
+        game.getModel().setVisitedAreas(buildVisitedArea(game));
+        clearVisitedAreas(game);
+        return game;
+
     }
 
     public int[][] createMultipleArrayFromIntegers(int verticalSquare, int horizontalSquare) {
         return new int[verticalSquare][horizontalSquare];
     }
 
-    Game creatVisitArea(Game game) {
-        boolean visitedAreas[][] = new boolean[verticalSquare][horizontalSquare];
-        game.getModel().setVisitedAreas(visitedAreas);
-        clearVisitedAreas(game);
-        return game;
+    boolean[][] buildVisitedArea(Game game) {
+        return new boolean[verticalSquare][horizontalSquare];
+
+//        game.getModel().setVisitedAreas(visitedAreas);
+//        clearVisitedAreas(game);
+//        return game;
+
     }
 
-    Game clearVisitedAreas(Game game) {
-        for (int i = 0; i < game.getPlayer().getLocation().getX(); i++) {
+    void clearVisitedAreas(Game game) {
+        for (int i = 0; i < game.getModel().getVisitedAreas().length; i++) {
 
-            for (int j = 0; j < game.getPlayer().getLocation().getY(); j++) {
+            for (int j = 0; j < game.getModel().getVisitedAreas().length; j++) {
                 game.getModel().getVisitedAreas()[i][j] = false;
             }
         }
-        return game;
+//        return game;
     }
 
     public Game getGame() {

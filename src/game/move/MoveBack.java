@@ -48,8 +48,10 @@ public class MoveBack extends Move {
 //        updateValuesInGameModel.changeVisitedDirection(location);
 //    }
 
+
     @Override
     public void updatePlayerLocation(Location location) {
+        System.out.println("MUHTEMELEN 0 LANINCA GUNCELLENECEK KONUM : " + location);
         updateValuesInGameModel.changePlayerLocation(location);
     }
 
@@ -80,8 +82,8 @@ public class MoveBack extends Move {
                 "ve geri adim atarken 10. adimin muhurleri silinecek cunku zaten 9. adimda 10. adim yeri muhurlu olacak ve yeniden 10 adim olusacak baska bir konumda\n" +
                 "boylece geri adim atarken muhurler silinmeli, ileri adim atarken muhurlenmeli");*/
 //        System.out.println(" !!!!!!!!!!!!!!!!!!    BURAYA MUHURLE SONRA GERI ADIM AT YAPABILRIM ONCEKI ADIMA DOGRU");
-        System.out.println(getClass().getSimpleName() + "getLocation()   :::  >>>>>>>> " + getDirectionLocation());
-        System.out.println(getClass().getSimpleName() + "PLAYER .getLocation()   :::  >>>>>>>> " + game.getPlayer().getLocation());
+//        System.out.println(getClass().getSimpleName() + "getLocation()   :::  >>>>>>>> " + getDirectionLocation());
+//        System.out.println(getClass().getSimpleName() + "PLAYER .getLocation()   :::  >>>>>>>> " + game.getPlayer().getLocation());
         updatePlayerLocation(getDirectionLocation());
 
 

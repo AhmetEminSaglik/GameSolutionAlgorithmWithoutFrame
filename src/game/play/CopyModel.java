@@ -6,7 +6,8 @@ import sleep.Sleep;
 
 import java.util.ArrayList;
 
-public class CopyModel {
+public class
+CopyModel {
 
     ArrayList<int[][]> valueList = new ArrayList<int[][]>();
 
@@ -45,10 +46,10 @@ public class CopyModel {
                     }
                     System.out.println("-----");
                     new PrintArray().printMultipleArray(values);
-                    System.out.println("============================================================");
+                    System.out.println("============================================================ AYNI GELDI GALIBA");
                     System.out.println("INDEX : "+index);
                     System.out.println("size : "+valueList.size());
-//                    new Sleep().sleep(10_000);
+                    new Sleep().sleep(20_000);
 
                     return;
                 }

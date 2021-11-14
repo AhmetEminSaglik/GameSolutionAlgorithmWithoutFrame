@@ -21,7 +21,7 @@ public class RobotGameOver implements IGameOver {
 
         if (isWholeSquaresVisited(game) == true
                 && isAllWaysToBackDone(game) == true) {
-            System.out.println(" OYUN BITMISTIRRR");
+            System.out.println(getClass().getSimpleName() + " OYUN BITMISTIRRR");
             return true;
         }
 
@@ -29,12 +29,14 @@ public class RobotGameOver implements IGameOver {
     }
 
     boolean isAllWaysToBackDone(Game game) {
-        System.out.println(" GERI ADIMLAR BITTI  MI KONTROLU");
+        System.out.println(getClass().getSimpleName() + " GERI ADIMLAR BITTI  MI KONTROLU");
 //        new Sleep().sleep(3000);
 
-        if (game.getPlayer().getLocation().getX() == game.getModel().getGameSquares().length &&
-                game.getPlayer().getLocation().getY() == game.getModel().getGameSquares().length &&
+        if (/*game.getPlayer().getLocation().getX() == game.getModel().getGameSquares().length &&
+                game.getPlayer().getLocation().getY() == game.getModel().getGameSquares().length &&*/
                 game.getPlayer().getStep() == 1) {
+            System.out.println("ADIM SAYISI 1 E DONDU");
+//            new Sleep().sleep(100_000);
             return true;
         }
         return false;

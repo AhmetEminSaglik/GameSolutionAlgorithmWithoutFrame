@@ -10,6 +10,7 @@ import game.move.Move;
 import game.move.MoveBack;
 import game.move.MoveForward;
 import printarray.PrintArray;
+import sleep.Sleep;
 import validation.Validation;
 
 
@@ -35,14 +36,23 @@ public class PlayGame {
         printGamelastStuation(game);
 
         long gameFinishTime = 0;
+//        boolean oyunbitirildi = false;
 
         CopyModel copyModel = new CopyModel();
         while (!player.getGameRule().isGameOver(game)) {
-            if (player.getStep() == Math.pow(game.getModel().getGameSquares().length, 2)) {
+            if(game.getModel().getGameSquares()[0][0] !=1){
+                System.out.println("1 in yeri degisti");
+                new Sleep().sleep(20_000);
+            }   if (player.getStep() == Math.pow(game.getModel().getGameSquares().length, 2)) {
                 gameFinishTime++;
                 printGamelastStuation(game);
                 System.out.println("OYUN BITIRILDI : " + gameFinishTime);
-                copyModel.sendModelToCompareAndAddToList(game.getModel());
+
+//                copyModel.sendModelToCompareAndAddToList(game.getModel());
+//                if(gameFinishTime>1000)
+//                new Sleep().sleep(5_000);
+//                oyunbitirildi = true;
+
                /* Model model = new Model();
                 for (int i = 0; i < game.getModel().getGameSquares().length; i++) {
                     for (int j = 0; j < game.getModel().getGameSquares().length; j++) {
@@ -54,7 +64,10 @@ public class PlayGame {
 //                addModel(model);
 
 //                new Sleep().sleep(100);
+//                System.out.println("Oyun tamamlandi bundan sonraki adim nasil isleniyor onemli");
+//                new Sleep().sleep(3_000);
 
+//                System.out.println();
             }
 
             int choose = player.getInput(game);
@@ -66,10 +79,23 @@ public class PlayGame {
                             getLocationValueAccordingToEnteredValue(game, choose));
 
             printGamelastStuation(game);
+            printArrays(game);
+           /* if (oyunbitirildi) {
+                System.out.println("OYUN BITIRILDI VE SONRAKI ILK ASAMALAR");
+                new Sleep().sleep(1_000);
+                oyunbitirildi = false;
+            }*/
+
 //            new Sleep().sleep(1_000);
 
         }
 
+    }
+
+    void printArrays(Game game) {
+        new PrintArray().printMultipleArrayBoolean(game.getModel().getVisitedAreas());
+        new PrintArray().printMultipleArrayBoolean(game.getPlayer().getVisitedDirections());
+//        new Sleep().sleep(250);
     }
 
    /* ArrayList<Model> modelList = new ArrayList<>();
@@ -121,18 +147,19 @@ public class PlayGame {
 
     void printGamelastStuation(Game game) {
 
+        System.out.println("ADIM SAYISI : " + game.getPlayer().getStep());
         new PrintArray().printMultipleArray(game.getModel().getGameSquares());
-
+        System.out.println("----------------------------------");
     }
 
     Move getMoveBackOrForward(int index) {
         if (index == player.getCompass().getLastLocation()) {
             //   System.out.println("index : " + index);
 
-//            System.out.println("MOVE BACK ");
+            System.out.println("MOVE BACK ");
             return new MoveBack(game);
         }
-//        System.out.println("MOVE FORWARD ");
+        System.out.println("MOVE FORWARD ");
 
         return new MoveForward(game);
     }

@@ -4,7 +4,9 @@ import compass.Compass;
 import compass.DirectionCompass;
 import game.Game;
 import game.location.DirectionLocation;
+
 import java.util.ArrayList;
+
 import game.location.LocationsList;
 
 public class CheckAroundSquare {
@@ -13,7 +15,7 @@ public class CheckAroundSquare {
     CheckSquare checkSquare = new CheckSquare();
     ArrayList<DirectionLocation> locationList = new LocationsList().getList();
 
-    public int getNumberOfHowManySquaresAreAvailable(Game game) {
+ /*   public int getNumberOfHowManySquaresAreAvailable(Game game) {
 
         int availableDirectionCounter = 0;
 
@@ -24,29 +26,29 @@ public class CheckAroundSquare {
             }
         }
         return availableDirectionCounter;
-    }
+    }*/
 
     public boolean isThereAnyAvailableSquare(Game game) {
         compass = game.getPlayer().getCompass();
         checkSquare.setCompass(compass); // bu normalde isLocationAvailable() fonksiyonunun ilk satiriydi
- 
+
 //        locationList = getLocationList(game.getPlayer());
 
 //        new Sleep().sleep(3000);
-      //  System.out.println("locationList.size() " + locationList.size());
+        //  System.out.println("locationList.size() " + locationList.size());
         for (int i = 0; i < locationList.size(); i++) {
 //            System.out.println("forrr L:LLLLL " + locationList.get(i).getId());
             if (isLocationAvailable(game, locationList.get(i).getId())) {
                 //System.out.println(" Available direction : " + locationList.get(i).getClass().getSimpleName());
                 return true;
-            }  
+            }
         }
         return false;
     }
 
     boolean isLocationAvailable(Game game, int directionIndex) {
 
-        return checkSquare.isSquareAvailableToMoveOnIt(game, directionIndex);
+        return checkSquare.isSquareFreeFromVisitedArea(game, directionIndex);
     }
 
 //    public ArrayList<DirectionLocation> getLocationList(Player player) {
