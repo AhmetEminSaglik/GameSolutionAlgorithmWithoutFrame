@@ -11,6 +11,7 @@ public class Model {
 //        this.player = player;
 //    }
 
+
     public int[][] getGameSquares() {
         return gameSquares;
     }

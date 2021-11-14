@@ -7,7 +7,9 @@ import game.location.DirectionLocation;
 import game.location.Location;
 import game.location.LocationsList;
 import game.move.seal.SealationOfLocation;
+import game.play.SelectFirstSqaureToStart;
 import jdk.swing.interop.SwingInterOpUtils;
+import sleep.Sleep;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -49,9 +51,39 @@ public class MoveBack extends Move {
 //    }
 
 
+    void specialMoveForStepValue1() {
+
+    }
+
+    /*@Override
+    public void move(DirectionLocation directionLocation) {
+        if (game.getPlayer().getStep() == 1) {
+            JOptionPane.showMessageDialog(null, " adim sayisi  : " + game.getPlayer().getStep()
+                    + "\n player location : " + game.getPlayer().getLocation());
+*//*            int locationX = game.getPlayer().getLocation().getX();
+            int locationY = game.getPlayer().getLocation().getY();
+            locationX++;
+            if (locationX >= game.getModel().getGameSquares().length) {
+                locationX = 0;
+                locationY++;
+                if (locationY >= game.getModel().getGameSquares().length) {
+                    return;
+                }
+            }
+
+            SelectFirstSqaureToStart selectFirstSqaureToStart = new SelectFirstSqaureToStart(game);
+            selectFirstSqaureToStart.selectSquareStart(locationX, locationY);
+            new MoveForward(game).move(selectFirstSqaureToStart);
+            return;*//*
+        }
+        super.move(directionLocation);
+
+
+    }*/
+
     @Override
     public void updatePlayerLocation(Location location) {
-        System.out.println("MUHTEMELEN 0 LANINCA GUNCELLENECEK KONUM : " + location);
+//        System.out.println("MUHTEMELEN 0 LANINCA GUNCELLENECEK KONUM : " + location);
         updateValuesInGameModel.changePlayerLocation(location);
     }
 
@@ -84,6 +116,10 @@ public class MoveBack extends Move {
 //        System.out.println(" !!!!!!!!!!!!!!!!!!    BURAYA MUHURLE SONRA GERI ADIM AT YAPABILRIM ONCEKI ADIMA DOGRU");
 //        System.out.println(getClass().getSimpleName() + "getLocation()   :::  >>>>>>>> " + getDirectionLocation());
 //        System.out.println(getClass().getSimpleName() + "PLAYER .getLocation()   :::  >>>>>>>> " + game.getPlayer().getLocation());
+//        if (game.getPlayer().getStep() < 2) {
+//            System.out.println("GERI ADIM ATARKEN ADIM SAYISI 2 DEN DAHA DA DUSUK KISMINDAYIZ  adim sayisi : " + game.getPlayer().getStep());
+////            new Sleep().sleep(5_000);
+//        }
         updatePlayerLocation(getDirectionLocation());
 
 

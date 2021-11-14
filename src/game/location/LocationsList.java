@@ -30,6 +30,7 @@ public class LocationsList {
 //        System.out.println(new South().getId());
 //        System.out.println(new SouthWest().getId());
 //        System.out.println(new West().getId());
+
 //        System.out.println(new NorthWest().getId());
 //        System.out.println(new LastLocation().getId());
 

@@ -14,14 +14,14 @@ public class CheckSquare extends BaseCheck {
             //  System.out.println(">>>>>>>>> XXXXXXXXXXX  >>>>>>>>  : " + game.getPlayer().getLocation().getX() + "  /  location.getX() " + location.getX());
             if (game.getModel().getVisitedAreas()[game.getPlayer().getLocation().getX()
                     + location.getX()][game.getPlayer().getLocation().getY() + location.getY()] == false) {
-                System.out.println("VisitedAreas()[" + (game.getPlayer().getLocation().getX() + location.getX()) + "][" + (game.getPlayer().getLocation().getY() + location.getY()) + "] : "
-                        + (game.getModel().getVisitedAreas()[game.getPlayer().getLocation().getX()
-                        + location.getX()][game.getPlayer().getLocation().getY() + location.getY()]));
+//                System.out.println("VisitedAreas()[" + (game.getPlayer().getLocation().getX() + location.getX()) + "][" + (game.getPlayer().getLocation().getY() + location.getY()) + "] : "
+//                        + (game.getModel().getVisitedAreas()[game.getPlayer().getLocation().getX()
+//                        + location.getX()][game.getPlayer().getLocation().getY() + location.getY()]));
 
-                System.out.println(getClass().getSimpleName() + ":::::::: || \n player x : " + game.getPlayer().getLocation().getX());
-                System.out.println(" player y : " + game.getPlayer().getLocation().getY());
-                System.out.println(" location x : " + location.getX());
-                System.out.println(" location y : " + location.getY());
+//                System.out.println(getClass().getSimpleName() + ":::::::: || \n player x : " + game.getPlayer().getLocation().getX());
+//                System.out.println(" player y : " + game.getPlayer().getLocation().getY());
+//                System.out.println(" location x : " + location.getX());
+//                System.out.println(" location y : " + location.getY());
 
                 return true;
             }

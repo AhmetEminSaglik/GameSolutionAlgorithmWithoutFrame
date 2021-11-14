@@ -14,7 +14,15 @@ public abstract class Player implements ISpecialFunctionForAKindOfPlayer {
 
     public Player(Game game) {
         this.game = game;
+        clearVisitedDirections();
+    }
+
+    public void clearVisitedDirections() {
         visitedDirections = new boolean[(int) Math.pow(game.getModel().getGameSquares().length, 2)][new LocationsList().getList().size()];
+    }
+
+    public void clearStepValue() {
+        step = 0;
     }
 
 

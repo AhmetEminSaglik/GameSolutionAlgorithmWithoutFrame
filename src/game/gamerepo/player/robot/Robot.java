@@ -78,7 +78,7 @@ public class Robot extends Player {
     @Override
     public void updateVisitedDirection(boolean movedFordward, DirectionLocation location) {
 //        System.out.println("location.getId() -> " + location.getId());
-        if (getStep() > 1) {
+        if (location.getId() >=0) {
 //        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 //        new Sleep().sleep(3000);
         if (movedFordward == true) {

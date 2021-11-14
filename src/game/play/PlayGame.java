@@ -13,6 +13,8 @@ import printarray.PrintArray;
 import sleep.Sleep;
 import validation.Validation;
 
+import javax.swing.*;
+
 
 public class PlayGame {
 
@@ -40,13 +42,15 @@ public class PlayGame {
 
         CopyModel copyModel = new CopyModel();
         while (!player.getGameRule().isGameOver(game)) {
-            if(game.getModel().getGameSquares()[0][0] !=1){
+            /*if (game.getModel().getGameSquares()[0][0] != 1) {
                 System.out.println("1 in yeri degisti");
-                new Sleep().sleep(20_000);
-            }   if (player.getStep() == Math.pow(game.getModel().getGameSquares().length, 2)) {
+                new Sleep().sleep(10_000);
+            }*/
+            if (player.getStep() == Math.pow(game.getModel().getGameSquares().length, 2)) {
                 gameFinishTime++;
                 printGamelastStuation(game);
                 System.out.println("OYUN BITIRILDI : " + gameFinishTime);
+
 
 //                copyModel.sendModelToCompareAndAddToList(game.getModel());
 //                if(gameFinishTime>1000)
@@ -73,13 +77,27 @@ public class PlayGame {
             int choose = player.getInput(game);
 
             moveForwardOrBack = getMoveBackOrForward(choose);
-//            System.out.println("SECILEN BOLGE : " + moveForwardOrBack.getClass().getSimpleName());
-            moveForwardOrBack.move(
-                    new DirectionLocation().
-                            getLocationValueAccordingToEnteredValue(game, choose));
 
-            printGamelastStuation(game);
-            printArrays(game);
+            /*JOptionPane.showMessageDialog(null,
+                    " moveForwardOrBack.getClass().getTypeName() "
+                            + moveForwardOrBack.getClass().equals(MoveForward.class));*/
+
+//            if (game.getPlayer().getStep() == 1 && moveForwardOrBack.getClass().equals(MoveForward.class)) {
+//                JOptionPane.showMessageDialog(null,"ADIM SAYISI 1 VE GERI ADIM ATILMAK ISTENIYOR");
+
+//            } else {
+            /*if (game.getPlayer().getStep() == 1&& moveForwardOrBack.getClass().getTypeName()) {
+
+
+            }*/
+//            System.out.println("SECILEN BOLGE : " + moveForwardOrBack.getClass().getSimpleName());
+                moveForwardOrBack.move(
+                        new DirectionLocation().
+                                getLocationValueAccordingToEnteredValue(game, choose));
+
+//                printGamelastStuation(game);
+//                printArrays(game);
+
            /* if (oyunbitirildi) {
                 System.out.println("OYUN BITIRILDI VE SONRAKI ILK ASAMALAR");
                 new Sleep().sleep(1_000);
@@ -91,6 +109,7 @@ public class PlayGame {
         }
 
     }
+
 
     void printArrays(Game game) {
         new PrintArray().printMultipleArrayBoolean(game.getModel().getVisitedAreas());
@@ -156,10 +175,10 @@ public class PlayGame {
         if (index == player.getCompass().getLastLocation()) {
             //   System.out.println("index : " + index);
 
-            System.out.println("MOVE BACK ");
+//            System.out.println("MOVE BACK ");
             return new MoveBack(game);
         }
-        System.out.println("MOVE FORWARD ");
+//        System.out.println("MOVE FORWARD ");
 
         return new MoveForward(game);
     }
