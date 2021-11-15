@@ -10,9 +10,11 @@ import game.rule.BaseGameRule;
 
 public abstract class Player implements ISpecialFunctionForAKindOfPlayer {
 
+
     Game game;
     private boolean visitedDirections[][];
     TimeKeeper timeKeeper;
+    Score score;
 
     public Player(Game game) {
         this.game = game;
@@ -108,5 +110,9 @@ public abstract class Player implements ISpecialFunctionForAKindOfPlayer {
 
     public TimeKeeper getTimeKeeper() {
         return timeKeeper;
+    }
+
+    public Score getScore() {
+        return score;
     }
 }

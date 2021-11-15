@@ -1,10 +1,8 @@
 package game.play;
 
 import game.Game;
-import game.gamerepo.CreateLocationOfLastStep;
 import game.gamerepo.player.Player;
 import game.location.DirectionLocation;
-import game.location.Location;
 import game.move.Move;
 import game.move.MoveBack;
 import game.move.MoveForward;
@@ -40,7 +38,7 @@ public class PlayGame {
             if (player.getStep() == Math.pow(game.getModel().getGameSquares().length, 2)) {
                 gameFinishTime++;
                 printGamelastStuation(game);
-                System.out.println("OYUN BITIRILDI : " + gameFinishTime);
+                System.out.println("Toplam Bulunulan Cozum Sayisi: " + gameFinishTime);
 //                copyModel.sendModelToCompareAndAddToList(game.getModel());
             }
             int choose = player.getInput(game);
@@ -53,12 +51,12 @@ public class PlayGame {
         }
 
 
-        printTotalPlayedTime();
+        saveGameResultToScore();
     }
 
-    void printTotalPlayedTime() {
+    void saveGameResultToScore() {
         TimeCalcuation timeCalcuation = new TimeCalcuation();
-
+        player.getScore().updatePlayedTime();
         System.out.println(" Total played time : " + timeCalcuation.getTotalPassedTime(player));
     }
 

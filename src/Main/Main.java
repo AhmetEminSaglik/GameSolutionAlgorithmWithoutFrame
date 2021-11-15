@@ -21,7 +21,7 @@ public class Main {
                 "enterasan kisimsa su -4 ve -4 yaparak 1,4 konumunda 1 atiyor ve sonrasinda " +
                 "isler sacma sapan bir seye sariyor, buga giriyor surekli bu duzeltilecek");*/
 
-        int squareEdge=5;
+        int squareEdge=6;
         BuildGame buildGameModel = new BuildGame(squareEdge, squareEdge);
         Game game = buildGameModel.createGame();
 

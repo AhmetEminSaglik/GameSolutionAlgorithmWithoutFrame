@@ -49,7 +49,7 @@ CopyModel {
                     System.out.println("============================================================ AYNI GELDI GALIBA");
                     System.out.println("INDEX : "+index);
                     System.out.println("size : "+valueList.size());
-                    new Sleep().sleep(20_000);
+//                    new Sleep().sleep(20_000);
 
                     return;
                 }

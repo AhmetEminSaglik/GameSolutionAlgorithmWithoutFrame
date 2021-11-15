@@ -38,6 +38,7 @@ public class RobotGameOver implements IGameOver {
 //            System.out.println(" && allDirectionsAreVisitedAtStep1()  :" + allDirectionsAreVisitedAtStep1());
 //            System.out.println(getClass().getSimpleName() + " OYUN BITMISTIRRR");
 //            JOptionPane.showMessageDialog(null,"BBBBBBBBBBBB");
+            System.out.println("BUTUN COZUMLER YAPILMISTIR ::::");
             return true;
         }
      /*   System.out.println("isThereAnyAvaiableSquareInVisitedArea(game) : "+isThereAnyAvaiableSquareInVisitedArea(game));
