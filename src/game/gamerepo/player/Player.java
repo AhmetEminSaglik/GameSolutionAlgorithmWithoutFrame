@@ -2,6 +2,7 @@ package game.gamerepo.player;
 
 import compass.Compass;
 import game.Game;
+import game.gamerepo.player.robot.TimeKeeper;
 import game.location.DirectionLocation;
 import game.location.Location;
 import game.location.LocationsList;
@@ -11,10 +12,12 @@ public abstract class Player implements ISpecialFunctionForAKindOfPlayer {
 
     Game game;
     private boolean visitedDirections[][];
+    TimeKeeper timeKeeper;
 
     public Player(Game game) {
         this.game = game;
         clearVisitedDirections();
+        timeKeeper = new TimeKeeper();
     }
 
     public void clearVisitedDirections() {
@@ -101,5 +104,9 @@ public abstract class Player implements ISpecialFunctionForAKindOfPlayer {
 
     public boolean[][] getVisitedDirections() {
         return visitedDirections;
+    }
+
+    public TimeKeeper getTimeKeeper() {
+        return timeKeeper;
     }
 }

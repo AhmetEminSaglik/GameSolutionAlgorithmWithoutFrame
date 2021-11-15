@@ -51,11 +51,13 @@ public class RobotGameOver implements IGameOver {
     boolean isRobotFinishedAllLocations() {
         Location robotLocation = game.getPlayer().getLocation();
 
-        if (robotLocation.getX() > squareEdge ||
-                robotLocation.getY() > squareEdge) {
+        if (robotLocation.getX() == squareEdge-1 &&
+                robotLocation.getY() == squareEdge-1) {
             return true;
         }
+//        System.out.println("robotLocation   X : " + robotLocation.getX() + " Y : " + robotLocation.getY() +" squareEdge : "+squareEdge);
         return false;
+
     }
 
     boolean isRobotInTheLastLocation() {
@@ -68,9 +70,9 @@ public class RobotGameOver implements IGameOver {
 
     boolean allDirectionsAreVisitedAtStep1() { // dogru olursa oyun biter
         if (game.getPlayer().getStep() == 1) {
-            new PrintArray().printMultipleArray(game.getModel().getGameSquares());
-            System.out.println("Muhtemelen robot son konumda ve bosta visitedDirection var mi ona bakiyor : gelen cevap  " + (new CheckSquare().isAnySquareAvailableInVisitedDirection(game)));
-            new PrintArray().printMultipleArrayBoolean(game.getPlayer().getVisitedDirections());
+//            new PrintArray().printMultipleArray(game.getModel().getGameSquares());
+//            System.out.println("Muhtemelen robot son konumda ve bosta visitedDirection var mi ona bakiyor : gelen cevap  " + (new CheckSquare().isAnySquareAvailableInVisitedDirection(game)));
+//            new PrintArray().printMultipleArrayBoolean(game.getPlayer().getVisitedDirections());
             return !(new CheckSquare().isAnySquareAvailableInVisitedDirection(game));
         }
         return false;

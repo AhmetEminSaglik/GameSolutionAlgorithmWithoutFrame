@@ -37,11 +37,13 @@ public class CheckSquare extends BaseCheck {
 
     public boolean isSquareFreeFromVisitedDirection(Game game, int directionIndex) {
 
-        if (game.getPlayer().getVisitedDirections()[game.getPlayer().getStep()][directionIndex] == true) {
+        if (isIndexsSuitableForArray(game, directionIndex)) {
+            if (game.getPlayer().getVisitedDirections()[game.getPlayer().getStep()][directionIndex] == false) {
 //            System.out.println("game.getPlayer().getVisitedDirections()["+game.getPlayer().getStep()+"]["+directionIndex+"] : "+game.getPlayer().getVisitedDirections()[game.getPlayer().getStep()][directionIndex]);
-            return false;
+                return true;
+            }
         }
-        return true;
+        return false;
     }
 
     boolean isIndexsSuitableForArray(Game game, int choose) {

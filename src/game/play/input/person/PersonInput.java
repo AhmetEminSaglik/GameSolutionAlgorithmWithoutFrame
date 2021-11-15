@@ -52,8 +52,8 @@ public class PersonInput extends BaseControlInput implements IPlayerInput {
             return true;
 
         }
-        JOptionPane.showMessageDialog(null," 1 : "+validation.isInputValidForArray(game, choose));
-        JOptionPane.showMessageDialog(null," 1 : "+checkSquare.isSquareFreeFromVisitedArea(game, choose));
+//        JOptionPane.showMessageDialog(null," 1 : "+validation.isInputValidForArray(game, choose));
+//        JOptionPane.showMessageDialog(null," 1 : "+checkSquare.isSquareFreeFromVisitedArea(game, choose));
         return false;
     }
 

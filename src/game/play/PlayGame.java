@@ -12,7 +12,6 @@ import printarray.PrintArray;
 import validation.Validation;
 
 
-
 public class PlayGame {
 
     Game game;
@@ -53,8 +52,15 @@ public class PlayGame {
                             getLocationValueAccordingToEnteredValue(game, choose));
         }
 
+
+        printTotalPlayedTime();
     }
 
+    void printTotalPlayedTime() {
+        TimeCalcuation timeCalcuation = new TimeCalcuation();
+
+        System.out.println(" Total played time : " + timeCalcuation.getTotalPassedTime(player));
+    }
 
     void printArrays(Game game) {
         new PrintArray().printMultipleArrayBoolean(game.getModel().getVisitedAreas());

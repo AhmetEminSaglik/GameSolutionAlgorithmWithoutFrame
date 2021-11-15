@@ -17,4 +17,6 @@ public abstract class BaseCheck {
        // ErrorMessage.appearFatalError(getClass(), "burada compass degistiriliyor");
         this.compass = compass;
     }
+
+
 }

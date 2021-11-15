@@ -1,6 +1,7 @@
 package game.move;
 
 import errormessage.ErrorMessage;
+import errormessage.joptionpanel.ShowPanel;
 import game.gamerepo.FillGameSquare;
 import game.gamerepo.updategamemodel.UpdateValuesInGameModel;
 import compass.Compass;
@@ -65,7 +66,8 @@ public abstract class Move implements IMove { // ICalculateMove
 //            e.printStackTrace();
             }
         }else{
-            JOptionPane.showMessageDialog(null, " Y siniri asti ");
+//            JOptionPane.showMessageDialog(null, " Y siniri asti ");
+            ShowPanel.show(getClass(), " Y siniri asti ");
         }
 
     }

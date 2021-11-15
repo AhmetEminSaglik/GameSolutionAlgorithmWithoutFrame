@@ -9,13 +9,13 @@ import java.util.ArrayList;
 
 import game.location.LocationsList;
 
-public class CheckAroundSquare {
+public class CheckAroundSquare extends BaseCheck {
 
     Compass compass = new DirectionCompass();
     CheckSquare checkSquare = new CheckSquare();
     ArrayList<DirectionLocation> locationList = new LocationsList().getList();
 
- /*   public int getNumberOfHowManySquaresAreAvailable(Game game) {
+    public int getNumberOfHowManySquaresAreAvailable(Game game) {
 
         int availableDirectionCounter = 0;
 
@@ -26,7 +26,7 @@ public class CheckAroundSquare {
             }
         }
         return availableDirectionCounter;
-    }*/
+    }
 
     public boolean isThereAnyAvailableSquare(Game game) {
         compass = game.getPlayer().getCompass();
@@ -47,9 +47,17 @@ public class CheckAroundSquare {
     }
 
     boolean isLocationAvailable(Game game, int directionIndex) {
-
-        return checkSquare.isSquareFreeFromVisitedArea(game, directionIndex);
+//        if (isIndexsSuitableForArray(game, directionIndex)) {
+            return checkSquare.isSquareFreeFromVisitedArea(game, directionIndex);
+//        }
+//        return false;
     }
+
+/*    boolean isIndexsSuitableForArray(Game game, int choose) {
+        //System.out.println("| Compass :::  " +getCompass());
+        validation.setCompass(getCompass()); // ==>>> HATA BURADAN KAYNAKLANIYOR
+        return validation.isInputValidForArray(game, choose);
+    }*/
 
 //    public ArrayList<DirectionLocation> getLocationList(Player player) {
 //        if (locationList == null) {
