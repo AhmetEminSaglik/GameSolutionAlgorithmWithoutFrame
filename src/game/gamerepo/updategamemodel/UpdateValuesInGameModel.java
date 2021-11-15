@@ -24,7 +24,7 @@ public abstract class UpdateValuesInGameModel {
     public abstract void updatePlayerStepValue();
 
     public final void changePlayerLocation(Location location) {
-        movePlayer.changePlayerLocation(location);
+        movePlayer.changePlayerLocationByAdding(location);
     }
 
     /**

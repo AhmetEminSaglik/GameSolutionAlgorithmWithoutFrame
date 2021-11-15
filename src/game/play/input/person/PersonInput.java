@@ -7,6 +7,8 @@ import game.Game;
 import game.play.input.BaseControlInput;
 import validation.Validation;
 
+import javax.swing.*;
+
 public class PersonInput extends BaseControlInput implements IPlayerInput {
 
     CheckSquare checkSquare = new CheckSquare();
@@ -50,6 +52,8 @@ public class PersonInput extends BaseControlInput implements IPlayerInput {
             return true;
 
         }
+        JOptionPane.showMessageDialog(null," 1 : "+validation.isInputValidForArray(game, choose));
+        JOptionPane.showMessageDialog(null," 1 : "+checkSquare.isSquareFreeFromVisitedArea(game, choose));
         return false;
     }
 

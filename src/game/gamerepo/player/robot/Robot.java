@@ -11,6 +11,7 @@ import game.location.DirectionLocation;
 import game.location.LocationsList;
 import game.play.input.robot.RobotInput;
 import game.rule.BaseGameRule;
+
 import java.util.ArrayList;
 
 public class Robot extends Player {
@@ -75,46 +76,48 @@ public class Robot extends Player {
         return gameRule;
     }
 
+
     @Override
-    public void updateVisitedDirection(boolean movedFordward, DirectionLocation location) {
+    public void updateVisitedDirection(boolean movedFordward, DirectionLocation location) {// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! BURASI REFACTOR EDILECEK adim sayisi eklenecek
 //        System.out.println("location.getId() -> " + location.getId());
-        if (location.getId() >=0) {
+
+        if (getStep() > 1) {//location.getId() >=0
 //        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 //        new Sleep().sleep(3000);
-        if (movedFordward == true) {
+            if (movedFordward == true) {
 //            System.out.println("Forward Step " + getStep());
 
             /*getRobotMemory()
                     .*/
-            getVisitedDirections()[getStep()-1][location.getId()] = true;
+                getVisitedDirections()[getStep() - 1][location.getId()] = true;
 //            System.out.println(" MOVEFORWARRDD  STEPPPP " + getStep() + " /./" +/* getRobotMemory()
 //                    .*/getVisitedDirections()[getStep()][location.getId()]);
-        } else {
-            ArrayList<DirectionLocation> locationsList = new LocationsList().getList();
+            } else {
+                ArrayList<DirectionLocation> locationsList = new LocationsList().getList();
 
 //            System.out.println("Back Step : " + getStep());
 
-            if (getStep() < Math.pow(getGame().getModel().getGameSquares().length, 2)) {
+                if (getStep() < Math.pow(getGame().getModel().getGameSquares().length, 2)) {
 
 //                System.out.println(" X : " + getGame().getPlayer().getLocation().getX() + " Y : " + getGame().getPlayer().getLocation().getY());
 
 //                    new PrintArray().printMultipleArrayBoolean(getRobotMemory().getVisitedDirections());
 //                    System.out.println("-----");
 //                System.out.println("GUNCEL ADIM SAYISIIIIIIIIIIIIIIII : " + getStep());
-                for (int i = 0; i < locationsList.size() - 1; i++) {
+                    for (int i = 0; i < locationsList.size() - 1; i++) {//last locationu almamak icin  < size -1 dedim
 //                    System.out.println(" getRobotMemory().getVisitedDirections()[" + getStep() + "][locationsList.get(" + i + ").getId()] " +/* getRobotMemory().*/getVisitedDirections()[getStep()][locationsList.get(i).getId()]);
-                    /*getRobotMemory().*/
-                    getVisitedDirections()[getStep()][locationsList.get(i).getId()] = false;
+                        /*getRobotMemory().*/
+                        getVisitedDirections()[getStep()][locationsList.get(i).getId()] = false;
 
-                }
+                    }
 //                JOptionPane.showMessageDialog(null, "Sorun su 19. adimda geri adim atmadan once cevresindeki muhurleri temizliyoruz  ama,\n" +
 //                        "18. adimdan 19. adima giderken muhurlenmedigi icin tum alanlar muhursuz gorunuyor. ");
 //                    System.out.println("-----");
 //                    new PrintArray().printMultipleArrayBoolean(getRobotMemory().getVisitedDirections());
 
 //                    new Sleep().sleep(20_000);
+                }
             }
-        }
         }
 //        System.out.println("Islem yapildi robot tarafindan");
 //        new Sleep().sleep(5000);

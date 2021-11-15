@@ -48,4 +48,11 @@ public class DirectionLocation extends Location {
         this.compass = compass;
     }
 
+    @Override
+    public String toString() {
+        return "DirectionLocation{" +
+                "id=" + id +" X "+getX()+"" +
+                "Y "+getY()+
+                '}';
+    }
 }

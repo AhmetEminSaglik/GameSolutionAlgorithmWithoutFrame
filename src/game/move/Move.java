@@ -19,7 +19,7 @@ public abstract class Move implements IMove { // ICalculateMove
     Compass compass; //= new KeyboardCompass();
     Validation validation = new Validation();
     UpdateValuesInGameModel updateValuesInGameModel;
-    FillGameSquare fillGameSquare;
+    private FillGameSquare fillGameSquare;
 
     DirectionLocation directionLocation;
 //    private Location location;
@@ -29,66 +29,59 @@ public abstract class Move implements IMove { // ICalculateMove
         compass = game.getPlayer().getCompass();
         fillGameSquare = new FillGameSquare(game);
     }
-
-    void changeStartLocationSpecialMovement() {
-        int locationX = game.getPlayer().getLocation().getX();
-        int locationY = game.getPlayer().getLocation().getY();
-        JOptionPane.showMessageDialog(null," AAA locasyonlar X:"+locationX+" / Y :"+locationY);
-        locationX++;
-        JOptionPane.showMessageDialog(null," BBB locasyonlar X:"+locationX+" / Y :"+locationY);
-        if (locationX >= game.getModel().getGameSquares().length) {
-            locationX = 0;
-            locationY++;
-            JOptionPane.showMessageDialog(null," CCC locasyonlar X:"+locationX+" / Y :"+locationY);
-            if (locationY >= game.getModel().getGameSquares().length) {
-                JOptionPane.showMessageDialog(null," DDD locasyonlar X:"+locationX+" / Y :"+locationY);
-                ErrorMessage.appearFatalError(getClass(), " butun bolgeler denenmistir program kapanacaktir");
-            }
-        }
-        JOptionPane.showMessageDialog(null,"EEE locasyonlar X:"+locationX+" / Y :"+locationY);
-        try {
-//            JOptionPane.showMessageDialog(null, "SUanki game  adress  RESET ONCESI: " + game.toString());
-            ResetAllDataForGameAndPlayer resetData = new ResetAllDataForGameAndPlayer(game);
-
-//            resetData.clearPlayerData(game.getPlayer());
-            resetData.clearPlayerData(game.getPlayer());
-            resetData.clearGameData(game);
-
-
-            SelectFirstSqaureToStart selectFirstSqaureToStart = new SelectFirstSqaureToStart(game);
-
-            selectFirstSqaureToStart.selectSquareStart(locationX, locationY);
-            JOptionPane.showMessageDialog(null," HEsaplanilan yeni locasyonlar X:"+locationX+" / Y :"+locationY);
-
-            new MoveForward(game).move(selectFirstSqaureToStart);
-//            JOptionPane.showMessageDialog(null, "SUanki game  adress  RESET SONRASI ILERLENILEN GAME : " + game.toString());
-        } catch (InterruptedException e) {
-            ErrorMessage.appearFatalError(getClass(), "OYUN SIFIRLAMASINDA SORUN OLDU : " + e.getMessage());
-//            e.printStackTrace();
-        }
-        System.out.println("LOCATION DEGISTIIIIIIIIIIIIIII");
-        new Sleep().sleep(5_000);
-
-    }
-
-//static int counter=0;
     public final void move(DirectionLocation directionLocation) {
-
         if (game.getPlayer().getStep() == 1 && getClass().equals(MoveBack.class)) {
-//            counter++;
-//            JOptionPane.showMessageDialog(null," adim sayisi 1 ve geri adim istegi gelme sayisi : "+counter);
-//            changeStartLocationSpecialMovement();
-//            JOptionPane.showMessageDialog(null, " MOVE.move() a ozel duruma  GIRDIIIIIIIIIIIIIIIII bak bakayim ne halde yeni durumu");
-            System.out.println("s");
+            changeStartLocationSpecialMovement();
         } else {
-//            System.out.println("Chose Location : " + directionLocation.toString());
             setLocation(directionLocation);
-            updateBeforeStep(directionLocation);
+            updateBeforeStep();
             updatePlayerStepValue();
             updateAfterStep();
             fillGameSquare.printStepInGameSquare();
         }
     }
+
+    void changeStartLocationSpecialMovement() {
+        int locationX = game.getPlayer().getLocation().getX();
+        int locationY = game.getPlayer().getLocation().getY();
+        locationX++;
+        if (locationX >= game.getModel().getGameSquares().length) {
+            locationX = 0;
+            locationY++;
+
+        }
+        if (locationY < game.getModel().getGameSquares().length) {
+
+            try {
+                ResetAllDataForGameAndPlayer resetData = new ResetAllDataForGameAndPlayer(game);
+                resetData.clearPlayerData(game.getPlayer());
+                resetData.clearGameData(game);
+                SelectFirstSqaureToStart selectFirstSqaureToStart = new SelectFirstSqaureToStart(game);
+                selectFirstSqaureToStart.selectSquareStart(locationX, locationY);
+
+                selectFirstSqaureToStart.locateThePlayer();
+            } catch (InterruptedException e) {
+                ErrorMessage.appearFatalError(getClass(), "OYUN SIFIRLAMASINDA SORUN OLDU : " + e.getMessage());
+//            e.printStackTrace();
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, " Y siniri asti ");
+        }
+
+    }
+
+    void printLocationOfStep1() {
+        for (int j = game.getModel().getGameSquares().length - 1; j >= 0; j--) {
+            for (int i = 0; i < game.getModel().getGameSquares()[j].length; i++) {
+                if (game.getModel().getGameSquares()[j][i] == 1) {
+                    JOptionPane.showMessageDialog(null, "ADIM 1 LOCASIYONU : " + j + " " + i);
+                    return;
+                }
+            }
+            System.out.println();
+        }
+    }
+
 
     @Override
     public void updateVisitedArea() {
@@ -108,5 +101,7 @@ public abstract class Move implements IMove { // ICalculateMove
         return "Move{" + "game=" + game + ", compass=" + compass + ", validation=" + validation + ", updateValuesInGameModel=" + updateValuesInGameModel + ", fillGameSquare=" + fillGameSquare + ", directionLocation=" + directionLocation + '}';
     }
 
-
+    public FillGameSquare getFillGameSquare() {
+        return fillGameSquare;
+    }
 }

@@ -4,6 +4,8 @@ import game.Game;
 import game.location.DirectionLocation;
 import game.move.seal.Signature;
 
+import javax.swing.*;
+
 public class UpdateForMovedForward extends UpdateValuesInGameModel {
 
     public UpdateForMovedForward(Game game) {
@@ -24,6 +26,7 @@ public class UpdateForMovedForward extends UpdateValuesInGameModel {
 
     @Override
     public void updateValueVisitedDirection(DirectionLocation directionLocation) {
+
         player.updateVisitedDirection(ifMovedForwardThenSealTheLocation().isSealed(), directionLocation);
     }
 
@@ -34,8 +37,8 @@ public class UpdateForMovedForward extends UpdateValuesInGameModel {
     }*/
 
     /* @Override
-    public void changePlayerLocation(Location location) {
-        movePlayer.changePlayerLocation(location);
+    public void changePlayerLocationByAdding(Location location) {
+        movePlayer.changePlayerLocationByAdding(location);
     }*/
     /*@Override
     boolean isMovedForward() {

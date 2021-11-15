@@ -5,6 +5,8 @@ import game.location.DirectionLocation;
 import game.move.seal.Signature;
 import sleep.Sleep;
 
+import javax.swing.*;
+
 public class UpdateForMovedBack extends UpdateValuesInGameModel {
 
     public UpdateForMovedBack(Game game) {
@@ -24,6 +26,7 @@ public class UpdateForMovedBack extends UpdateValuesInGameModel {
     @Override
     public void updateValueVisitedDirection(DirectionLocation directionLocation) {
 //        System.out.println(" (1 saniye durecak) >>>>   GERI ADIM ICIN MUHUR KALDIRIM GELEN DEGER : "+directionLocation);
+
             player.updateVisitedDirection(ifMovedForwardThenSealTheLocation().isSealed(), directionLocation);
 //        new Sleep().sleep(1_000);
     }

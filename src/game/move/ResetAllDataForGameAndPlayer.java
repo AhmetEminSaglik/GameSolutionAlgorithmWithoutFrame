@@ -4,8 +4,6 @@ import game.Game;
 import game.gamerepo.BuildGame;
 import game.gamerepo.player.Player;
 
-import javax.swing.*;
-
 public class ResetAllDataForGameAndPlayer {
     int squareEdge;
     BuildGame buildGame;

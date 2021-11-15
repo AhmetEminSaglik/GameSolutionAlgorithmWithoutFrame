@@ -32,7 +32,7 @@ public class MoveBack extends Move {
     }
 
     @Override
-    public void updateVisitedDirection(DirectionLocation location) {
+    public void updateVisitedDirection() {
 //        updateValuesInGameModel.updateValueVisitedDirection();
 //        game.getPlayer().updateVisitedDirection();
 //        new SealationOfLocation(game).updateLocationCondition(
@@ -80,16 +80,24 @@ public class MoveBack extends Move {
 
 
     }*/
-
     @Override
-    public void updatePlayerLocation(Location location) {
+    public void updatePlayerLocation() {
 //        System.out.println("MUHTEMELEN 0 LANINCA GUNCELLENECEK KONUM : " + location);
-        updateValuesInGameModel.changePlayerLocation(location);
+        updateValuesInGameModel.changePlayerLocation(getDirectionLocation());
+//        System.out.println("gelen location : X " + getDirectionLocation().getX() + " Y : " + getDirectionLocation().getY() +
+//                "adim sayisi : " + game.getPlayer().getStep());
+      /*  if(game.getModel().getGameSquares()[0][0]!=1){
+            JOptionPane.showMessageDialog(null,"player locasyonu DEGISTIIIIII uradan mi kaynaklandi? "+
+                    "gelen location : X"+location.getX()+" Y : "+location.getY());
+        }*/
+
+
     }
 
 
     void clearAllDirectionBeforeGoBack() {
         ArrayList<DirectionLocation> directionLocationList = new LocationsList().getList();
+//        JOptionPane.showMessageDialog(null,getClass().getName()+" GERIYE GIDECEK");
         for (int i = 0; i < directionLocationList.size(); i++) {
             updateValuesInGameModel.updateValueVisitedDirection(directionLocationList.get(i));
         }
@@ -97,7 +105,7 @@ public class MoveBack extends Move {
     }
 
     @Override
-    public void updateBeforeStep(DirectionLocation location) {
+    public void updateBeforeStep( ) {
 //        System.out.println(getClass().getSimpleName() + " -->  before > update visited direction");
 //        updateVisitedDirection(getLocation());
         updateVisitedArea();
@@ -120,7 +128,10 @@ public class MoveBack extends Move {
 //            System.out.println("GERI ADIM ATARKEN ADIM SAYISI 2 DEN DAHA DA DUSUK KISMINDAYIZ  adim sayisi : " + game.getPlayer().getStep());
 ////            new Sleep().sleep(5_000);
 //        }
-        updatePlayerLocation(getDirectionLocation());
+      /*  if (game.getPlayer().getStep() < 2) {
+            JOptionPane.showMessageDialog(null, "!!!!!!!! OLMAMALIYDI  ADIM SAYISI " + game.getPlayer().getStep() + " ve GERI ADIMDA LOCASYON DEGISIKLI OLACAK");
+        }*/
+        updatePlayerLocation();
 
 
     }

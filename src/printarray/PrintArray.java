@@ -43,11 +43,13 @@ public class PrintArray {
             for (int j = 0; j < array[i].length; j++) {
                 if (array[i][j] == true) {
 
-                    System.out.print("[" + i + " ][" + j + "]  : ");
-                    System.out.println(array[i][j]);
+                System.out.print("[" + i + " ][" + j + "]  : ");
+                System.out.print(array[i][j]);
 //                    new Sleep().sleep(1_000);
                 }
+
             }
+
 
         }
         System.out.println("DIzi yazdirildi ve beklenecek 5 saniye");

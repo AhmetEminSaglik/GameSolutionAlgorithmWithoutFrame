@@ -35,7 +35,9 @@ public class PrepareGame {
     void prepareToPlay() {
         switchDirection = new SwitchDirection(compass);
         selectFirstSqaureToStart.selectSquareStart(0, 0);
-        new MoveForward(game).move(selectFirstSqaureToStart);
+        selectFirstSqaureToStart.locateThePlayer();
+//        new MoveForward(game).move(selectFirstSqaureToStart);
+
 
     }
 

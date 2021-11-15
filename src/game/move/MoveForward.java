@@ -5,6 +5,8 @@ import game.gamerepo.updategamemodel.UpdateForMovedForward;
 import game.location.DirectionLocation;
 import game.location.Location;
 
+import javax.swing.*;
+
 public class MoveForward extends Move {
 
     public MoveForward(Game game) {
@@ -20,9 +22,10 @@ public class MoveForward extends Move {
     }
 
     @Override
-    public void updateVisitedDirection(DirectionLocation location) {
+    public void updateVisitedDirection() {//DirectionLocation location
 //        game.getPlayer().updateVisitedDirection();
-        updateValuesInGameModel.updateValueVisitedDirection(location);
+//        JOptionPane.showMessageDialog(null,getClass().getName());
+        updateValuesInGameModel.updateValueVisitedDirection(getDirectionLocation());
     }
 
    /* @Override
@@ -36,13 +39,13 @@ public class MoveForward extends Move {
 //        changeVisitedDirection(location);
 //    }
     @Override
-    public void updatePlayerLocation(Location location) {
-        changePlayerLocation(location);
+    public void updatePlayerLocation() {
+        changePlayerLocation(getDirectionLocation());
 
     }
 
     @Override
-    public void updateBeforeStep(DirectionLocation directionLocation) {
+    public void updateBeforeStep( ) {
 
 //        updateVisitedDirection(getLocation());
 //        updateVisitedArea();
@@ -53,9 +56,9 @@ public class MoveForward extends Move {
     @Override
     public void updateAfterStep() {
 //        updatePlayerStepValue();
-        updatePlayerLocation(getDirectionLocation());
+        updatePlayerLocation();
         updateVisitedArea();
-        updateVisitedDirection(directionLocation);
+        updateVisitedDirection();
 
     }
 
@@ -73,7 +76,7 @@ public class MoveForward extends Move {
         updateValuesInGameModel.updateValueVisitedArea();
     }*/
 
-    void changePlayerLocation(Location location) {
+    public void changePlayerLocation(Location location) {
         updateValuesInGameModel.changePlayerLocation(location);
     }
 

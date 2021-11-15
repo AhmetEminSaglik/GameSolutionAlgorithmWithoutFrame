@@ -13,17 +13,31 @@ public class MovePlayer {
         this.player = game.getPlayer();
     }
 
-    void xChangeLocation(int x) {
+    void xChangeLocationByAdding(int x) {
         player.getLocation().setX(player.getLocation().getX() + x);
     }
 
-    void yChangeLocation(int y) {
+    void yChangeLocationByAdding(int y) {
         player.getLocation().setY(player.getLocation().getY() + y);
     }
 
-    public void changePlayerLocation(Location location) {
-        xChangeLocation(location.getX());
-        yChangeLocation(location.getY());
+    public void changePlayerLocationByAdding(Location location) {
+        xChangeLocationByAdding(location.getX());
+        yChangeLocationByAdding(location.getY());
     }
+
+    public void changePlayerLocationByExcatlyLocation(Location location) {
+        xChangeLocationByExcatly(location.getX());
+        yChangeLocationByExcatly(location.getY());
+    }
+
+    void xChangeLocationByExcatly(int x) {
+        player.getLocation().setX(x);
+    }
+
+    void yChangeLocationByExcatly(int y) {
+        player.getLocation().setY(y);
+    }
+
 
 }
