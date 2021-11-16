@@ -4,9 +4,6 @@ import game.location.DirectionLocation;
 
 public class NorthWest extends DirectionLocation {
 
-//    public NorthWest(Compass compass) {
-//        super(compass);
-//    }
 
     @Override
     public int getId() {

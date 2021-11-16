@@ -7,7 +7,6 @@ import game.move.Move;
 import game.move.MoveBack;
 import game.move.MoveForward;
 import printarray.PrintArray;
-import validation.Validation;
 
 
 public class PlayGame {
@@ -15,8 +14,9 @@ public class PlayGame {
     Game game;
     Player player;
     PrepareGame prepareGame;
-
-    Validation validation = new Validation();
+    ComparisonOfSolutions comparisonOfSolutions;
+    long gameFinishTime = 0;
+//    Validation validation = new Validation();
 
     public PlayGame(Game game) {
         this.game = game;
@@ -24,35 +24,43 @@ public class PlayGame {
     }
 
 
+    void compareSolutions() {
+        comparisonOfSolutions.compareSolution();
+    }
+
     public void playGame() {
         prepareGame = new PrepareGame(game);
-
         Move moveForwardOrBack;
+//        printGamelastStuation(game);
 
-        printGamelastStuation(game);
+        comparisonOfSolutions = new ComparisonOfSolutions(game);
 
-        long gameFinishTime = 0;
 
-//        CopyModel copyModel = new CopyModel();
         while (!player.getGameRule().isGameOver(game)) {
-            if (player.getStep() == Math.pow(game.getModel().getGameSquares().length, 2)) {
-                gameFinishTime++;
-                printGamelastStuation(game);
-                System.out.println("Toplam Bulunulan Cozum Sayisi: " + gameFinishTime);
-//                copyModel.sendModelToCompareAndAddToList(game.getModel());
-            }
+
+            calculatePlayerTotalWinScore();
+
             int choose = player.getInput(game);
 
             moveForwardOrBack = getMoveBackOrForward(choose);
 
-            moveForwardOrBack.move(
-                    new DirectionLocation().
-                            getLocationValueAccordingToEnteredValue(game, choose));
+            moveForwardOrBack.move(new DirectionLocation().getLocationValueAccordingToEnteredValue(game, choose));
+//            printGamelastStuation(game);
         }
-
 
         saveGameResultToScore();
     }
+
+    void calculatePlayerTotalWinScore() {
+        if (player.getStep() == Math.pow(game.getModel().getGameSquares().length, 2)) {
+            gameFinishTime++;
+            printGamelastStuation(game);
+
+            System.out.println("Toplam Bulunulan Cozum Sayisi: " + gameFinishTime);
+//                compareSolutions();
+        }
+    }
+
 
     void saveGameResultToScore() {
         TimeCalcuation timeCalcuation = new TimeCalcuation();
@@ -65,9 +73,7 @@ public class PlayGame {
         new PrintArray().printMultipleArrayBoolean(game.getPlayer().getVisitedDirections());
     }
 
-
     void printGamelastStuation(Game game) {
-
         System.out.println("ADIM SAYISI : " + game.getPlayer().getStep());
         new PrintArray().printMultipleArray(game.getModel().getGameSquares());
         System.out.println("----------------------------------");
@@ -80,10 +86,4 @@ public class PlayGame {
         return new MoveForward(game);
     }
 
- /*   Location getLocationValueAccordingToEnteredValue(int choose) {
-        if (choose == game.getPlayer().getCompass().getLastLocation()) {
-            return new CreateLocationOfLastStep(game).createLastStepLocation();
-        }
-        return prepareGame.switchDirection.choseDirection(choose);
-    }*/
 }

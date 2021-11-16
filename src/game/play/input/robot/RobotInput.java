@@ -22,12 +22,6 @@ public class RobotInput extends BaseControlInput implements IRobotInput {
         return solution.getLocationInput(game, robotMemory);
     }
 
-//    @Override
-//    public int getInput() { // visited area , visited direction
-//        Yapilacaklar.stickNote("Robotun ilerlemesi musait olan alanlar hesaplanip input seklinde alinacaktir\n"
-//                + " once bos alana ardindan gidilmemis alana gore hesaplanacaktir.");
-//        return solution.getLocationInput(game);
-//    }
     @Override
     public boolean isInputSuitableToMoveForward(Game game, int choose) {
         ErrorMessage.appearFatalError(getClass(), "BURAYA GELDIIII /  burasi kullanilmiyor");

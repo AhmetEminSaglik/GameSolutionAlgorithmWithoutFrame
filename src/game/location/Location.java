@@ -23,7 +23,7 @@ public class Location {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + "{x=" + getX() + ", y=" + getY() + "}"; //To change body of generated methods, choose Tools | Templates.
+        return getClass().getSimpleName() + "{x=" + getX() + ", y=" + getY() + "}";
     }
 
     public void printLocation() {

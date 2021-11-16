@@ -4,13 +4,11 @@ import game.Game;
 import game.location.DirectionLocation;
 import game.move.seal.Signature;
 
-import javax.swing.*;
 
 public class UpdateForMovedForward extends UpdateValuesInGameModel {
 
     public UpdateForMovedForward(Game game) {
         super(game);
-        //System.out.println("game :|||||||  " + game);
     }
 
     @Override
@@ -26,32 +24,7 @@ public class UpdateForMovedForward extends UpdateValuesInGameModel {
 
     @Override
     public void updateValueVisitedDirection(DirectionLocation directionLocation) {
-
-        player.updateVisitedDirection(ifMovedForwardThenSealTheLocation().isSealed(), directionLocation);
+        player.updateVisitedDirection(ifMovedForwardThenSealTheLocation().isSealed(), game.getPlayer().getStep()-1, directionLocation);
     }
 
-
-    /*@Override
-    public void updateVisitedDirection(DirectionLocation location) {
-        game.getPlayer().updateVisitedDirection(ifMovedForwardThenSealTheLocation().isSealed(),location );
-    }*/
-
-    /* @Override
-    public void changePlayerLocationByAdding(Location location) {
-        movePlayer.changePlayerLocationByAdding(location);
-    }*/
-    /*@Override
-    boolean isMovedForward() {
-        return true;
-    }*/
-
-//    @Override
-//    public void changeVisitedDirection(Location location) {
-//        super.changeVisitedDirection(location); //To change body of generated methods, choose Tools | Templates.
-//
-//    }
-//    @Override
-//    public void updateVisitedDirection() {
-//
-//    }
 }

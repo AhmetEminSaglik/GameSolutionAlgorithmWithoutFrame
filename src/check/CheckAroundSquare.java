@@ -30,16 +30,9 @@ public class CheckAroundSquare extends BaseCheck {
 
     public boolean isThereAnyAvailableSquare(Game game) {
         compass = game.getPlayer().getCompass();
-        checkSquare.setCompass(compass); // bu normalde isLocationAvailable() fonksiyonunun ilk satiriydi
-
-//        locationList = getLocationList(game.getPlayer());
-
-//        new Sleep().sleep(3000);
-        //  System.out.println("locationList.size() " + locationList.size());
+        checkSquare.setCompass(compass);
         for (int i = 0; i < locationList.size(); i++) {
-//            System.out.println("forrr L:LLLLL " + locationList.get(i).getId());
             if (isLocationAvailable(game, locationList.get(i).getId())) {
-                //System.out.println(" Available direction : " + locationList.get(i).getClass().getSimpleName());
                 return true;
             }
         }
@@ -47,33 +40,6 @@ public class CheckAroundSquare extends BaseCheck {
     }
 
     boolean isLocationAvailable(Game game, int directionIndex) {
-//        if (isIndexsSuitableForArray(game, directionIndex)) {
             return checkSquare.isSquareFreeFromVisitedArea(game, directionIndex);
-//        }
-//        return false;
     }
-
-/*    boolean isIndexsSuitableForArray(Game game, int choose) {
-        //System.out.println("| Compass :::  " +getCompass());
-        validation.setCompass(getCompass()); // ==>>> HATA BURADAN KAYNAKLANIYOR
-        return validation.isInputValidForArray(game, choose);
-    }*/
-
-//    public ArrayList<DirectionLocation> getLocationList(Player player) {
-//        if (locationList == null) {
-//            locationList = new LocationsList(player.getCompass()).getList();
-//        }
-//        return locationList;
-//    }
-//
-//    public ArrayList<DirectionLocation> getLocationList() {
-//        if (locationList == null) {
-//            ErrorMessage.appearFatalError(getClass(), "Daha once tanimlanmamis yon lokasyonundan yon almaya calisiyorsunuz");
-//        }
-//        return locationList;
-//    }
-//
-//    public void setLocationList(ArrayList<DirectionLocation> locationList) {
-//        this.locationList = locationList;
-//    }
 }

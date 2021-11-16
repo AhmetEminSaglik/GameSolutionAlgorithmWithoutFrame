@@ -30,13 +30,4 @@ public class Sleep {
         ErrorMessage.appearWarnings(getClass(), " 404 ");
     }
 
-//    public void deneme(int value) {
-//        System.out.println("=====> " + value);
-//        sleep(3000);
-//    }
-//
-//    public void deneme(String value) {
-//        System.out.println("=====> " + value);
-//        sleep(3000);
-//    }
 }

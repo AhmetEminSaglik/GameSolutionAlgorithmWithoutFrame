@@ -9,13 +9,9 @@ import game.move.MoveForward;
 public class PrepareGame {
 
     Game game;
-
     Compass compass;
     SwitchDirection switchDirection;
-    PlayGame playGame;
     SelectFirstSqaureToStart selectFirstSqaureToStart;
-    //ScanInput scanInput = new ScanInput();
-//    IBaseInput baseInput;
 
     public PrepareGame(Game game) {
 
@@ -27,7 +23,6 @@ public class PrepareGame {
     void fillNullReferans(Game game) {
         this.game = game;
 
-        //  updateGameModel = new UpdateGameModel(gameModel);
         selectFirstSqaureToStart = new SelectFirstSqaureToStart(game);
         compass = game.getPlayer().getCompass();
     }
@@ -36,9 +31,6 @@ public class PrepareGame {
         switchDirection = new SwitchDirection(compass);
         selectFirstSqaureToStart.selectSquareStart(0, 0);
         selectFirstSqaureToStart.locateThePlayer();
-//        new MoveForward(game).move(selectFirstSqaureToStart);
-
-
     }
 
 }

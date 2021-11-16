@@ -10,7 +10,6 @@ import game.location.Location;
 public class Validation {
 
     private Compass compass;
-    //   private SwitchDirection switchDirection;
 
     public boolean validateSquareNumbers(int number) {
 
@@ -36,7 +35,7 @@ public class Validation {
 
     /**
      * Instead of coding to calculate both X and Y, one code and calculate
-     * player.X and direction. X or Y. It is belong to which direction you send
+     * player.X and direction. X or Y. It is belongs to which direction you send
      */
     boolean calculateValidOrNot(int maxSquare, int location, int value) {
         if (needToCalculateBySum(value)) {
@@ -52,7 +51,6 @@ public class Validation {
     }
 
     /**
-     *
      * @param input = Keyboards input direction value
      */
     public boolean isInputValidForArray(Game game, int input) {
@@ -60,17 +58,15 @@ public class Validation {
         Location location;
         Player player = game.getPlayer();
         compass = game.getPlayer().getCompass();
-        //System.out.println("COMPASZ|ZZZZZZZZZZZZ  " + compass);
         location = new DirectionLocation().getLocationFromCompass(compass, input);
         /* kuzeyden baslayip saat yonunde kontrol edecegi icin  yon pusulasini gonderiyoruz
         Kullanici pusulasi  kullanici girisli pusulada kullanildigi icin burada dizi indexinde kullanamiyoruz
         O yuzden bu sekilde gonderdik
             
          */
-       // System.out.println(" location.getX() : " + location.getX());
         try {
 
-            // ??? HATA CIKARSA BUNU AKTIFLESTIR  switchDirection = new SwitchDirection(compass); 
+            // ??? HATA CIKARSA BUNU AKTIFLESTIR  switchDirection = new SwitchDirection(compass);
             // switchDirection.choseDirection(input);
             if (calculateValidOrNot(game.getModel().getGameSquares().length, player.getLocation().getX(), location.getX())
                     && calculateValidOrNot(game.getModel().getGameSquares().length, player.getLocation().getY(), location.getY())) {
@@ -78,18 +74,18 @@ public class Validation {
                 return true;
             }
         } catch (Exception ex) {
-            /*System.out.println("HATAAAAAAAAAAAAAAAAAAAAAAAAAAAA : ::::: " + ex.getMessage());
-
-            System.out.println("player.getLocation().getX() : " + player.getLocation().getX());
-            System.out.println(" location.getX() : " + location.getX());
-            System.out.println("player.getLocation().getY() : " + player.getLocation().getY() + " location.getY() : " + location.getY());
-            */
             ErrorMessage.appearClassicError(getClass(), ex.getMessage());
         }
-
-        // new ClassicErrorMessage().showMessage("entered a number which may cause to  go out ouf borders. Please enter valid value : " +input);
         return false;
 
+    }
+
+    public boolean isStepValueAvailable(Game game, int step) {
+
+        if (step < Math.pow(game.getModel().getGameSquares().length, 2)) {
+            return true;
+        }
+        return false;
     }
 
     public Compass getCompass() {

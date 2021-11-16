@@ -1,5 +1,7 @@
 package utility;
 
+import errormessage.ErrorMessage;
+
 public class ConvertVariable {
 
     public String intToString(int value) {
@@ -13,7 +15,7 @@ public class ConvertVariable {
             return Integer.parseInt(text);
 
         } catch (NumberFormatException ex) {
-            //   ErrorMessage.appearClassicError(ex.getMessage());
+            ErrorMessage.appearClassicError(getClass(), ex.getMessage());
         }
         return -1;
 

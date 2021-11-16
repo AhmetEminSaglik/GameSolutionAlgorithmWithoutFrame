@@ -7,12 +7,11 @@ import game.Game;
 import game.play.input.BaseControlInput;
 import validation.Validation;
 
-import javax.swing.*;
 
 public class PersonInput extends BaseControlInput implements IPlayerInput {
 
-    CheckSquare checkSquare = new CheckSquare();
-    Compass compass = new KeyboardCompass();
+//    CheckSquare checkSquare = new CheckSquare();
+//    Compass compass = new KeyboardCompass();
 
     private SafeScannerInput scannerInput = new SafeScannerInput();
 
@@ -29,7 +28,7 @@ public class PersonInput extends BaseControlInput implements IPlayerInput {
             if (isMoveableDirectionInput(choose)) {
                 return choose;
             } else {
-                System.out.println("You can not  go that direction, please choose another direction");// + new Location().getLocationFromCompass(compass, choose).toString()
+                System.out.println("You can not  go that direction, please choose another direction");
             }
         }
     }
@@ -50,10 +49,7 @@ public class PersonInput extends BaseControlInput implements IPlayerInput {
         if (validation.isInputValidForArray(game, choose)
                 && checkSquare.isSquareFreeFromVisitedArea(game, choose)) {
             return true;
-
         }
-//        JOptionPane.showMessageDialog(null," 1 : "+validation.isInputValidForArray(game, choose));
-//        JOptionPane.showMessageDialog(null," 1 : "+checkSquare.isSquareFreeFromVisitedArea(game, choose));
         return false;
     }
 
@@ -64,7 +60,6 @@ public class PersonInput extends BaseControlInput implements IPlayerInput {
 
     boolean checkInputForBack(Game game, int choose) {
         if (choose == new KeyboardCompass().getLastLocation() && game.getPlayer().getStep() > 1) {
-            //System.out.println("geldi");
             return true;
         }
         return false;
@@ -76,16 +71,4 @@ public class PersonInput extends BaseControlInput implements IPlayerInput {
         }
         return false;
     }
-//    @Override
-//    public int getSafeInput(Model gameModel) {
-//        while (true) {
-//            int input = scannerInput.getInput();
-//            if (checkSquare.isSquareFreeFromVisitedArea(gameModel, input)) {
-//
-//                return input;
-//            }
-//        }
-//
-//    }
-
 }

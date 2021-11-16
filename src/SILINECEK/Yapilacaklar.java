@@ -1,3 +1,4 @@
+/*
 
 package SILINECEK;
 
@@ -11,3 +12,4 @@ public class Yapilacaklar {
     }
 
 }
+*/

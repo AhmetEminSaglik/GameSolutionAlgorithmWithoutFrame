@@ -27,27 +27,14 @@ public abstract class UpdateValuesInGameModel {
         movePlayer.changePlayerLocationByAdding(location);
     }
 
-    /**
-     * if player moved forward then return true else return false;
-     */
+
     abstract Signature ifMovedForwardThenSealTheLocation();
 
     public final void updateValueVisitedArea() {
         new SealationOfLocation(game).updateLocationCondition(game.getModel().getVisitedAreas(), ifMovedForwardThenSealTheLocation());
 
     }
-//    public abstract  void updateVisitedDirection();
-
       public abstract void updateValueVisitedDirection(DirectionLocation directionLocation);
-//    public final void updateValueVisitedDirection(DirectionLocation location) {
-//        player.updateVisitedDirection(ifMovedForwardThenSealTheLocation().isSealed(), location);
-
-
-    final boolean isSuitableForConditionsToChangeVisitedDirection() {
-
-        return (player.getStep() > 1) ? true : false;
-
-    }
 
     public Game getGame() {
         return game;

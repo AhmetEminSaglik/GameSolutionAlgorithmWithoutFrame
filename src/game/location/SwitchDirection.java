@@ -19,14 +19,10 @@ public class SwitchDirection {
     Compass compass;
 
     public SwitchDirection(Compass compass) {
-//        System.out.println(" 1 11  compass : " + compass);
-//        ErrorMessage.appearFatalError(getClass(), "\nBURADA  COMPASS GONDERILIYOR ANCAK 2. DEFA BU CLASSIN FONKSIYONU KULLANILDIGINDA \n"
-//                + " NULL OLARAK DONUYOR COMPASS");
         this.compass = compass;
     }
 
     public DirectionLocation choseDirection(int value) {
-        //System.out.println("int value :: "+value);
 
         if (compass.getNorth() == value) {
             return new North();
@@ -56,16 +52,15 @@ public class SwitchDirection {
             return new LastLocation();
         }
 
-//        ArrayList<Integer> list = getLocationList();
         ErrorMessage.appearClassicError(getClass(), " compass  : " + compass.getClass().getSimpleName() + " -> Unknow Option  : " + value);
 
         return null;
     }
 
-    public void updateCompass(Compass compass) {
+  /*  public void updateCompass(Compass compass) {
         this.compass = compass;
 
-    }
+    }*/
 
     /*ArrayList<Integer> getLocationList() {
         ArrayList<Integer> list = new ArrayList<Integer>();

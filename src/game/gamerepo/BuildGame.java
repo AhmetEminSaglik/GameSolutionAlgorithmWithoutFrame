@@ -41,21 +41,14 @@ public class BuildGame {
 
     boolean[][] buildVisitedArea(Game game) {
         return new boolean[verticalSquare][horizontalSquare];
-
-//        game.getModel().setVisitedAreas(visitedAreas);
-//        clearVisitedAreas(game);
-//        return game;
-
     }
 
     void clearVisitedAreas(Game game) {
         for (int i = 0; i < game.getModel().getVisitedAreas().length; i++) {
-
             for (int j = 0; j < game.getModel().getVisitedAreas().length; j++) {
                 game.getModel().getVisitedAreas()[i][j] = false;
             }
         }
-//        return game;
     }
 
     public Game getGame() {

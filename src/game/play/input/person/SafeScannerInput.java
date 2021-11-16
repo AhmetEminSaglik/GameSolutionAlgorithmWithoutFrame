@@ -13,10 +13,8 @@ public class SafeScannerInput {
 
     public int getInput() {
 
-//        while (true) {
         try {
             System.out.println("Please enter direction number : ");
-//            new Sleep().sleep(3000);
 
             input = getIntegerValue(scanner.nextLine());
             return input;
@@ -26,7 +24,6 @@ public class SafeScannerInput {
 
         }
         return getInput();
-//        }
     }
 
     int getIntegerValue(String text) {
@@ -37,13 +34,11 @@ public class SafeScannerInput {
         } catch (NumberFormatException ex) {
             throw new InputMismatchException(inputMismatchMessage);
         }
-
     }
 
     boolean isNumberProper(int value) throws InputMismatchException {
         if (0 <= value && value < 10) {
             return true;
-
         }
         throw new InputMismatchException(inputMismatchMessage);
     }

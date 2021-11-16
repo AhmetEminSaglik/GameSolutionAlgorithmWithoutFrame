@@ -8,28 +8,25 @@ import compass.Compass;
 import game.Game;
 import game.location.DirectionLocation;
 import game.play.SelectFirstSqaureToStart;
-import sleep.Sleep;
 import validation.Validation;
 
-import javax.swing.*;
 
-
-public abstract class Move implements IMove { // ICalculateMove 
+public abstract class Move implements IMove { // ICalculateMove
 
     Game game;
-    Compass compass; //= new KeyboardCompass();
+    Compass compass;
     Validation validation = new Validation();
     UpdateValuesInGameModel updateValuesInGameModel;
     private FillGameSquare fillGameSquare;
 
     DirectionLocation directionLocation;
-//    private Location location;
 
-    public Move(Game game) {//, DirectionLocation proceedLocation
+    public Move(Game game) {
         this.game = game;
         compass = game.getPlayer().getCompass();
         fillGameSquare = new FillGameSquare(game);
     }
+
     public final void move(DirectionLocation directionLocation) {
         if (game.getPlayer().getStep() == 1 && getClass().equals(MoveBack.class)) {
             changeStartLocationSpecialMovement();
@@ -42,6 +39,11 @@ public abstract class Move implements IMove { // ICalculateMove
         }
     }
 
+    @Override
+    public void updatePlayerStepValue() {
+        updateValuesInGameModel.updatePlayerStepValue();
+    }
+
     void changeStartLocationSpecialMovement() {
         int locationX = game.getPlayer().getLocation().getX();
         int locationY = game.getPlayer().getLocation().getY();
@@ -49,8 +51,8 @@ public abstract class Move implements IMove { // ICalculateMove
         if (locationX >= game.getModel().getGameSquares().length) {
             locationX = 0;
             locationY++;
-
         }
+
         if (locationY < game.getModel().getGameSquares().length) {
 
             try {
@@ -63,31 +65,21 @@ public abstract class Move implements IMove { // ICalculateMove
                 selectFirstSqaureToStart.locateThePlayer();
             } catch (InterruptedException e) {
                 ErrorMessage.appearFatalError(getClass(), "OYUN SIFIRLAMASINDA SORUN OLDU : " + e.getMessage());
-//            e.printStackTrace();
+
             }
-        }else{
-//            JOptionPane.showMessageDialog(null, " Y siniri asti ");
+        } else {
             ShowPanel.show(getClass(), " Y siniri asti ");
         }
-
     }
-
-    void printLocationOfStep1() {
-        for (int j = game.getModel().getGameSquares().length - 1; j >= 0; j--) {
-            for (int i = 0; i < game.getModel().getGameSquares()[j].length; i++) {
-                if (game.getModel().getGameSquares()[j][i] == 1) {
-                    JOptionPane.showMessageDialog(null, "ADIM 1 LOCASIYONU : " + j + " " + i);
-                    return;
-                }
-            }
-            System.out.println();
-        }
-    }
-
 
     @Override
     public void updateVisitedArea() {
         updateValuesInGameModel.updateValueVisitedArea();
+    }
+
+    @Override
+    public void updatePlayerLocation() {
+        updateValuesInGameModel.changePlayerLocation(getDirectionLocation());
     }
 
     public DirectionLocation getDirectionLocation() {

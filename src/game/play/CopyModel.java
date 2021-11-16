@@ -6,10 +6,9 @@ import sleep.Sleep;
 
 import java.util.ArrayList;
 
-public class
-CopyModel {
+public class CopyModel {
 
-    ArrayList<int[][]> valueList = new ArrayList<int[][]>();
+    ArrayList<int[][]> modelList = new ArrayList<>();
 
     public int[][] copyModel(Model model) {
         int[][] values = new int[model.getGameSquares().length][model.getGameSquares().length];
@@ -22,40 +21,34 @@ CopyModel {
     }
 
     void addToList(int[][] value) {
-        valueList.add(value);
+        modelList.add(value);
+        System.out.println("Listeye eklendi boyutu : " + modelList.size());
 
     }
 
     public void sendModelToCompareAndAddToList(Model model) {
         int[][] values = copyModel(model);
-        if (valueList.size() == 0) {
+        if (modelList.size() == 0) {
             addToList(values);
         } else {
-            int index = 0;
-            for (int[][] tmp : valueList) {
-                index++;
+             for (int[][] tmp : modelList) {
                 if (comparedItemsAreSame(tmp, values)) {
-                    System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>   DEGERLER AYNI OLDUGUNDAN LISTEYE EKLENMICEK");
+                    System.out.println("Solution values are SAME so this solution WONT BE ADDED to list");
 
-                    for (int i = 0; i < valueList.size(); i++) {
+                    for (int i = 0; i < modelList.size(); i++) {
 
-                        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ index : "+i);
-                        new PrintArray().printMultipleArray(valueList.get(i));
-
-
+                        System.out.println("Same solution is in this  index : " + i);
+                        new PrintArray().printMultipleArray(modelList.get(i));
                     }
-                    System.out.println("-----");
-                    new PrintArray().printMultipleArray(values);
+/*                    new PrintArray().printMultipleArray(values);
                     System.out.println("============================================================ AYNI GELDI GALIBA");
-                    System.out.println("INDEX : "+index);
-                    System.out.println("size : "+valueList.size());
-//                    new Sleep().sleep(20_000);
-
+                    System.out.println("INDEX : " + index);
+                    System.out.println("size : " + modelList.size());*/
                     return;
                 }
             }
             addToList(values);
-            System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< DEGERLER FARKLI OLDUGUNDAN LISTEYE EKLENECEK " + valueList.size());
+            System.out.println("Solution values are DIFFERENT so this solution WILL BE ADDED to list " + modelList.size());
 
         }
 
@@ -63,23 +56,12 @@ CopyModel {
     }
 
     boolean comparedItemsAreSame(int[][] v1, int[][] v2) {
-//        boolean breakLoop = false;
         for (int i = 0; i < v1.length; i++) {
-//            if (breakLoop == true) {
-//                break;
-//            }
             for (int j = 0; j < v1.length; j++) {
                 if (v1[i][j] != v2[i][j]) {
                     return false;
-//                    breakLoop = true;
-//                    System.out.println("Degerler farkli,  listeye eklenecek");
-//                    addToList(v2);
-//                    break;
-
                 }
-
             }
-
         }
         return true;
     }

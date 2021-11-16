@@ -7,7 +7,7 @@ import game.location.LocationsList;
 import java.util.ArrayList;
 
 public class RobotMemory {
-    //    private boolean visitedDirections[][];
+
     private boolean endPointDetermined = false;
     private ArrayList<Location> availableDirectionList = new ArrayList<>();
     private ArrayList<Integer> oneWayDirectionList = new ArrayList<>();
@@ -15,23 +15,13 @@ public class RobotMemory {
     Game game;
 
     public RobotMemory(Game game) {
-//        this.robot = robot;
         this.game = game;
-//        visitedDirections = new boolean[getTotalNumberOfSquares()][new LocationsList().getList().size()];
     }
 
-    int getTotalNumberOfSquares() {
+ /*   int getTotalNumberOfSquares() {
         return game.getModel().getGameSquares().length * game.getModel().getGameSquares().length;
     }
-
-//    public boolean[][] getVisitedDirections() {
-//        return visitedDirections;
-//    }
-//
-//    public void setVisitedDirections(boolean[][] visitedDirections) {
-//        this.visitedDirections = visitedDirections;
-//    }
-
+*/
     public Game getGame() {
         return game;
     }
@@ -40,7 +30,7 @@ public class RobotMemory {
         this.game = game;
     }
 
-    public boolean isEndPointDetermined() {
+  /*  public boolean isEndPointDetermined() {
         return endPointDetermined;
     }
 
@@ -63,6 +53,6 @@ public class RobotMemory {
     public void setOneWayDirectionList(ArrayList<Integer> oneWayDirectionList) {
         this.oneWayDirectionList = oneWayDirectionList;
     }
-
+*/
 
 }

@@ -8,7 +8,7 @@ import game.location.Location;
 import game.location.LocationsList;
 import game.rule.BaseGameRule;
 
-public abstract class Player implements ISpecialFunctionForAKindOfPlayer {
+public abstract class Player implements UpdateableVistedDirection {
 
 
     Game game;
@@ -20,6 +20,7 @@ public abstract class Player implements ISpecialFunctionForAKindOfPlayer {
         this.game = game;
         clearVisitedDirections();
         timeKeeper = new TimeKeeper();
+        score = new Score(game, this);
     }
 
     public void clearVisitedDirections() {
@@ -73,15 +74,6 @@ public abstract class Player implements ISpecialFunctionForAKindOfPlayer {
         return "Player{" + "location=" + location.toString() + ", step=" + step + ", compass=" + compass + '}';
     }
 
-    public void printToString() {
-        System.out.println(toString());
-    }
-
-    public void printPlayer() {
-        System.out.println("******************");
-        System.out.println(toString());
-    }
-
     public abstract int getInput(Game game);
 
     public abstract Compass getCompass();
@@ -91,13 +83,9 @@ public abstract class Player implements ISpecialFunctionForAKindOfPlayer {
         System.out.println("Robot's step : " + getStep());
     }
 
-    /**
-     * This method is created for Robot visited direction
-     */
     @Override
-    public void updateVisitedDirection(boolean movedFordward, DirectionLocation location) {
-//        System.out.println("gelen degerler : movedFordward : "+movedFordward+ " // "+location.getId());
-//        getVisitedDirections()[getStep()][location.getId()] = movedFordward;
+    public void updateVisitedDirection(boolean sealOrUnseal, int step, DirectionLocation location) {
+
     }
 
     public Game getGame() {
