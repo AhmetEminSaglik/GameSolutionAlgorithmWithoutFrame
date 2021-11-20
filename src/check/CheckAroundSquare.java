@@ -7,6 +7,7 @@ import game.location.DirectionLocation;
 
 import java.util.ArrayList;
 
+import game.location.Location;
 import game.location.LocationsList;
 
 public class CheckAroundSquare extends BaseCheck {
@@ -40,6 +41,14 @@ public class CheckAroundSquare extends BaseCheck {
     }
 
     boolean isLocationAvailable(Game game, int directionIndex) {
-            return checkSquare.isSquareFreeFromVisitedArea(game, directionIndex);
+        Location locationWillBeCheck = getPlayerLocation(game);
+        return checkSquare.isSquareFreeFromVisitedArea(game, locationWillBeCheck, directionIndex);
     }
+
+ /*   Location createLocationToCheck(Game game) {
+        Location locationWillBeCheck = new Location();
+        locationWillBeCheck.setX(game.getPlayer().getLocation().getX());
+        locationWillBeCheck.setY(game.getPlayer().getLocation().getY());
+        return locationWillBeCheck;
+    }*/
 }

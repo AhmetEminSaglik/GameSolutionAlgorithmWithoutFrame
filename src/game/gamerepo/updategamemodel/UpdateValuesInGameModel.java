@@ -18,7 +18,7 @@ public abstract class UpdateValuesInGameModel {
         this.game = game;
 
         player = game.getPlayer();
-        movePlayer = new MovePlayer(game);
+        movePlayer = new MovePlayer(player);
     }
 
     public abstract void updatePlayerStepValue();

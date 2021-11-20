@@ -8,9 +8,9 @@ public class MovePlayer {
 
     Player player;
 
-    public MovePlayer(Game game) {
-
-        this.player = game.getPlayer();
+    public MovePlayer(Player player) {
+        this.player = player;
+//        this.player = game.getPlayer();
     }
 
     void xChangeLocationByAdding(int x) {

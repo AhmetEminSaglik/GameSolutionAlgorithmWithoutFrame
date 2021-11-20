@@ -1,3 +1,4 @@
+/*
 package check;
 
 import compass.DirectionCompass;
@@ -17,3 +18,4 @@ public class CheckDirection extends BaseCheck {
         return false;
     }
 }
+*/

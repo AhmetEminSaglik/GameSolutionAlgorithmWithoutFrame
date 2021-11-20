@@ -46,7 +46,7 @@ public class RobotGameOver implements IGameOver {
 
     boolean allDirectionsAreVisitedAtStep1() {
         if (game.getPlayer().getStep() == 1) {
-            return !(new CheckSquare().isAnySquareAvailableInVisitedDirection(game));
+            return !(new CheckSquare().isAnySquareAvailableInVisitedDirection(game, game.getPlayer().getLocation()));
         }
         return false;
 

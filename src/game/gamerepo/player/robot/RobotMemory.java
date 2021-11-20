@@ -2,7 +2,6 @@ package game.gamerepo.player.robot;
 
 import game.Game;
 import game.location.Location;
-import game.location.LocationsList;
 
 import java.util.ArrayList;
 

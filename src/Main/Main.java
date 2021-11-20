@@ -6,7 +6,8 @@ import game.gamerepo.player.Player;
 import game.gamerepo.player.person.Person;
 import game.gamerepo.player.robot.Robot;
 import game.gamerepo.player.robot.solution.BaseSolution;
-import game.gamerepo.player.robot.solution.FirstSolution;
+import game.gamerepo.player.robot.solution.FirstSolution_Combination;
+import game.gamerepo.player.robot.solution.SecondSolution_CalculateForwardAvailableWays;
 import game.play.PlayGame;
 import java.util.Scanner;
 
@@ -19,9 +20,9 @@ public class Main {
 
         Player person = new Person(game);
 
-        BaseSolution firstSolution = new FirstSolution();
-// 3 farkli cozum algortimasi var aklimda suan sadece en basitini yazdim. Buda FirstSolution() Oluyor
 
+        BaseSolution firstSolution = new SecondSolution_CalculateForwardAvailableWays();
+// 3 farkli cozum algortimasi var aklimda suan sadece en basitini yazdim. Buda FirstSolution() Oluyor
         Player robot = new Robot(game, firstSolution);
         System.out.println("Enter even number to play\n"
                 + "Enter odd number to see solution");

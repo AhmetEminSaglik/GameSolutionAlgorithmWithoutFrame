@@ -17,7 +17,7 @@ public class SelectFirstSqaureToStart extends DirectionLocation {
 
     public SelectFirstSqaureToStart(Game game) {
         this.game = game;
-        movePlayer = new MovePlayer(game);
+        movePlayer = new MovePlayer(game.getPlayer());
     }
 
     public void randomStart() {

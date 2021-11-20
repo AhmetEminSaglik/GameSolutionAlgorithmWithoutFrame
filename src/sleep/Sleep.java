@@ -1,7 +1,7 @@
 package sleep;
 
 import errormessage.ErrorMessage;
-import game.gamerepo.player.robot.solution.FirstSolution;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,7 +13,7 @@ public class Sleep {
             showWarningMessage();
             Thread.sleep(1000);
         } catch (InterruptedException ex) {
-            Logger.getLogger(FirstSolution.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -22,7 +22,7 @@ public class Sleep {
             showWarningMessage();
             Thread.sleep(time);
         } catch (InterruptedException ex) {
-            Logger.getLogger(FirstSolution.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
         }
     }
 

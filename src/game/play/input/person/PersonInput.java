@@ -4,22 +4,23 @@ import check.CheckSquare;
 import compass.Compass;
 import compass.KeyboardCompass;
 import game.Game;
+import game.location.Location;
 import game.play.input.BaseControlInput;
 import validation.Validation;
 
 
 public class PersonInput extends BaseControlInput implements IPlayerInput {
 
-//    CheckSquare checkSquare = new CheckSquare();
+    //    CheckSquare checkSquare = new CheckSquare();
 //    Compass compass = new KeyboardCompass();
-
+    CheckSquare checkSquare = new CheckSquare();
     private SafeScannerInput scannerInput = new SafeScannerInput();
 
     public PersonInput(Game game) {
         super(game);
     }
 
-    
+
     @Override
     public int getInput() {
         while (true) {
@@ -43,14 +44,18 @@ public class PersonInput extends BaseControlInput implements IPlayerInput {
         Compass compass = new KeyboardCompass();
 
         validation.setCompass(compass);
-        CheckSquare checkSquare = new CheckSquare();
+
         checkSquare.setCompass(compass);
 
-        if (validation.isInputValidForArray(game, choose)
-                && checkSquare.isSquareFreeFromVisitedArea(game, choose)) {
+        if (validation.isInputValidForArray(game,game.getPlayer().getLocation(), choose)
+                && checkSquare.isSquareFreeFromVisitedArea(game, getLocationToCheck(game), choose)) {
             return true;
         }
         return false;
+    }
+
+    Location getLocationToCheck(Game game) {
+        return checkSquare.getPlayerLocation(game);
     }
 
     @Override

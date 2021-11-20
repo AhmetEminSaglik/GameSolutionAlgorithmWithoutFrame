@@ -53,7 +53,7 @@ public class Validation {
     /**
      * @param input = Keyboards input direction value
      */
-    public boolean isInputValidForArray(Game game, int input) {
+    public boolean isInputValidForArray(Game game,Location currentProcessLocation, int input) {
 
         Location location;
         Player player = game.getPlayer();
@@ -68,8 +68,8 @@ public class Validation {
 
             // ??? HATA CIKARSA BUNU AKTIFLESTIR  switchDirection = new SwitchDirection(compass);
             // switchDirection.choseDirection(input);
-            if (calculateValidOrNot(game.getModel().getGameSquares().length, player.getLocation().getX(), location.getX())
-                    && calculateValidOrNot(game.getModel().getGameSquares().length, player.getLocation().getY(), location.getY())) {
+            if (calculateValidOrNot(game.getModel().getGameSquares().length, currentProcessLocation.getX(), location.getX())
+                    && calculateValidOrNot(game.getModel().getGameSquares().length, currentProcessLocation.getY(), location.getY())) {
 
                 return true;
             }
