@@ -7,16 +7,17 @@ import game.gamerepo.updategamemodel.UpdateValuesInGameModel;
 import compass.Compass;
 import game.Game;
 import game.location.DirectionLocation;
+import game.move.fundamental.MoveBack;
 import game.play.SelectFirstSqaureToStart;
 import validation.Validation;
 
 
 public abstract class Move implements IMove { // ICalculateMove
 
-    Game game;
+    public Game game;
     Compass compass;
     Validation validation = new Validation();
-    UpdateValuesInGameModel updateValuesInGameModel;
+    public UpdateValuesInGameModel updateValuesInGameModel;
     private FillGameSquare fillGameSquare;
 
     DirectionLocation directionLocation;

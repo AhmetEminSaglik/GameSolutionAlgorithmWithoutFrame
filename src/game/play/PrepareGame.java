@@ -1,10 +1,8 @@
 package game.play;
 
 import compass.Compass;
-import compass.KeyboardCompass;
 import game.Game;
 import game.location.SwitchDirection;
-import game.move.MoveForward;
 
 public class PrepareGame {
 

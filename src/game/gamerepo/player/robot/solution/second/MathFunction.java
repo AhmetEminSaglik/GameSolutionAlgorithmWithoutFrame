@@ -14,6 +14,7 @@ import weights.Weight;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MathFunction {
@@ -38,12 +39,21 @@ public class MathFunction {
         robot = (Robot) game.getPlayer();
     }
 
+    void printList(ArrayList<Navigation> list) {
+        int i = 0;
+        for (Navigation tmp : list) {
+            System.out.println(i + "-) " + tmp);
+            i++;
+        }
+    }
+
     public int calculateFunctionResult(ExitSituation exitSituation) {
         System.out.println("FUNCTION GIRISI KAYITLAR : ");
         if (robot.getRoadMemory().getOneWayNumbersList().size() > 0) {
 
             System.out.println("list size  :" + robot.getRoadMemory().getOneWayNumbersList().size());
-            System.out.println("son index  :" + robot.getRoadMemory().getOneWayListLastItem().toString());
+//            System.out.println("son index  :" + robot.getRoadMemory().getOneWayListLastItem().toString());
+            printList(robot.getRoadMemory().getOneWayNumbersList());
         }
         System.out.println("");
 
@@ -111,10 +121,11 @@ public class MathFunction {
                 robot.getRoadMemory().removeOneWayListLastItem();
                 ShowPanel.show(getClass(), "GERI ADIM ATILDI LISTEDEN SON ITEM SILINDIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
             }
-            System.out.println("checkNavigation.getStep() > "+checkNavigation.getStep());
-            System.out.println("checkNavigation.getStep() > "+robot.getStep());
-            ShowPanel.show(getClass(), "GERI ADIM ATILACAK  LISTE SILINDI MI ????????????????????????? "+robot.getStep());
+            System.out.println("checkNavigation.getStep() > " + checkNavigation.getStep());
+            System.out.println("checkNavigation.getStep() > " + robot.getStep());
+            ShowPanel.show(getClass(), "GERI ADIM ATILACAK  LISTE SILINDI MI ????????????????????????? " + robot.getStep());
         }
+        ShowPanel.show(getClass(), "Step : " + robot.getStep() + "  gidilecek direction : " + selectedDirection.toString());
         return selectedDirection.getId();
 
     }

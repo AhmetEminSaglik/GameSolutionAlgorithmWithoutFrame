@@ -14,16 +14,17 @@ import game.play.PlayGame;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        int squareEdge=5;
+        int squareEdge = 5;
         BuildGame buildGameModel = new BuildGame(squareEdge, squareEdge);
         Game game = buildGameModel.createGame();
 
-        Player person = new Person(game);
+//        Player person = new Person(game);
 
 
-        BaseSolution firstSolution = new SecondSolution_CalculateForwardAvailableWays();
-// 3 farkli cozum algortimasi var aklimda suan sadece en basitini yazdim. Buda FirstSolution() Oluyor
+        BaseSolution firstSolution = new SecondSolution_CalculateForwardAvailableWays(game);
         Player robot = new Robot(game, firstSolution);
+        firstSolution.buildRobotMove();
+
         System.out.println("Enter even number to play\n"
                 + "Enter odd number to see solution");
      /*   if (new Scanner(System.in).nextInt() % 2 == 0) {
@@ -31,7 +32,7 @@ public class Main {
         } else {
             game.setPlayer(robot);
         }*/
-        game.setPlayer(robot);
+//        game.setPlayer(robot);
         buildGameModel.createVisitedArea();
         PlayGame playGame = new PlayGame(game);
         playGame.playGame();

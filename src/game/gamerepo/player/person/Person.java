@@ -5,7 +5,9 @@ import compass.KeyboardCompass;
 import game.Game;
 import game.gameover.PersonGameOver;
 import game.gamerepo.player.Player;
-import game.location.DirectionLocation;
+import game.move.fundamental.MoveBack;
+import game.move.fundamental.MoveForward;
+import game.play.PlayerMove;
 import game.play.input.person.PersonInput;
 import game.rule.BaseGameRule;
 
@@ -13,6 +15,8 @@ public class Person extends Player {
 
     public Person(Game game) {
         super(game);
+
+        playerMove = new PlayerMove(new MoveForward(game), new MoveBack(game));
     }
 
     @Override
@@ -34,5 +38,7 @@ public class Person extends Player {
         return gameRule;
     }
 
-
+    public PlayerMove getPlayerMove() {
+        return playerMove;
+    }
 }

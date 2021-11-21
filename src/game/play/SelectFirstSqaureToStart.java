@@ -2,12 +2,9 @@ package game.play;
 
 import game.Game;
 import game.location.DirectionLocation;
-import game.move.MoveForward;
+import game.move.fundamental.MoveForward;
 import game.move.MovePlayer;
-import printarray.PrintArray;
-import sleep.Sleep;
 
-import javax.swing.*;
 import java.util.Random;
 
 public class SelectFirstSqaureToStart extends DirectionLocation {

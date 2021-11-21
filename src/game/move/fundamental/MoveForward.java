@@ -1,7 +1,8 @@
-package game.move;
+package game.move.fundamental;
 
 import game.Game;
 import game.gamerepo.updategamemodel.UpdateForMovedForward;
+import game.move.Move;
 
 public class MoveForward extends Move {
 
@@ -27,22 +28,5 @@ public class MoveForward extends Move {
         updateVisitedDirection();
     }
 
-      /* @Override
-    public void updatePlayerLocation() {
-        changePlayerLocation(getDirectionLocation());
-
-    }*/
-   /* public void changePlayerLocation(Location location) {
-        updateValuesInGameModel.changePlayerLocation(location);
-    }*/
-
-/*    @Override
-    public void updatePlayerStepValue() {
-        increasePlayerStepValue();
-    }*/
-
-    /*void increasePlayerStepValue() {
-        updateValuesInGameModel.updatePlayerStepValue();
-    }*/
 
 }

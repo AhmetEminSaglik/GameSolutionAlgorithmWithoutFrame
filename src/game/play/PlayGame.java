@@ -7,13 +7,10 @@ import game.gamerepo.player.Player;
 import game.gamerepo.player.robot.Robot;
 import game.location.DirectionLocation;
 import game.move.Move;
-import game.move.MoveBack;
-import game.move.MoveForward;
 import print.FileWriteProcess;
 import print.PrintAble;
 import printarray.PrintArray;
 import printarray.StringFormat;
-import sleep.Sleep;
 
 
 public class PlayGame {
@@ -118,9 +115,9 @@ public class PlayGame {
 
     Move getMoveBackOrForward(int index) {
         if (index == player.getCompass().getLastLocation()) {
-            return new MoveBack(game);
+            return player.getPlayerMove().getMoveBack();
         }
-        return new MoveForward(game);
+        return player.getPlayerMove().getMoveForward();
     }
 
 

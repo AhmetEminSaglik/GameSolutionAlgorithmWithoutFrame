@@ -2,12 +2,14 @@ package game.gamerepo.player.robot;
 
 import compass.Compass;
 import compass.DirectionCompass;
-import errormessage.ErrorMessage;
 import game.Game;
 import game.gameover.RobotGameOver;
 import game.gamerepo.player.Player;
 import game.gamerepo.player.robot.solution.BaseSolution;
 import game.location.DirectionLocation;
+import game.move.fundamental.MoveBack;
+import game.move.fundamental.MoveForward;
+import game.play.PlayerMove;
 import game.play.input.robot.RobotInput;
 import game.rule.BaseGameRule;
 
@@ -22,6 +24,7 @@ public class Robot extends Player {
     public Robot(Game game, BaseSolution solution) {
         super(game);
         this.solution = solution;
+        playerMove = new PlayerMove(new MoveForward(game), new MoveBack(game));
 
     }
 

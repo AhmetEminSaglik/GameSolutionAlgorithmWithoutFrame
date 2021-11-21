@@ -6,10 +6,11 @@ import game.gamerepo.player.robot.TimeKeeper;
 import game.location.DirectionLocation;
 import game.location.Location;
 import game.location.LocationsList;
+import game.play.PlayerMove;
 import game.rule.BaseGameRule;
 
 public abstract class Player implements UpdateableVistedDirection {
-
+    protected PlayerMove playerMove;
 
     Game game;
     private boolean visitedDirections[][];
@@ -18,6 +19,8 @@ public abstract class Player implements UpdateableVistedDirection {
 
     public Player(Game game) {
         this.game = game;
+        game.setPlayer(this);
+
         clearVisitedDirections();
         timeKeeper = new TimeKeeper();
         score = new Score(game, this);
@@ -102,5 +105,9 @@ public abstract class Player implements UpdateableVistedDirection {
 
     public Score getScore() {
         return score;
+    }
+
+    public PlayerMove getPlayerMove() {
+        return playerMove;
     }
 }

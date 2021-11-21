@@ -1,10 +1,12 @@
-package game.move;
+package game.move.fundamental;
 
 import game.Game;
 import game.gamerepo.GameModelProcess;
 import game.gamerepo.updategamemodel.UpdateForMovedBack;
 import game.location.DirectionLocation;
 import game.location.LocationsList;
+import game.move.Move;
+
 import java.util.ArrayList;
 
 public class MoveBack extends Move {
@@ -16,6 +18,7 @@ public class MoveBack extends Move {
 
     @Override
     public void updateVisitedDirection() {
+        clearAllDirectionBeforeGoBack();
     }
 
     void clearAllDirectionBeforeGoBack() {
@@ -29,7 +32,7 @@ public class MoveBack extends Move {
     @Override
     public void updateBeforeStep() {
         updateVisitedArea();
-        clearAllDirectionBeforeGoBack();
+        updateVisitedDirection();
         removeMaxStepBeforeGoingLastStep();
     }
 

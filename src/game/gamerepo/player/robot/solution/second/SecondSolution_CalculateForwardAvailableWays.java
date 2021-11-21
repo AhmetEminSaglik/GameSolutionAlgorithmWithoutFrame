@@ -1,19 +1,25 @@
 package game.gamerepo.player.robot.solution.second;
 
 import check.forwardlocation.ForwardLocation;
-import errormessage.ErrorMessage;
-import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.gamerepo.player.robot.Robot;
 import game.gamerepo.player.robot.solution.BaseSolution;
-import game.gamerepo.player.robot.solution.second.navigation.ExitSituation;
 import game.location.DirectionLocation;
 import game.location.Location;
 import game.location.LocationsList;
+import game.move.fundamental.MoveBack;
+import game.move.fundamental.MoveForward;
+import game.move.fundamental.secondsolutionforrobot.MoveBackSecondSolution;
+import game.move.fundamental.secondsolutionforrobot.MoveForwardSecondSolution;
 
 import java.util.ArrayList;
 
 public class SecondSolution_CalculateForwardAvailableWays extends BaseSolution {
+    public SecondSolution_CalculateForwardAvailableWays(Game game) {
+        super(game);
+
+    }
+
     @Override
     public int getLocationInput(Game game) {//, RobotMemory robotMemory
 
@@ -39,5 +45,11 @@ public class SecondSolution_CalculateForwardAvailableWays extends BaseSolution {
    /*     ShowPanel.show(getClass(), "islemler bitti");
         ErrorMessage.appearFatalError(getClass(),"ISLEMLER BURADA BITTI O YUZDEN PROGRAM DURDURULACKTIR");
         return 0;*/
+    }
+
+    @Override
+    public void buildRobotMove() {
+        setMoveForward(new MoveForwardSecondSolution(getGame()));
+        setMoveBack(new MoveBackSecondSolution(getGame()));
     }
 }
