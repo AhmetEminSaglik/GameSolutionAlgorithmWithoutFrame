@@ -1,3 +1,4 @@
+/*
 package game.gamerepo.player.robot;
 
 import game.Game;
@@ -17,10 +18,12 @@ public class RobotMemory {
         this.game = game;
     }
 
- /*   int getTotalNumberOfSquares() {
+ */
+/*   int getTotalNumberOfSquares() {
         return game.getModel().getGameSquares().length * game.getModel().getGameSquares().length;
     }
-*/
+*//*
+
     public Game getGame() {
         return game;
     }
@@ -29,7 +32,8 @@ public class RobotMemory {
         this.game = game;
     }
 
-  /*  public boolean isEndPointDetermined() {
+  */
+/*  public boolean isEndPointDetermined() {
         return endPointDetermined;
     }
 
@@ -52,6 +56,8 @@ public class RobotMemory {
     public void setOneWayDirectionList(ArrayList<Integer> oneWayDirectionList) {
         this.oneWayDirectionList = oneWayDirectionList;
     }
-*/
+*//*
+
 
 }
+*/

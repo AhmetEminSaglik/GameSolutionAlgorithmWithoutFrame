@@ -2,15 +2,14 @@ package game.gamerepo.player.robot.solution;
 
 import check.CheckSquare;
 import game.Game;
-import game.gamerepo.player.robot.RobotMemory;
 import squareprocess.SquareProcess;
 
 public abstract class BaseSolution {
 
-    CheckSquare checkSquare = new CheckSquare();
-    SquareProcess squareProcess = new SquareProcess();
+    public CheckSquare checkSquare = new CheckSquare();
+    public SquareProcess squareProcess = new SquareProcess();
 
-    public abstract int getLocationInput(Game game, RobotMemory robotMemory);
+    public abstract int getLocationInput(Game game);//, RobotMemory robotMemory
 
 /*
     public boolean isSquareAvailableToMoveOnIt(Game game, DirectionLocation location) {//, RobotMemory robotMemory

@@ -38,7 +38,7 @@ public class PlayGame {
         comparisonOfSolutions = new ComparisonOfSolutions(game);
 
         while (!player.getGameRule().isGameOver(game)) {
-//            printGamelastStuation(game);
+            printGamelastStuation(game);
             calculatePlayerTotalWinScore();
 
             int choose = player.getInput(game);

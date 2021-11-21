@@ -1,7 +1,8 @@
-package game.gamerepo.player.robot.solution;
+package game.gamerepo.player.robot.solution.first;
 
+import errormessage.joptionpanel.ShowPanel;
 import game.Game;
-import game.gamerepo.player.robot.RobotMemory;
+import game.gamerepo.player.robot.solution.BaseSolution;
 import game.location.DirectionLocation;
 import game.location.Location;
 import game.location.LocationsList;
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 public class FirstSolution_Combination extends BaseSolution {
 
     @Override
-    public int getLocationInput(Game game, RobotMemory robotMemory) {
+    public int getLocationInput(Game game) {//, RobotMemory robotMemory
         ArrayList<DirectionLocation> locationsList = new LocationsList().getList();
 
 //        if (isStepAvailableToMoveForward(game.getPlayer().getStep(), (int) Math.pow(game.getModel().getGameSquares().length, 2)) == true) {

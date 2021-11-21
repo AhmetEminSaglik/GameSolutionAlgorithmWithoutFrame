@@ -2,7 +2,6 @@ package game.play.input.robot;
 
 import errormessage.ErrorMessage;
 import game.Game;
-import game.gamerepo.player.robot.RobotMemory;
 import game.gamerepo.player.robot.solution.BaseSolution;
 import game.play.input.BaseControlInput;
 import game.play.input.person.IRobotInput;
@@ -17,9 +16,9 @@ public class RobotInput extends BaseControlInput implements IRobotInput {
     }
 
     @Override
-    public int getInput(RobotMemory robotMemory) {
+    public int getInput() {//RobotMemory robotMemory
  
-        return solution.getLocationInput(game, robotMemory);
+        return solution.getLocationInput(game);//, robotMemory
     }
 
     @Override

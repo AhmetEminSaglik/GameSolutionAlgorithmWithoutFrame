@@ -14,8 +14,9 @@ import game.rule.BaseGameRule;
 
 public class Robot extends Player {
 
-    private RobotMemory robotMemory;
+//    private RobotMemory robotMemory;
 
+    RoadMemory roadMemory = new RoadMemory();
     private BaseSolution solution;
 
     public Robot(Game game, BaseSolution solution) {
@@ -29,7 +30,7 @@ public class Robot extends Player {
         return new DirectionCompass();
     }
 
-    public RobotMemory getRobotMemory() {
+  /*  public RobotMemory getRobotMemory() {
 
         if (robotMemory == null) {
             if (getGame() == null) {
@@ -39,15 +40,15 @@ public class Robot extends Player {
             }
         }
         return robotMemory;
-    }
+    }*/
 
-    public void setRobotMemory(RobotMemory robotMemory) {
-        this.robotMemory = robotMemory;
-    }
+//    public void setRobotMemory(RobotMemory robotMemory) {
+//        this.robotMemory = robotMemory;
+//    }
 
     @Override
     public int getInput(Game game) {
-        return new RobotInput(solution, game).getInput(getRobotMemory());
+        return new RobotInput(solution, game).getInput();//getRobotMemory()
     }
 
     public BaseSolution getSolution() {
@@ -91,4 +92,7 @@ public class Robot extends Player {
         } */
     }
 
+    public RoadMemory getRoadMemory() {
+        return roadMemory;
+    }
 }

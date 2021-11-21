@@ -6,8 +6,8 @@ import game.gamerepo.player.Player;
 import game.gamerepo.player.person.Person;
 import game.gamerepo.player.robot.Robot;
 import game.gamerepo.player.robot.solution.BaseSolution;
-import game.gamerepo.player.robot.solution.FirstSolution_Combination;
-import game.gamerepo.player.robot.solution.SecondSolution_CalculateForwardAvailableWays;
+import game.gamerepo.player.robot.solution.first.FirstSolution_Combination;
+import game.gamerepo.player.robot.solution.second.SecondSolution_CalculateForwardAvailableWays;
 import game.play.PlayGame;
 import java.util.Scanner;
 
