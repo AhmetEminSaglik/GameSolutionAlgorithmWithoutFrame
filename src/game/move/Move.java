@@ -68,9 +68,9 @@ public abstract class Move implements IMove { // ICalculateMove
                 ErrorMessage.appearFatalError(getClass(), "OYUN SIFIRLAMASINDA SORUN OLDU : " + e.getMessage());
 
             }
-        } else {
+        }/* else {
             ShowPanel.show(getClass(), " Y siniri asti ");
-        }
+        }*/
     }
 
     @Override

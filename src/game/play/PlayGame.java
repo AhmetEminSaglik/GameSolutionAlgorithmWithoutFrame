@@ -100,7 +100,7 @@ public class PlayGame {
             for(int i=0;i<((Robot)player).getRoadMemory().getOneWayNumbersList().size();i++){
                 System.out.println("index : "+i+"  >>> " +((Robot)player).getRoadMemory().getOneWayNumbersList().get(i).toString());;
             }
-            ShowPanel.show(getClass(),roundCounter+" yaziliyor");
+//            ShowPanel.show(getClass(),roundCounter+" yaziliyor");
         }
 
         System.out.println();

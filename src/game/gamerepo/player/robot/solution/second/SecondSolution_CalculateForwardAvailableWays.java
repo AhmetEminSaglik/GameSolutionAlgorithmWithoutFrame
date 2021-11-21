@@ -7,8 +7,6 @@ import game.gamerepo.player.robot.solution.BaseSolution;
 import game.location.DirectionLocation;
 import game.location.Location;
 import game.location.LocationsList;
-import game.move.fundamental.MoveBack;
-import game.move.fundamental.MoveForward;
 import game.move.fundamental.secondsolutionforrobot.MoveBackSecondSolution;
 import game.move.fundamental.secondsolutionforrobot.MoveForwardSecondSolution;
 

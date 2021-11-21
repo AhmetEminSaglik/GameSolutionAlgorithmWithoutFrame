@@ -48,6 +48,7 @@ public class MathFunction {
     }
 
     public int calculateFunctionResult(ExitSituation exitSituation) {
+/*
         System.out.println("FUNCTION GIRISI KAYITLAR : ");
         if (robot.getRoadMemory().getOneWayNumbersList().size() > 0) {
 
@@ -56,11 +57,12 @@ public class MathFunction {
             printList(robot.getRoadMemory().getOneWayNumbersList());
         }
         System.out.println("");
+*/
 
 
         calculateForwardAvailableDirectionsOfCurrentDirection();
 
-        Navigation checkNavigation = null;
+      /*  Navigation checkNavigation = null;
         if (robot.getRoadMemory().getOneWayNumbersList().size() > 0) {
             checkNavigation = robot.getRoadMemory().getOneWayListLastItem();
         }
@@ -83,38 +85,35 @@ public class MathFunction {
 
                 robot.getRoadMemory().getExitSituation().setSituation(ExitSituation.EXIT_LOCATED);
                 Navigation navigation = buildNavigation(robot.getStep(), oneWayNumbersValue, compulsoryLocation, true);
-                        /*new Navigation();
+                        *//*new Navigation();
                 navigation.setStep(robot.getStep());
                 navigation.setOneWayNumbersValue(oneWayNumbersValue);
                 navigation.setCompulsoryLocation(compulsoryLocation);
-                navigation.setExitSituationWasLocatedInThisStep(true);*/
+                navigation.setExitSituationWasLocatedInThisStep(true);*//*
 
                 robot.getRoadMemory().getOneWayNumbersList().add(navigation);
             } else if (oneWayNumbersValue == 1 && exitSituation.getSituation() == ExitSituation.EXIT_LOCATED) {
                 compulsoryLocation = lastLocation;
                 Navigation navigation = buildNavigation(robot.getStep(), oneWayNumbersValue, compulsoryLocation, false);
-                /*navigation.setStep(robot.getStep());
+                *//*navigation.setStep(robot.getStep());
                 navigation.setOneWayNumbersValue(oneWayNumbersValue);
                 navigation.setCompulsoryLocation(compulsoryLocation);
-                navigation.setExitSituationWasLocatedInThisStep(false);*/
+                navigation.setExitSituationWasLocatedInThisStep(false);*//*
 
             } else if (oneWayNumbersValue == 1 && exitSituation.getSituation() == ExitSituation.EXIT_FREE) {
                 Navigation navigation = buildNavigation(robot.getStep(), oneWayNumbersValue, compulsoryLocation, false);
-                /*navigation.setStep(robot.getStep());
+                *//*navigation.setStep(robot.getStep());
                 navigation.setOneWayNumbersValue(oneWayNumbersValue);
 //                navigation.setCompulsoryLocation(compulsoryLocation);
-                navigation.setExitSituationWasLocatedInThisStep(false);*/
+                navigation.setExitSituationWasLocatedInThisStep(false);*//*
             }
 
 //            calculateDirectionLocationToMove();
             //Calculate Which will be next SquareMOVE FORWARD
-        } else {
-
-
-            //MOVE BACK
-        }
+        } else {            //MOVE BACK
+        }*/
 //        System.out.println("secilen direction name : "+selectedDirection.toString());
-        if (selectedDirection == lastLocation) {
+      /*  if (selectedDirection == lastLocation) {
             System.out.println("list size  :" + robot.getRoadMemory().getOneWayNumbersList().size());
             System.out.println("son index  :" + robot.getRoadMemory().getOneWayListLastItem().toString());
             if (checkNavigation != null && checkNavigation.getStep() == robot.getStep()) {
@@ -125,7 +124,7 @@ public class MathFunction {
             System.out.println("checkNavigation.getStep() > " + robot.getStep());
             ShowPanel.show(getClass(), "GERI ADIM ATILACAK  LISTE SILINDI MI ????????????????????????? " + robot.getStep());
         }
-        ShowPanel.show(getClass(), "Step : " + robot.getStep() + "  gidilecek direction : " + selectedDirection.toString());
+        ShowPanel.show(getClass(), "Step : " + robot.getStep() + "  gidilecek direction : " + selectedDirection.toString());*/
         return selectedDirection.getId();
 
     }
