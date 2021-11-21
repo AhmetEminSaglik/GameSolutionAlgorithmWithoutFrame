@@ -39,10 +39,19 @@ public class MathFunction {
     }
 
     public int calculateFunctionResult(ExitSituation exitSituation) {
+        System.out.println("FUNCTION GIRISI KAYITLAR : ");
+        if (robot.getRoadMemory().getOneWayNumbersList().size() > 0) {
+
+            System.out.println("list size  :" + robot.getRoadMemory().getOneWayNumbersList().size());
+            System.out.println("son index  :" + robot.getRoadMemory().getOneWayListLastItem().toString());
+        }
+        System.out.println("");
+
+
         calculateForwardAvailableDirectionsOfCurrentDirection();
 
         Navigation checkNavigation = null;
-        if (robot.getRoadMemory().getOneWayNumbersList().size() >0) {
+        if (robot.getRoadMemory().getOneWayNumbersList().size() > 0) {
             checkNavigation = robot.getRoadMemory().getOneWayListLastItem();
         }
 
@@ -50,9 +59,9 @@ public class MathFunction {
             if (checkNavigation.getCompulsoryLocation() != null &&
                     checkNavigation.getCompulsoryLocation() != lastLocation) {
 
-            selectedDirection = checkNavigation.getCompulsoryLocation();
-            checkNavigation.setCompulsoryLocation(lastLocation);
-        }
+                selectedDirection = checkNavigation.getCompulsoryLocation();
+                checkNavigation.setCompulsoryLocation(lastLocation);
+            }
 
         } else if (calculateDeadlyPoint(exitSituation) > 0) {
 
@@ -91,12 +100,21 @@ public class MathFunction {
             //Calculate Which will be next SquareMOVE FORWARD
         } else {
 
-            if(checkNavigation!=null &&checkNavigation.getStep()==robot.getStep()){
-                robot.getRoadMemory().removeOneWayListLastItem();
-            }
+
             //MOVE BACK
         }
 //        System.out.println("secilen direction name : "+selectedDirection.toString());
+        if (selectedDirection == lastLocation) {
+            System.out.println("list size  :" + robot.getRoadMemory().getOneWayNumbersList().size());
+            System.out.println("son index  :" + robot.getRoadMemory().getOneWayListLastItem().toString());
+            if (checkNavigation != null && checkNavigation.getStep() == robot.getStep()) {
+                robot.getRoadMemory().removeOneWayListLastItem();
+                ShowPanel.show(getClass(), "GERI ADIM ATILDI LISTEDEN SON ITEM SILINDIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
+            }
+            System.out.println("checkNavigation.getStep() > "+checkNavigation.getStep());
+            System.out.println("checkNavigation.getStep() > "+robot.getStep());
+            ShowPanel.show(getClass(), "GERI ADIM ATILACAK  LISTE SILINDI MI ????????????????????????? "+robot.getStep());
+        }
         return selectedDirection.getId();
 
     }
@@ -109,7 +127,7 @@ public class MathFunction {
             navigation.setCompulsoryLocation(compulsoryLocation);
         }
         navigation.setExitSituationWasLocatedInThisStep(true);
-        return  navigation;
+        return navigation;
     }
 
 

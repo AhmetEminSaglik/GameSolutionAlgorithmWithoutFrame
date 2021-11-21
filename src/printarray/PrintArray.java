@@ -1,8 +1,7 @@
 package printarray;
 
-import utility.ConvertVariable;
-
 public class PrintArray {
+    StringFormat stringFormat = new StringFormat();
 
     public void printArray(String array[]) {
         for (int i = 0; i < array.length; i++) {
@@ -12,12 +11,14 @@ public class PrintArray {
     }
 
     public void printMultipleArray(int array[][]) {
-        for (int j = array.length - 1; j >= 0; j--) {
+        System.out.println(stringFormat.getStringFormatArray(array));
+
+      /*  for (int j = array.length - 1; j >= 0; j--) {
             for (int i = 0; i < array[j].length; i++) {
                 System.out.print(printDesign(array[i][j]));
             }
             System.out.println();
-        }
+        }*/
 
     }
 
@@ -34,7 +35,7 @@ public class PrintArray {
         }
     }
 
-    String printDesign(int value) {
+ /*   String printDesign(int value) {
         if (value > 0) {
             if (value / 100 > 0) {
                 return "|" + new ConvertVariable().intToString(value) + "|";
@@ -47,6 +48,6 @@ public class PrintArray {
             }
         }
         return "|   |";
-    }
+    }*/
 
 }

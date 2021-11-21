@@ -39,4 +39,14 @@ public class Navigation {
     public void setExitSituationWasLocatedInThisStep(boolean exitSituationWasLocatedInThisStep) {
         isExitSituationWasLocatedInThisStep = exitSituationWasLocatedInThisStep;
     }
+
+    @Override
+    public String toString() {
+        return "Navigation{" +
+                "step=" + step +
+                ", oneWayNumbersValue=" + oneWayNumbersValue +
+                ", compulsoryLocation=" + compulsoryLocation.getId() +
+                ", isExitSituationWasLocatedInThisStep=" + isExitSituationWasLocatedInThisStep +
+                '}';
+    }
 }

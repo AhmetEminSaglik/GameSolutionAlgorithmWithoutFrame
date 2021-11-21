@@ -9,7 +9,7 @@ import game.gamerepo.player.robot.solution.BaseSolution;
 import game.gamerepo.player.robot.solution.first.FirstSolution_Combination;
 import game.gamerepo.player.robot.solution.second.SecondSolution_CalculateForwardAvailableWays;
 import game.play.PlayGame;
-import java.util.Scanner;
+
 
 public class Main {
 
