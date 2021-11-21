@@ -26,12 +26,12 @@ public class Main {
         Player robot = new Robot(game, firstSolution);
         System.out.println("Enter even number to play\n"
                 + "Enter odd number to see solution");
-        if (new Scanner(System.in).nextInt() % 2 == 0) {
+     /*   if (new Scanner(System.in).nextInt() % 2 == 0) {
             game.setPlayer(person);
         } else {
             game.setPlayer(robot);
-        }
-
+        }*/
+        game.setPlayer(robot);
         buildGameModel.createVisitedArea();
         PlayGame playGame = new PlayGame(game);
         playGame.playGame();

@@ -2,6 +2,7 @@ package game.play;
 
 import Main.Main;
 import errormessage.ErrorMessage;
+import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.gamerepo.player.Player;
 import game.location.DirectionLocation;
@@ -33,13 +34,14 @@ public class PlayGame {
     public void playGame() {
         prepareGame = new PrepareGame(game);
         Move moveForwardOrBack;
-        printGamelastStuation(game);
+//        printGamelastStuation(game);
 
         comparisonOfSolutions = new ComparisonOfSolutions(game);
 
         while (!player.getGameRule().isGameOver(game)) {
             printGamelastStuation(game);
             calculatePlayerTotalWinScore();
+
 
             int choose = player.getInput(game);
 
@@ -75,9 +77,12 @@ public class PlayGame {
     }
 
     void printGamelastStuation(Game game) {
-        System.out.println("ADIM SAYISI : " + game.getPlayer().getStep());
-        new PrintArray().printMultipleArray(game.getModel().getGameSquares());
-        System.out.println("----------------------------------");
+
+            System.out.println("ADIM SAYISI : " + game.getPlayer().getStep());
+            new PrintArray().printMultipleArray(game.getModel().getGameSquares());
+            System.out.println("----------------------------------");
+//            ShowPanel.show(getClass(), "INCELE ");
+
     }
 
     Move getMoveBackOrForward(int index) {
