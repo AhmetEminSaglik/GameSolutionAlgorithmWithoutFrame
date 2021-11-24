@@ -4,7 +4,7 @@ import game.gamerepo.Model;
 import game.gamerepo.player.Player;
 
 public class Game {
-
+    long roundCounter = 0;
     private Model model;
     private Player player;
 
@@ -27,6 +27,18 @@ public class Game {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public void resetRoundCounter() {
+        roundCounter = 0;
+    }
+
+    public void increaseRoundCounter() {
+        roundCounter++;
+    }
+
+    public long getRoundCounter() {
+        return roundCounter;
     }
 
     public void setPlayer(Player player) {

@@ -15,8 +15,14 @@ public class FileWriteProcess implements PrintAble, CloseAbleFile {
     final boolean APPEND_TO_FILE = true;
     boolean filePrintSituation;
 
-    public FileWriteProcess(int squareLengt) {
-        fileName = squareLengt + "-Second.txt";
+    public FileWriteProcess(String name) {
+        fileName = name + ".txt";
+
+    }
+
+    public FileWriteProcess(String name, int squareLengt) {
+        fileName = name + "_" + squareLengt + ".txt";
+
 
     }
 

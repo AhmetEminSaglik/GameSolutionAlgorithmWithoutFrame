@@ -1,6 +1,7 @@
 package game.gamerepo.player.robot.solution.second;
 
 import check.forwardlocation.ForwardLocation;
+import errormessage.ErrorMessage;
 import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.gamerepo.player.robot.Robot;
@@ -9,6 +10,9 @@ import game.gamerepo.player.robot.solution.second.navigation.Navigation;
 import game.location.DirectionLocation;
 import game.location.Location;
 import game.location.LocationsList;
+import print.FileWriteProcess;
+import print.PrintAble;
+import printarray.StringFormat;
 import squareprocess.SquareProcess;
 import weights.Weight;
 
@@ -29,14 +33,19 @@ public class MathFunction {
     SquareProcess squareProcess = new SquareProcess();
     Weight weight = new Weight();
     Robot robot;
+    final int edgeValue;
+    boolean deadlyPoint;
     DirectionLocation compulsoryLocation;
 
+    PrintAble printAble;
     int oneWayNumbersValue;
 
     public MathFunction(Game game, Location playerLocation) {
         this.game = game;
         this.playerLocation = playerLocation;
         robot = (Robot) game.getPlayer();
+        edgeValue = game.getModel().getGameSquares().length;
+//        printAble = new FileWriteProcess(robot.getName(), 404);
     }
 
     void printList(ArrayList<Navigation> list) {
@@ -123,8 +132,9 @@ public class MathFunction {
             System.out.println("checkNavigation.getStep() > " + checkNavigation.getStep());
             System.out.println("checkNavigation.getStep() > " + robot.getStep());
             ShowPanel.show(getClass(), "GERI ADIM ATILACAK  LISTE SILINDI MI ????????????????????????? " + robot.getStep());
-        }
-        ShowPanel.show(getClass(), "Step : " + robot.getStep() + "  gidilecek direction : " + selectedDirection.toString());*/
+        }*/
+
+//        ShowPanel.show(getClass(), "Step : " + robot.getStep() + "  gidilecek direction : " + selectedDirection.toString());
         return selectedDirection.getId();
 
     }
@@ -153,12 +163,14 @@ public class MathFunction {
         return MOVE_BACK;
     }
 
+
     void calculateForwardAvailableDirectionsOfCurrentDirection() {
 
         double weightResult = -1;
         ForwardLocation forwardLocation = new ForwardLocation();
 
         Map<DirectionLocation, Integer> forwardLocationMap = new HashMap<>();
+
         for (int i = 0; i < locationsList.size() - 1; i++) {
             if (squareProcess.isSquareAvailableToMoveOnIt(game, playerLocation, locationsList.get(i))) {//, robotMemory
                 DirectionLocation location = locationsList.get(i);
@@ -167,6 +179,20 @@ public class MathFunction {
                 if (weight.getWeightOfDirection()[availableWayNumber] > weightResult) {
                     weightResult = weight.getWeightOfDirection()[availableWayNumber];
                     selectedDirection = location;
+//                    if (availableWayNumber == 0 && robot.getStep() == edgeValue * edgeValue - 1) {
+//                        ShowPanel.show(getClass(), "ILERI YON 0 GELDII !!!! Adim : "+game.getPlayer().getStep());
+//                    }
+                   /* if (availableWayNumber == 0 && robot.getStep() != edgeValue * edgeValue - 1) {
+//                        ErrorMessage.appearFatalError(getClass(), "ILERI YON 0 GELDII !!!!");
+//                        if(game.getRoundCounter()>1500)
+//                        ShowPanel.show(getClass(), "ILERI YON 0 GELDII !!!! Adim : "+game.getPlayer().getStep());
+                        String text = "Step : " + robot.getStep() + " Round couter :" + game.getRoundCounter() + "\n";
+                        text += new StringFormat().getStringFormatArray(game.getModel().getGameSquares());
+
+//                        printAble.append(text);
+                        selectedDirection = lastLocation;
+                        return;
+                    }*/
                 }
 
                 forwardLocationMap.put(location, availableWayNumber);
@@ -177,7 +203,10 @@ public class MathFunction {
                         compulsoryLocation = location;
                 }
             }
+
         }
+//        printMap(forwardLocationMap);
+
        /* if(oneWayNumbersValue>=2){
             ShowPanel.show(getClass(),"Step : "+game.getPlayer().getStep()+"oneWayNumbersValue " +oneWayNumbersValue);
         }*/
@@ -196,5 +225,19 @@ public class MathFunction {
         for (Map.Entry<DirectionLocation, Integer> entry : map.entrySet()) {
             System.out.println(entry.getKey().getId() + " : " + entry.getValue());
         }
+        ShowPanel.show(getClass(), "Map yazdirildi");
+        System.out.println("================================");
+    }
+
+    void decideDeadlyPointOrNot(ExitSituation exitSituation, int oneWayNumbersValue) {
+        double result = 1 - (exitSituation.getSituation() + oneWayNumbersValue) / 2;
+        if (result >= 0)
+            deadlyPoint = false;
+        deadlyPoint = true;
+    }
+
+
+    boolean isDeadlyPoint() {
+        return deadlyPoint;
     }
 }

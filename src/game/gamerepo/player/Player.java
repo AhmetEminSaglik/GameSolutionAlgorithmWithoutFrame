@@ -11,7 +11,7 @@ import game.rule.BaseGameRule;
 
 public abstract class Player implements UpdateableVistedDirection {
     protected PlayerMove playerMove;
-
+    protected String name;
     Game game;
     private boolean visitedDirections[][];
     TimeKeeper timeKeeper;
@@ -24,6 +24,13 @@ public abstract class Player implements UpdateableVistedDirection {
         clearVisitedDirections();
         timeKeeper = new TimeKeeper();
         score = new Score(game, this);
+
+        name = "Unknow " + getClass().getSimpleName() + " name ";
+    }
+
+    public Player(Game game, String name) {
+        super();
+        this.name = name;
     }
 
     public void clearVisitedDirections() {
@@ -109,5 +116,13 @@ public abstract class Player implements UpdateableVistedDirection {
 
     public PlayerMove getPlayerMove() {
         return playerMove;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

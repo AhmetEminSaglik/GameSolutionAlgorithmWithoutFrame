@@ -25,6 +25,7 @@ public class Main {
         Player robot = new Robot(game, firstSolution);
         firstSolution.buildRobotMove();
 
+
         System.out.println("Enter even number to play\n"
                 + "Enter odd number to see solution");
      /*   if (new Scanner(System.in).nextInt() % 2 == 0) {
@@ -36,7 +37,12 @@ public class Main {
         buildGameModel.createVisitedArea();
         PlayGame playGame = new PlayGame(game);
         playGame.playGame();
-
+        System.out.println("----------------");
+        long firstSolutionRoundCounter = 4_809_119;
+        long secondSolution___JustNextStep_DoesHaveAnyRelationWithOtherSquares___RoundCounter = 1_859_227;
+        System.out.println("First Solution algorithm roundCounter : " + firstSolutionRoundCounter + " Time >  " + " 0:0:2:646");
+        System.out.println("Second Solution algorithm (Just check about does next Square have any relations) roundCounter : " + secondSolution___JustNextStep_DoesHaveAnyRelationWithOtherSquares___RoundCounter + " Time >  " + " 0:0:2:507");
+        System.out.println("Round Counter Difference : " + (firstSolutionRoundCounter - secondSolution___JustNextStep_DoesHaveAnyRelationWithOtherSquares___RoundCounter));
     }
 
 }

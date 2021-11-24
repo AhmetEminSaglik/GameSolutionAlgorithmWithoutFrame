@@ -25,6 +25,7 @@ public class Robot extends Player {
         super(game);
         this.solution = solution;
         playerMove = new PlayerMove(new MoveForward(game), new MoveBack(game));
+        setName(solution.getClass().getSimpleName()+"_"+game.getModel().getGameSquares());
 
     }
 

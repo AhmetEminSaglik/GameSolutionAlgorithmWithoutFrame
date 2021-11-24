@@ -15,7 +15,7 @@ import printarray.StringFormat;
 
 public class PlayGame {
 
-    long roundCounter = 0;
+//    long roundCounter = 0;
 
     Game game;
     Player player;
@@ -29,7 +29,7 @@ public class PlayGame {
     public PlayGame(Game game) {
         this.game = game;
         player = game.getPlayer();
-        printable = new FileWriteProcess(game.getModel().getGameSquares().length);
+        printable = new FileWriteProcess(game.getPlayer().getName());
     }
 
 
@@ -47,7 +47,7 @@ public class PlayGame {
         comparisonOfSolutions = new ComparisonOfSolutions(game);
 
         while (!player.getGameRule().isGameOver(game)) {
-            roundCounter++;
+            game.increaseRoundCounter();
 //            printGamelastStuation(game);
             calculatePlayerTotalWinScore();
 
@@ -57,18 +57,19 @@ public class PlayGame {
             moveForwardOrBack = getMoveBackOrForward(choose);
 
             moveForwardOrBack.move(new DirectionLocation().getLocationValueAccordingToEnteredValue(game, choose));
-            printGamelastStuation(game);
+//            printGamelastStuation(game);
 
 //            new Sleep().sleep(500);
         }
 
+//        System.out.println("Toplam Bulunulan Cozum Sayisi: " + totalGameFinishedScore);
         saveGameResultToScore();
     }
 
     void calculatePlayerTotalWinScore() {
         if (player.getStep() == Math.pow(game.getModel().getGameSquares().length, 2)) {
             totalGameFinishedScore++;
-//            printGamelastStuation(game);
+            printGamelastStuation(game);
 
             System.out.println("Toplam Bulunulan Cozum Sayisi: " + totalGameFinishedScore);
 //                compareSolutions();
@@ -89,16 +90,18 @@ public class PlayGame {
 
     void printGamelastStuation(Game game) {
 
-        System.out.println("ADIM SAYISI : " + game.getPlayer().getStep());
+        System.out.println("ADIM SAYISI : " + game.getPlayer().getStep() +
+                "Round Counter : " + game.getRoundCounter());
         new PrintArray().printMultipleArray(game.getModel().getGameSquares());
 
         String textWillAppendToFile = "Step : " + player.getStep() + " Finished totalGame : " + totalGameFinishedScore + "\n";
-        textWillAppendToFile += "RoundCounter : " + roundCounter + '\n';
+        textWillAppendToFile += "RoundCounter : " + game.getRoundCounter() + '\n';
         textWillAppendToFile += stringFormat.getStringFormatArray(game.getModel().getGameSquares());
-        if (roundCounter > 294) {
-            System.out.println("Round couter : "+roundCounter);
-            for(int i=0;i<((Robot)player).getRoadMemory().getOneWayNumbersList().size();i++){
-                System.out.println("index : "+i+"  >>> " +((Robot)player).getRoadMemory().getOneWayNumbersList().get(i).toString());;
+        if (game.getRoundCounter() > 294) {
+            System.out.println("Round couter : " + game.getRoundCounter());
+            for (int i = 0; i < ((Robot) player).getRoadMemory().getOneWayNumbersList().size(); i++) {
+                System.out.println("index : " + i + "  >>> " + ((Robot) player).getRoadMemory().getOneWayNumbersList().get(i).toString());
+                ;
             }
 //            ShowPanel.show(getClass(),roundCounter+" yaziliyor");
         }
