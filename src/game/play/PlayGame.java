@@ -97,6 +97,7 @@ public class PlayGame {
 
         String textWillAppendToFile = "Step : " + player.getStep() + " Finished totalGame : " + totalGameFinishedScore + "\n";
         textWillAppendToFile += "RoundCounter XXX : " + game.getRoundCounter() + '\n';
+        System.out.println(textWillAppendToFile);
 //        ShowPanel.show(getClass(), "Incele adim " +player.getStep());
 //        textWillAppendToFile += stringFormat.getStringFormatArray(game.getModel().getGameSquares());
       /*  if (game.getRoundCounter() > 294) {

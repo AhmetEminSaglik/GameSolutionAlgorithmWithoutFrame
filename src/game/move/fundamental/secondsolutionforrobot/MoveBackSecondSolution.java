@@ -60,6 +60,7 @@ public class MoveBackSecondSolution extends MoveBack {
 
     void processAccordingToOneWayNumber() {
         if (navigation.getOneWayNumbersValue() == 2) {
+
 //            freeExitSituation();
 //            navigation.setCompulsoryLocation(new LocationsList().getLastLocation());
         }

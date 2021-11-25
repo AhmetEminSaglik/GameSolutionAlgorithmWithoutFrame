@@ -27,7 +27,9 @@ public class Navigation {
 
     public DirectionLocation getCompulsoryLocation() {
 //        System.out.println("KOPYALANNANNNN COMPOULSARI LOCATINO  ID : "+compulsoryLocation.getId());
+        if(compulsoryLocation!=null)
         return createNewDirectionLocation(compulsoryLocation.getX(), compulsoryLocation.getY());
+        return null;
     }
 
     DirectionLocation createNewDirectionLocation(int x, int y) {

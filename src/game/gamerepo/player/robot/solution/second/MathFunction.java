@@ -55,41 +55,71 @@ public class MathFunction {
 
 
     public int calculateFunctionResult() {
-        ShowPanel.show(getClass(),"adim ? "+robot.getStep());
+//        ShowPanel.show(getClass(), "adim ? " + robot.getStep());
 
         if (isCompulsoryLocationNullInNavigation() == true) {
-//            ShowPanel.show(getClass(),"adim ? "+robot.getStep());
-//                    ""+compulsoryLocation.toString());+r
+            ShowPanel.show(getClass(),"adim ? "+robot.getStep());
+//                    "  "+compulsoryLocation.toString());
 
 
             calculateForwardAvailableDirectionsOfCurrentDirection();
 
-            double calculationDeadlyPoint = calculateDeadlyPoint();
+            if (!isRequestedToKillFunctionByOneWayAvailableNumberProcess()) {
+
+
+                double calculationDeadlyPoint = calculateDeadlyPoint();
 //            System.out.println("GELEN SONUCCCCCCCCCC  "+calculationDeadlyPoint);
-            if (calculationDeadlyPoint == IS_FREE_SO_MOVE_FORWARD) {
+                if (calculationDeadlyPoint == IS_FREE_SO_MOVE_FORWARD) {
 //                selectedDirection = lastLocation;
 //                if (oneWayNumbersValue == 2 && robot.getRoadMemory().getExitSituation().getSituation() == ExitSituation.EXIT_LOCATED)
 //                ShowPanel.show(getClass(), robot.getStep() + " >>AAAAAAAAAAAAAAAA  Adim  OWN : " + oneWayNumbersValue);
-                navigation = buildNavigation();
-                addNavigationToRoadMemoryList();
-            } else {
-                setDefaultValueToSelectedLocationAsLastLocation();
+                    navigation = buildNavigation();
+                    addNavigationToRoadMemoryList();
+                } else {
+//                setDefaultValueToSelectedLocationAsLastLocation();
 
+                }
             }
             /* */
         } else {
-
+//            if (robot.getStep() == 12) {
+//                ShowPanel.show(getClass(), "get adim sayisi " + robot.getStep());
+//                ShowPanel.show(getClass(), selectedDirection.toString());
+//            }
 //            selectedDirection = navigation.getCompulsoryLocation();
 //            System.out.println("Sewlected Direction" + selectedDirection);
 //            System.out.println("navigaton" + navigation.getCompulsoryLocation());
-
-            selectedDirection = lastLocation;
+            if (navigation.getCompulsoryLocation() != null) {
+                ShowPanel.show(getClass(), "getCompulsoryLocation NUL DEGILLL " + navigation.getCompulsoryLocation().toString());
+                selectedDirection = navigation.getCompulsoryLocation();
+                navigation.setCompulsoryLocation(lastLocation);
+                if (robot.getStep() == 12) {
+                    ShowPanel.show(getClass(), "get adim sayisi " + robot.getStep());
+                    ShowPanel.show(getClass(), selectedDirection.toString());
+                }
+            } /*else {
+                if (robot.getStep() == 12) {
+                    ShowPanel.show(getClass(), "get adim sayisi " + robot.getStep());
+                    ShowPanel.show(getClass(), selectedDirection.toString());
+                }
+//                selectedDirection = lastLocation;
+            }*/
+//            selectedDirection = lastLocation;
 //            navigation.setCompulsoryLocation(lastLocation);
 //            System.out.println("Sewlected Direction" + selectedDirection);
 //            System.out.println("navigaton" + navigation.getCompulsoryLocation());
 //            ShowPanel.show(getClass(),"LOCATION DEGISMIS MI ?");
         }
         printNavigation();
+        DirectionLocation nullMu=null;
+        if (compulsoryLocation != null) {
+            selectedDirection = compulsoryLocation;
+        }
+        ShowPanel.show(getClass(), "\nlast locatrion " + lastLocation.toString() + "\n" +
+                "selectedDirection " + selectedDirection.toString() + "\nstep : " + robot.getStep()+"\n" +
+                "zorunlu olan : "+nullMu);
+
+
         return selectedDirection.getId();
 
     }
@@ -124,6 +154,7 @@ public class MathFunction {
         navigation.setOneWayNumbersValue(oneWayNumbersValue);
 
         if (compulsoryLocation != null) {
+            System.out.println("AAAAAAAAAAAAAAAAAAA step : " + robot.getStep());
             navigation.setCompulsoryLocation(compulsoryLocation);
         }
         /*if (oneWayNumbersValue == 2) {  ----> Bu ileri adim , before step'te yapilacak
@@ -158,9 +189,10 @@ public class MathFunction {
                 }
 //                forwardLocationMap.put(location, availableWayNumber);
 
-                processAccordingToAvailableWayNumber(availableWayNumber, location);
+                processAccordingToOneWayNumber(availableWayNumber, location);
 
                 if (isRequestedToKillFunctionByOneWayAvailableNumberProcess()) {
+
                     return;
                 }
 
@@ -202,13 +234,17 @@ public class MathFunction {
         return false;
     }
 
-    void processAccordingToAvailableWayNumber(int availableWayNumber, DirectionLocation location) {
+    void processAccordingToOneWayNumber(int availableWayNumber, DirectionLocation location) {
 
         if (availableWayNumber == 1) {
+            oneWayNumbersValue++;
+
             if (isExitSituationLocated()) {
                 compulsoryLocation = lastLocation;
+            } else if (oneWayNumbersValue == 2) {
+                ShowPanel.show(getClass(), "BURADA ZORUNLU ALANBELIRLENIYOR" + oneWayNumbersValue);
+                compulsoryLocation = location;
             }
-            oneWayNumbersValue++;
             if (isOneWayNumberTooMuchToRunHealtyTheAlgorithm()) {
                 selectedDirection = lastLocation;
                 killRequestByAvailableProcessFunction = true;
@@ -219,7 +255,8 @@ public class MathFunction {
                                 "i : " + i + " oneWayNumbersValue : +1 ekle " + oneWayNumbersValue);*/
 
 //            oneWayNumbersValue == 2 ---> olacak zaten o zaman direk zorunluBolgeryi =location yapmak yeterli olacaktir
-            compulsoryLocation = location;
+//            ShowPanel.show(getClass(),"BURADAN KAYNAKLI MI step : "+robot.getStep());
+
 
             /*if (oneWayNumbersValue == 2) {
                 compulsoryLocation = location;
