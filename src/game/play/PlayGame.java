@@ -57,12 +57,13 @@ public class PlayGame {
             moveForwardOrBack = getMoveBackOrForward(choose);
 
             moveForwardOrBack.move(new DirectionLocation().getLocationValueAccordingToEnteredValue(game, choose));
-//            printGamelastStuation(game);
+
+            printGamelastStuation(game);
 
 //            new Sleep().sleep(500);
         }
 
-//        System.out.println("Toplam Bulunulan Cozum Sayisi: " + totalGameFinishedScore);
+        System.out.println("Toplam Bulunulan Cozum Sayisi: " + totalGameFinishedScore);
         saveGameResultToScore();
     }
 
@@ -91,20 +92,21 @@ public class PlayGame {
     void printGamelastStuation(Game game) {
 
         System.out.println("ADIM SAYISI : " + game.getPlayer().getStep() +
-                "Round Counter : " + game.getRoundCounter());
+                " > Round Counter : " + game.getRoundCounter());
         new PrintArray().printMultipleArray(game.getModel().getGameSquares());
 
         String textWillAppendToFile = "Step : " + player.getStep() + " Finished totalGame : " + totalGameFinishedScore + "\n";
-        textWillAppendToFile += "RoundCounter : " + game.getRoundCounter() + '\n';
-        textWillAppendToFile += stringFormat.getStringFormatArray(game.getModel().getGameSquares());
-        if (game.getRoundCounter() > 294) {
+        textWillAppendToFile += "RoundCounter XXX : " + game.getRoundCounter() + '\n';
+//        ShowPanel.show(getClass(), "Incele adim " +player.getStep());
+//        textWillAppendToFile += stringFormat.getStringFormatArray(game.getModel().getGameSquares());
+      /*  if (game.getRoundCounter() > 294) {
             System.out.println("Round couter : " + game.getRoundCounter());
             for (int i = 0; i < ((Robot) player).getRoadMemory().getOneWayNumbersList().size(); i++) {
                 System.out.println("index : " + i + "  >>> " + ((Robot) player).getRoadMemory().getOneWayNumbersList().get(i).toString());
                 ;
             }
 //            ShowPanel.show(getClass(),roundCounter+" yaziliyor");
-        }
+        }*/
 
         System.out.println();
 //        printToFile(textWillAppendToFile);

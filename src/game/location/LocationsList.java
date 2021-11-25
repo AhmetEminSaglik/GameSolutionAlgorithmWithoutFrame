@@ -10,6 +10,7 @@ import game.location.direction.South;
 import game.location.direction.SouthEast;
 import game.location.direction.SouthWest;
 import game.location.direction.West;
+
 import java.util.ArrayList;
 
 public class LocationsList {
@@ -36,6 +37,10 @@ public class LocationsList {
             fillList();
         }
         return list;
+    }
+
+    public DirectionLocation getLastLocation() {
+        return new LastLocation();
     }
 
 }

@@ -1,5 +1,6 @@
 package game.play;
 
+import errormessage.joptionpanel.ShowPanel;
 import game.move.fundamental.MoveBack;
 import game.move.fundamental.MoveForward;
 
@@ -12,6 +13,7 @@ public class PlayerMove {
 //        this.player = player;
         this.moveForward = moveForward;
         this.moveBack = moveBack;
+//        ShowPanel.show(getClass(),"PLAYER MOVE  CONSTRUCTER "+moveForward+"  forward>< back"+moveBack);
     }
 
     public MoveForward getMoveForward() {
@@ -23,5 +25,11 @@ public class PlayerMove {
         return moveBack;
     }
 
-
+    @Override
+    public String toString() {
+        return "PlayerMove{" +
+                "moveForward=" + moveForward +
+                ", moveBack=" + moveBack +
+                '}';
+    }
 }

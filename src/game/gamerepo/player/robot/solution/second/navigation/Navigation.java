@@ -1,10 +1,11 @@
 package game.gamerepo.player.robot.solution.second.navigation;
 
+import game.location.CreateLocation;
 import game.location.DirectionLocation;
 
 public class Navigation {
     int step, oneWayNumbersValue;
-    DirectionLocation compulsoryLocation=null;
+    DirectionLocation compulsoryLocation = null;
     boolean isExitSituationWasLocatedInThisStep;
 //    ExitSituation exitSituation = new ExitSituation(ExitSituation.EXIT_FREE);
 
@@ -21,11 +22,20 @@ public class Navigation {
     }
 
     public void setOneWayNumbersValue(int oneWayNumbersValue) {
-        oneWayNumbersValue = oneWayNumbersValue;
+        this.oneWayNumbersValue = oneWayNumbersValue;
     }
 
     public DirectionLocation getCompulsoryLocation() {
-        return compulsoryLocation;
+//        System.out.println("KOPYALANNANNNN COMPOULSARI LOCATINO  ID : "+compulsoryLocation.getId());
+        return createNewDirectionLocation(compulsoryLocation.getX(), compulsoryLocation.getY());
+    }
+
+    DirectionLocation createNewDirectionLocation(int x, int y) {
+        DirectionLocation directionLocation = new DirectionLocation();
+
+        directionLocation.setX(x);
+        directionLocation.setY(y);
+        return directionLocation;
     }
 
     public void setCompulsoryLocation(DirectionLocation compulsoryLocation) {
@@ -45,7 +55,7 @@ public class Navigation {
         return "Navigation{" +
                 "step=" + step +
                 ", oneWayNumbersValue=" + oneWayNumbersValue +
-                ", compulsoryLocation=" + compulsoryLocation.getId() +
+                ", compulsoryLocation=" + compulsoryLocation +
                 ", isExitSituationWasLocatedInThisStep=" + isExitSituationWasLocatedInThisStep +
                 '}';
     }

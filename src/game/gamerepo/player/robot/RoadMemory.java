@@ -24,11 +24,13 @@ public class RoadMemory {
     }
 
     public int getLastIndex() {
-        return oneWayNumbersList.size()-1 ;
+        return oneWayNumbersList.size() - 1;
     }
 
     public Navigation getOneWayListLastItem() {
-        return oneWayNumbersList.get(getLastIndex());
+        if (oneWayNumbersList.size() > 0)
+            return oneWayNumbersList.get(getLastIndex());
+        return null;
     }
 
     public Navigation removeOneWayListLastItem() {

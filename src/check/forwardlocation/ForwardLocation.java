@@ -19,7 +19,7 @@ public class ForwardLocation {
 
         int availableLocationNumberToMove = 0;
         for (int i = 0; i < locationsList.size() - 1; i++) {
-            if (squareProcess.isSquareAvailableToMoveOnIt(game, drone.getLocation(), locationsList.get(i)))
+            if (squareProcess.isAreaAvailableToVisit(game, drone.getLocation(), locationsList.get(i)))
                 availableLocationNumberToMove++;
         }
         return availableLocationNumberToMove;

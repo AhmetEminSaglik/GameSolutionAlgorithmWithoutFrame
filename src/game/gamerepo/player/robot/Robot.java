@@ -2,6 +2,7 @@ package game.gamerepo.player.robot;
 
 import compass.Compass;
 import compass.DirectionCompass;
+import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.gameover.RobotGameOver;
 import game.gamerepo.player.Player;
@@ -24,9 +25,11 @@ public class Robot extends Player {
     public Robot(Game game, BaseSolution solution) {
         super(game);
         this.solution = solution;
-        playerMove = new PlayerMove(new MoveForward(game), new MoveBack(game));
+        solution.buildRobotMove();
+        playerMove = new PlayerMove(solution.getMoveForward(),solution.getMoveBack());
         setName(solution.getClass().getSimpleName()+"_"+game.getModel().getGameSquares());
 
+//        ShowPanel.show(getClass(),"Player Move robot : "+playerMove.toString());
     }
 
     @Override

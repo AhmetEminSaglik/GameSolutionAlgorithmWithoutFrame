@@ -1,6 +1,7 @@
 package game.gamerepo.player.robot.solution.second;
 
 import check.forwardlocation.ForwardLocation;
+import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.gamerepo.player.robot.Robot;
 import game.gamerepo.player.robot.solution.BaseSolution;
@@ -27,7 +28,7 @@ public class SecondSolution_CalculateForwardAvailableWays extends BaseSolution {
 
         MathFunction mathFunction = new MathFunction(game, playerLocation);
 
-        int newLocation = mathFunction.calculateFunctionResult(((Robot) game.getPlayer()).getRoadMemory().getExitSituation());
+        int newLocation = mathFunction.calculateFunctionResult();
 //        ShowPanel.show(getClass(), "newLocation : " + newLocation);
         return newLocation;
 
@@ -49,5 +50,6 @@ public class SecondSolution_CalculateForwardAvailableWays extends BaseSolution {
     public void buildRobotMove() {
         setMoveForward(new MoveForwardSecondSolution(getGame()));
         setMoveBack(new MoveBackSecondSolution(getGame()));
+//        ShowPanel.show(getClass(),"DURRRRRRRRRRR");
     }
 }

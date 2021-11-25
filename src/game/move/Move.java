@@ -8,6 +8,9 @@ import compass.Compass;
 import game.Game;
 import game.location.DirectionLocation;
 import game.move.fundamental.MoveBack;
+import game.move.fundamental.MoveForward;
+import game.move.fundamental.secondsolutionforrobot.MoveBackSecondSolution;
+import game.move.fundamental.secondsolutionforrobot.MoveForwardSecondSolution;
 import game.play.SelectFirstSqaureToStart;
 import validation.Validation;
 
@@ -28,15 +31,29 @@ public abstract class Move implements IMove { // ICalculateMove
         fillGameSquare = new FillGameSquare(game);
     }
 
+    @Override
+    public boolean isRequiredToChangeStartLocation() {
+        if (game.getPlayer().getStep() == 1 && getClass().equals(MoveBack.class))
+            return true;
+        return false;
+    }
+
     public final void move(DirectionLocation directionLocation) {
-        if (game.getPlayer().getStep() == 1 && getClass().equals(MoveBack.class)) {
+        prepareAllStuff();
+
+
+        if (isRequiredToChangeStartLocation()) {
             changeStartLocationSpecialMovement();
         } else {
+
             setLocation(directionLocation);
+
             updateBeforeStep();
             updatePlayerStepValue();
             updateAfterStep();
             fillGameSquare.printStepInGameSquare();
+
+
         }
     }
 
@@ -71,6 +88,11 @@ public abstract class Move implements IMove { // ICalculateMove
         }/* else {
             ShowPanel.show(getClass(), " Y siniri asti ");
         }*/
+    }
+
+    @Override
+    public void prepareAllStuff() {
+
     }
 
     @Override
