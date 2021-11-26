@@ -1,7 +1,6 @@
 package print;
 
 import errormessage.ErrorMessage;
-import errormessage.joptionpanel.ShowPanel;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -22,12 +21,9 @@ public class FileWriteProcess implements PrintAble, CloseAbleFile {
 
     public FileWriteProcess(String name, int squareLengt) {
         fileName = name + "_" + squareLengt + ".txt";
-
-
     }
 
     void openFile() {
-//        ShowPanel.show(getClass(), "FILE WILL OPEN");
         try {
             bufferedWriter = new BufferedWriter(new FileWriter(fileName, filePrintSituation));
 
@@ -46,7 +42,6 @@ public class FileWriteProcess implements PrintAble, CloseAbleFile {
         } finally {
             closeFile();
         }
-
     }
 
     void writeToFile(String text) {
@@ -65,18 +60,15 @@ public class FileWriteProcess implements PrintAble, CloseAbleFile {
     @Override
     public void write(String text) {
         writeToFile(text);
-//        ShowPanel.show(getClass(), "gelen text : " + text);
     }
 
     @Override
     public void append(String text) {
         appendToFile(text);
-//        ShowPanel.show(getClass(), "gelen text : " + text);
     }
 
     @Override
     public void closeFile() {
-//        ShowPanel.show(getClass(), "FILE WILL CLOSE");
         try {
             bufferedWriter.close();
         } catch (IOException e) {

@@ -5,18 +5,16 @@ import validation.SquareValidationGame;
 
 public class BuildGame {
 
-    // Yatay ve dikey kenar uzunluklari (Simdilik gereksiz bir ayrinti, 
-    // kare olarak oynaniliyor ama sonradan dikdortgene cevirmek istersem diye bu sekilde yazdim)
+    // horizontalSquare and verticalSquare are unnecessary. But later I may need them if I want to play as a rectangle instead of square
     private int horizontalSquare;
     private int verticalSquare;
     private Game game;
 
-    public BuildGame(int verticalSquare, int horizontalSquare) throws InterruptedException { //Model model, Player player,
+    public BuildGame(int verticalSquare, int horizontalSquare) throws InterruptedException {
         new SquareValidationGame(verticalSquare, horizontalSquare);
         this.horizontalSquare = horizontalSquare;
         this.verticalSquare = verticalSquare;
         game = new Game();
-
     }
 
     public Game createGame() throws InterruptedException {

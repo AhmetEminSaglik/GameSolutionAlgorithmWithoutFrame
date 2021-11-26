@@ -10,13 +10,11 @@ public class TimeKeeper {
 
     public TimeKeeper() {
         start = System.nanoTime();
-
     }
 
     public void finishTime() {
         long finish = System.nanoTime() - start;
         totalTimePassed = TimeUnit.MILLISECONDS.convert(finish, TimeUnit.NANOSECONDS);
-
     }
 
     public long getTotalTimePassed() {

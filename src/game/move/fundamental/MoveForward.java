@@ -16,7 +16,6 @@ public class MoveForward extends Move {
         updateValuesInGameModel.updateValueVisitedDirection(getDirectionLocation());
     }
 
-
     @Override
     public void updateBeforeStep() {
     }

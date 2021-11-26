@@ -1,8 +1,9 @@
 package game.play.input;
 
 import game.Game;
+import game.play.input.person.IPlayerInput;
 
-public abstract class BaseControlInput {
+public abstract class BaseControlInput implements IPlayerInput {
 
     public Game game;
 

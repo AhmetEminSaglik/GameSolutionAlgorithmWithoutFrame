@@ -10,7 +10,6 @@ public class Score {
     public Score(Game game, Player player) {
         this.game = game;
         this.player = player;
-
     }
 
     public void updatePlayedTime() {

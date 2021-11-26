@@ -1,16 +1,12 @@
 package game.move;
 
 import errormessage.ErrorMessage;
-import errormessage.joptionpanel.ShowPanel;
 import game.gamerepo.FillGameSquare;
 import game.gamerepo.updategamemodel.UpdateValuesInGameModel;
 import compass.Compass;
 import game.Game;
 import game.location.DirectionLocation;
 import game.move.fundamental.MoveBack;
-import game.move.fundamental.MoveForward;
-import game.move.fundamental.secondsolutionforrobot.MoveBackSecondSolution;
-import game.move.fundamental.secondsolutionforrobot.MoveForwardSecondSolution;
 import game.play.SelectFirstSqaureToStart;
 import validation.Validation;
 
@@ -41,20 +37,14 @@ public abstract class Move implements IMove { // ICalculateMove
     public final void move(DirectionLocation directionLocation) {
         prepareAllStuff();
 
-
         if (isRequiredToChangeStartLocation()) {
             changeStartLocationSpecialMovement();
         } else {
-
             setLocation(directionLocation);
-
-//            System.out.println(" MOVE ICI  oncesi degisiklik var mi ?Ilerleme Yonu : " + getDirectionLocation());
             updateBeforeStep();
             updatePlayerStepValue();
             updateAfterStep();
             fillGameSquare.printStepInGameSquare();
-
-
         }
     }
 

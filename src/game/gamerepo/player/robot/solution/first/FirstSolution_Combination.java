@@ -12,22 +12,19 @@ import java.util.ArrayList;
 
 public class FirstSolution_Combination extends BaseSolution {
 
-
     public FirstSolution_Combination(Game game) {
         super(game);
     }
 
     @Override
-    public int getLocationInput(Game game) {//, RobotMemory robotMemory
+    public int getLocationInput(Game game) {
         ArrayList<DirectionLocation> locationsList = new LocationsList().getList();
 
-//        if (isStepAvailableToMoveForward(game.getPlayer().getStep(), (int) Math.pow(game.getModel().getGameSquares().length, 2)) == true) {
-        //yukaridaki if niye var bilmiyorum ama  simdilik dursun sonra ise yarayabilir
         Location playerLocation = checkSquare.getPlayerLocation(game);
 
         for (int i = 0; i < locationsList.size() - 1; i++) {
 
-            if (squareProcess.isSquareAvailableToMoveOnIt(game, playerLocation, locationsList.get(i))) {//, robotMemory
+            if (squareProcess.isSquareAvailableToMoveOnIt(game, playerLocation, locationsList.get(i))) {
                 return locationsList.get(i).getId();
             }
         }
@@ -41,25 +38,4 @@ public class FirstSolution_Combination extends BaseSolution {
         setMoveForward(new MoveForward(getGame()));
         setMoveBack(new MoveBack(getGame()));
     }
-/*
-
-    boolean isStepAvailableToMoveForward(int step, int maxSquareValue) {
-        if (step < maxSquareValue)
-            return true;
-        return false;
-    }
-*/
-
-    /* void printSealedArea(Robot robot) {
-         for (int i = 0; i <*//* robotMemory.*//*robot.getVisitedDirections().length; i++) {
-            for (int j = 0; j < *//*robotMemory.*//*robot.getVisitedDirections()[0].length; j++) {
-                if (*//*robotMemory.*//*robot.getVisitedDirections()[i][j] == true) {
-                    System.out.println("getVisitedDirections()[" + i + "][" + j + "] : " + robot.getVisitedDirections()[i][j]);
-                }
-            }
-        }
-        //   new Sleep().sleep(3000);
-    }*/
-
-
 }

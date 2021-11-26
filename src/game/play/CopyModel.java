@@ -2,7 +2,6 @@ package game.play;
 
 import game.gamerepo.Model;
 import printarray.PrintArray;
-import sleep.Sleep;
 
 import java.util.ArrayList;
 

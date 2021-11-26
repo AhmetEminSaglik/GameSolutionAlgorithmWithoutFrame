@@ -1,13 +1,11 @@
 package game.gamerepo.player.robot.solution.second.navigation;
 
-import game.location.CreateLocation;
 import game.location.DirectionLocation;
 
 public class Navigation {
     int step, oneWayNumbersValue;
     DirectionLocation compulsoryLocation = null;
     boolean isExitSituationWasLocatedInThisStep;
-//    ExitSituation exitSituation = new ExitSituation(ExitSituation.EXIT_FREE);
 
     public int getStep() {
         return step;
@@ -26,19 +24,9 @@ public class Navigation {
     }
 
     public DirectionLocation getCompulsoryLocation() {
-//        System.out.println("KOPYALANNANNNN COMPOULSARI LOCATINO  ID : "+compulsoryLocation.getId());
         if (compulsoryLocation != null)
-//            return createNewDirectionLocation(compulsoryLocation.getId(), compulsoryLocation.getX(), compulsoryLocation.getY());
             return compulsoryLocation;
         return null;
-    }
-
-    DirectionLocation createNewDirectionLocation(int id, int x, int y) {
-        DirectionLocation directionLocation = new DirectionLocation();
-        directionLocation.setX(id);
-        directionLocation.setX(x);
-        directionLocation.setY(y);
-        return directionLocation;
     }
 
     public void setCompulsoryLocation(DirectionLocation compulsoryLocation) {

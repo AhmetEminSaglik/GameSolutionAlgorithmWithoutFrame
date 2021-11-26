@@ -14,12 +14,9 @@ public class SquareValidationGame {
         if (new Validation().validateSquareNumbers(verticalSquares) && new Validation().validateSquareNumbers(horizontalSquares)) {
             this.verticalSquares = verticalSquares;
             this.horizontalSquares = horizontalSquares;
-
         } else {
-
             String message = "For both squares must be bigger than 4";
             new ErrorMessage().appearFatalError(getClass(), message);
-
         }
 
     }

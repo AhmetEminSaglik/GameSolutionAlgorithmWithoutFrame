@@ -1,7 +1,6 @@
 package game.gamerepo.player.robot.solution.second.navigation;
 
 public class ExitSituation {
-    //    EXIT_FREE(0), EXIT_LOCATED(1);
     public static final int EXIT_FREE = 0, EXIT_LOCATED = 1;
 
     int situation;

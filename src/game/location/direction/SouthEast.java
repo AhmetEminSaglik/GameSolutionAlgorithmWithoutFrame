@@ -4,8 +4,6 @@ import game.location.DirectionLocation;
 
 public class SouthEast extends DirectionLocation {
 
-
-
     @Override
     public int getId() {
         return getCompass().getSouthEast();
@@ -14,7 +12,6 @@ public class SouthEast extends DirectionLocation {
     @Override
     public int getX() {
         return 2;
-
     }
 
     @Override

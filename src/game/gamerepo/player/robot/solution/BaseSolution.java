@@ -12,41 +12,12 @@ public abstract class BaseSolution {
     public BaseSolution(Game game) {
         this.game = game;
     }
-
     private MoveForward moveForward;
     private MoveBack moveBack;
     public CheckSquare checkSquare = new CheckSquare();
     public SquareProcess squareProcess = new SquareProcess();
 
     public abstract int getLocationInput(Game game);//, RobotMemory robotMemory
-
-/*
-    public boolean isSquareAvailableToMoveOnIt(Game game, DirectionLocation location) {//, RobotMemory robotMemory
-        if (isAreaAvailableToVisit(game, location)
-                && isDirectionAvailableToVisit(game, location))
-            return true;
-
-        return false;
-    }
-
-    public boolean isAreaAvailableToVisit(Game game, DirectionLocation location) {
-        Location locationWillBeCheck = checkSquare.createLocationToCheck(game);
-        return checkSquare.isSquareFreeFromVisitedArea(game, locationWillBeCheck, location.getId());
-    }
-
- */
-/*   Location createLocationToCheck(Game game) {
-        Location locationWillBeCheck = new Location();
-        locationWillBeCheck.setX(game.getPlayer().getLocation().getX());
-        locationWillBeCheck.setY(game.getPlayer().getLocation().getY());
-        return locationWillBeCheck;
-    }*//*
-
-
-    public boolean isDirectionAvailableToVisit(Game game, DirectionLocation location) {
-        return checkSquare.isSquareFreeFromVisitedDirection(game, location.getId());
-    }
-*/
 
     public MoveForward getMoveForward() {
         return moveForward;

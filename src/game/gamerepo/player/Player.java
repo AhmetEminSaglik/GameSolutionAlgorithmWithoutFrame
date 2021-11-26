@@ -88,11 +88,6 @@ public abstract class Player implements UpdateableVistedDirection {
 
     public abstract Compass getCompass();
 
-    public void getInfo() {
-        System.out.println("Robot's Location : X,Y : " + location.getX() + " " + location.getY());
-        System.out.println("Robot's step : " + getStep());
-    }
-
     @Override
     public void updateVisitedDirection(boolean sealOrUnseal, int step, DirectionLocation location) {
 

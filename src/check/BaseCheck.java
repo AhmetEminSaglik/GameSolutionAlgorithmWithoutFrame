@@ -16,7 +16,6 @@ public abstract class BaseCheck {
     }
 
     public void setCompass(Compass compass) {
-        // ErrorMessage.appearFatalError(getClass(), "burada compass degistiriliyor");
         this.compass = compass;
     }
 
@@ -27,8 +26,5 @@ public abstract class BaseCheck {
         return locationWillBeCheck;
     }
 
-   /* public Location getPlayerLocation() {
-        //createLocationToCheck
-    }*/
 
 }

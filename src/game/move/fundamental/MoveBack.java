@@ -45,17 +45,5 @@ public class MoveBack extends Move {
         new GameModelProcess(game).deleteMaxStep(game.getPlayer().getStep());
     }
 
-       /* @Override
-    public void updatePlayerLocation() {
-        updateValuesInGameModel.changePlayerLocation(getDirectionLocation());
-    }*/
-   /* @Override
-    public void updatePlayerStepValue() {
-        decreasePlayerStepValue();
-    }
-*/
-   /* void decreasePlayerStepValue() {
-        //getPlayer().increaseStep();
-        updateValuesInGameModel.updatePlayerStepValue();
-    }*/
+
 }

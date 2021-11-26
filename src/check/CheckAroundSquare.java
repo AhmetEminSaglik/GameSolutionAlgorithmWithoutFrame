@@ -4,9 +4,7 @@ import compass.Compass;
 import compass.DirectionCompass;
 import game.Game;
 import game.location.DirectionLocation;
-
 import java.util.ArrayList;
-
 import game.location.Location;
 import game.location.LocationsList;
 

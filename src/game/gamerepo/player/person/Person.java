@@ -33,7 +33,6 @@ public class Person extends Player {
     public BaseGameRule getGameRule() {
         if (gameRule == null) {
             gameRule = new BaseGameRule(new PersonGameOver());
-
         }
         return gameRule;
     }

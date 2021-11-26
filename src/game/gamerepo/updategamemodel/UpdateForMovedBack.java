@@ -29,10 +29,7 @@ public class UpdateForMovedBack extends UpdateValuesInGameModel {
     public void updateValueVisitedDirection(DirectionLocation directionLocation) {
         int step = player.getStep();
         if (new Validation().isStepValueAvailable(game, step)) {
-//            ShowPanel.show(getClass(),"GERI ADIM ATMA UpdateVisitedDirection validasyon SAGLANDIIIIIIIIIIIIIIIII : "+step+ " direction id : "+directionLocation.getId());
             player.updateVisitedDirection(ifMovedForwardThenSealTheLocation().isSealed(), step, directionLocation);
-        }else{
-//            ShowPanel.show(getClass(),"GERI ADIM ATMA UpdateVisitedDirection validasyon saglanamadi : "+step+ " direction id : "+directionLocation.getId());
         }
     }
 

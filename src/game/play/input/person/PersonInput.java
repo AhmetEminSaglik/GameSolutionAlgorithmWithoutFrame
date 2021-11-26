@@ -9,7 +9,7 @@ import game.play.input.BaseControlInput;
 import validation.Validation;
 
 
-public class PersonInput extends BaseControlInput implements IPlayerInput {
+public class PersonInput extends BaseControlInput {
 
     //    CheckSquare checkSquare = new CheckSquare();
 //    Compass compass = new KeyboardCompass();

@@ -15,9 +15,6 @@ public class DirectionLocation extends Location {
         return id;
     }
 
-//    public void setId(int id) {
-//        this.id = id;
-//    }
 
     public static Location getLocationFromCompass(Compass compass, int directionIndex) {
 

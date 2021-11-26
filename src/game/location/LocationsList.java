@@ -1,7 +1,5 @@
 package game.location;
 
-import compass.Compass;
-import errormessage.joptionpanel.ShowPanel;
 import game.location.direction.East;
 import game.location.direction.LastLocation;
 import game.location.direction.North;
@@ -17,7 +15,6 @@ import java.util.ArrayList;
 public class LocationsList {
 
     ArrayList<DirectionLocation> list = new ArrayList<>();
-//    Compass compass;
 
     void fillList() {
 

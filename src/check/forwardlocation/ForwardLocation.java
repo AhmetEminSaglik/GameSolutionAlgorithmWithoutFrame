@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class ForwardLocation {
     SquareProcess squareProcess = new SquareProcess();
     ArrayList<DirectionLocation> locationsList = new LocationsList().getList();
-//    Drone drone;
 
     public int inspectLocationAndGetAvailableSquareNumbers(Game game, DirectionLocation locationNeededToInspect) {
 

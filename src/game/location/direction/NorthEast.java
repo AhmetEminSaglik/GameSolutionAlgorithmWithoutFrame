@@ -4,10 +4,6 @@ import errormessage.joptionpanel.ShowPanel;
 import game.location.DirectionLocation;
 
 public class NorthEast extends DirectionLocation {
-//
-//    public NorthEast(Compass compass) {
-//        super(compass);
-//    }
 
     @Override
     public int getId() {

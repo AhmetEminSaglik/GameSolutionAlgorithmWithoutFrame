@@ -4,7 +4,6 @@ import game.location.DirectionLocation;
 
 public class South extends DirectionLocation {
 
-
     @Override
     public int getId() {
         return getCompass().getSouth();

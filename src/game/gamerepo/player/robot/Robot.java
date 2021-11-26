@@ -2,22 +2,17 @@ package game.gamerepo.player.robot;
 
 import compass.Compass;
 import compass.DirectionCompass;
-import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.gameover.RobotGameOver;
 import game.gamerepo.player.Player;
 import game.gamerepo.player.robot.solution.BaseSolution;
 import game.location.DirectionLocation;
-import game.move.fundamental.MoveBack;
-import game.move.fundamental.MoveForward;
 import game.play.PlayerMove;
 import game.play.input.robot.RobotInput;
 import game.rule.BaseGameRule;
 
 
 public class Robot extends Player {
-
-//    private RobotMemory robotMemory;
 
     RoadMemory roadMemory = new RoadMemory();
     private BaseSolution solution;
@@ -28,30 +23,12 @@ public class Robot extends Player {
         solution.buildRobotMove();
         playerMove = new PlayerMove(solution.getMoveForward(),solution.getMoveBack());
         setName(solution.getClass().getSimpleName()+"_"+game.getModel().getGameSquares());
-
-//        ShowPanel.show(getClass(),"Player Move robot : "+playerMove.toString());
     }
 
     @Override
     public Compass getCompass() {
         return new DirectionCompass();
     }
-
-  /*  public RobotMemory getRobotMemory() {
-
-        if (robotMemory == null) {
-            if (getGame() == null) {
-                new ErrorMessage().appearFatalError(getClass(), "Robot -> GAME = NULL");
-            } else {
-                robotMemory = new RobotMemory(getGame());
-            }
-        }
-        return robotMemory;
-    }*/
-
-//    public void setRobotMemory(RobotMemory robotMemory) {
-//        this.robotMemory = robotMemory;
-//    }
 
     @Override
     public int getInput(Game game) {
@@ -66,8 +43,7 @@ public class Robot extends Player {
         this.solution = solution;
     }
 
-
-    @Override
+   @Override
     public BaseGameRule getGameRule() {
         if (gameRule == null) {
             gameRule = new BaseGameRule(new RobotGameOver(getGame()));
@@ -75,28 +51,10 @@ public class Robot extends Player {
         return gameRule;
     }
 
-
     @Override
-    public void updateVisitedDirection(boolean sealOrUnseal, int step, DirectionLocation location) {// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! BURASI REFACTOR EDILECEK adim sayisi eklenecek
-
-//        ShowPanel.show(getClass(), " GELEN  MUHUR : " + sealOrUnseal + " ADIMSAYISI : " + step);
+    public void updateVisitedDirection(boolean sealOrUnseal, int step, DirectionLocation location) {
         assert (getStep() > 1) : getClass().getName() + " >>> ADIM SAYUISI " + getStep() + " GELDI";
-
-
         getVisitedDirections()[step][location.getId()] = sealOrUnseal;
-        /*if (movedFordward == true) {
-
-            getVisitedDirections()[getStep() - 1][location.getId()] = true;
-        } else {
-            ArrayList<DirectionLocation> locationsList = new LocationsList().getList();
-
-            if (getStep() < Math.pow(getGame().getModel().getGameSquares().length, 2)) {
-                for (int i = 0; i < locationsList.size() - 1; i++) {
-                    getVisitedDirections()[getStep()][locationsList.get(i).getId()] = false;
-
-                }
-            }
-        } */
     }
 
     public RoadMemory getRoadMemory() {

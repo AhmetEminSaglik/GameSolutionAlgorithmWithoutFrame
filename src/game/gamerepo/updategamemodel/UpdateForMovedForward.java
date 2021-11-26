@@ -14,7 +14,6 @@ public class UpdateForMovedForward extends UpdateValuesInGameModel {
     @Override
     public void updatePlayerStepValue() {
         game.getPlayer().increaseStep();
-
     }
 
     @Override

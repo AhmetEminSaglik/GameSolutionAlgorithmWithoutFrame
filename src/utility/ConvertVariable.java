@@ -6,7 +6,6 @@ public class ConvertVariable {
 
     public String intToString(int value) {
         return Integer.toString(value);
-
     }
 
     public int StringToInt(String text) {

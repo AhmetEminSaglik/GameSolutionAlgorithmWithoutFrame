@@ -1,6 +1,5 @@
 package game.move;
 
-import game.Game;
 import game.gamerepo.player.Player;
 import game.location.Location;
 
@@ -10,7 +9,6 @@ public class MovePlayer {
 
     public MovePlayer(Player player) {
         this.player = player;
-//        this.player = game.getPlayer();
     }
 
     void xChangeLocationByAdding(int x) {

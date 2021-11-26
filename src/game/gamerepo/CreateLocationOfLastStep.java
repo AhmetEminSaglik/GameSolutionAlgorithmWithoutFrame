@@ -15,7 +15,7 @@ public class CreateLocationOfLastStep {
     public DirectionLocation createLastStepLocation() {
         GameModelProcess gameModelProcess = new GameModelProcess(game);
         gameModelProcess.calculateIndexOfGivenStepInGameSquareArrays(game.getPlayer().getStep() - 1);
-        
+
         CreateLocation createLocation = new CreateLocation();
         createLocation.setX(getOppositeValue(game.getPlayer().getLocation().getX(), gameModelProcess.getX()));
         createLocation.setY(getOppositeValue(game.getPlayer().getLocation().getY(), gameModelProcess.getY()));

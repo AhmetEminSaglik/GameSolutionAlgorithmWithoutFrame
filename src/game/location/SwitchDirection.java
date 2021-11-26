@@ -1,9 +1,7 @@
 package game.location;
 
 import compass.Compass;
-import compass.DirectionCompass;
 import errormessage.ErrorMessage;
-import java.util.ArrayList;
 import game.location.direction.South;
 import game.location.direction.East;
 import game.location.direction.LastLocation;
@@ -57,22 +55,4 @@ public class SwitchDirection {
         return null;
     }
 
-  /*  public void updateCompass(Compass compass) {
-        this.compass = compass;
-
-    }*/
-
-    /*ArrayList<Integer> getLocationList() {
-        ArrayList<Integer> list = new ArrayList<Integer>();
-
-        list.add(new DirectionCompass().getNorth());
-        list.add(new DirectionCompass().getNorthEast());
-        list.add(new DirectionCompass().getEast());
-        list.add(new DirectionCompass().getSouthEast());
-        list.add(new DirectionCompass().getSouth());
-        list.add(new DirectionCompass().getSouthWest());
-        list.add(new DirectionCompass().getWest());
-        list.add(new DirectionCompass().getNorthWest());
-        return list;
-    }*/
 }

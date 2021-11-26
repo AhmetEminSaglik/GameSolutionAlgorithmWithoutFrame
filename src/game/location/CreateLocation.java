@@ -10,9 +10,4 @@ public class CreateLocation extends DirectionLocation {
         return -1;
     }
 
-  /*  public CreateLocation create(int x, int y) {
-        setX(x);
-        setY(y);
-        return this;
-    }*/
 }
