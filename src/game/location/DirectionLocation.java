@@ -47,9 +47,9 @@ public class DirectionLocation extends Location {
 
     @Override
     public String toString() {
-        return "DirectionLocation{" +
-                "id=" + id +" X "+getX()+"" +
-                "Y "+getY()+
+        return "DirectionLocation{" +" "+getClass().getSimpleName()+
+                " id=" + getId() + " X " + getX() + "" +
+                "Y " + getY() +
                 '}';
     }
 }

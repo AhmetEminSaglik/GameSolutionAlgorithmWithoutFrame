@@ -5,6 +5,7 @@ import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.gamerepo.player.Player;
 import game.gamerepo.player.robot.Robot;
+import game.gamerepo.player.robot.solution.second.navigation.Navigation;
 import game.location.DirectionLocation;
 import game.move.Move;
 import print.FileWriteProcess;
@@ -20,7 +21,7 @@ public class PlayGame {
     Game game;
     Player player;
     PrepareGame prepareGame;
-    ComparisonOfSolutions comparisonOfSolutions;
+    public ComparisonOfSolutions comparisonOfSolutions;
     long totalGameFinishedScore = 0;
     //    Validation validation = new Validation();
     PrintAble printable;
@@ -58,9 +59,11 @@ public class PlayGame {
 
             moveForwardOrBack.move(new DirectionLocation().getLocationValueAccordingToEnteredValue(game, choose));
 
-            printGamelastStuation(game);
+//            if(game.getPlayer().getStep()>20)
+//            printGamelastStuation(game);
 
 //            new Sleep().sleep(500);
+//            ShowPanel.show(getClass(),"adim : "+ player.getStep());
         }
 
         System.out.println("Toplam Bulunulan Cozum Sayisi: " + totalGameFinishedScore);
@@ -73,7 +76,7 @@ public class PlayGame {
             printGamelastStuation(game);
 
             System.out.println("Toplam Bulunulan Cozum Sayisi: " + totalGameFinishedScore);
-//                compareSolutions();
+            compareSolutions();
         }
     }
 
@@ -91,15 +94,21 @@ public class PlayGame {
 
     void printGamelastStuation(Game game) {
 
-        System.out.println("ADIM SAYISI : " + game.getPlayer().getStep() +
-                " > Round Counter : " + game.getRoundCounter());
+//        System.out.println("ADIM SAYISI : " + game.getPlayer().getStep() +
+//                " > Round Counter : " + game.getRoundCounter());
         new PrintArray().printMultipleArray(game.getModel().getGameSquares());
 
         String textWillAppendToFile = "Step : " + player.getStep() + " Finished totalGame : " + totalGameFinishedScore + "\n";
         textWillAppendToFile += "RoundCounter XXX : " + game.getRoundCounter() + '\n';
-        System.out.println(textWillAppendToFile);
+
 //        ShowPanel.show(getClass(), "Incele adim " +player.getStep());
-//        textWillAppendToFile += stringFormat.getStringFormatArray(game.getModel().getGameSquares());
+        for (Navigation tmp : ((Robot) (player)).getRoadMemory().getOneWayNumbersList()) {
+            textWillAppendToFile += tmp;
+            textWillAppendToFile += "\n";
+        }
+        textWillAppendToFile += stringFormat.getStringFormatArray(game.getModel().getGameSquares());
+        textWillAppendToFile += "\n";
+
       /*  if (game.getRoundCounter() > 294) {
             System.out.println("Round couter : " + game.getRoundCounter());
             for (int i = 0; i < ((Robot) player).getRoadMemory().getOneWayNumbersList().size(); i++) {
@@ -109,8 +118,9 @@ public class PlayGame {
 //            ShowPanel.show(getClass(),roundCounter+" yaziliyor");
         }*/
 
+        System.out.println(textWillAppendToFile);
         System.out.println();
-//        printToFile(textWillAppendToFile);
+        printToFile(textWillAppendToFile);
 
 
     }

@@ -41,13 +41,15 @@ public class MoveBackSecondSolution extends MoveBack {
     }
 
     void clearLastIndexInNavigationList() {
-        if(robot.getRoadMemory().getOneWayListLastItem()!=null)
-        if (robot.getStep() < robot.getRoadMemory().getOneWayListLastItem().getStep()) {
+        if (robot.getRoadMemory().getOneWayListLastItem() != null)
+            if (robot.getStep() < robot.getRoadMemory().getOneWayListLastItem().getStep()) {
 
 //            ShowPanel.show(getClass(), "Las item SILINMEDEN ONCE : " + robot.getRoadMemory().getOneWayNumbersList().size());
-            robot.getRoadMemory().removeOneWayListLastItem();
+                robot.getRoadMemory().removeOneWayListLastItem();
+                if(navigation.isExitSituationWasLocatedInThisStep())
+                robot.getRoadMemory().getExitSituation().setSituation(ExitSituation.EXIT_FREE);
 //            ShowPanel.show(getClass(), "Las item SILINDKTEWN SONRAAA  : " + robot.getRoadMemory().getOneWayNumbersList().size());
-        }
+            }
     }
 
     void doIfThereAreThingsTodoInOneWayNumberProcess() {
@@ -59,11 +61,19 @@ public class MoveBackSecondSolution extends MoveBack {
     }
 
     void processAccordingToOneWayNumber() {
-        if (navigation.getOneWayNumbersValue() == 2) {
+        if (robot.getRoadMemory().getExitSituation().getSituation() == ExitSituation.EXIT_FREE) {
+            if (navigation.getOneWayNumbersValue() == 1) {
+                robot.getRoadMemory().getExitSituation().setSituation(ExitSituation.EXIT_LOCATED);
+                navigation.setExitSituationWasLocatedInThisStep(true);
+            }
+        }
+
+
+        /*if (navigation.getOneWayNumbersValue() == 2) {
 
 //            freeExitSituation();
 //            navigation.setCompulsoryLocation(new LocationsList().getLastLocation());
-        }
+        }*/
     }
 
     void freeExitSituation() {

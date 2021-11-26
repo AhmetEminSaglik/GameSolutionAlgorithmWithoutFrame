@@ -10,6 +10,7 @@ import game.location.DirectionLocation;
 import game.location.Location;
 import game.location.LocationsList;
 import game.location.direction.LastLocation;
+import game.location.direction.South;
 import game.move.fundamental.MoveForward;
 
 public class MoveForwardSecondSolution extends MoveForward {
@@ -26,6 +27,7 @@ public class MoveForwardSecondSolution extends MoveForward {
     @Override
     public void prepareAllStuff() {
         navigation = robot.getRoadMemory().getOneWayListLastItem();
+//        System.out.println("SECILMISSSSSSSSSS : "+getDirectionLocation());
     }
 
     @Override
@@ -52,22 +54,29 @@ public class MoveForwardSecondSolution extends MoveForward {
 
 
     boolean isDirectionSame(DirectionLocation d1, DirectionLocation d2) {
-        if (d1.getX() == d2.getX() && d1.getY() == d2.getY())
+
+        if (d1.getX() == d2.getX() && d1.getY() == d2.getY()) {
+//            ShowPanel.show(getClass(), " Zorunlu adim ile ilerlenecek yon ayni  x-y cordinatlara sahip");
             return true;
+        }
         return false;
 
     }
 
     void processAccordingToOneWayNumber() {
+
+//        System.out.println("adim : sayisi : " + robot.getStep());
+//        System.out.println("OWN: sayisi : " + navigation.getOneWayNumbersValue());
+//        System.out.println(" ShowPanel oncesi degisiklik var mi ?Ilerleme Yonu : " + getDirectionLocation());
         if (navigation.getOneWayNumbersValue() == 2) {
-            locateExitSituation();
+            if (robot.getRoadMemory().getExitSituation().getSituation() == ExitSituation.EXIT_FREE) {
+                locateExitSituation();
+            }
+
             if (isDirectionSame(getDirectionLocation(), navigation.getCompulsoryLocation())) {
+//                ShowPanel.show(getClass(), "\n>>> !!!!!!!!!! ILERLENECEK ALAN = ZORUNLU ALAN !!!!!!!    ");
                 navigation.setCompulsoryLocation(new LocationsList().getLastLocation());
 
-            }
-            if (navigation.getOneWayNumbersValue() == 1 &&
-                    robot.getRoadMemory().getExitSituation().getSituation() == ExitSituation.EXIT_LOCATED){
-                navigation.setCompulsoryLocation(new LocationsList().getLastLocation());
             }
            /* if (navigation.getCompulsoryLocation() == getDirectionLocation()) {
                 ShowPanel.show(getClass(), "ZORUNLU ALAN " + navigation.getCompulsoryLocation().toString() + "\n" +
@@ -79,18 +88,25 @@ public class MoveForwardSecondSolution extends MoveForward {
                 System.out.println("-------1");
             }*/
 
+        } else if (navigation.getOneWayNumbersValue() == 1 &&
+                robot.getRoadMemory().getExitSituation().getSituation() == ExitSituation.EXIT_LOCATED &&
+                !navigation.isExitSituationWasLocatedInThisStep()) {
+            navigation.setCompulsoryLocation(new LocationsList().getLastLocation());
         }
+
+//        ShowPanel.show(getClass(), "Ilerleme Yonu : " + getDirectionLocation());
     }
 
-    void updateCompulsorylocationToLastLocation() {
+   /* void updateCompulsorylocationToLastLocation() {
         if (!isNavigationNull()) {
             navigation.setCompulsoryLocation(lastLocation);
         }
-    }
+    }*/
 
     void locateExitSituation() {
         robot.getRoadMemory().getExitSituation().setSituation(ExitSituation.EXIT_LOCATED);
         navigation.setExitSituationWasLocatedInThisStep(true);
+
     }
 
     boolean isNavigationNull() {

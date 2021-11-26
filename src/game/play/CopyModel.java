@@ -55,7 +55,7 @@ public class CopyModel {
 
     }
 
-    boolean comparedItemsAreSame(int[][] v1, int[][] v2) {
+    public boolean comparedItemsAreSame(int[][] v1, int[][] v2) {
         for (int i = 0; i < v1.length; i++) {
             for (int j = 0; j < v1.length; j++) {
                 if (v1[i][j] != v2[i][j]) {

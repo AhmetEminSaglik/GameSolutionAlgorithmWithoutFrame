@@ -1,5 +1,6 @@
 package game.location.direction;
 
+import errormessage.joptionpanel.ShowPanel;
 import game.location.DirectionLocation;
 
 public class NorthEast extends DirectionLocation {
@@ -10,7 +11,7 @@ public class NorthEast extends DirectionLocation {
 
     @Override
     public int getId() {
-        return getCompass().getNorthEast();
+                return getCompass().getNorthEast();
     }
 
     @Override

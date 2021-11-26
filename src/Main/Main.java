@@ -8,6 +8,7 @@ import game.gamerepo.player.robot.Robot;
 import game.gamerepo.player.robot.solution.BaseSolution;
 import game.gamerepo.player.robot.solution.first.FirstSolution_Combination;
 import game.gamerepo.player.robot.solution.second.SecondSolution_CalculateForwardAvailableWays;
+import game.play.ComparisonOfSolutions;
 import game.play.PlayGame;
 
 
@@ -23,22 +24,25 @@ public class Main {
 //        Player person = new Person(game);
 
 
-        BaseSolution baseSolution = new SecondSolution_CalculateForwardAvailableWays(game);
-        Player robot = new Robot(game, baseSolution);
-//        baseSolution.buildRobotMove();
-
-
         System.out.println("Enter even number to play\n"
                 + "Enter odd number to see solution");
-     /*   if (new Scanner(System.in).nextInt() % 2 == 0) {
-            game.setPlayer(person);
-        } else {
-            game.setPlayer(robot);
-        }*/
-//        game.setPlayer(robot);
+
+        BaseSolution baseSolution = new SecondSolution_CalculateForwardAvailableWays(game);
+        Player robot = new Robot(game, baseSolution);
         buildGameModel.createVisitedArea();
+
         PlayGame playGame = new PlayGame(game);
         playGame.playGame();
+
+      /*  BaseSolution baseSolution2 = new SecondSolution_CalculateForwardAvailableWays(game);
+        Player robot2 = new Robot(game, baseSolution2);
+        buildGameModel.createVisitedArea();
+
+        PlayGame playGame2 = new PlayGame(game);
+        playGame2.playGame();
+
+        ComparisonOfSolutions comparisonOfSolutions = new ComparisonOfSolutions(game);
+        comparisonOfSolutions.deleteBothIfTheyAreSame(playGame.comparisonOfSolutions.copyModel, playGame2.comparisonOfSolutions.copyModel);*/
         System.out.println("----------------");
 
         long firstSolutionRoundCounter = 4_809_119;

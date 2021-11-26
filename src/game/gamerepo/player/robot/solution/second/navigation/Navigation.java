@@ -27,14 +27,15 @@ public class Navigation {
 
     public DirectionLocation getCompulsoryLocation() {
 //        System.out.println("KOPYALANNANNNN COMPOULSARI LOCATINO  ID : "+compulsoryLocation.getId());
-        if(compulsoryLocation!=null)
-        return createNewDirectionLocation(compulsoryLocation.getX(), compulsoryLocation.getY());
+        if (compulsoryLocation != null)
+//            return createNewDirectionLocation(compulsoryLocation.getId(), compulsoryLocation.getX(), compulsoryLocation.getY());
+            return compulsoryLocation;
         return null;
     }
 
-    DirectionLocation createNewDirectionLocation(int x, int y) {
+    DirectionLocation createNewDirectionLocation(int id, int x, int y) {
         DirectionLocation directionLocation = new DirectionLocation();
-
+        directionLocation.setX(id);
         directionLocation.setX(x);
         directionLocation.setY(y);
         return directionLocation;

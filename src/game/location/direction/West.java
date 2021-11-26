@@ -1,5 +1,6 @@
 package game.location.direction;
 
+import errormessage.joptionpanel.ShowPanel;
 import game.location.DirectionLocation;
 
 public class West extends DirectionLocation {

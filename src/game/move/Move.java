@@ -48,6 +48,7 @@ public abstract class Move implements IMove { // ICalculateMove
 
             setLocation(directionLocation);
 
+//            System.out.println(" MOVE ICI  oncesi degisiklik var mi ?Ilerleme Yonu : " + getDirectionLocation());
             updateBeforeStep();
             updatePlayerStepValue();
             updateAfterStep();

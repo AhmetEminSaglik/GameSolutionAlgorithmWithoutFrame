@@ -1,6 +1,7 @@
 package game.location;
 
 import compass.Compass;
+import errormessage.joptionpanel.ShowPanel;
 import game.location.direction.East;
 import game.location.direction.LastLocation;
 import game.location.direction.North;
@@ -40,6 +41,7 @@ public class LocationsList {
     }
 
     public DirectionLocation getLastLocation() {
+
         return new LastLocation();
     }
 
