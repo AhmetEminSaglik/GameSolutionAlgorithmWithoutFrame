@@ -52,8 +52,10 @@ public class MathFunction {
 
         if (isNavigationInRoadMemoryAvailableForThisStep()) {
             if (navigation.getOneWayNumbersValue() == 1 &&
-                    !navigation.isExitSituationWasLocatedInThisStep()) {
+                    robot.getRoadMemory().getExitSituation().getSituation() == ExitSituation.EXIT_LOCATED
+                    && !navigation.isExitSituationWasLocatedInThisStep()) {
                 navigation.setCompulsoryLocation(new LastLocation());
+//                System.out.println("LAST LOCATION BURADAN EKLENDI ???? + step : " + robot.getStep() + " >>>> " + robot.getRoadMemory().getExitSituation().getSituation());
             } else if (navigation.getCompulsoryLocation() != null) {
 //                System.out.println("BURAYA GELDI VE SELECTEDDIRECTION DEGISTI 11111111111111111111111111111111111111"+selectedDirection.toString());
                 selectedDirection = navigation.getCompulsoryLocation();

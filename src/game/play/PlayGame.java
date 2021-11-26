@@ -48,6 +48,10 @@ public class PlayGame {
         comparisonOfSolutions = new ComparisonOfSolutions(game);
 
         while (!player.getGameRule().isGameOver(game)) {
+            /*if (game.getRoundCounter() > 188146) {
+                ShowPanel.show(getClass(), "2194 civari te sorun oluyor : " + totalGameFinishedScore + " get step : " + player.getStep());
+                printGamelastStuation(game);
+            }*/
             game.increaseRoundCounter();
 //            printGamelastStuation(game);
             calculatePlayerTotalWinScore();
@@ -107,7 +111,8 @@ public class PlayGame {
             textWillAppendToFile += "\n";
         }
         textWillAppendToFile += stringFormat.getStringFormatArray(game.getModel().getGameSquares());
-        textWillAppendToFile += "\n";
+        textWillAppendToFile += "\n" +
+                "exit Situation : " + ((Robot) player).getRoadMemory().getExitSituation().getSituation() + "     <<<<< 0: Free, 1 Located";
 
       /*  if (game.getRoundCounter() > 294) {
             System.out.println("Round couter : " + game.getRoundCounter());
@@ -120,7 +125,7 @@ public class PlayGame {
 
         System.out.println(textWillAppendToFile);
         System.out.println();
-        printToFile(textWillAppendToFile);
+//        printToFile(textWillAppendToFile);
 
 
     }
