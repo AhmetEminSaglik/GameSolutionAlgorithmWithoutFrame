@@ -8,8 +8,10 @@ import validation.Validation;
 
 public abstract class BaseCheck {
 
+    private Game game;
     Validation validation = new Validation();
     private Compass compass = new DirectionCompass();
+
 
     public Compass getCompass() {
         return compass;

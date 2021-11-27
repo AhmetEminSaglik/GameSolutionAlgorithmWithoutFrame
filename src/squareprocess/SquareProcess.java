@@ -18,6 +18,7 @@ public class SquareProcess {
     }
 
     public boolean isAreaAvailableToVisit(Game game, Location playerLocation, DirectionLocation location) {
+
         return checkSquare.isSquareFreeFromVisitedArea(game, playerLocation, location.getId());
     }
 

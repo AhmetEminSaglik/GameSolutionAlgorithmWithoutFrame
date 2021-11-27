@@ -120,4 +120,5 @@ public abstract class Player implements UpdateableVistedDirection {
     public void setName(String name) {
         this.name = name;
     }
+
 }

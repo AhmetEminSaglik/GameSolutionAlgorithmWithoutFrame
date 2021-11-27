@@ -18,4 +18,6 @@ public interface IMove {
     void updateAfterStep();
 
     boolean isRequiredToChangeStartLocation();
+
+    void changeStartLocationSpecialMovement();
 }

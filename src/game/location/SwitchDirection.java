@@ -2,6 +2,7 @@ package game.location;
 
 import compass.Compass;
 import errormessage.ErrorMessage;
+import errormessage.joptionpanel.ShowPanel;
 import game.location.direction.South;
 import game.location.direction.East;
 import game.location.direction.LastLocation;
@@ -21,8 +22,10 @@ public class SwitchDirection {
     }
 
     public DirectionLocation choseDirection(int value) {
+//        ShowPanel.show(getClass(),"compass.getNorth() "+compass.getNorth()+" value : "+value);
 
         if (compass.getNorth() == value) {
+//            System.out.println("NORTH GIRDIIII");
             return new North();
         }
         if (compass.getNorthEast() == value) {

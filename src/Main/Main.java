@@ -3,8 +3,10 @@ package Main;
 import game.Game;
 import game.gamerepo.BuildGame;
 import game.gamerepo.player.Player;
+import game.gamerepo.player.person.Person;
 import game.gamerepo.player.robot.Robot;
 import game.gamerepo.player.robot.solution.BaseSolution;
+import game.gamerepo.player.robot.solution.first.FirstSolution_Combination;
 import game.gamerepo.player.robot.solution.second.SecondSolution_CalculateForwardAvailableWays;
 import game.play.PlayGame;
 
@@ -23,12 +25,15 @@ public class Main {
         System.out.println("Enter even number to play\n"
                 + "Enter odd number to see solution");
 
+/*
         BaseSolution baseSolution = new SecondSolution_CalculateForwardAvailableWays(game);
         Player robot = new Robot(game, baseSolution);
-        buildGameModel.createVisitedArea();
+ */       buildGameModel.createVisitedArea();
+
 
         PlayGame playGame = new PlayGame(game);
         playGame.playGame();
+//        System.out.println(baseSolution.getClass().getSimpleName());
 
       /*  BaseSolution baseSolution2 = new SecondSolution_CalculateForwardAvailableWays(game);
         Player robot2 = new Robot(game, baseSolution2);

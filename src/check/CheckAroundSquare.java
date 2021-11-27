@@ -4,16 +4,19 @@ import compass.Compass;
 import compass.DirectionCompass;
 import game.Game;
 import game.location.DirectionLocation;
+
 import java.util.ArrayList;
+
 import game.location.Location;
 import game.location.LocationsList;
 
 public class CheckAroundSquare extends BaseCheck {
 
-    Compass compass = new DirectionCompass();
+    //    Compass compass /*= new DirectionCompass()*/;
     CheckSquare checkSquare = new CheckSquare();
     ArrayList<DirectionLocation> locationList = new LocationsList().getList();
 
+/*
     public int getNumberOfHowManySquaresAreAvailable(Game game) {
 
         int availableDirectionCounter = 0;
@@ -26,10 +29,12 @@ public class CheckAroundSquare extends BaseCheck {
         }
         return availableDirectionCounter;
     }
+*/
 
     public boolean isThereAnyAvailableSquare(Game game) {
-        compass = game.getPlayer().getCompass();
-        checkSquare.setCompass(compass);
+        setCompass(game.getPlayer().getCompass());
+        checkSquare.setCompass(getCompass());
+
         for (int i = 0; i < locationList.size(); i++) {
             if (isLocationAvailable(game, locationList.get(i).getId())) {
                 return true;

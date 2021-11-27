@@ -4,15 +4,15 @@ import game.Game;
 import game.location.DirectionLocation;
 import game.location.Location;
 import game.location.LocationsList;
+
 import java.util.ArrayList;
 
 public class CheckSquare extends BaseCheck {
 
     public boolean isSquareFreeFromVisitedArea(Game game, Location currentProcessLocation, int directionIndex) {
-
-        if (isIndexsSuitableForArray(game,currentProcessLocation, directionIndex)) {
+        setCompass(game.getPlayer().getCompass());
+        if (isIndexsSuitableForArray(game, currentProcessLocation, directionIndex)) {
             Location location = new DirectionLocation().getLocationFromCompass(getCompass(), directionIndex);
-
             if (!game.getModel().getVisitedAreas()[currentProcessLocation.getX()
                     + location.getX()][currentProcessLocation.getY() + location.getY()]) {
                 return true;
@@ -43,7 +43,7 @@ public class CheckSquare extends BaseCheck {
 
         for (int i = 0; i < locationList.size() - 1; i++) {
 
-            if (isSquareFreeFromVisitedDirection(game,currentProcessLocation, locationList.get(i).getId()) == true) {
+            if (isSquareFreeFromVisitedDirection(game, currentProcessLocation, locationList.get(i).getId()) == true) {
                 return true;
             }
 

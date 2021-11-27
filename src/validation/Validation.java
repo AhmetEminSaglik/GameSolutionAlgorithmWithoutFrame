@@ -54,12 +54,12 @@ public class Validation {
      * @param input = Keyboards input direction value
      */
     public boolean isInputValidForArray(Game game,Location currentProcessLocation, int input) {
-
         Location location;
         Player player = game.getPlayer();
         compass = game.getPlayer().getCompass();
         location = new DirectionLocation().getLocationFromCompass(compass, input);
-        /* kuzeyden baslayip saat yonunde kontrol edecegi icin  yon pusulasini gonderiyoruz
+//        System.out.println("AACACA");
+        /* kuzeyden baslayip saat yonun`de kontrol edecegi icin  yon pusulasini gonderiyoruz
         Kullanici pusulasi  kullanici girisli pusulada kullanildigi icin burada dizi indexinde kullanamiyoruz
         O yuzden bu sekilde gonderdik
             

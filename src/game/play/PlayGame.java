@@ -1,5 +1,6 @@
 package game.play;
 
+import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.gamerepo.player.Player;
 import game.location.DirectionLocation;
@@ -35,14 +36,14 @@ public class PlayGame {
         Move moveForwardOrBack;
 
 //        comparisonOfSolutions = new ComparisonOfSolutions(game);
-
+        printGamelastStuation(game);
         while (!player.getGameRule().isGameOver(game)) {
 //            printGamelastStuation(game);
             game.increaseRoundCounter();
             int choose = player.getInput(game);
             moveForwardOrBack = getMoveBackOrForward(choose);
             moveForwardOrBack.move(new DirectionLocation().getLocationValueAccordingToEnteredValue(game, choose));
-
+printGamelastStuation(game);
             calculatePlayerTotalWinScore();
 
         }
@@ -61,7 +62,7 @@ public class PlayGame {
     void calculatePlayerTotalWinScore() {
         if (player.getStep() == Math.pow(game.getModel().getGameSquares().length, 2)) {
             totalGameFinishedScore++;
-            System.out.println("Total Solved : "+totalGameFinishedScore);
+            System.out.println("Total Solved : " + totalGameFinishedScore);
             printGamelastStuation(game);
         }
     }

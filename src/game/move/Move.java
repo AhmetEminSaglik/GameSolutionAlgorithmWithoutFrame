@@ -40,7 +40,7 @@ public abstract class Move implements IMove { // ICalculateMove
 
         if (isRequiredToChangeStartLocation()) {
 //            game.getPlayer().getPlayerMove().
-                    changeStartLocationSpecialMovement();
+            changeStartLocationSpecialMovement();
 //            changeStartLocationSpecialMovement();
         } else {
             setLocation(directionLocation);
@@ -56,7 +56,10 @@ public abstract class Move implements IMove { // ICalculateMove
         updateValuesInGameModel.updatePlayerStepValue();
     }
 
-    void changeStartLocationSpecialMovement() {
+    @Override
+    public void changeStartLocationSpecialMovement() {
+        ShowPanel.show(getClass(), "GELDIIIIIIIIIIIIIIIIIII  bosss");
+        /*
         int locationX = game.getPlayer().getLocation().getX();
         int locationY = game.getPlayer().getLocation().getY();
         locationX++;
@@ -82,7 +85,7 @@ public abstract class Move implements IMove { // ICalculateMove
         } else {
             ShowPanel.show(getClass(), " Y siniri asti ");
         }
-    }
+   */ }
 
     @Override
     public void prepareAllStuff() {
@@ -91,6 +94,7 @@ public abstract class Move implements IMove { // ICalculateMove
 
     @Override
     public void updateVisitedArea() {
+//        ShowPanel.show(getClass(),"GELDIIII"+game.getPlayer().getPlayerMove().getMove().getClass().getName());
         updateValuesInGameModel.updateValueVisitedArea();
     }
 

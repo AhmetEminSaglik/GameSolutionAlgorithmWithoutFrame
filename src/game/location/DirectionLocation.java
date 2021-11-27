@@ -2,12 +2,14 @@ package game.location;
 
 import compass.Compass;
 import compass.DirectionCompass;
+import compass.KeyboardCompass;
 import game.Game;
 import game.gamerepo.CreateLocationOfLastStep;
 
 public class DirectionLocation extends Location {
 
-    private Compass compass = new DirectionCompass();//= new KeyboardCompass();
+
+    private Compass compass= new KeyboardCompass();
 
     private int id;
 
@@ -17,7 +19,6 @@ public class DirectionLocation extends Location {
 
 
     public static Location getLocationFromCompass(Compass compass, int directionIndex) {
-
         return new SwitchDirection(compass).choseDirection(directionIndex);
     }
 
@@ -25,7 +26,6 @@ public class DirectionLocation extends Location {
         if (choose == game.getPlayer().getCompass().getLastLocation()) {
             return new CreateLocationOfLastStep(game).createLastStepLocation();
         }
-
         return new SwitchDirection(game.getPlayer().getCompass()).choseDirection(choose);
 
     }

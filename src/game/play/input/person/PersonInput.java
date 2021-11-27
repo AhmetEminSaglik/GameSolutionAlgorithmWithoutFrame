@@ -3,6 +3,8 @@ package game.play.input.person;
 import check.CheckSquare;
 import compass.Compass;
 import compass.KeyboardCompass;
+import errormessage.ErrorMessage;
+import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.location.Location;
 import game.play.input.BaseControlInput;
@@ -24,12 +26,15 @@ public class PersonInput extends BaseControlInput {
     @Override
     public int getInput() {
         while (true) {
-
+//            System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
             int choose = scannerInput.getInput();
             if (isMoveableDirectionInput(choose)) {
                 return choose;
             } else {
-                System.out.println("You can not  go that direction, please choose another direction");
+
+                ErrorMessage.appearClassicError(getClass(),"You can not  go that direction, please choose another direction\n" +
+                        "chose : "+choose+"\n" +
+                        "checkSquare.getCompass().getNorth() " +checkSquare.getCompass().getNorth());
             }
         }
     }

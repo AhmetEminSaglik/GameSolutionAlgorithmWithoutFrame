@@ -12,6 +12,7 @@ import game.location.direction.LastLocation;
 import print.PrintAble;
 import squareprocess.SquareProcess;
 import weights.Weight;
+
 import java.util.ArrayList;
 
 public class MathFunction {

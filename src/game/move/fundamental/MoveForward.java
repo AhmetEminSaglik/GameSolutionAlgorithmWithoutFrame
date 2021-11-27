@@ -4,10 +4,11 @@ import game.Game;
 import game.gamerepo.updategamemodel.UpdateForMovedForward;
 import game.move.Move;
 
-public class MoveForward extends Move {
+public class MoveForward extends  Move {
 
     public MoveForward(Game game) {
         super(game);
+        MoveForward t = this;
         updateValuesInGameModel = new UpdateForMovedForward(game);
     }
 
