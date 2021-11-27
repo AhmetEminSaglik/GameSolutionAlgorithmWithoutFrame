@@ -25,16 +25,16 @@ public class PlayGame {
     }
 
 
-/*    void compareSolutions() {
+    void compareSolutions() {
         comparisonOfSolutions.compareSolution();
-    }*/
+    }
 
     public void playGame() {
 
         prepareGame = new PrepareGame(game);
         Move moveForwardOrBack;
 
-        comparisonOfSolutions = new ComparisonOfSolutions(game);
+//        comparisonOfSolutions = new ComparisonOfSolutions(game);
 
         while (!player.getGameRule().isGameOver(game)) {
 //            printGamelastStuation(game);
@@ -44,10 +44,7 @@ public class PlayGame {
             moveForwardOrBack.move(new DirectionLocation().getLocationValueAccordingToEnteredValue(game, choose));
 
             calculatePlayerTotalWinScore();
-            if (game.getModel().getGameSquares()[0][0] !=1 ) {
-                break;
 
-            }
         }
         System.out.println("Total Number Solved " + totalGameFinishedScore);
         saveGameResultToScore();
@@ -64,7 +61,7 @@ public class PlayGame {
     void calculatePlayerTotalWinScore() {
         if (player.getStep() == Math.pow(game.getModel().getGameSquares().length, 2)) {
             totalGameFinishedScore++;
-//            System.out.println("Total Solved : "+totalGameFinishedScore);
+            System.out.println("Total Solved : "+totalGameFinishedScore);
             printGamelastStuation(game);
         }
     }
@@ -74,12 +71,13 @@ public class PlayGame {
         TimeCalcuation timeCalcuation = new TimeCalcuation();
         player.getScore().updatePlayedTime();
         System.out.println(" Total played time : " + timeCalcuation.getTotalPassedTime(player));
+        System.out.println(" RoundCounter (while loop)  : " + game.getRoundCounter());
     }
 
     void printGamelastStuation(Game game) {
 
         String textWillAppendToFile = " Finished totalGame : " + totalGameFinishedScore + "\n";
-        textWillAppendToFile += "RoundCounter XXX : " + game.getRoundCounter() + '\n';
+        textWillAppendToFile += "RoundCounter : " + game.getRoundCounter() + '\n';
 
 
         textWillAppendToFile += stringFormat.getStringFormatArray(game.getModel().getGameSquares());

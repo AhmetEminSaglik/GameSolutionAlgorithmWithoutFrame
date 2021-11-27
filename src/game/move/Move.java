@@ -1,6 +1,7 @@
 package game.move;
 
 import errormessage.ErrorMessage;
+import errormessage.joptionpanel.ShowPanel;
 import game.gamerepo.FillGameSquare;
 import game.gamerepo.updategamemodel.UpdateValuesInGameModel;
 import compass.Compass;
@@ -38,7 +39,9 @@ public abstract class Move implements IMove { // ICalculateMove
         prepareAllStuff();
 
         if (isRequiredToChangeStartLocation()) {
-            changeStartLocationSpecialMovement();
+//            game.getPlayer().getPlayerMove().
+                    changeStartLocationSpecialMovement();
+//            changeStartLocationSpecialMovement();
         } else {
             setLocation(directionLocation);
             updateBeforeStep();
@@ -76,9 +79,9 @@ public abstract class Move implements IMove { // ICalculateMove
                 ErrorMessage.appearFatalError(getClass(), "OYUN SIFIRLAMASINDA SORUN OLDU : " + e.getMessage());
 
             }
-        }/* else {
+        } else {
             ShowPanel.show(getClass(), " Y siniri asti ");
-        }*/
+        }
     }
 
     @Override
