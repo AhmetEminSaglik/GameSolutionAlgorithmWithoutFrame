@@ -2,16 +2,22 @@ package game.gamerepo.player;
 
 import compass.Compass;
 import game.Game;
+import game.gamerepo.player.robot.Robot;
 import game.gamerepo.player.robot.TimeKeeper;
 import game.location.DirectionLocation;
 import game.location.Location;
 import game.location.LocationsList;
 import game.play.PlayerMove;
 import game.rule.BaseGameRule;
+import print.FileWriteProcess;
+import print.PrintAble;
 
 public abstract class Player implements UpdateableVistedDirection {
     protected PlayerMove playerMove;
     protected String name;
+    protected PrintAble printableFileScore;
+
+    protected int squareTotalSolvedValue = 0;
     Game game;
     private boolean visitedDirections[][];
     TimeKeeper timeKeeper;
@@ -26,6 +32,9 @@ public abstract class Player implements UpdateableVistedDirection {
         score = new Score(game, this);
 
         name = "Unknow " + getClass().getSimpleName() + " name ";
+        int squareEdge = game.getModel().getGameSquares().length;
+
+        printableFileScore = new FileWriteProcess((squareEdge * squareEdge) + "_EverySingleSquareTotalValue" );
     }
 
     public Player(Game game, String name) {
@@ -121,4 +130,19 @@ public abstract class Player implements UpdateableVistedDirection {
         this.name = name;
     }
 
+    public int getSquareTotalSolvedValue() {
+        return squareTotalSolvedValue;
+    }
+
+    public void increaseSquareTotalSolvedValue() {
+        squareTotalSolvedValue++;
+    }
+
+    public void resetSquareTotalSolvedValue() {
+        squareTotalSolvedValue = 0;
+    }
+
+    public PrintAble getPrintableFileScore() {
+        return printableFileScore;
+    }
 }

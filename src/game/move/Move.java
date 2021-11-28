@@ -9,7 +9,12 @@ import game.Game;
 import game.location.DirectionLocation;
 import game.move.fundamental.MoveBack;
 import game.play.SelectFirstSqaureToStart;
+import print.EasylyReadNumber;
+import print.FileWriteProcess;
+import print.PrintAble;
 import validation.Validation;
+
+import java.io.PrintWriter;
 
 
 public abstract class Move implements IMove { // ICalculateMove
@@ -21,11 +26,13 @@ public abstract class Move implements IMove { // ICalculateMove
     private FillGameSquare fillGameSquare;
 
     DirectionLocation directionLocation;
+    int squareEdge;
 
     public Move(Game game) {
         this.game = game;
         compass = game.getPlayer().getCompass();
         fillGameSquare = new FillGameSquare(game);
+        squareEdge = game.getModel().getGameSquares().length;
     }
 
     @Override
@@ -41,6 +48,7 @@ public abstract class Move implements IMove { // ICalculateMove
         if (isRequiredToChangeStartLocation()) {
 //            game.getPlayer().getPlayerMove().
             changeStartLocationSpecialMovement();
+//            System.out.println("AAAAAAAAAAAAAAA");
 //            changeStartLocationSpecialMovement();
         } else {
             setLocation(directionLocation);
@@ -58,19 +66,25 @@ public abstract class Move implements IMove { // ICalculateMove
 
     @Override
     public void changeStartLocationSpecialMovement() {
-        ShowPanel.show(getClass(), "GELDIIIIIIIIIIIIIIIIIII  bosss");
-        /*
+
+//        ShowPanel.show(getClass(), "square  total solved value :" + game.getPlayer().getSquareTotalSolvedValue());
+
         int locationX = game.getPlayer().getLocation().getX();
         int locationY = game.getPlayer().getLocation().getY();
+
         locationX++;
         if (locationX >= game.getModel().getGameSquares().length) {
             locationX = 0;
             locationY++;
+
         }
+        System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXX +" + locationX);
+        System.out.println("YYYYYYYYYYYYYYYYYYYYYYYYYYYYY +" + locationY);
 
         if (locationY < game.getModel().getGameSquares().length) {
 
             try {
+                appendFileSquareTotalSolvedValue(locationX, locationY);
                 ResetAllDataForGameAndPlayer resetData = new ResetAllDataForGameAndPlayer(game);
                 resetData.clearPlayerData(game.getPlayer());
                 resetData.clearGameData(game);
@@ -83,9 +97,28 @@ public abstract class Move implements IMove { // ICalculateMove
 
             }
         } else {
+
             ShowPanel.show(getClass(), " Y siniri asti ");
         }
-   */ }
+    }
+
+    void appendFileSquareTotalSolvedValue(int locationX, int locationY) {
+
+
+        int squareTotalSolvedValue = game.getPlayer().getSquareTotalSolvedValue();
+
+        String scoreValue = new EasylyReadNumber().getReadableNumberInStringFormat(squareTotalSolvedValue);
+
+//        game.getPlayer().getPrintableFileScore().append(scoreValue);
+
+
+        String text = "[" + locationX + "]" + "[" + locationY + "] = " + scoreValue + "\n";
+
+        game.getPlayer().getPrintableFileScore().append(text);
+        game.getPlayer().resetSquareTotalSolvedValue();
+
+    }
+
 
     @Override
     public void prepareAllStuff() {

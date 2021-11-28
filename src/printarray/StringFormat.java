@@ -1,5 +1,6 @@
 package printarray;
 
+import errormessage.joptionpanel.ShowPanel;
 import utility.ConvertVariable;
 
 public class StringFormat {
@@ -35,5 +36,41 @@ public class StringFormat {
 
     private String getNextLine() {
         return "\n";
+    }
+
+    public String converNumberToReadableNumbers(long number) {
+        String numberText = number + "";
+        int numberTextLength = numberText.length();
+
+        numberText = "";
+
+        int counter = 0;
+        for (int i = numberTextLength ; i > 0; i--) {
+
+            if (counter == 3) {
+                numberText = "_" + numberText;
+                counter = 0;
+            }
+            numberText = number % 10 + "" + numberText;
+            number /= 10;
+
+            counter++;
+        }
+
+       /* if (numberText.length() % 3 == 0) {
+            numberTextLength--;
+        }
+
+        for (int i = numberText.length() - 1; i > 0; i--) {
+            if (i % 3 == 2) {
+                numberText = "_" + numberText;
+
+            }
+
+        }*/
+
+        return numberText;
+
+
     }
 }

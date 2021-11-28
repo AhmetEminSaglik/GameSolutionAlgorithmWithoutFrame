@@ -1,5 +1,6 @@
 package Main;
 
+import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.gamerepo.BuildGame;
 import game.gamerepo.player.Player;
@@ -15,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
-        int squareEdge = 5;
+        int squareEdge = 7;
         BuildGame buildGameModel = new BuildGame(squareEdge, squareEdge);
         Game game = buildGameModel.createGame();
 
@@ -25,10 +26,10 @@ public class Main {
         System.out.println("Enter even number to play\n"
                 + "Enter odd number to see solution");
 
-/*
+
         BaseSolution baseSolution = new SecondSolution_CalculateForwardAvailableWays(game);
         Player robot = new Robot(game, baseSolution);
- */       buildGameModel.createVisitedArea();
+        buildGameModel.createVisitedArea();
 
 
         PlayGame playGame = new PlayGame(game);

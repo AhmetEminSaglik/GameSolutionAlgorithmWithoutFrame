@@ -4,9 +4,10 @@ import game.gamerepo.Model;
 import game.gamerepo.player.Player;
 
 public class Game {
-    long roundCounter = 0;
+    protected long roundCounter = 0;
     private Model model;
     private Player player;
+    protected int overLongRoundCounter = 0;
 
     public Game(Model model, Player player) {
         this.model = model;
@@ -35,10 +36,19 @@ public class Game {
 
     public void increaseRoundCounter() {
         roundCounter++;
+        if (roundCounter == Long.MAX_VALUE) {
+            roundCounter = 0;
+            overLongRoundCounter++;
+
+        }
     }
 
     public long getRoundCounter() {
         return roundCounter;
+    }
+
+    public int getOverLongRoundCounter() {
+        return overLongRoundCounter;
     }
 
     public void setPlayer(Player player) {

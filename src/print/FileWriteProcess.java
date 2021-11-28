@@ -1,6 +1,7 @@
 package print;
 
 import errormessage.ErrorMessage;
+import printarray.StringFormat;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -31,6 +32,8 @@ public class FileWriteProcess implements PrintAble, CloseAbleFile {
             e.printStackTrace();
         }
     }
+
+
 
     void appendToFile(String text) {
         updateFileWriteOrAppendCondtion(APPEND_TO_FILE);

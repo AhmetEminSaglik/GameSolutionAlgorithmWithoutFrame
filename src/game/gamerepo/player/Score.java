@@ -6,6 +6,9 @@ public class Score {
     Game game;
     Player player;
     String playedTime;
+    long totalGameFinishedScore = 0;
+    int overLongTotalGameFinishedScore = 0;
+
 
     public Score(Game game, Player player) {
         this.game = game;
@@ -16,4 +19,20 @@ public class Score {
         playedTime = player.getTimeKeeper().getTotalPassedTimeDuringPlayingGame();
     }
 
+
+    public long getTotalGameFinishedScore() {
+        return totalGameFinishedScore;
+    }
+
+    public void increaseTotalGameFinishedScore() {
+        totalGameFinishedScore++;
+        if (totalGameFinishedScore == Long.MAX_VALUE) {
+            totalGameFinishedScore = 0;
+            overLongTotalGameFinishedScore++;
+        }
+    }
+
+    public int getOverLongTotalGameFinishedScore() {
+        return overLongTotalGameFinishedScore;
+    }
 }

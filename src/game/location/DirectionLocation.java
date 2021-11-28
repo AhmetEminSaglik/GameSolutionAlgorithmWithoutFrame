@@ -9,7 +9,7 @@ import game.gamerepo.CreateLocationOfLastStep;
 public class DirectionLocation extends Location {
 
 
-    private Compass compass= new KeyboardCompass();
+    private Compass compass= new DirectionCompass();
 
     private int id;
 

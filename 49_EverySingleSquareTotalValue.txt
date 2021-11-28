@@ -1,0 +1,2 @@
+>>>>>>>>>>>>>>  SecondSolution_CalculateForwardAvailableWays : 
+
