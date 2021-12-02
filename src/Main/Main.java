@@ -16,7 +16,7 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
-        int squareEdge = 7;
+        int squareEdge = 5;
         BuildGame buildGameModel = new BuildGame(squareEdge, squareEdge);
         Game game = buildGameModel.createGame();
 
@@ -34,7 +34,9 @@ public class Main {
 
         PlayGame playGame = new PlayGame(game);
         playGame.playGame();
-//        System.out.println(baseSolution.getClass().getSimpleName());
+        System.out.println();
+        System.out.println(baseSolution.getClass().getSimpleName());
+        System.out.println("Game Dimension : "+game.getModel().getGameSquares().length+"-"+game.getModel().getGameSquares().length);
 
       /*  BaseSolution baseSolution2 = new SecondSolution_CalculateForwardAvailableWays(game);
         Player robot2 = new Robot(game, baseSolution2);

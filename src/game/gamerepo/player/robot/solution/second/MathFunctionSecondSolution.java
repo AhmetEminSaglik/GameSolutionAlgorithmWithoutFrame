@@ -15,7 +15,7 @@ import weights.Weight;
 
 import java.util.ArrayList;
 
-public class MathFunction {
+public class MathFunctionSecondSolution {
     final int IS_DEAD_SO_MOVE_BACK = -1, IS_FREE_SO_MOVE_FORWARD = 1;
 
     Game game;
@@ -33,7 +33,7 @@ public class MathFunction {
     int oneWayNumbersValue;
     boolean killRequestByAvailableProcessFunction = false;
 
-    public MathFunction(Game game, Location playerLocation) {
+    public MathFunctionSecondSolution(Game game, Location playerLocation) {
         this.game = game;
         this.playerLocation = playerLocation;
         robot = (Robot) game.getPlayer();

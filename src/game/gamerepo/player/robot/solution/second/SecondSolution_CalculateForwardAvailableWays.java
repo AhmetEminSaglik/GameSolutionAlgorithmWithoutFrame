@@ -16,10 +16,9 @@ public class SecondSolution_CalculateForwardAvailableWays extends BaseSolution {
 
         Location playerLocation = checkSquare.getPlayerLocation(game);
 
-        MathFunction mathFunction = new MathFunction(game, playerLocation);
+        MathFunctionSecondSolution mathFunctionSecondSolution = new MathFunctionSecondSolution(game, playerLocation);
 
-        int newLocation = mathFunction.calculateFunctionResult();
-        return newLocation;
+        return mathFunctionSecondSolution.calculateFunctionResult();
     }
 
     @Override

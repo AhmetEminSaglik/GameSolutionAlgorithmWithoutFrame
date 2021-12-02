@@ -19,7 +19,7 @@ public class RobotGameOver implements IGameOver {
     public boolean isGameOver(Game game) {
         if (isRobotFinishedAllLocations() &&
                 allDirectionsAreVisitedAtStep1()) {
-            System.out.println("All Solutions are DONE  ::::");
+            System.out.println("All Solutions are DONE  ::::\n");
             return true;
         }
         return false;

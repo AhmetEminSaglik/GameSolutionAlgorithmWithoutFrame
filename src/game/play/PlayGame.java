@@ -14,11 +14,9 @@ public class PlayGame {
     Player player;
     PrepareGame prepareGame;
     public ComparisonOfSolutions comparisonOfSolutions;
-    //    long totalGameFinishedScore = 0;
-//    PrintAble printable;
     StringFormat stringFormat = new StringFormat();
-
     TimeCalcuation timeCalcuation;
+    int startLocationX, startLocationY;
 
     public PlayGame(Game game) {
         this.game = game;
@@ -36,23 +34,47 @@ public class PlayGame {
         prepareGame = new PrepareGame(game);
         Move moveForwardOrBack;
 
-//        comparisonOfSolutions = new ComparisonOfSolutions(game);
         printGamelastStuation(game);
-        appendFileSolutionName();
+//        appendFileSolutionName();
+        startLocationX = game.getPlayer().getLocation().getX();
+        startLocationY = game.getPlayer().getLocation().getY();
+
         while (!player.getGameRule().isGameOver(game)) {
-//            printGamelastStuation(game);
+
             game.increaseRoundCounter();
             int choose = player.getInput(game);
             moveForwardOrBack = getMoveBackOrForward(choose);
-            moveForwardOrBack.move(new DirectionLocation().getLocationValueAccordingToEnteredValue(game, choose));
-//            printGamelastStuation(game);
+            moveForwardOrBack.move(
+                    new DirectionLocation().
+                            getLocationValueAccordingToEnteredValue(game, choose));
+
             calculatePlayerTotalWinScore();
 
         }
-        System.out.println("Total Number Solved " + player.getScore().getTotalGameFinishedScore());
+
+        System.out.println("Total Number Solved " + getEasyReadyNumber(player.getScore().getTotalGameFinishedScore()));
         saveGameResultToScore();
     }
 
+
+    void appendFileSquareTotalSolvedValue() {
+
+        int locationX = game.getPlayer().getLocation().getX();
+        int locationY = game.getPlayer().getLocation().getY();
+        int squareTotalSolvedValue = game.getPlayer().getSquareTotalSolvedValue();
+
+
+        String scoreValue = new EasylyReadNumber().getReadableNumberInStringFormat(squareTotalSolvedValue);
+
+//        game.getPlayer().getPrintableFileScore().append(scoreValue);
+
+
+        String text = "[" + locationX + "]" + "[" + locationY + "] = " + scoreValue + "\n";
+
+        game.getPlayer().getPrintableFileScore().append(text);
+        game.getPlayer().resetSquareTotalSolvedValue();
+
+    }
 
     Move getMoveBackOrForward(int index) {
         if (index == player.getCompass().getLastLocation()) {
@@ -64,18 +86,21 @@ public class PlayGame {
     void calculatePlayerTotalWinScore() {
         if (player.getStep() == Math.pow(game.getModel().getGameSquares().length, 2)) {
             player.getScore().increaseTotalGameFinishedScore();
-            System.out.println("Total Solved : " + player.getScore().getTotalGameFinishedScore());
+//            System.out.println("Total Solved : " + player.getScore().getTotalGameFinishedScore());
             printGamelastStuation(game);
             player.increaseSquareTotalSolvedValue();
+
+
         }
     }
+
 
     void saveGameResultToScore() {
         timeCalcuation = new TimeCalcuation();
         player.getScore().updatePlayedTime();
-        System.out.println(" Total played time : " + timeCalcuation.getTotalPassedTime(player));
-        System.out.println(" RoundCounter (while loop)  : " + game.getRoundCounter());
-        appendFileTotalSolvedValue();
+        System.out.println(" Elapsed time : " + timeCalcuation.getTotalPassedTime(player));
+        System.out.println(" RoundCounter (while loop)  : " + getEasyReadyNumber(game.getRoundCounter()));
+//        appendFileTotalSolvedValue();
 //        printable
     }
 
@@ -121,18 +146,19 @@ public class PlayGame {
     void printGamelastStuation(Game game) {
 
         String textWillAppendToFile = " Finished totalGame : " + player.getScore().getTotalGameFinishedScore() + "\n";
-        textWillAppendToFile += "RoundCounter : " + game.getRoundCounter() + '\n';
+        textWillAppendToFile += "RoundCounter : " + getEasyReadyNumber(game.getRoundCounter()) + '\n';
 
 
-        textWillAppendToFile += stringFormat.getStringFormatArray(game.getModel().getGameSquares());
+       textWillAppendToFile += stringFormat.getStringFormatArray(game.getModel().getGameSquares());//  print game squares
         System.out.println(textWillAppendToFile);
         System.out.println();
 //        printToFile(textWillAppendToFile);
     }
 
-    /*void printToFile(String text) {
-        printable.append(text);
-    }*/
+    void printToFile(String text) {
+        game.getPlayer().getPrintableFileScore().append(text);
+//        printable.append(text);
+    }
 
 
 }
