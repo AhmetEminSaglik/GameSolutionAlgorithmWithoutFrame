@@ -4,7 +4,7 @@ import game.Game;
 import game.gamerepo.updategamemodel.UpdateForMovedForward;
 import game.move.Move;
 
-public class MoveForward extends  Move {
+public class MoveForward extends Move {
 
     public MoveForward(Game game) {
         super(game);
@@ -14,6 +14,8 @@ public class MoveForward extends  Move {
 
     @Override
     public void updateVisitedDirection() {
+        game.getPlayer().getScore().lockCounterOfMovingBackLose();
+//        System.out.println("geri adim atma kilidi kapatildi");
         updateValuesInGameModel.updateValueVisitedDirection(getDirectionLocation());
     }
 

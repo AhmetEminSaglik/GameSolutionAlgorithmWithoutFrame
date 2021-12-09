@@ -5,22 +5,24 @@ import compass.DirectionCompass;
 import game.Game;
 import game.gameover.RobotGameOver;
 import game.gamerepo.player.Player;
+import game.gamerepo.player.robot.memory.RoadMemory;
+import game.gamerepo.player.robot.memory.RobotMemory;
 import game.gamerepo.player.robot.solution.BaseSolution;
 import game.location.DirectionLocation;
-import game.move.RobotMove;
 import game.play.PlayerMove;
 import game.play.input.robot.RobotInput;
 import game.rule.BaseGameRule;
 
 
 public class Robot extends Player {
-
-    RoadMemory roadMemory = new RoadMemory();
+    private RobotMemory robotMemory;
+    //    RoadMemory roadMemory = new RoadMemory();
     private BaseSolution solution;
     int recordValueForEachSquare;
 
     public Robot(Game game, BaseSolution solution) {
         super(game);
+        robotMemory = new RobotMemory(game);
         this.solution = solution;
         solution.buildRobotMove();
         playerMove = new PlayerMove(/*new RobotMove(game),*/ solution.getMoveForward(), solution.getMoveBack());
@@ -75,7 +77,10 @@ public class Robot extends Player {
         recordValueForEachSquare = 0;
     }
 
-    public RoadMemory getRoadMemory() {
-        return roadMemory;
+    public RobotMemory getRobotMemory() {
+        return robotMemory;
     }
+//    public RoadMemory getRoadMemory() {
+//        return roadMemory;
+//    }
 }

@@ -6,6 +6,8 @@ public class Score {
     Game game;
     Player player;
     String playedTime;
+    public boolean lockedCounterOfMovingBackLose = true;
+    long counterOfMovingBackLose = 0;
     long totalGameFinishedScore = 0;
     int overLongTotalGameFinishedScore = 0;
 
@@ -34,5 +36,30 @@ public class Score {
 
     public int getOverLongTotalGameFinishedScore() {
         return overLongTotalGameFinishedScore;
+    }
+
+    public void increaseCounterOfMovingBackLose() {
+        counterOfMovingBackLose++;
+    }
+
+    public void decreaseCounterOfMovingBackLose() {
+        counterOfMovingBackLose--;
+
+    }
+
+    public boolean isLockedCounterOfMovingBackLose() {
+        return lockedCounterOfMovingBackLose;
+    }
+
+    public void lockCounterOfMovingBackLose() {
+        lockedCounterOfMovingBackLose = true;
+    }
+
+    public void unlockCounterOfMovingBackLose() {
+        lockedCounterOfMovingBackLose = false;
+    }
+
+    public long getCounterOfMovingBackLose() {
+        return counterOfMovingBackLose;
     }
 }

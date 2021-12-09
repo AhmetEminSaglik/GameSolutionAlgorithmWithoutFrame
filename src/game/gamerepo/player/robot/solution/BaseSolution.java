@@ -2,20 +2,27 @@ package game.gamerepo.player.robot.solution;
 
 import check.CheckSquare;
 import game.Game;
+import game.location.Location;
 import game.move.fundamental.MoveBack;
 import game.move.fundamental.MoveForward;
 import squareprocess.SquareProcess;
 
 public abstract class BaseSolution {
     private Game game;
-
+    public Location playerLocation;
     public BaseSolution(Game game) {
         this.game = game;
+
     }
+
     private MoveForward moveForward;
     private MoveBack moveBack;
     public CheckSquare checkSquare = new CheckSquare();
     public SquareProcess squareProcess = new SquareProcess();
+
+    public void prepareation() {
+        playerLocation = checkSquare.getPlayerLocation(getGame());
+    }
 
     public abstract int getLocationInput(Game game);//, RobotMemory robotMemory
 

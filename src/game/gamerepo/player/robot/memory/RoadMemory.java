@@ -1,7 +1,6 @@
-package game.gamerepo.player.robot;
+package game.gamerepo.player.robot.memory;
 
-import errormessage.joptionpanel.ShowPanel;
-import game.gamerepo.player.robot.solution.second.navigation.ExitSituation;
+import game.gamerepo.player.robot.solution.second.exitsituation.ExitSituation;
 import game.gamerepo.player.robot.solution.second.navigation.Navigation;
 
 import java.util.ArrayList;

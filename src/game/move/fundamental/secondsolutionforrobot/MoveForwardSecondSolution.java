@@ -2,7 +2,7 @@ package game.move.fundamental.secondsolutionforrobot;
 
 import game.Game;
 import game.gamerepo.player.robot.Robot;
-import game.gamerepo.player.robot.solution.second.navigation.ExitSituation;
+import game.gamerepo.player.robot.solution.second.exitsituation.ExitSituation;
 import game.gamerepo.player.robot.solution.second.navigation.Navigation;
 import game.location.DirectionLocation;
 import game.location.LocationsList;
@@ -20,11 +20,12 @@ public class MoveForwardSecondSolution extends MoveForward {
 
     @Override
     public void prepareAllStuff() {
-        navigation = robot.getRoadMemory().getOneWayListLastItem();
+        navigation = robot.getRobotMemory().getRoadMemory().getOneWayListLastItem();
     }
 
     @Override
     public void updateBeforeStep() {
+        super.updateBeforeStep();
         doIfThereAreThingsTodoInOneWayNumberProcess();
     }
 
@@ -53,7 +54,7 @@ public class MoveForwardSecondSolution extends MoveForward {
     void processAccordingToOneWayNumber() {
 
         if (navigation.getOneWayNumbersValue() == 2) {
-            if (robot.getRoadMemory().getExitSituation().getSituation() == ExitSituation.EXIT_FREE) {
+            if (robot.getRobotMemory().getRoadMemory().getExitSituation().getSituation() == ExitSituation.EXIT_FREE) {
                 locateExitSituation();
             }
 
@@ -62,14 +63,14 @@ public class MoveForwardSecondSolution extends MoveForward {
 
             }
         } else if (navigation.getOneWayNumbersValue() == 1 &&
-                robot.getRoadMemory().getExitSituation().getSituation() == ExitSituation.EXIT_LOCATED &&
+                robot.getRobotMemory().getRoadMemory().getExitSituation().getSituation() == ExitSituation.EXIT_LOCATED &&
                 !navigation.isExitSituationWasLocatedInThisStep()) {
             navigation.setCompulsoryLocation(new LocationsList().getLastLocation());
         }
     }
 
     void locateExitSituation() {
-        robot.getRoadMemory().getExitSituation().setSituation(ExitSituation.EXIT_LOCATED);
+        robot.getRobotMemory().getRoadMemory().updateExistSituation(ExitSituation.EXIT_LOCATED);
         navigation.setExitSituationWasLocatedInThisStep(true);
     }
 

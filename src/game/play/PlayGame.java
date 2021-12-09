@@ -1,5 +1,6 @@
 package game.play;
 
+import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.gamerepo.player.Player;
 import game.gamerepo.player.robot.Robot;
@@ -16,7 +17,7 @@ public class PlayGame {
     public ComparisonOfSolutions comparisonOfSolutions;
     StringFormat stringFormat = new StringFormat();
     TimeCalcuation timeCalcuation;
-    int startLocationX, startLocationY;
+//    int startLocationX, startLocationY;
 
     public PlayGame(Game game) {
         this.game = game;
@@ -36,8 +37,8 @@ public class PlayGame {
 
         printGamelastStuation(game);
 //        appendFileSolutionName();
-        startLocationX = game.getPlayer().getLocation().getX();
-        startLocationY = game.getPlayer().getLocation().getY();
+//        startLocationX = game.getPlayer().getLocation().getX();
+//        startLocationY = game.getPlayer().getLocation().getY();
 
         while (!player.getGameRule().isGameOver(game)) {
 
@@ -50,6 +51,11 @@ public class PlayGame {
 
             calculatePlayerTotalWinScore();
 
+//            System.out.println(game.getPlayer().getLocation().getX());
+//            System.out.println(game.getPlayer().getLocation().getY());
+
+//            if (game.getModel().getGameSquares()[0][0] != 1)
+//                break;
         }
 
         System.out.println("Total Number Solved " + getEasyReadyNumber(player.getScore().getTotalGameFinishedScore()));
@@ -78,7 +84,7 @@ public class PlayGame {
 
     Move getMoveBackOrForward(int index) {
         if (index == player.getCompass().getLastLocation()) {
-            return player.getPlayerMove().getMoveBack();
+             return player.getPlayerMove().getMoveBack();
         }
         return player.getPlayerMove().getMoveForward();
     }
@@ -100,7 +106,8 @@ public class PlayGame {
         player.getScore().updatePlayedTime();
         System.out.println(" Elapsed time : " + timeCalcuation.getTotalPassedTime(player));
         System.out.println(" RoundCounter (while loop)  : " + getEasyReadyNumber(game.getRoundCounter()));
-//        appendFileTotalSolvedValue();
+        System.out.println(" Counter of Moving Back  (while loop)  : " + getEasyReadyNumber(game.getPlayer().getScore().getCounterOfMovingBackLose()));
+        appendFileTotalSolvedValue();
 //        printable
     }
 
@@ -144,12 +151,13 @@ public class PlayGame {
 
 
     void printGamelastStuation(Game game) {
-
         String textWillAppendToFile = " Finished totalGame : " + player.getScore().getTotalGameFinishedScore() + "\n";
-        textWillAppendToFile += "RoundCounter : " + getEasyReadyNumber(game.getRoundCounter()) + '\n';
+        textWillAppendToFile += "RoundCounter : " + getEasyReadyNumber(game.getRoundCounter()) + '\n' + "" +
+                "Counter of Moving Back "  +getEasyReadyNumber(game.getPlayer().getScore().getCounterOfMovingBackLose())+"\n"+
+                "Step : " + player.getStep() + "\n";
 
 
-       textWillAppendToFile += stringFormat.getStringFormatArray(game.getModel().getGameSquares());//  print game squares
+        textWillAppendToFile += stringFormat.getStringFormatArray(game.getModel().getGameSquares());//  print game squares
         System.out.println(textWillAppendToFile);
         System.out.println();
 //        printToFile(textWillAppendToFile);

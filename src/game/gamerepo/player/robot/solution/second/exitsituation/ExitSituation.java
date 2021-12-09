@@ -1,4 +1,4 @@
-package game.gamerepo.player.robot.solution.second.navigation;
+package game.gamerepo.player.robot.solution.second.exitsituation;
 
 public class ExitSituation {
     public static final int EXIT_FREE = 0, EXIT_LOCATED = 1;

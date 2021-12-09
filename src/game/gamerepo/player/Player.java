@@ -34,7 +34,7 @@ public abstract class Player implements UpdateableVistedDirection {
         name = "Unknow " + getClass().getSimpleName() + " name ";
         int squareEdge = game.getModel().getGameSquares().length;
 
-        printableFileScore = new FileWriteProcess((squareEdge * squareEdge) + "_EverySingleSquareTotalValue" );
+        printableFileScore = new FileWriteProcess((squareEdge * squareEdge) + "_EverySingleSquareTotalValue");
     }
 
     public Player(Game game, String name) {

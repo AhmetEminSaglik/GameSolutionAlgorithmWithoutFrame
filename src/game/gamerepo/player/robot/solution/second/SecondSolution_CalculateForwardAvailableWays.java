@@ -13,12 +13,12 @@ public class SecondSolution_CalculateForwardAvailableWays extends BaseSolution {
 
     @Override
     public int getLocationInput(Game game) {
+        prepareation();
 
-        Location playerLocation = checkSquare.getPlayerLocation(game);
+        MathFunctionForSecondSolution mathFunctionForSecondSolution =
+                new MathFunctionForSecondSolution(game, playerLocation);
 
-        MathFunctionSecondSolution mathFunctionSecondSolution = new MathFunctionSecondSolution(game, playerLocation);
-
-        return mathFunctionSecondSolution.calculateFunctionResult();
+        return mathFunctionForSecondSolution.calculateFunctionResult();
     }
 
     @Override

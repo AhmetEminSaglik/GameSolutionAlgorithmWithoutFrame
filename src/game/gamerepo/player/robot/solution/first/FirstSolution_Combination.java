@@ -18,9 +18,10 @@ public class FirstSolution_Combination extends BaseSolution {
 
     @Override
     public int getLocationInput(Game game) {
+        prepareation();
         ArrayList<DirectionLocation> locationsList = new LocationsList().getList();
 
-        Location playerLocation = checkSquare.getPlayerLocation(game);
+
 
         for (int i = 0; i < locationsList.size() - 1; i++) {
 

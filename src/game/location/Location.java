@@ -4,6 +4,14 @@ public class Location {
 
     private int x = 0, y = 0;
 
+    public Location(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public Location() {
+    }
+
     public int getX() {
         return x;
     }

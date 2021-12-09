@@ -2,7 +2,7 @@ package game.move.fundamental.secondsolutionforrobot;
 
 import game.Game;
 import game.gamerepo.player.robot.Robot;
-import game.gamerepo.player.robot.solution.second.navigation.ExitSituation;
+import game.gamerepo.player.robot.solution.second.exitsituation.ExitSituation;
 import game.gamerepo.player.robot.solution.second.navigation.Navigation;
 import game.move.fundamental.MoveBack;
 
@@ -19,7 +19,7 @@ public class MoveBackSecondSolution extends MoveBack {
 
     @Override
     public void prepareAllStuff() {
-        navigation = robot.getRoadMemory().getOneWayListLastItem();
+        navigation = robot.getRobotMemory().getRoadMemory().getOneWayListLastItem();
     }
 
     public MoveBackSecondSolution(Game game) {
@@ -39,11 +39,11 @@ public class MoveBackSecondSolution extends MoveBack {
     }
 
     void clearLastIndexInNavigationList() {
-        if (robot.getRoadMemory().getOneWayListLastItem() != null)
-            if (robot.getStep() < robot.getRoadMemory().getOneWayListLastItem().getStep()) {
-                robot.getRoadMemory().removeOneWayListLastItem();
-                if(navigation.isExitSituationWasLocatedInThisStep())
-                robot.getRoadMemory().getExitSituation().setSituation(ExitSituation.EXIT_FREE);
+        if (robot.getRobotMemory().getRoadMemory().getOneWayListLastItem() != null)
+            if (robot.getStep() < robot.getRobotMemory().getRoadMemory().getOneWayListLastItem().getStep()) {
+                robot.getRobotMemory().getRoadMemory().removeOneWayListLastItem();
+                if (navigation.isExitSituationWasLocatedInThisStep())
+                    robot.getRobotMemory().getRoadMemory().updateExistSituation(ExitSituation.EXIT_FREE);
             }
     }
 
@@ -54,14 +54,15 @@ public class MoveBackSecondSolution extends MoveBack {
     }
 
     void processAccordingToOneWayNumber() {
-        if (robot.getRoadMemory().getExitSituation().getSituation() == ExitSituation.EXIT_FREE) {
+        if (robot.getRobotMemory().getRoadMemory().getExitSituation().getSituation() == ExitSituation.EXIT_FREE) {
             if (navigation.getOneWayNumbersValue() == 1) {
-                robot.getRoadMemory().getExitSituation().setSituation(ExitSituation.EXIT_LOCATED);
+                robot.getRobotMemory().getRoadMemory().updateExistSituation(ExitSituation.EXIT_LOCATED);
                 navigation.setExitSituationWasLocatedInThisStep(true);
             }
         }
 
     }
+
     boolean isNavigationNull() {
         if (navigation == null)
             return true;

@@ -1,14 +1,13 @@
 package Main;
 
-import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.gamerepo.BuildGame;
 import game.gamerepo.player.Player;
-import game.gamerepo.player.person.Person;
 import game.gamerepo.player.robot.Robot;
 import game.gamerepo.player.robot.solution.BaseSolution;
 import game.gamerepo.player.robot.solution.first.FirstSolution_Combination;
 import game.gamerepo.player.robot.solution.second.SecondSolution_CalculateForwardAvailableWays;
+import game.gamerepo.player.robot.solution.third.ThirdtSolution_GoldenSquare;
 import game.play.PlayGame;
 
 
@@ -16,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
 
-        int squareEdge = 5;
+        int squareEdge = 10;
         BuildGame buildGameModel = new BuildGame(squareEdge, squareEdge);
         Game game = buildGameModel.createGame();
 
@@ -36,7 +35,7 @@ public class Main {
         playGame.playGame();
         System.out.println();
         System.out.println(baseSolution.getClass().getSimpleName());
-        System.out.println("Game Dimension : "+game.getModel().getGameSquares().length+"-"+game.getModel().getGameSquares().length);
+        System.out.println("Game Dimension : " + game.getModel().getGameSquares().length + "-" + game.getModel().getGameSquares().length);
 
       /*  BaseSolution baseSolution2 = new SecondSolution_CalculateForwardAvailableWays(game);
         Player robot2 = new Robot(game, baseSolution2);
