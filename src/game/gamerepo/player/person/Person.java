@@ -15,12 +15,13 @@ import game.rule.BaseGameRule;
 
 public class Person extends Player {
 
-public Person(Game game) {
+
+    public Person(Game game) {
         super(game);
-
+        printAbleEveryStep = true;
         playerMove = new PlayerMove(/*new PersonMove(game),*/new MoveForward(game), new MoveBack(game));
-
     }
+
 
     @Override
     public Compass getCompass() {
@@ -42,5 +43,10 @@ public Person(Game game) {
 
     public PlayerMove getPlayerMove() {
         return playerMove;
+    }
+
+    @Override
+    public boolean isPrintableStepSituation() {
+        return printAbleEveryStep;
     }
 }

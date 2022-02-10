@@ -2,7 +2,6 @@ package game.gamerepo.player.robot.solution.second;
 
 import game.Game;
 import game.gamerepo.player.robot.solution.BaseSolution;
-import game.location.Location;
 import game.move.fundamental.secondsolutionforrobot.MoveBackSecondSolution;
 import game.move.fundamental.secondsolutionforrobot.MoveForwardSecondSolution;
 
@@ -17,7 +16,6 @@ public class SecondSolution_CalculateForwardAvailableWays extends BaseSolution {
 
         MathFunctionForSecondSolution mathFunctionForSecondSolution =
                 new MathFunctionForSecondSolution(game, playerLocation);
-
         return mathFunctionForSecondSolution.calculateFunctionResult();
     }
 

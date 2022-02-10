@@ -16,7 +16,7 @@ public class MoveForwardSecondSolution extends MoveForward {
     Robot robot = (Robot) game.getPlayer();
     Navigation navigation;
 
-    DirectionLocation lastLocation = new LocationsList().getLastLocation();
+    DirectionLocation lastLocation = new LocationsList().getLastLocation(robot.getCompass());
 
     @Override
     public void prepareAllStuff() {
@@ -59,13 +59,13 @@ public class MoveForwardSecondSolution extends MoveForward {
             }
 
             if (isDirectionSame(getDirectionLocation(), navigation.getCompulsoryLocation())) {
-                navigation.setCompulsoryLocation(new LocationsList().getLastLocation());
+                navigation.setCompulsoryLocation(new LocationsList().getLastLocation(robot.getCompass()));
 
             }
         } else if (navigation.getOneWayNumbersValue() == 1 &&
                 robot.getRobotMemory().getRoadMemory().getExitSituation().getSituation() == ExitSituation.EXIT_LOCATED &&
                 !navigation.isExitSituationWasLocatedInThisStep()) {
-            navigation.setCompulsoryLocation(new LocationsList().getLastLocation());
+            navigation.setCompulsoryLocation(new LocationsList().getLastLocation(robot.getCompass()));
         }
     }
 

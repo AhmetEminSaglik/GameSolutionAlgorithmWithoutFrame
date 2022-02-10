@@ -1,13 +1,11 @@
 package game.move.fundamental;
 
-import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.gamerepo.GameModelProcess;
 import game.gamerepo.updategamemodel.UpdateForMovedBack;
 import game.location.DirectionLocation;
 import game.location.LocationsList;
 import game.move.Move;
-import printarray.StringFormat;
 
 import java.util.ArrayList;
 
@@ -28,6 +26,7 @@ public class MoveBack extends Move {
 //            printGamelastStuation(game);
 //            ShowPanel.show(getClass(),"KITLI OLDUGU HALDE GERI ADIM ATTI   Step : "+game.getPlayer().getStep());
             game.getPlayer().getScore().increaseCounterOfMovingBackLose();
+            game.getPlayer().getScore().unlockCounterOfMovingBackLose();
 
         }
         /* Ozel RoundCounter : geri adim atmaya baslandiktan sonra, eger ileri adim atilirsa  ve oyun bitmeden tekrardan geri adim atilmaya baslanirsa o zaman bu deger
@@ -40,7 +39,7 @@ public class MoveBack extends Move {
     }
 
     void clearAllDirectionBeforeGoBack() {
-        ArrayList<DirectionLocation> directionLocationList = new LocationsList().getList();
+        ArrayList<DirectionLocation> directionLocationList = new LocationsList().getListOfLocationsAccordingToPlayerCompass(game.getPlayer().getCompass());
 
         for (int i = 0; i < directionLocationList.size(); i++) {
             updateValuesInGameModel.updateValueVisitedDirection(directionLocationList.get(i));

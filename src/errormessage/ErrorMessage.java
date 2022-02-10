@@ -15,4 +15,7 @@ public class ErrorMessage {
         new WarningMessage().showMessage("Class where is the WARNING occured : << " + className.getCanonicalName() + " >>  Error Message : " + message);
     }
 
+    public  void throwError(Class className, String message) throws Exception {
+        throw new Exception("Class where is the WARNING occured : << " + className.getCanonicalName() + ">> Message :" + message);
+    }
 }

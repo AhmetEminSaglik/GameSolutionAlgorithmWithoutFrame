@@ -1,7 +1,5 @@
 package check;
 
-import compass.Compass;
-import compass.DirectionCompass;
 import game.Game;
 import game.location.DirectionLocation;
 
@@ -13,9 +11,14 @@ import game.location.LocationsList;
 public class CheckAroundSquare extends BaseCheck {
 
     //    Compass compass /*= new DirectionCompass()*/;
+    Game game;
     CheckSquare checkSquare = new CheckSquare();
-    ArrayList<DirectionLocation> locationList = new LocationsList().getList();
+    ArrayList<DirectionLocation> locationList;
 
+    public CheckAroundSquare(Game game) {
+        this.game = game;
+        locationList = new LocationsList().getListOfLocationsAccordingToPlayerCompass(game.getPlayer().getCompass());
+    }
 /*
     public int getNumberOfHowManySquaresAreAvailable(Game game) {
 
@@ -31,7 +34,7 @@ public class CheckAroundSquare extends BaseCheck {
     }
 */
 
-    public boolean isThereAnyAvailableSquare(Game game) {
+    public boolean isThereAnyAvailableSquare() {
         setCompass(game.getPlayer().getCompass());
         checkSquare.setCompass(getCompass());
 

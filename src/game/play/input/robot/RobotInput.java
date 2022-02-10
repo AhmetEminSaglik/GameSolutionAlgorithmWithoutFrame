@@ -16,7 +16,6 @@ public class RobotInput extends BaseControlInput {
 
     @Override
     public int getInput() {
- 
         return solution.getLocationInput(game);
     }
 

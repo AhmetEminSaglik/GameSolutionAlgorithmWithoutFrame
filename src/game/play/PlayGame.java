@@ -1,6 +1,5 @@
 package game.play;
 
-import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.gamerepo.player.Player;
 import game.gamerepo.player.robot.Robot;
@@ -56,6 +55,10 @@ public class PlayGame {
 
 //            if (game.getModel().getGameSquares()[0][0] != 1)
 //                break;
+            if (player.isPrintableStepSituation() == true) {
+                printGamelastStuation(game);
+            }
+
         }
 
         System.out.println("Total Number Solved " + getEasyReadyNumber(player.getScore().getTotalGameFinishedScore()));
@@ -77,14 +80,14 @@ public class PlayGame {
 
         String text = "[" + locationX + "]" + "[" + locationY + "] = " + scoreValue + "\n";
 
-        game.getPlayer().getPrintableFileScore().append(text);
+//        game.getPlayer().getPrintableFileScore().append(text);
         game.getPlayer().resetSquareTotalSolvedValue();
 
     }
 
     Move getMoveBackOrForward(int index) {
         if (index == player.getCompass().getLastLocation()) {
-             return player.getPlayerMove().getMoveBack();
+            return player.getPlayerMove().getMoveBack();
         }
         return player.getPlayerMove().getMoveForward();
     }
@@ -135,7 +138,7 @@ public class PlayGame {
 
 
         text += "\n\n ========================================================== \n\n\n";
-        game.getPlayer().getPrintableFileScore().append(text);
+//        game.getPlayer().getPrintableFileScore().append(text);
 
     }
 
@@ -145,7 +148,7 @@ public class PlayGame {
 
     void appendFileSolutionName() {
         String text = ">>>>>>>>>>>>>>  " + ((Robot) player).getSolution().getClass().getSimpleName() + " : \n\n";
-        game.getPlayer().getPrintableFileScore().append(text);
+//        game.getPlayer().getPrintableFileScore().append(text);
 
     }
 
@@ -153,7 +156,7 @@ public class PlayGame {
     void printGamelastStuation(Game game) {
         String textWillAppendToFile = " Finished totalGame : " + player.getScore().getTotalGameFinishedScore() + "\n";
         textWillAppendToFile += "RoundCounter : " + getEasyReadyNumber(game.getRoundCounter()) + '\n' + "" +
-                "Counter of Moving Back "  +getEasyReadyNumber(game.getPlayer().getScore().getCounterOfMovingBackLose())+"\n"+
+                "Counter of Moving Back " + getEasyReadyNumber(game.getPlayer().getScore().getCounterOfMovingBackLose()) + "\n" +
                 "Step : " + player.getStep() + "\n";
 
 
@@ -164,7 +167,7 @@ public class PlayGame {
     }
 
     void printToFile(String text) {
-        game.getPlayer().getPrintableFileScore().append(text);
+//        game.getPlayer().getPrintableFileScore().append(text);
 //        printable.append(text);
     }
 

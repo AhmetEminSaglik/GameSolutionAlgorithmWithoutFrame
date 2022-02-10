@@ -39,7 +39,7 @@ public class CheckSquare extends BaseCheck {
 
 
     public boolean isAnySquareAvailableInVisitedDirection(Game game, Location currentProcessLocation) {
-        ArrayList<DirectionLocation> locationList = new LocationsList().getList();
+        ArrayList<DirectionLocation> locationList = new LocationsList().getListOfLocationsAccordingToPlayerCompass(game.getPlayer().getCompass());
 
         for (int i = 0; i < locationList.size() - 1; i++) {
 

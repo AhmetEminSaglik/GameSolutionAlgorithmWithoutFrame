@@ -10,7 +10,7 @@ public class ResetAllDataForGameAndPlayer {
 
     public ResetAllDataForGameAndPlayer(Game game) throws InterruptedException {
         squareEdge = game.getModel().getGameSquares().length;
-        buildGame = new BuildGame(squareEdge, squareEdge);
+        buildGame = new BuildGame(squareEdge);
     }
 
 

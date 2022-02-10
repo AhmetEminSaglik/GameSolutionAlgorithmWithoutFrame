@@ -1,5 +1,6 @@
 package game.location;
 
+import compass.Compass;
 import game.location.direction.East;
 import game.location.direction.LastLocation;
 import game.location.direction.North;
@@ -16,30 +17,38 @@ public class LocationsList {
 
     ArrayList<DirectionLocation> list = new ArrayList<>();
 
-    void fillList() {
+    void fillList(Compass compass) {
 
-        list.add(new North());
-        list.add(new NorthEast());
-        list.add(new East());
-        list.add(new SouthEast());
-        list.add(new South());
-        list.add(new SouthWest());
-        list.add(new West());
-        list.add(new NorthWest());
-        list.add(new LastLocation());
+        list.add(getDirectionLocationWithEmbeddCompass(new North(), compass));
+        list.add(getDirectionLocationWithEmbeddCompass(new NorthEast(), compass));
+        list.add(getDirectionLocationWithEmbeddCompass(new East(), compass));
+        list.add(getDirectionLocationWithEmbeddCompass(new SouthEast(), compass));
+        list.add(getDirectionLocationWithEmbeddCompass(new South(), compass));
+        list.add(getDirectionLocationWithEmbeddCompass(new SouthWest(), compass));
+        list.add(getDirectionLocationWithEmbeddCompass(new West(), compass));
+        list.add(getDirectionLocationWithEmbeddCompass(new NorthWest(), compass));
+        list.add(getDirectionLocationWithEmbeddCompass(new LastLocation(), compass));
 
     }
 
-    public ArrayList<DirectionLocation> getList() {
+    DirectionLocation getDirectionLocationWithEmbeddCompass(DirectionLocation directionLocation, Compass compass) {
+        directionLocation.setCompass(compass);
+        return directionLocation;
+
+    }
+
+
+    public ArrayList<DirectionLocation> getListOfLocationsAccordingToPlayerCompass(Compass compass) {
         if (list.size() == 0) {
-            fillList();
+            fillList(compass);
         }
         return list;
     }
 
-    public DirectionLocation getLastLocation() {
-
-        return new LastLocation();
+    public DirectionLocation getLastLocation(Compass compass) {
+        DirectionLocation lastLocation = new LastLocation();
+        lastLocation.setCompass(compass);
+        return lastLocation;
     }
 
 }

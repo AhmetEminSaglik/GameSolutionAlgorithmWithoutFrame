@@ -3,25 +3,41 @@ package game.gamerepo;
 import game.Game;
 import validation.SquareValidationGame;
 
-public class BuildGame {
+import java.util.Scanner;
+
+public class BuildGame implements IDetermineEdgeValue {
 
     // horizontalSquare and verticalSquare are unnecessary. But later I may need them if I want to play as a rectangle instead of square
-    private int horizontalSquare;
-    private int verticalSquare;
+    private int edgeValue;
+    //    private int verticalSquare;
     private Game game;
 
-    public BuildGame(int verticalSquare, int horizontalSquare) throws InterruptedException {
-        new SquareValidationGame(verticalSquare, horizontalSquare);
-        this.horizontalSquare = horizontalSquare;
-        this.verticalSquare = verticalSquare;
-        game = new Game();
+    public BuildGame() {
+        buildGame(determineEdgeValue());
+    }
+
+    public BuildGame(int edgeValue) {
+        buildGame(edgeValue);
+    }
+
+    private void buildGame(int edgeValue) {
+        try {
+            this.edgeValue = edgeValue;
+            new SquareValidationGame(edgeValue, edgeValue);
+            this.edgeValue = edgeValue;
+            game = new Game();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            buildGame(determineEdgeValue());
+
+        }
     }
 
     public Game createGame() throws InterruptedException {
 
         game.setModel(new Model());
 
-        game.getModel().setGameSquares(createMultipleArrayFromIntegers(verticalSquare, horizontalSquare));
+        game.getModel().setGameSquares(createMultipleArrayFromIntegers(edgeValue, edgeValue));
 
         return game;
     }
@@ -38,7 +54,7 @@ public class BuildGame {
     }
 
     boolean[][] buildVisitedArea(Game game) {
-        return new boolean[verticalSquare][horizontalSquare];
+        return new boolean[edgeValue][edgeValue];
     }
 
     void clearVisitedAreas(Game game) {
@@ -57,4 +73,9 @@ public class BuildGame {
         this.game = game;
     }
 
+    @Override
+    public int determineEdgeValue() {
+        System.out.print("Determine Edge value of Square :  ");
+        return new Scanner(System.in).nextInt();
+    }
 }

@@ -126,7 +126,7 @@ public abstract class Move implements IMove { // ICalculateMove
             text += "\n";
         }
 
-        game.getPlayer().getPrintableFileScore().append(text);
+//        game.getPlayer().getPrintableFileScore().append(text);
         game.getPlayer().resetSquareTotalSolvedValue();
 
     }

@@ -18,13 +18,13 @@ public class NavigationService {
         robot = getRobot(game);
     }*/
 
-    public void setCompulsoryLocationToNavigation(Game game, Navigation navigation) {
+    public void setCompulsoryLocationToNavigation(Game game, Navigation navigation, DirectionLocation lastLocation) {
         Robot robot = getRobot(game);
 
         if (navigation.getOneWayNumbersValue() == 1 &&
                 robot.getRobotMemory().getRoadMemory().getExitSituation().getSituation() == ExitSituation.EXIT_LOCATED
                 && !navigation.isExitSituationWasLocatedInThisStep()) {
-            navigation.setCompulsoryLocation(new LastLocation());
+            navigation.setCompulsoryLocation(lastLocation);
         }
 
 

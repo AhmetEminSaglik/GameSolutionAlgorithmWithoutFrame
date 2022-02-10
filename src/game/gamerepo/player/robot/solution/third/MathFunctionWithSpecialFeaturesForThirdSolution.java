@@ -20,9 +20,9 @@ public class MathFunctionWithSpecialFeaturesForThirdSolution {
 
     Game game;
     Location playerLocation;
-    ArrayList<DirectionLocation> locationsList = new LocationsList().getList();
-    final DirectionLocation lastLocation = new LocationsList().getLastLocation();// locationsList.get(locationsList.size() - 1);
-    DirectionLocation selectedDirection = lastLocation;
+    ArrayList<DirectionLocation> locationsList;
+    final DirectionLocation lastLocation;// locationsList.get(locationsList.size() - 1);
+    DirectionLocation selectedDirection;
     SquareProcess squareProcess = new SquareProcess();
     WeightOfAvailableWay weightOfAvailableWay = new WeightOfAvailableWay();
     Robot robot;
@@ -38,8 +38,11 @@ public class MathFunctionWithSpecialFeaturesForThirdSolution {
     public MathFunctionWithSpecialFeaturesForThirdSolution(Game game, Location playerLocation) {
         this.game = game;
         this.playerLocation = playerLocation;
+        lastLocation = new LocationsList().getLastLocation(game.getPlayer().getCompass());
+        selectedDirection = lastLocation;
         robot = (Robot) game.getPlayer();
         edgeValue = game.getModel().getGameSquares().length;
+        locationsList = new LocationsList().getListOfLocationsAccordingToPlayerCompass(game.getPlayer().getCompass());
 //        calculationDeadlyPoint = new CalculationDeadlyPoint(game);
 
     }
@@ -48,7 +51,7 @@ public class MathFunctionWithSpecialFeaturesForThirdSolution {
     public int calculateFunctionResult() {
 
         if (isNavigationInRoadMemoryAvailableForThisStep()) {
-            navigationService.setCompulsoryLocationToNavigation(game, navigation);
+            navigationService.setCompulsoryLocationToNavigation(game, navigation, lastLocation);
             try {
                 selectedDirection = navigationService.getCompulsoryLocation(navigation);
                 return selectedDirection.getId();

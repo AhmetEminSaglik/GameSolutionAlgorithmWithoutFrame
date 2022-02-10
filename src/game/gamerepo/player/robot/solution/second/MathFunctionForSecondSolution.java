@@ -1,6 +1,7 @@
 package game.gamerepo.player.robot.solution.second;
 
 import check.forwardlocation.InpectingForwardLocation;
+import compass.DirectionCompass;
 import game.Game;
 import game.gamerepo.player.robot.Robot;
 import game.gamerepo.player.robot.solution.second.exitsituation.ExitSituation;
@@ -17,9 +18,9 @@ import java.util.ArrayList;
 public class MathFunctionForSecondSolution {
     Game game;
     Location playerLocation;
-    ArrayList<DirectionLocation> locationsList = new LocationsList().getList();
-    final DirectionLocation lastLocation = new LocationsList().getLastLocation();// locationsList.get(locationsList.size() - 1);
-    DirectionLocation selectedDirection = lastLocation;
+    ArrayList<DirectionLocation> locationsList;
+    final DirectionLocation lastLocation;// locationsList.get(locationsList.size() - 1);
+    DirectionLocation selectedDirection;
     SquareProcess squareProcess = new SquareProcess();
     WeightOfAvailableWay weightOfAvailableWay = new WeightOfAvailableWay();
     Robot robot;
@@ -37,15 +38,17 @@ public class MathFunctionForSecondSolution {
         this.playerLocation = playerLocation;
         robot = (Robot) game.getPlayer();
         edgeValue = game.getModel().getGameSquares().length;
+        locationsList = new LocationsList().getListOfLocationsAccordingToPlayerCompass(game.getPlayer().getCompass());
 //        calculationDeadlyPoint = new CalculationDeadlyPoint(game);
-
+        lastLocation = new LocationsList().getLastLocation(game.getPlayer().getCompass());
+        selectedDirection = lastLocation;
     }
 
 
     public int calculateFunctionResult() {
 
         if (isNavigationInRoadMemoryAvailableForThisStep()) {
-            navigationService.setCompulsoryLocationToNavigation(game, navigation);
+            navigationService.setCompulsoryLocationToNavigation(game, navigation, lastLocation);
             try {
                 selectedDirection = navigationService.getCompulsoryLocation(navigation);
                 return selectedDirection.getId();
@@ -61,6 +64,7 @@ public class MathFunctionForSecondSolution {
             navigation = buildNavigation();
             addNavigationToRoadMemoryList();
         }
+
         return selectedDirection.getId();
 
 
@@ -122,7 +126,7 @@ public class MathFunctionForSecondSolution {
                     selectedDirection = location;
                 }
                 if (availableWayNumber == 1) {
-                    processAccordingToOneWayNumber( location);
+                    processAccordingToOneWayNumber(location);
                 }
                 if (isRequestedToKillFunctionByOneWayAvailableNumberProcess()) {
 

@@ -11,12 +11,12 @@ import java.util.ArrayList;
 
 public class InpectingForwardLocation {
     SquareProcess squareProcess = new SquareProcess();
-    ArrayList<DirectionLocation> locationsList = new LocationsList().getList();
+    ArrayList<DirectionLocation> locationsList;
 
     public ArrayList<Location> inspectLocationAndGetAvailableSquareNumbers(Game game, DirectionLocation locationNeededToInspect) {
         ArrayList<Location> availableLocationList = new ArrayList<>();
         Drone drone = buildDrone(game, locationNeededToInspect);
-
+        locationsList = new LocationsList().getListOfLocationsAccordingToPlayerCompass(game.getPlayer().getCompass());
         int availableLocationNumberToMove = 0;
         for (int i = 0; i < locationsList.size() - 1; i++) {
             if (squareProcess.isAreaAvailableToVisit(game, drone.getLocation(), locationsList.get(i)))

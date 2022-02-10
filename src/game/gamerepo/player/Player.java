@@ -2,7 +2,6 @@ package game.gamerepo.player;
 
 import compass.Compass;
 import game.Game;
-import game.gamerepo.player.robot.Robot;
 import game.gamerepo.player.robot.TimeKeeper;
 import game.location.DirectionLocation;
 import game.location.Location;
@@ -12,10 +11,11 @@ import game.rule.BaseGameRule;
 import print.FileWriteProcess;
 import print.PrintAble;
 
-public abstract class Player implements UpdateableVistedDirection {
+public abstract class Player implements UpdateableVistedDirection, PrintableEveryStepToSee {
     protected PlayerMove playerMove;
     protected String name;
     protected PrintAble printableFileScore;
+    protected boolean printAbleEveryStep;
 
     protected int squareTotalSolvedValue = 0;
     Game game;
@@ -43,7 +43,8 @@ public abstract class Player implements UpdateableVistedDirection {
     }
 
     public void clearVisitedDirections() {
-        visitedDirections = new boolean[(int) Math.pow(game.getModel().getGameSquares().length, 2)][new LocationsList().getList().size()];
+        visitedDirections = new boolean[(int) Math.pow(game.getModel().getGameSquares().length, 2)]
+                [new LocationsList().getListOfLocationsAccordingToPlayerCompass(game.getPlayer().getCompass()).size()];
     }
 
     public void clearStepValue() {
@@ -56,7 +57,7 @@ public abstract class Player implements UpdateableVistedDirection {
 
     private int step = 0;
 
-    public Compass compass;
+    private Compass compass;
 
     public abstract BaseGameRule getGameRule();
 

@@ -27,6 +27,7 @@ public class Robot extends Player {
         solution.buildRobotMove();
         playerMove = new PlayerMove(/*new RobotMove(game),*/ solution.getMoveForward(), solution.getMoveBack());
         setName(solution.getClass().getSimpleName() + "_" + game.getModel().getGameSquares());
+        printAbleEveryStep = false;
     }
 
     @Override
@@ -58,6 +59,7 @@ public class Robot extends Player {
     @Override
     public void updateVisitedDirection(boolean sealOrUnseal, int step, DirectionLocation location) {
         assert (getStep() > 1) : getClass().getName() + " >>> ADIM SAYUISI " + getStep() + " GELDI";
+        location.setCompass(getGame().getPlayer().getCompass());
         getVisitedDirections()[step][location.getId()] = sealOrUnseal;
     }
 
@@ -79,6 +81,11 @@ public class Robot extends Player {
 
     public RobotMemory getRobotMemory() {
         return robotMemory;
+    }
+
+    @Override
+    public boolean isPrintableStepSituation() {
+        return printAbleEveryStep;
     }
 //    public RoadMemory getRoadMemory() {
 //        return roadMemory;

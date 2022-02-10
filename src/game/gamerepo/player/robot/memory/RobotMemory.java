@@ -6,11 +6,11 @@ public class RobotMemory {
     Game game;
 
     private RoadMemory roadMemory = new RoadMemory();
-    private GraphMemory graphMemory;
+//    private GraphMemory graphMemory;
 
     public RobotMemory(Game game) {
         this.game = game;
-        graphMemory = new GraphMemory(game);
+//        graphMemory = new GraphMemory(game);
     }
 
 
@@ -18,7 +18,7 @@ public class RobotMemory {
         return roadMemory;
     }
 
-    public GraphMemory getGraphMemory() {
-        return graphMemory;
-    }
+//    public GraphMemory getGraphMemory() {
+//        return graphMemory;
+//    }
 }

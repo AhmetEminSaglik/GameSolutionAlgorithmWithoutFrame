@@ -1,3 +1,4 @@
+/*
 package game.gamerepo.player.robot.memory;
 
 import check.CheckSquare;
@@ -8,7 +9,6 @@ import game.gamerepo.player.robot.solution.third.Vertex;
 import game.location.DirectionLocation;
 import game.location.Location;
 import game.location.LocationsList;
-import squareprocess.SquareProcess;
 
 import java.util.ArrayList;
 
@@ -24,7 +24,7 @@ public class GraphMemory {
         graph = new Graph();
         this.game = game;
         squareEdge = game.getModel().getGameSquares().length;
-        locationList = new LocationsList().getList();
+        locationList = new LocationsList().getListOfLocationsAccordingToPlayerCompass();
     }
 
     public void createGraphAccordingToGame() {
@@ -43,7 +43,8 @@ public class GraphMemory {
 
     }
 
-    public void setconnectionBetweenVertexsInGrap() {/*
+    public void setconnectionBetweenVertexsInGrap() {*/
+/*
         for (Vertex tmpVertex : graph.getGraphMapVertice().keySet())
             for (int j = 0; j < squareEdge; j++) {
                 for (int i = 0; i < squareEdge; i++) {
@@ -55,7 +56,8 @@ public class GraphMemory {
                             }
                     }
                 }
-            }*/
+            }*//*
+
 
 
     }
@@ -71,3 +73,4 @@ public class GraphMemory {
         return availableWayNumber;
     }
 }
+*/

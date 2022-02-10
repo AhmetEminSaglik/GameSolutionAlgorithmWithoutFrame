@@ -3,7 +3,6 @@ package game.gamerepo.player.robot.solution.first;
 import game.Game;
 import game.gamerepo.player.robot.solution.BaseSolution;
 import game.location.DirectionLocation;
-import game.location.Location;
 import game.location.LocationsList;
 import game.move.fundamental.MoveBack;
 import game.move.fundamental.MoveForward;
@@ -19,7 +18,10 @@ public class FirstSolution_Combination extends BaseSolution {
     @Override
     public int getLocationInput(Game game) {
         prepareation();
-        ArrayList<DirectionLocation> locationsList = new LocationsList().getList();
+        ArrayList<DirectionLocation> locationsList =
+                new LocationsList().getListOfLocationsAccordingToPlayerCompass
+                        (game.getPlayer().getCompass());
+
 
 
 

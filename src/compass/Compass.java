@@ -2,6 +2,7 @@ package compass;
 
 public abstract class Compass {
 
+
     int north;
     int northEast;
     int east;
