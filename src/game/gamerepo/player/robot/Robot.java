@@ -20,15 +20,19 @@ public class Robot extends Player {
     private BaseSolution solution;
     int recordValueForEachSquare;
 
-    public Robot(Game game, BaseSolution solution) {
-        super(game);
+    public Robot(/*Game game, BaseSolution solution*/) {
+//        super(game);
+        this.game = game;
         robotMemory = new RobotMemory(game);
-        this.solution = solution;
-        solution.buildRobotMove();
-        playerMove = new PlayerMove(/*new RobotMove(game),*/ solution.getMoveForward(), solution.getMoveBack());
-        setName(solution.getClass().getSimpleName() + "_" + game.getModel().getGameSquares());
+//        this.solution = solution;
+//        solution.buildRobotMove();
+//        playerMove = new PlayerMove(/*new RobotMove(game),*/ solution.getMoveForward(), solution.getMoveBack());
+//       setName(solution.getClass().getSimpleName() + "_" + game.getModel().getGameSquares());
         printAbleEveryStep = false;
     }
+
+
+
 
     @Override
     public Compass getCompass() {
@@ -46,6 +50,11 @@ public class Robot extends Player {
 
     public void setSolution(BaseSolution solution) {
         this.solution = solution;
+        solution.buildRobotMove();
+
+        setName(solution.getClass().getSimpleName() + "_" + game.getModel().getGameSquares());
+        setPlayerMove();
+
     }
 
     @Override
@@ -61,6 +70,11 @@ public class Robot extends Player {
         assert (getStep() > 1) : getClass().getName() + " >>> ADIM SAYUISI " + getStep() + " GELDI";
         location.setCompass(getGame().getPlayer().getCompass());
         getVisitedDirections()[step][location.getId()] = sealOrUnseal;
+    }
+
+    @Override
+    public void setPlayerMove() {
+        playerMove = new PlayerMove(/*new RobotMove(game),*/ solution.getMoveForward(), solution.getMoveBack());
     }
 
     public int getRecordValueForEachSquare() {

@@ -11,6 +11,11 @@ import game.gamerepo.player.robot.solution.second.SecondSolution_CalculateForwar
 import game.gamerepo.player.robot.solution.third.ThirdtSolution_GoldenSquare;
 import game.play.PlayGame;
 
+import java.awt.*;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Scanner;
 
 
@@ -20,6 +25,12 @@ public class Main {
 
     public static void main(String[] args) throws InterruptedException {
         Main main = new Main();
+/*
+        try {
+            openWebpage(new URL("https://www.linkedin.com/in/ahmeteminsaglik"));
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }*/
 
 //        int squareEdge = 5;
         BuildGame buildGameModel = new BuildGame();
@@ -57,10 +68,19 @@ public class Main {
 
         String input = new Scanner(System.in).nextLine();
         if (input.equals("1")) {
-            return new Person(game);
+            Person person = new Person();
+            person.setGame(game);
+            System.out.println("game : "+game.toString());
+            return person;
+//            return new Person(/*game*/);
         } else if (input.equals("2")) {
-            baseSolution = new SecondSolution_CalculateForwardAvailableWays(game);
-            return new Robot(game, baseSolution);
+            Robot robot = new Robot();
+            robot.setGame(game);
+            baseSolution = new FirstSolution_Combination(game);
+            robot.setSolution(baseSolution);
+            return robot;
+
+//            return new Robot(game, baseSolution);
 
         } else {
             System.out.println("Unknow choice ");
@@ -69,5 +89,26 @@ public class Main {
 
     }
 
+  /*  public static boolean openWebpage(URI uri) {
+        Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
+        if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
+            try {
+                desktop.browse(uri);
+                return true;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return false;
+    }
+
+    public static boolean openWebpage(URL url) {
+        try {
+            return openWebpage(url.toURI());
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }*/
 }
 

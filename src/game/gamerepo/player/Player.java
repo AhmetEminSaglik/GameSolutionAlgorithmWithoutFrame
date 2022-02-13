@@ -18,12 +18,25 @@ public abstract class Player implements UpdateableVistedDirection, PrintableEver
     protected boolean printAbleEveryStep;
 
     protected int squareTotalSolvedValue = 0;
-    Game game;
+    protected Game game;
     private boolean visitedDirections[][];
     TimeKeeper timeKeeper;
     Score score;
 
-    public Player(Game game) {
+    public Player() {
+//        this.game = game;
+//        game.setPlayer(this);
+
+
+        timeKeeper = new TimeKeeper();
+
+
+        name = "Unknow " + getClass().getSimpleName() + " name ";
+//        int squareEdge = game.getModel().getGameSquares().length;
+//
+//        printableFileScore = new FileWriteProcess((squareEdge * squareEdge) + "_EverySingleSquareTotalValue");
+    }
+ /*   public Player(Game game) {
         this.game = game;
         game.setPlayer(this);
 
@@ -35,11 +48,24 @@ public abstract class Player implements UpdateableVistedDirection, PrintableEver
         int squareEdge = game.getModel().getGameSquares().length;
 
         printableFileScore = new FileWriteProcess((squareEdge * squareEdge) + "_EverySingleSquareTotalValue");
-    }
+    }*/
 
-    public Player(Game game, String name) {
+   /* public Player(Game game, String name) {
         super();
         this.name = name;
+    }
+*/
+
+    public void setGame(Game game) {
+        this.game = game;
+        game.setPlayer(this);
+        score = new Score(game, this);
+        clearVisitedDirections();
+
+
+        int squareEdge = game.getModel().getGameSquares().length;
+        printableFileScore = new FileWriteProcess((squareEdge * squareEdge) + "_EverySingleSquareTotalValue");
+
     }
 
     public void clearVisitedDirections() {
@@ -102,6 +128,8 @@ public abstract class Player implements UpdateableVistedDirection, PrintableEver
     public void updateVisitedDirection(boolean sealOrUnseal, int step, DirectionLocation location) {
 
     }
+
+    public abstract void setPlayerMove();
 
     public Game getGame() {
         return game;

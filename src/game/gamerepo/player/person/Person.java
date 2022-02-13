@@ -16,16 +16,28 @@ import game.rule.BaseGameRule;
 public class Person extends Player {
 
 
-    public Person(Game game) {
-        super(game);
+    public Person(/*Game game*/) {
+//        super(game);
         printAbleEveryStep = true;
-        playerMove = new PlayerMove(/*new PersonMove(game),*/new MoveForward(game), new MoveBack(game));
+
     }
+
 
 
     @Override
     public Compass getCompass() {
         return new KeyboardCompass();
+    }
+
+    @Override
+    public void setGame(Game game) {
+        super.setGame(game);
+        setPlayerMove();
+    }
+
+    @Override
+    public void setPlayerMove() {
+        playerMove = new PlayerMove(/*new PersonMove(game),*/new MoveForward(game), new MoveBack(game));
     }
 
     @Override

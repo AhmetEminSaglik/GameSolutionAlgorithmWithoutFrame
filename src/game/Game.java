@@ -9,7 +9,7 @@ public class Game {
     private Player player;
     protected int overLongRoundCounter = 0;
 
-    public Game(Model model, Player player) {
+    public Game(Model model, Player player) {   
         this.model = model;
         this.player = player;
     }
