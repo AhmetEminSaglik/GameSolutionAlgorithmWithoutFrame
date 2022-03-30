@@ -1,3 +1,4 @@
+/*
 package game.move;
 
 import errormessage.joptionpanel.ShowPanel;
@@ -23,3 +24,4 @@ public class PersonMove extends Move {
 
     }
 }
+*/

@@ -1,4 +1,4 @@
-package game.gamerepo.player.robot.solution.second;
+    package game.gamerepo.player.robot.solution.second;
 
 import check.forwardlocation.InpectingForwardLocation;
 import compass.DirectionCompass;

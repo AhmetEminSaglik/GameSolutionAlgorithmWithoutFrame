@@ -1,3 +1,4 @@
+/*
 package game.move;
 
 import errormessage.ErrorMessage;
@@ -56,3 +57,4 @@ public class RobotMove extends Move {
 
     }
 }
+*/

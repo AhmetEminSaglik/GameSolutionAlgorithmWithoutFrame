@@ -8,14 +8,10 @@ import game.gamerepo.player.robot.Robot;
 import game.gamerepo.player.robot.solution.BaseSolution;
 import game.gamerepo.player.robot.solution.first.FirstSolution_Combination;
 import game.gamerepo.player.robot.solution.second.SecondSolution_CalculateForwardAvailableWays;
-import game.gamerepo.player.robot.solution.third.ThirdtSolution_GoldenSquare;
 import game.play.PlayGame;
+import game.play.input.person.PersonInput;
+import game.play.input.robot.RobotInput;
 
-import java.awt.*;
-import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.Scanner;
 
 
@@ -70,14 +66,16 @@ public class Main {
         if (input.equals("1")) {
             Person person = new Person();
             person.setGame(game);
-            System.out.println("game : "+game.toString());
+            person.setIPlayerInput(new PersonInput(game));
+            System.out.println("game : " + game.toString());
             return person;
 //            return new Person(/*game*/);
         } else if (input.equals("2")) {
             Robot robot = new Robot();
             robot.setGame(game);
-            baseSolution = new FirstSolution_Combination(game);
+            baseSolution = new SecondSolution_CalculateForwardAvailableWays(game);
             robot.setSolution(baseSolution);
+            robot.setIPlayerInput(new RobotInput(robot.getSolution(), game));
             return robot;
 
 //            return new Robot(game, baseSolution);

@@ -24,8 +24,8 @@ public class PlayerMove {
     @Override
     public String toString() {
         return "PlayerMove{" +
-                "moveForward=" + moveForward +
-                ", moveBack=" + moveBack +
+                "\nmoveForward=" + moveForward +
+                "\nmoveBack=" + moveBack +
                 '}';
     }
 }

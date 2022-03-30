@@ -2,15 +2,12 @@ package game.gamerepo.player.person;
 
 import compass.Compass;
 import compass.KeyboardCompass;
-import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.gameover.PersonGameOver;
 import game.gamerepo.player.Player;
-import game.move.PersonMove;
 import game.move.fundamental.MoveBack;
 import game.move.fundamental.MoveForward;
 import game.play.PlayerMove;
-import game.play.input.person.PersonInput;
 import game.rule.BaseGameRule;
 
 public class Person extends Player {
@@ -21,7 +18,6 @@ public class Person extends Player {
         printAbleEveryStep = true;
 
     }
-
 
 
     @Override
@@ -40,10 +36,11 @@ public class Person extends Player {
         playerMove = new PlayerMove(/*new PersonMove(game),*/new MoveForward(game), new MoveBack(game));
     }
 
-    @Override
-    public int getInput(Game game) {
-        return new PersonInput(game).getInput();
-    }
+//    @Override
+//    public int getInput(Game game) {
+////        return new PersonInput(game).getInput();
+//        return iPlayerInput.getInput();
+//    }
 
     @Override
     public BaseGameRule getGameRule() {

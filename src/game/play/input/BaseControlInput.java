@@ -11,8 +11,8 @@ public abstract class BaseControlInput implements IPlayerInput {
         this.game = game;
     }
 
-    public abstract boolean isInputSuitableToMoveForward(Game game, int choose);
-
-    public abstract boolean isInputSuitableToMoveBack(Game game, int choose);
+//    public abstract boolean isInputSuitableToMoveForward(Game game, int choose);
+//
+//    public abstract boolean isInputSuitableToMoveBack(Game game, int choose);
 
 }

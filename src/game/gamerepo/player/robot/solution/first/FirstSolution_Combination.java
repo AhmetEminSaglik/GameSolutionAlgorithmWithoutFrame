@@ -1,5 +1,6 @@
 package game.gamerepo.player.robot.solution.first;
 
+import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.gamerepo.player.robot.solution.BaseSolution;
 import game.location.DirectionLocation;
@@ -31,6 +32,7 @@ public class FirstSolution_Combination extends BaseSolution {
                 return locationsList.get(i).getId();
             }
         }
+
 //        }
         return locationsList.get(locationsList.size() - 1).getId(); //LastLocation
 

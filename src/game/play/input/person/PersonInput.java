@@ -39,7 +39,7 @@ public class PersonInput extends BaseControlInput {
         }
     }
 
-    @Override
+//    @Override
     public boolean isInputSuitableToMoveForward(Game game, int choose) {
         return checkInputForForward(game, choose);
     }
@@ -63,7 +63,7 @@ public class PersonInput extends BaseControlInput {
         return checkSquare.getPlayerLocation(game);
     }
 
-    @Override
+//    @Override
     public boolean isInputSuitableToMoveBack(Game game, int choose) {
         return checkInputForBack(game, choose);
     }

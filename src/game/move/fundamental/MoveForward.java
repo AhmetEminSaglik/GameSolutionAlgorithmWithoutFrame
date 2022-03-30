@@ -30,5 +30,8 @@ public class MoveForward extends Move {
         updateVisitedDirection();
     }
 
-
+    @Override
+    public String toString() {
+        return "MoveForward{}";
+    }
 }

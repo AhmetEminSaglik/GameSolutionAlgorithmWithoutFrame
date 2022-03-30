@@ -1,5 +1,6 @@
 package game.move.fundamental.secondsolutionforrobot;
 
+import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.gamerepo.player.robot.Robot;
 import game.gamerepo.player.robot.solution.second.exitsituation.ExitSituation;
@@ -16,7 +17,7 @@ public class MoveForwardSecondSolution extends MoveForward {
     Robot robot = (Robot) game.getPlayer();
     Navigation navigation;
 
-    DirectionLocation lastLocation = new LocationsList().getLastLocation(robot.getCompass());
+//    DirectionLocation lastLocation = new LocationsList().getLastLocation(robot.getCompass());
 
     @Override
     public void prepareAllStuff() {
@@ -25,6 +26,7 @@ public class MoveForwardSecondSolution extends MoveForward {
 
     @Override
     public void updateBeforeStep() {
+//        ShowPanel.show(getClass()," Burasi "+getClass().getSimpleName()+" dir --> updateBeforeStep");
         super.updateBeforeStep();
         doIfThereAreThingsTodoInOneWayNumberProcess();
     }
@@ -78,5 +80,10 @@ public class MoveForwardSecondSolution extends MoveForward {
         if (navigation == null)
             return true;
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return "MoveForwardSecondSolution{}";
     }
 }

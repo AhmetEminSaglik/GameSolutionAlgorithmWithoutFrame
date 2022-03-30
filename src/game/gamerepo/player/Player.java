@@ -7,11 +7,13 @@ import game.location.DirectionLocation;
 import game.location.Location;
 import game.location.LocationsList;
 import game.play.PlayerMove;
+import game.play.input.person.IPlayerInput;
 import game.rule.BaseGameRule;
 import print.FileWriteProcess;
 import print.PrintAble;
 
 public abstract class Player implements UpdateableVistedDirection, PrintableEveryStepToSee {
+    protected IPlayerInput iPlayerInput;
     protected PlayerMove playerMove;
     protected String name;
     protected PrintAble printableFileScore;
@@ -120,7 +122,9 @@ public abstract class Player implements UpdateableVistedDirection, PrintableEver
         return "Player{" + "location=" + location.toString() + ", step=" + step + ", compass=" + compass + '}';
     }
 
-    public abstract int getInput(Game game);
+    public final int getInput(Game game) {
+        return iPlayerInput.getInput();
+    }
 
     public abstract Compass getCompass();
 
@@ -173,5 +177,13 @@ public abstract class Player implements UpdateableVistedDirection, PrintableEver
 
     public PrintAble getPrintableFileScore() {
         return printableFileScore;
+    }
+
+    public IPlayerInput getIPlayerInput() {
+        return iPlayerInput;
+    }
+
+    public void setIPlayerInput(IPlayerInput iPlayerInput) {
+        this.iPlayerInput = iPlayerInput;
     }
 }

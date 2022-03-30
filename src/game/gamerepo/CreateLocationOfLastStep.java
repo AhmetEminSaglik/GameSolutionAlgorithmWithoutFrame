@@ -3,6 +3,7 @@ package game.gamerepo;
 import game.Game;
 import game.location.CreateLocation;
 import game.location.DirectionLocation;
+import game.location.direction.LastLocation;
 
 public class CreateLocationOfLastStep {
 
@@ -15,6 +16,7 @@ public class CreateLocationOfLastStep {
     public DirectionLocation createLastStepLocation() {
         GameModelProcess gameModelProcess = new GameModelProcess(game);
         gameModelProcess.calculateIndexOfGivenStepInGameSquareArrays(game.getPlayer().getStep() - 1);
+
 
         CreateLocation createLocation = new CreateLocation();
         createLocation.setX(getOppositeValue(game.getPlayer().getLocation().getX(), gameModelProcess.getX()));

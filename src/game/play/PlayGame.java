@@ -1,5 +1,6 @@
 package game.play;
 
+import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.gamerepo.player.Player;
 import game.gamerepo.player.robot.Robot;
@@ -34,7 +35,7 @@ public class PlayGame {
         prepareGame = new PrepareGame(game);
         Move moveForwardOrBack;
 
-        printGamelastStuation(game);
+//        printGamelastStuation(game);
 //        appendFileSolutionName();
 //        startLocationX = game.getPlayer().getLocation().getX();
 //        startLocationY = game.getPlayer().getLocation().getY();
@@ -55,9 +56,15 @@ public class PlayGame {
 
 //            if (game.getModel().getGameSquares()[0][0] != 1)
 //                break;
-            if (player.isPrintableStepSituation() == true) {
-                printGamelastStuation(game);
-            }
+//            if (player.isPrintableStepSituation() == true) {
+//                printGamelastStuation(game);
+//            }
+
+//                printGamelastStuation(game);
+//            printGamelastStuation(game);
+//            if(player.getStep()==25){
+//                ShowPanel.show(getClass()," 25 e ulasti");
+//            }
 
         }
 
@@ -86,6 +93,7 @@ public class PlayGame {
     }
 
     Move getMoveBackOrForward(int index) {
+//        ShowPanel.show(getClass(),"Player Move : "+player.getPlayerMove().toString());
         if (index == player.getCompass().getLastLocation()) {
             return player.getPlayerMove().getMoveBack();
         }
@@ -110,7 +118,7 @@ public class PlayGame {
         System.out.println(" Elapsed time : " + timeCalcuation.getTotalPassedTime(player));
         System.out.println(" RoundCounter (while loop)  : " + getEasyReadyNumber(game.getRoundCounter()));
         System.out.println(" Counter of Moving Back  (while loop)  : " + getEasyReadyNumber(game.getPlayer().getScore().getCounterOfMovingBackLose()));
-        appendFileTotalSolvedValue();
+//        appendFileTotalSolvedValue();
 //        printable
     }
 

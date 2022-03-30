@@ -1,5 +1,6 @@
 package game.gamerepo.updategamemodel;
 
+import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.location.DirectionLocation;
 import game.move.seal.Signature;
@@ -23,6 +24,7 @@ public class UpdateForMovedForward extends UpdateValuesInGameModel {
 
     @Override
     public void updateValueVisitedDirection(DirectionLocation directionLocation) {
+
         player.updateVisitedDirection(ifMovedForwardThenSealTheLocation().isSealed(), game.getPlayer().getStep()-1, directionLocation);
     }
 

@@ -1,5 +1,6 @@
 package game.move.fundamental;
 
+import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.gamerepo.GameModelProcess;
 import game.gamerepo.updategamemodel.UpdateForMovedBack;
@@ -48,6 +49,8 @@ public class MoveBack extends Move {
 
     @Override
     public void updateBeforeStep() {
+//        ShowPanel.show(getClass()," Move Back udpateBefore Step");
+
         updateVisitedArea();
         updateVisitedDirection();
         removeMaxStepBeforeGoingLastStep();
@@ -76,4 +79,8 @@ public class MoveBack extends Move {
 //        printToFile(textWillAppendToFile);
     }*/
 
+    @Override
+    public String toString() {
+        return "MoveBack{}";
+    }
 }

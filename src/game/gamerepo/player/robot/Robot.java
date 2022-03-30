@@ -2,10 +2,10 @@ package game.gamerepo.player.robot;
 
 import compass.Compass;
 import compass.DirectionCompass;
+import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.gameover.RobotGameOver;
 import game.gamerepo.player.Player;
-import game.gamerepo.player.robot.memory.RoadMemory;
 import game.gamerepo.player.robot.memory.RobotMemory;
 import game.gamerepo.player.robot.solution.BaseSolution;
 import game.location.DirectionLocation;
@@ -22,7 +22,7 @@ public class Robot extends Player {
 
     public Robot(/*Game game, BaseSolution solution*/) {
 //        super(game);
-        this.game = game;
+//        this.game = game;
         robotMemory = new RobotMemory(game);
 //        this.solution = solution;
 //        solution.buildRobotMove();
@@ -39,10 +39,10 @@ public class Robot extends Player {
         return new DirectionCompass();
     }
 
-    @Override
-    public int getInput(Game game) {
-        return new RobotInput(solution, game).getInput();//getRobotMemory()
-    }
+//    @Override
+//    public int getInput(Game game) {
+//        return new RobotInput(solution, game).getInput();//getRobotMemory()
+//    }
 
     public BaseSolution getSolution() {
         return solution;
@@ -69,12 +69,15 @@ public class Robot extends Player {
     public void updateVisitedDirection(boolean sealOrUnseal, int step, DirectionLocation location) {
         assert (getStep() > 1) : getClass().getName() + " >>> ADIM SAYUISI " + getStep() + " GELDI";
         location.setCompass(getGame().getPlayer().getCompass());
+//        ShowPanel.show(getClass(),"???  gelen direction : "+location.getId());
         getVisitedDirections()[step][location.getId()] = sealOrUnseal;
     }
 
     @Override
     public void setPlayerMove() {
+        /* setplayer move da  freamesiz olan second soluyion donuyor bak bakayim fxml ne donyor */
         playerMove = new PlayerMove(/*new RobotMove(game),*/ solution.getMoveForward(), solution.getMoveBack());
+//        ShowPanel.show(getClass()," player move : "+playerMove.toString()+ " solution.getMoveForward() : "+solution.getMoveForward());
     }
 
     public int getRecordValueForEachSquare() {

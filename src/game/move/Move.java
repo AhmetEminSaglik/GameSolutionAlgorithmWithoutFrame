@@ -10,12 +10,8 @@ import game.location.DirectionLocation;
 import game.move.fundamental.MoveBack;
 import game.play.SelectFirstSqaureToStart;
 import print.EasylyReadNumber;
-import print.FileWriteProcess;
-import print.PrintAble;
 import printarray.StringFormat;
 import validation.Validation;
-
-import java.io.PrintWriter;
 
 
 public abstract class Move implements IMove { // ICalculateMove
@@ -55,16 +51,23 @@ public abstract class Move implements IMove { // ICalculateMove
 //            System.out.println("AAAAAAAAAAAAAAA");
 //            changeStartLocationSpecialMovement();
         } else {
+//ShowPanel.show(getClass(),directionLocation.toString());
             setLocation(directionLocation);
+//            ShowPanel.show(getClass()," direction : "+directionLocation);
             updateBeforeStep();
             updatePlayerStepValue();
             updateAfterStep();
             fillGameSquare.printStepInGameSquare();
         }
 
-        if (game.getPlayer().getGameRule().isGameOver(game)) {
-            appendFileSquareTotalSolvedValue();
-        }
+//        if (game.getPlayer().getGameRule().isGameOver(game)) {
+//            appendFileSquareTotalSolvedValue();
+//        }
+
+//        StringFormat stringFormat = new StringFormat();
+//        String text = stringFormat.getStringFormatArray(game.getPlayer().getVisitedDirections());
+//        System.out.println(text);
+//        ShowPanel.show(getClass(), "directions Yazdirildil bi incele");
     }
 
     @Override
@@ -74,9 +77,7 @@ public abstract class Move implements IMove { // ICalculateMove
 
     @Override
     public void changeStartLocationSpecialMovement() {
-
 //        ShowPanel.show(getClass(), "square  total solved value :" + game.getPlayer().getSquareTotalSolvedValue());
-
         appendFileSquareTotalSolvedValue();
         int locationX = game.getPlayer().getLocation().getX();
         int locationY = game.getPlayer().getLocation().getY();
@@ -122,7 +123,7 @@ public abstract class Move implements IMove { // ICalculateMove
 
 
         String text = "[" + locationX + "]" + "[" + locationY + "] = " + scoreValue + "\n";
-        if (locationX == squareEdge-1) {
+        if (locationX == squareEdge - 1) {
             text += "\n";
         }
 

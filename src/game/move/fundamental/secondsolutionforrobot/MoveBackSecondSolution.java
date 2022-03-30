@@ -1,5 +1,6 @@
 package game.move.fundamental.secondsolutionforrobot;
 
+import errormessage.joptionpanel.ShowPanel;
 import game.Game;
 import game.gamerepo.player.robot.Robot;
 import game.gamerepo.player.robot.solution.second.exitsituation.ExitSituation;
@@ -29,6 +30,7 @@ public class MoveBackSecondSolution extends MoveBack {
     @Override
     public void updateBeforeStep() {
         super.updateBeforeStep();
+//        ShowPanel.show(getClass()," Burasi "+getClass().getSimpleName()+" dir --> updateBeforeStep \n bundan once super calisti");
     }
 
     @Override
@@ -69,4 +71,8 @@ public class MoveBackSecondSolution extends MoveBack {
         return false;
     }
 
+    @Override
+    public String toString() {
+        return "MoveBackSecondSolution{}";
+    }
 }
