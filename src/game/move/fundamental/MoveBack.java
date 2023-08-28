@@ -26,7 +26,7 @@ public class MoveBack extends Move {
        if (game.getPlayer().getScore().isLockedCounterOfMovingBackLose() == true) {
 //            printGamelastStuation(game);
 //            ShowPanel.show(getClass(),"KITLI OLDUGU HALDE GERI ADIM ATTI   Step : "+game.getPlayer().getStep());
-            game.getPlayer().getScore().increaseCounterOfMovingBackLose();
+            game.getPlayer().getScore().increaseCounterOfDummyBackMove();
             game.getPlayer().getScore().unlockCounterOfMovingBackLose();
 
         }

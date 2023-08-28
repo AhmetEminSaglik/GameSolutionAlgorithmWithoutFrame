@@ -1,7 +1,6 @@
 package game.gamerepo;
 
 public class Model {
-
     private int gameSquares[][];
     private boolean visitedAreas[][];
 

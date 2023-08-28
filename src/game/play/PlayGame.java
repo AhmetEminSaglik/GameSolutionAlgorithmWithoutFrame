@@ -7,6 +7,7 @@ import game.gamerepo.player.robot.Robot;
 import game.location.DirectionLocation;
 import game.move.Move;
 import print.EasylyReadNumber;
+import print.FileWriteProcess;
 import printarray.StringFormat;
 
 public class PlayGame {
@@ -17,12 +18,13 @@ public class PlayGame {
     public ComparisonOfSolutions comparisonOfSolutions;
     StringFormat stringFormat = new StringFormat();
     TimeCalcuation timeCalcuation;
-//    int startLocationX, startLocationY;
+    //    int startLocationX, startLocationY;
+    FileWriteProcess printFileProcess;
 
     public PlayGame(Game game) {
         this.game = game;
         player = game.getPlayer();
-//        printable = new FileWriteProcess(game.getPlayer().getName());
+        printFileProcess = new FileWriteProcess(game.getPlayer().getName());
     }
 
 
@@ -115,10 +117,12 @@ public class PlayGame {
     void saveGameResultToScore() {
         timeCalcuation = new TimeCalcuation();
         player.getScore().updatePlayedTime();
-        System.out.println(" Elapsed time : " + timeCalcuation.getTotalPassedTime(player));
-        System.out.println(" RoundCounter (while loop)  : " + getEasyReadyNumber(game.getRoundCounter()));
-        System.out.println(" Counter of Moving Back  (while loop)  : " + getEasyReadyNumber(game.getPlayer().getScore().getCounterOfMovingBackLose()));
-//        appendFileTotalSolvedValue();
+        System.out.println("Elapsed time : " + timeCalcuation.getTotalPassedTime(player));
+        System.out.println("Total Back Step : " + getEasyReadyNumber(game.getPlayer().getScore().getCounterTotalBackStep()));
+        System.out.println("Total Dummy Back Step : " + getEasyReadyNumber(game.getPlayer().getScore().getCounterOfDummyBackMove()));
+        System.out.println("Total Step : " + getEasyReadyNumber(game.getRoundCounter()));
+//        System.out.println(" Total Dummy Back Step)  : " + getEasyReadyNumber(game.getPlayer().getScore().getCounterOfDummyBackMove()));
+        appendFileTotalSolvedValue();
 //        printable
     }
 
@@ -162,21 +166,23 @@ public class PlayGame {
 
 
     void printGamelastStuation(Game game) {
-        String textWillAppendToFile = " Finished totalGame : " + player.getScore().getTotalGameFinishedScore() + "\n";
-        textWillAppendToFile += "RoundCounter : " + getEasyReadyNumber(game.getRoundCounter()) + '\n' + "" +
-                "Counter of Moving Back " + getEasyReadyNumber(game.getPlayer().getScore().getCounterOfMovingBackLose()) + "\n" +
+        String textWillAppendToFile = "Finished totalGame : " + getEasyReadyNumber(player.getScore().getTotalGameFinishedScore()) + "\n";
+        textWillAppendToFile += "Total Step : " + getEasyReadyNumber(game.getRoundCounter()) + '\n' + "" +
+                "Total Back Step : " + getEasyReadyNumber(game.getPlayer().getScore().getCounterTotalBackStep()) +
+                "\nTotal Dummy Back Step : " + getEasyReadyNumber(game.getPlayer().getScore().getCounterOfDummyBackMove()) + "\n" +
                 "Step : " + player.getStep() + "\n";
 
 
         textWillAppendToFile += stringFormat.getStringFormatArray(game.getModel().getGameSquares());//  print game squares
-        System.out.println(textWillAppendToFile);
+        System.out.println("textWillAppendToFile : " + textWillAppendToFile);
+//        System.out.println(textWillAppendToFile);
         System.out.println();
-//        printToFile(textWillAppendToFile);
+        printToFile(textWillAppendToFile);
     }
 
     void printToFile(String text) {
-//        game.getPlayer().getPrintableFileScore().append(text);
-//        printable.append(text);
+        game.getPlayer().getPrintableFileScore().append(text);
+//        printFileProcess.append(text);
     }
 
 

@@ -52,7 +52,7 @@ public class Robot extends Player {
         this.solution = solution;
         solution.buildRobotMove();
 
-        setName(solution.getClass().getSimpleName() + "_" + game.getModel().getGameSquares());
+        setName(solution.getClass().getSimpleName() + "_" + game.getModel().getGameSquares().length+"x"+game.getModel().getGameSquares()[0].length);
         setPlayerMove();
 
     }
