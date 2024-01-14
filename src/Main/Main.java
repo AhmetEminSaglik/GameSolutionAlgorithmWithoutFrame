@@ -77,6 +77,7 @@ public class Main {
             baseSolution = new SecondSolution_CalculateForwardAvailableWays(game);
             robot.setSolution(baseSolution);
             robot.setIPlayerInput(new RobotInput(robot.getSolution(), game));
+
             return robot;
 
 //            return new Robot(game, baseSolution);

@@ -119,7 +119,7 @@ public class PlayGame {
         player.getScore().updatePlayedTime();
         System.out.println("Elapsed time : " + timeCalcuation.getTotalPassedTime(player));
         System.out.println("Total Back Step : " + getEasyReadyNumber(game.getPlayer().getScore().getCounterTotalBackStep()));
-        System.out.println("Total Dummy Back Step : " + getEasyReadyNumber(game.getPlayer().getScore().getCounterOfDummyBackMove()));
+//        System.out.println("Total Dummy Back Step : " + getEasyReadyNumber(game.getPlayer().getScore().getCounterOfDummyBackMove()));
         System.out.println("Total Step : " + getEasyReadyNumber(game.getRoundCounter()));
 //        System.out.println(" Total Dummy Back Step)  : " + getEasyReadyNumber(game.getPlayer().getScore().getCounterOfDummyBackMove()));
         appendFileTotalSolvedValue();
@@ -169,17 +169,15 @@ public class PlayGame {
         String textWillAppendToFile = "Finished totalGame : " + getEasyReadyNumber(player.getScore().getTotalGameFinishedScore()) + "\n";
         textWillAppendToFile += "Total Step : " + getEasyReadyNumber(game.getRoundCounter()) + '\n' + "" +
                 "Total Back Step : " + getEasyReadyNumber(game.getPlayer().getScore().getCounterTotalBackStep()) +
-                "\nTotal Dummy Back Step : " + getEasyReadyNumber(game.getPlayer().getScore().getCounterOfDummyBackMove()) + "\n" +
-                "Step : " + player.getStep() + "\n";
+                "\nTotal Dummy Back Step : " + getEasyReadyNumber(game.getPlayer().getScore().getCounterOfDummyBackMove())+
+                "\nStep : " + player.getStep() + "\n";
 
 
         textWillAppendToFile += stringFormat.getStringFormatArray(game.getModel().getGameSquares());//  print game squares
         System.out.println("textWillAppendToFile : " + textWillAppendToFile);
 //        System.out.println(textWillAppendToFile);
-        System.out.println();
         printToFile(textWillAppendToFile);
     }
-
     void printToFile(String text) {
         game.getPlayer().getPrintableFileScore().append(text);
 //        printFileProcess.append(text);

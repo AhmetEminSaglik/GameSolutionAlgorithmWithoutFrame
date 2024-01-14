@@ -66,7 +66,7 @@ public abstract class Player implements UpdateableVistedDirection, PrintableEver
 
 
         int squareEdge = game.getModel().getGameSquares().length;
-        printableFileScore = new FileWriteProcess((squareEdge * squareEdge) + "_EverySingleSquareTotalValue");
+        printableFileScore = new FileWriteProcess((squareEdge * squareEdge) + "_"+getName());
 
     }
 

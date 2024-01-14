@@ -12,9 +12,11 @@ import game.location.DirectionLocation;
 import game.play.PlayerMove;
 import game.play.input.robot.RobotInput;
 import game.rule.BaseGameRule;
+import print.FileWriteProcess;
 
 
 public class Robot extends Player {
+    DirectionCompass compass = new DirectionCompass();
     private RobotMemory robotMemory;
     //    RoadMemory roadMemory = new RoadMemory();
     private BaseSolution solution;
@@ -32,11 +34,9 @@ public class Robot extends Player {
     }
 
 
-
-
     @Override
     public Compass getCompass() {
-        return new DirectionCompass();
+        return compass;
     }
 
 //    @Override
@@ -52,9 +52,10 @@ public class Robot extends Player {
         this.solution = solution;
         solution.buildRobotMove();
 
-        setName(solution.getClass().getSimpleName() + "_" + game.getModel().getGameSquares().length+"x"+game.getModel().getGameSquares()[0].length);
+        setName(game.getModel().getGameSquares().length + "x" + game.getModel().getGameSquares()[0].length + "_" + solution.getClass().getSimpleName());
         setPlayerMove();
 
+        printableFileScore = new FileWriteProcess((getName()));
     }
 
     @Override
